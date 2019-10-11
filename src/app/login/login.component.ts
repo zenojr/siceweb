@@ -1,6 +1,7 @@
 import { LoginService } from './login.service';
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+
+
 
 @Component({
   selector: 'app-login',
@@ -13,18 +14,14 @@ export class LoginComponent implements OnInit {
   senha = '';
   sistema = 'REP';
 
-  constructor( public http: HttpClient, public loginService: LoginService ) { }
+  constructor( private loginService: LoginService ) { }
 
   ngOnInit() {
 
   }
 
   login() {
-    this.loginService.login( this.user, this.sistema, this.senha )
-      .subscribe( data => {
-        console.log(data);
-        
-      } );
+    const recieve = this.loginService.login( this.user, this.sistema, this.senha ).subscribe( data => console.log(data) );
   }
 
 }
