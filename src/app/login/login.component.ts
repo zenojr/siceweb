@@ -12,29 +12,30 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  user  = '';
-  senha = '';
+  user    = '';
+  senha   = '';
   sistema = 'REP';
 
-  constructor( private loginService: LoginService, private snackBar: MatSnackBar ) { }
+  constructor( private loginService: LoginService,
+               private     snackBar: MatSnackBar,
+               private        route: Router ) { }
 
-  ngOnInit() {
+  ngOnInit( ) {
 
   }
 
   login() {
-    const recieve = this.loginService.login( this.user, this.sistema, this.senha )
+    this.loginService.login( this.user, this.sistema, this.senha )
     .subscribe( data => {
       console.log(data);
-      if( data === 'NOK' ){
-        
-
+      if ( data === 'NOK' ) {
         this.snackBar.open('Usuário ou senha inválido', 'Fechar', {
           duration: 2000,
         });
 
       } else {
         console.log('login OK');
+        this.route.navigateByUrl('/principal');
       }
     });
   }

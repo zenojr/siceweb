@@ -6,7 +6,6 @@ import { NgxXml2jsonService } from 'ngx-xml2json';
   providedIn: 'root'
 })
 export class LoginService {
-
   url = 'http://192.168.0.7:8080/cgi-bin/wspd_cgi.sh/WService=emswebelt/scb003ws_new.p?';
 
   constructor( private     http: HttpClient,
@@ -14,10 +13,7 @@ export class LoginService {
 
   login(usuario: string,  sistema: string, senha: string) {
     const headers = new HttpHeaders();
-    let request = this.http.get(this.url + 'usuario=' + usuario + '&sistema=' + sistema + '&senha=' + senha, { responseType: 'text' } );
-
-
-    
+    const request = this.http.get(this.url + 'usuario=' + usuario + '&sistema=' + sistema + '&senha=' + senha, { responseType: 'text' } );
     return request;
   }
 
