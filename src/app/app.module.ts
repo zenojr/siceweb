@@ -13,14 +13,17 @@ import { MatDividerModule,
          MatIconModule,
          MatGridListModule,
          MatCardModule,
-         MatInputModule          } from '@angular/material';
+         MatInputModule,
+         MatSnackBarModule       } from '@angular/material';
 
 import { FormsModule             } from '@angular/forms';
+import { PrincipalComponent } from './principal/principal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    PrincipalComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +37,8 @@ import { FormsModule             } from '@angular/forms';
     MatIconModule,
     MatGridListModule,
     MatCardModule,
-    MatInputModule
+    MatInputModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

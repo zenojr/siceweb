@@ -8,17 +8,19 @@
             
             <mat-form-field>
                 <input autocomplete="off" 
-                        matInput placeholder="Usuário" 
-                        [(ngModel)]="user" 
-                        name="user" value="">
+                       matInput placeholder="Usuário" 
+                       [(ngModel)]="user" 
+                       name="user" value=""
+                       required>
             </mat-form-field>
             <br>
             <mat-form-field>
                 <input type="password" 
-                        autocomplete="off" 
-                        matInput placeholder="Senha" 
-                        [(ngModel)]="senha" 
-                        name="senha" value="">
+                       autocomplete="off" 
+                       matInput placeholder="Senha" 
+                       [(ngModel)]="senha" 
+                       name="senha" value=""
+                       required>
             </mat-form-field>
             <div class="btnContainer">            
                 <button (click)="login()" color="primary" mat-button>Entrar</button>

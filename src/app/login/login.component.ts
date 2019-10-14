@@ -1,5 +1,7 @@
+import { MatSnackBar } from '@angular/material';
 import { LoginService } from './login.service';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 
 
@@ -14,14 +16,27 @@ export class LoginComponent implements OnInit {
   senha = '';
   sistema = 'REP';
 
-  constructor( private loginService: LoginService ) { }
+  constructor( private loginService: LoginService, private snackBar: MatSnackBar ) { }
 
   ngOnInit() {
 
   }
 
   login() {
-    const recieve = this.loginService.login( this.user, this.sistema, this.senha ).subscribe( data => console.log(data) );
+    const recieve = this.loginService.login( this.user, this.sistema, this.senha )
+    .subscribe( data => {
+      console.log(data);
+      if( data === 'NOK' ){
+        
+
+        this.snackBar.open('Usuário ou senha inválido', 'Fechar', {
+          duration: 2000,
+        });
+
+      } else {
+        console.log('login OK');
+      }
+    });
   }
 
 }
