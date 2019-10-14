@@ -1,37 +1,31 @@
-%center {         display: flex;
+%center {   display: flex;
     justify-content: center;
         align-items: center;
   }     
 
-
-
-
 .cardLogin {
-@extend %center;
+  @extend %center;
 }
 
 .logoContainer, .btnContainer {
-@extend %center;
+  @extend %center;
 }
 
-
 #logoPrincipalLogin {
-width: 150px;
+  width: 150px;
 }
 
 mat-card {
-width: 300px;
-background-color:rgba(255, 255, 255, 0.8);
-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
-
+  width: 300px;
+  background-color:rgba(255, 255, 255, 0.8);
+  box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
 }
 
 .bg {
-background-image: url("../../assets/img/fundo_tratada.jpg");
-height: 100%;
-background-position: center;
-background-repeat: no-repeat;
-background-size: cover;
-@extend %center;
-
+  background-image: url("../../assets/img/fundo_tratada.jpg");
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  @extend %center;
 }
