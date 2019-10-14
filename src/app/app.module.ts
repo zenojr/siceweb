@@ -12,9 +12,11 @@ import { MatDividerModule,
          MatGridListModule,
          MatCardModule,
          MatInputModule,
-         MatSnackBarModule       } from '@angular/material';
+         MatSnackBarModule,
+         MatMenuModule       } from '@angular/material';
 import { FormsModule             } from '@angular/forms';
 import { PrincipalComponent } from './principal/principal.component';
+
 
 @NgModule({
   declarations: [
@@ -35,7 +37,8 @@ import { PrincipalComponent } from './principal/principal.component';
     MatGridListModule,
     MatCardModule,
     MatInputModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]

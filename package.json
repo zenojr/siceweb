@@ -1,6 +1,11 @@
 {
   "name": "sice",
-  "version": "0.0.0",
+  "author": { 
+    "name": "Zeno França Jr.",
+    "email": "zfrancajunior@gmail.com",
+    "url": "http://zeno-website.web.app"
+  },
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
