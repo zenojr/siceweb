@@ -3,6 +3,18 @@
         align-items: center;
 }
 
+@font-face {
+    font-family: 'Muli-Regular';
+    // src: local('../../assets/font/Muli-Regular.woff') format('woff');
+    src: url('../../assets/font/Muli-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+button {     
+    font-family: 'Muli-Regular', Verdana, sans-serif;
+}
+
 .icon {
     padding: 0 14px;
   }
