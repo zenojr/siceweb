@@ -1,39 +1,33 @@
-%center {
+%centerAll {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.container {
-    @extend %center;
-}
-
-.filter-container {
-    background-color: rgba($color: #ffffff, $alpha: 0.8);
-    
-    width: 100%;
-    padding: 10px;
-    
-    border-radius: 3px;
-}
-
-.topo-monitor {
+%centerHoriz {
     display: flex;
     justify-content: center;
 }
 
-.form-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+.container {
+    
 }
 
-* {
-    box-sizing: border-box;
+.table { 
+    @extend %centerHoriz;
+    background-color: rgba($color: #ffffff, $alpha: 0.5);
 }
 
-
-
-.spacer {
-    flex: 1 1 auto;
-}
+table {
+    width: 100%;
+  }
+  
+  .mat-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+  
+  td, th {
+    width: 25%;
+  }
+  
