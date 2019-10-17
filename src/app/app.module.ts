@@ -13,16 +13,19 @@ import { MatDividerModule,
          MatCardModule,
          MatInputModule,
          MatSnackBarModule,
-         MatMenuModule       } from '@angular/material';
+         MatMenuModule,
+         MatTableModule          } from '@angular/material';
 import { FormsModule             } from '@angular/forms';
 import { PrincipalComponent } from './principal/principal.component';
+import { MonitoropComponent } from './monitorop/monitorop.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    PrincipalComponent
+    PrincipalComponent,
+    MonitoropComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +41,8 @@ import { PrincipalComponent } from './principal/principal.component';
     MatCardModule,
     MatInputModule,
     MatSnackBarModule,
-    MatMenuModule
+    MatMenuModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

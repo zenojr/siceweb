@@ -1,0 +1,39 @@
+%center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    @extend %center;
+}
+
+.filter-container {
+    background-color: rgba($color: #ffffff, $alpha: 0.8);
+    
+    width: 100%;
+    padding: 10px;
+    
+    border-radius: 3px;
+}
+
+.topo-monitor {
+    display: flex;
+    justify-content: center;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+
+
+.spacer {
+    flex: 1 1 auto;
+}
