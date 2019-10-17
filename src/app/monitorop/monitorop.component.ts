@@ -9,7 +9,6 @@ export interface UserData {
   progress: string;
   color: string;
 }
-
 /** Constants used to fill up our data base. */
 const COLORS: string[] = [
   'maroon', 'red', 'orange', 'yellow', 'olive', 'green', 'purple', 'fuchsia', 'lime', 'teal',
@@ -32,13 +31,15 @@ const NAMES: string[] = [
 })
 export class MonitoropComponent implements OnInit {
 
+  value = '';
+
   displayedColumns: string[] = ['id', 'name', 'progress', 'color'];
   dataSource: MatTableDataSource<UserData>;
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
 
-  constructor() { 
+  constructor() {
      // Create 100 users
      const users = Array.from({length: 100}, (_, k) => this.createNewUser(k + 1));
 
@@ -49,6 +50,11 @@ export class MonitoropComponent implements OnInit {
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+  }
+
+  clear( filterValue: string ) {
+    this.value = '';
+    this.applyFilter(filterValue);
   }
 
   applyFilter(filterValue: string) {
