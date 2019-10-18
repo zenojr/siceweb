@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { trigger,
          state,
          style,
@@ -15,11 +15,27 @@ import { trigger,
 })
 export class PrincipalComponent implements OnInit {
 
-  monitor = false;
+  @Input() monitor = false;
 
   constructor() { }
 
   ngOnInit() {
+
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(this.showPosition);
+    } else {
+      console.log( 'Not suported Geolocation' );
+    }
+
+
+  }
+
+  showPosition(position) {
+    const location = {
+      longitude: position.coords.longitude,
+      latitude: position.coords.latitude
+    }
+    console.log(location);
   }
 
   menuControl() {
