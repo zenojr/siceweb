@@ -30,7 +30,6 @@ const NAMES: string[] = [
   styleUrls: ['./monitorop.component.scss']
 })
 export class MonitoropComponent implements OnInit {
- 
   @Input() recebeMonitor;
 
   op  = '';
