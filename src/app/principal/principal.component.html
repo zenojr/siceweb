@@ -6,7 +6,7 @@
             </span>
             <span class="spacer">
                 <nav>                     
-                    <button mat-button>
+                    <button mat-button (click)="menuControl()">
                        <img src="../../assets/img/icons/2x/baseline_track_changes_white_18dp.png" alt="">     
                         Monitor OP
                     </button>
@@ -24,7 +24,7 @@
         </mat-toolbar-row>    
     </mat-toolbar>
     <div class="content-principal">
-        <app-monitorop></app-monitorop>
+        <app-monitorop *ngIf="monitor"></app-monitorop>
     </div>
     
 </div>

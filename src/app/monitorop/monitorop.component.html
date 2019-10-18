@@ -7,6 +7,11 @@
                     <a href="">
                         <img src="../../assets/img/icons/close-24px.svg" alt="Close">
                     </a>
+                </div>
+                <div class="closer">
+                    <a href="">
+                        <img src="../../assets/img/icons/autorenew-24px.svg" alt="Close">
+                    </a>
                 </div>                
             </div>
             <div class="title">
@@ -18,24 +23,35 @@
             <div class="form-table">
                 <mat-form-field>
                     <input matInput 
-                           (keyup)="applyFilter($event.target.value)" 
-                           placeholder="Ordem nº de produção"
-                           autocomplete="off"
-                           [(ngModel)]="value"
-                           type="number">                    
+                           (keyup)      = "applyFilter($event.target.value)" 
+                           placeholder  = "Ordem nº de produção"
+                           autocomplete = "off"
+                           [(ngModel)]  = "op"
+                           type         = "number">                    
                 </mat-form-field>
-                <button mat-button *ngIf="value" 
-                            matSuffix mat-icon-button 
-                            aria-label="Clear" 
-                            (click)="clear('')">
+                <button mat-button 
+                        *ngIf      = "op" 
+                        matSuffix 
+                        mat-icon-button 
+                        aria-label = "Clear" 
+                        (click)    = "clear('')">
                         <mat-icon>close</mat-icon>
                 </button>
                 <mat-form-field>
                     <input matInput 
                            (keyup)="applyFilter($event.target.value)" 
-                           placeholder="Lote"
-                           autocomplete="off">
-                </mat-form-field>                      
+                           placeholder  = "Lote"
+                           autocomplete = "off"
+                           [(ngModel)]  = "lot">
+                </mat-form-field>
+                <button mat-button 
+                        *ngIf      = "lot" 
+                        matSuffix 
+                        mat-icon-button 
+                        aria-label = "Clear" 
+                        (click)    = "clearlot('')">
+                        <mat-icon>close</mat-icon>
+                </button>
             </div>
             
             <div class="mat-elevation-z8">

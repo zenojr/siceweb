@@ -7,9 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PrincipalComponent implements OnInit {
 
+  monitor = false;
+
   constructor() { }
 
   ngOnInit() {
   }
 
+  menuControl() {
+    if ( this.monitor === false ) {
+      this.monitor = true;
+    } else {
+      this.monitor = false;
+    } 
+  }
 }

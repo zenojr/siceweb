@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
@@ -30,8 +30,11 @@ const NAMES: string[] = [
   styleUrls: ['./monitorop.component.scss']
 })
 export class MonitoropComponent implements OnInit {
+ 
+  @Input() recebeMonitor;
 
-  value = '';
+  op  = '';
+  lot = '';
 
   displayedColumns: string[] = ['id', 'name', 'progress', 'color'];
   dataSource: MatTableDataSource<UserData>;
@@ -53,7 +56,12 @@ export class MonitoropComponent implements OnInit {
   }
 
   clear( filterValue: string ) {
-    this.value = '';
+    this.op = '';
+    this.applyFilter(filterValue);
+  }
+
+  clearlot( filterValue: string ) {
+    this.lot = '';
     this.applyFilter(filterValue);
   }
 
