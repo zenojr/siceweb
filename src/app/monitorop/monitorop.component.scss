@@ -41,8 +41,11 @@ table {
 }
 
 .buttons  {
-    
+    @extend %buttonConfig;
+    fill: green;
 }
+
+
 
 .closer {
     @extend %buttonConfig;
