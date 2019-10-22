@@ -41,9 +41,24 @@ table {
 
 .buttons  {
     @extend %buttonConfig;
-    fill: green;
+    margin-bottom: 5px;
 }
 
+.buttons img {
+    width: 20px;
+}
+
+#update {
+    background-color: rgb(90, 168, 25);
+}
+
+#report {
+    background-color: #00AEC7
+}
+
+#send {
+    background-color: rgb(74, 105, 243);
+}
 
 
 .closer {
