@@ -13,7 +13,7 @@ import { trigger,
 })
 export class PrincipalComponent implements OnInit {
 
-  @Input() monitor = false;
+  monitor = false;
 
   constructor() { }
 
@@ -42,6 +42,7 @@ export class PrincipalComponent implements OnInit {
       this.monitor = true;
     } else {
       this.monitor = false;
-    } 
+    }
+    console.log(this.monitor)
   }
 }

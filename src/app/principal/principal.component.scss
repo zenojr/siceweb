@@ -22,13 +22,6 @@ button {
     flex: 1 1 auto;
 }
 
-.logo-principal  {
-    position: relative;
-}
-
-.logo-principal img {
-    width: 150px;
-}
 
 .bg {
     background-image: url("../../assets/img/fundo_tratada.jpg");
@@ -38,20 +31,14 @@ button {
     background-size: cover;
 }
 
-.menu-principal {
-    box-shadow: 1;
-    box-shadow: 0px 0px 4px 2px black;
+
+
+.logo-principal  {
+    position: relative;
+    width: 100%;
 }
 
-.menu-principal button {
-    margin: 0px 1px 0px 0px ;
+.logo-principal img {
+    width: 150px;
 }
 
-.monitor-op {
-    opacity: 0;
-    transition: opacity 2s;
-}
-
-.monitor-op-open {
-    
-} 

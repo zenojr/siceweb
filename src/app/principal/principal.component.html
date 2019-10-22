@@ -1,30 +1,19 @@
 <div class="bg">
-    <mat-toolbar class="menu-principal" color="primary">
+    <mat-toolbar color="primary">
         <mat-toolbar-row>
             <span class="logo-principal">
                 <img src="../../assets/img/AF_Marca_Corfio_RGB_neg.png" alt="">
             </span>
             <span class="spacer">
-                <nav>                     
-                    <button mat-button (click)="menuControl()">
-                       <img src="../../assets/img/icons/2x/baseline_track_changes_white_18dp.png" alt="">     
-                        Monitor OP
-                    </button>
-                    <button mat-button>
-                        <img src="../../assets/img/icons/2x/baseline_rotate_left_white_18dp.png" alt="">
-                        Repassadeira
-                    </button>
-                    <button mat-button>
-                        <img src="../../assets/img/icons/2x/baseline_local_shipping_white_18dp.png" alt="">
-                        Expedição
-                    </button>
-                </nav>
+                    <a href="#"> <img src="../../assets/img/icons/2x/baseline_exit_to_app_white_18dp.png" aria-label="Logout" alt="Logout"></a>
             </span>
-            <a href="#"> <img src="../../assets/img/icons/2x/baseline_exit_to_app_white_18dp.png" aria-label="Logout" alt="Logout"></a>
-        </mat-toolbar-row>    
+        </mat-toolbar-row>
     </mat-toolbar>
-    <div class="content-principal">
-        <app-monitorop class="monitor-op" *ngIf="monitor"></app-monitorop>
+    <div class="menu">    
+        <mat-tab-group backgroundColor="primary">
+            <mat-tab label="Monitor OP"> <app-monitorop></app-monitorop> </mat-tab>
+            <mat-tab label="Second"> Content 2 </mat-tab>
+            <mat-tab label="Third"> Content 3 </mat-tab>
+        </mat-tab-group>
     </div>
-    
 </div>

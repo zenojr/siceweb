@@ -16,7 +16,8 @@ import { MatDividerModule,
          MatMenuModule,
          MatTableModule,
          MatPaginatorModule,
-         MatSortModule           } from '@angular/material';
+         MatSortModule,
+         MatTabsModule           } from '@angular/material';
 import { FormsModule             } from '@angular/forms';
 import { PrincipalComponent } from './principal/principal.component';
 import { MonitoropComponent } from './monitorop/monitorop.component';
@@ -46,7 +47,8 @@ import { MonitoropComponent } from './monitorop/monitorop.component';
     MatMenuModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatTabsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
