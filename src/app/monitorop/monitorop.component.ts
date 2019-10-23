@@ -1,7 +1,8 @@
+import { MonitoropService } from './monitorop.service';
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
-import {MatPaginator} from '@angular/material/paginator';
-import {MatSort} from '@angular/material/sort';
-import {MatTableDataSource} from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 
 export interface UserData {
   id: string;
@@ -30,8 +31,6 @@ const NAMES: string[] = [
   styleUrls: ['./monitorop.component.scss']
 })
 export class MonitoropComponent implements OnInit {
-  
-
   op  = '';
   lot = '';
 
@@ -41,7 +40,7 @@ export class MonitoropComponent implements OnInit {
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
 
-  constructor() {
+  constructor( private monitorService: MonitoropService ) {
      // Create 100 users
      const users = Array.from({length: 100}, (_, k) => this.createNewUser(k + 1));
 
@@ -52,6 +51,13 @@ export class MonitoropComponent implements OnInit {
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+
+    this.getTableOP();
+  }
+
+  getTableOP() {
+      const data = this.monitorService.getTableMonOP().subscribe( doc => {
+      console.log(doc); });
   }
 
   clear( filterValue: string ) {
