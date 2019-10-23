@@ -1,3 +1,9 @@
+%ball {
+    width: 30px;
+    height: 30px;
+    border-radius: 25px;
+}
+
 %centerAll {
     display: flex;
     justify-content: center;
@@ -25,7 +31,6 @@ input[type=number]::-webkit-outer-spin-button {
 .title {
     @extend %centerHoriz;
     color: gray;
-
  }
 
 .table-container { 
@@ -60,20 +65,38 @@ table {
     background-color: rgb(74, 105, 243);
 }
 
-
 .closer {
     @extend %buttonConfig;
 }
-  
-
-  
+    
 td, th {
     width: 25%;
 }
 
 mat-form-field {
     font-size: 14px;
-    margin: 8px;
-        
+    margin: 8px;      
 }
-  
+
+.form-table {
+    @extend %centerHoriz;
+    justify-content: space-between;
+    
+}
+
+.spacer {
+    flex: 1 1 auto;
+}
+
+.legenda {
+    margin: 15px;
+    width: 320px;
+    height: 40px;
+    @extend %centerHoriz;
+
+}
+
+#vermelho {
+    @extend %centerAll, %ball;
+    background-color: tomato;
+}

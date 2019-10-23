@@ -28,37 +28,46 @@
         <mat-divider></mat-divider>
         <div class="table-body">
             <div class="form-table">
-                <mat-form-field>
-                    <input matInput 
-                           (keyup)      = "applyFilter($event.target.value)" 
-                           placeholder  = "Ordem nº de produção"
-                           autocomplete = "off"
-                           [(ngModel)]  = "op"
-                           type         = "number">                    
-                </mat-form-field>
-                <button mat-button 
-                        *ngIf      = "op" 
-                        matSuffix 
-                        mat-icon-button 
-                        aria-label = "Clear" 
-                        (click)    = "clear('')">
-                        <mat-icon>close</mat-icon>
-                </button>
-                <mat-form-field>
-                    <input matInput 
-                           (keyup)="applyFilter($event.target.value)" 
-                           placeholder  = "Lote"
-                           autocomplete = "off"
-                           [(ngModel)]  = "lot">
-                </mat-form-field>
-                <button mat-button 
-                        *ngIf      = "lot" 
-                        matSuffix 
-                        mat-icon-button 
-                        aria-label = "Clear" 
-                        (click)    = "clearlot('')">
-                        <mat-icon>close</mat-icon>
-                </button>
+                <div class="form">
+                    <mat-form-field>
+                            <input matInput 
+                                    (keyup)      = "applyFilter($event.target.value)" 
+                                    placeholder  = "Ordem nº de produção"
+                                    autocomplete = "off"
+                                    [(ngModel)]  = "op"
+                                    type         = "number">                    
+                    </mat-form-field>
+                    <button mat-button 
+                            *ngIf      = "op" 
+                            matSuffix 
+                            mat-icon-button 
+                            aria-label = "Clear" 
+                            (click)    = "clear('')">
+                            <mat-icon>close</mat-icon>
+                    </button>
+                    <mat-form-field>
+                        <input matInput 
+                                (keyup)="applyFilter($event.target.value)" 
+                                placeholder  = "Lote"
+                                autocomplete = "off"
+                                [(ngModel)]  = "lot">
+                    </mat-form-field>
+                    <button mat-button 
+                            *ngIf      = "lot" 
+                            matSuffix 
+                            mat-icon-button 
+                            aria-label = "Clear" 
+                            (click)    = "clearlot('')">
+                            <mat-icon>close</mat-icon>
+                    </button>
+                </div>
+                
+                <!-- <span class="spacer"></span> -->
+                <div class="legenda">
+                    <div id="vermelho">
+                        1
+                    </div>
+                </div>
             </div>
             
             <div class="mat-elevation-z8">
@@ -98,8 +107,3 @@
         </div>
     </div>
 </div>
-
-<p>Teste</p>
-<ul *ngFor="let item of data">
-        <li> {{ item['ttOp'].Registro }} </li>
-</ul>

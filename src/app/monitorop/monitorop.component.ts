@@ -66,7 +66,6 @@ export interface DataServer {
       corteBob: string;
       corteRet: string;
       corteSuc: string;
-
 }
 
 export interface DataserverJson {
@@ -168,19 +167,18 @@ export class MonitoropComponent implements OnInit {
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
-
     this.getTableOP();
   }
 
   getTableOP() {
       this.monitorService.getTableMonOP().subscribe( doc => {
-          let data = this.monitorService.convertXMLtoJSON(doc);
-          data = data['Root'];
-          data = data['ttOp'];
-          data = data['Registro'];
-          console.log(data);
-      }); 
-      
+          let localData = this.monitorService.convertXMLtoJSON(doc);
+          localData = localData['Root'];
+          localData = localData['ttOp'];
+          localData = localData['Registro'];
+          console.log(localData);
+          this.data = localData;
+      });
   }
 
   clear( filterValue: string ) {
