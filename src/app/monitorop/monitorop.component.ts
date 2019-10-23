@@ -10,6 +10,122 @@ export interface UserData {
   progress: string;
   color: string;
 }
+
+export interface DataServer {
+      itCodigo: string;
+      descItem: string;
+      endereco: string;
+      endExp: string;
+      lote: string;
+      operador: string;
+      produzido: string;
+      codLote: string;
+      vcLance: string;
+      observ: string;
+      nomeCli: string;
+      bobMad: string;
+      finalBob: string;
+      podeVar: string;
+      dimBob: string;
+      dimBobDest: string;
+      descPriori: string;
+      devProd: string;
+      statusLab: string;
+      hrPriori: string;
+      amostra: string;
+      corteRol: string;
+      numOpPend: string;
+      destino: string;
+      dtPriori: string;
+      dtProducao: string;
+      dtOp: string;
+      quantPed: string;
+      qtPedMin: string;
+      qtPedMax: string;
+      quantRolo: string;
+      quantRet: string;
+      quantSuc: string;
+      tara: string;
+      peso: string;
+      ajSpark: string;
+      quantEtq: string;
+      mPontaFora: string;
+      numOp: string;
+      nrPedido: string;
+      prioridade: string;
+      maquina: string;
+      numRep: string;
+      seqItem: string;
+      devRepassa: string;
+      codBob: string;
+      lance: string;
+      codImp: string;
+      codProblema: string;
+      codProbSuc: string;
+      mmValida: string;
+      corteBob: string;
+      corteRet: string;
+      corteSuc: string;
+
+}
+
+export interface DataserverJson {
+  ajSpark: string;
+  amostra: string;
+  bobMad: string;
+  codBob: string;
+  codImp: string;
+  codLote: string;
+  codProbSuc: string;
+  codProblema: string;
+  corteBob: string;
+  corteRet: string;
+  corteRol: string;
+  corteSuc: string;
+  descItem: string;
+  descPriori: string;
+  destino: string;
+  devProd: string;
+  devRepassa: string;
+  dimBob: string;
+  dimBobDest: string;
+  dtOp: string;
+  dtPriori: string;
+  dtProducao: string;
+  endExp: string;
+  endereco: string;
+  finalBob: string;
+  hrPriori: string;
+  itCodigo: string;
+  lance: string;
+  lote: string;
+  mPontaFora: string;
+  maquina: string;
+  mmValida: string;
+  nomeCli: string;
+  nrPedido: string;
+  numOp: string;
+  numOpPend: string;
+  numRep: string;
+  observ: string;
+  operador: string;
+  peso: string;
+  podeVar: string;
+  prioridade: string;
+  produzido: string;
+  qtPedMax: string;
+  qtPedMin: string;
+  quantEtq: string;
+  quantPed: string;
+  quantRet: string;
+  quantRolo: string;
+  quantSuc: string;
+  seqItem: string;
+  statusLab: string;
+  tara: string;
+  vcLance: string;
+}
+
 /** Constants used to fill up our data base. */
 const COLORS: string[] = [
   'maroon', 'red', 'orange', 'yellow', 'olive', 'green', 'purple', 'fuchsia', 'lime', 'teal',
@@ -33,6 +149,7 @@ const NAMES: string[] = [
 export class MonitoropComponent implements OnInit {
   op  = '';
   lot = '';
+  data: any;
 
   displayedColumns: string[] = ['id', 'name', 'progress', 'color'];
   dataSource: MatTableDataSource<UserData>;
@@ -56,8 +173,14 @@ export class MonitoropComponent implements OnInit {
   }
 
   getTableOP() {
-      const data = this.monitorService.getTableMonOP().subscribe( doc => {
-      console.log(doc); });
+      this.monitorService.getTableMonOP().subscribe( doc => {
+          let data = this.monitorService.convertXMLtoJSON(doc);
+          data = data['Root'];
+          data = data['ttOp'];
+          data = data['Registro'];
+          console.log(data);
+      }); 
+      
   }
 
   clear( filterValue: string ) {
