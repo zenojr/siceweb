@@ -1,7 +1,9 @@
 %ball {
     width: 30px;
     height: 30px;
-    border-radius: 25px;
+    margin: 5px;
+    border-radius: 50%;
+    color: rgba($color: #ff0000, $alpha: 1);
 }
 
 %centerAll {
@@ -18,6 +20,7 @@
 %buttonConfig {
     float: right;
     margin: 20px 5px 0px 5px;
+    color: grey;
     color: grey;
 }
 
@@ -90,7 +93,7 @@ mat-form-field {
 
 .legenda {
     margin: 15px;
-    width: 320px;
+    width: 400px;
     height: 40px;
     @extend %centerHoriz;
 
@@ -99,4 +102,49 @@ mat-form-field {
 #vermelho {
     @extend %centerAll, %ball;
     background-color: tomato;
+}
+
+#rosa {
+    @extend %centerAll, %ball;
+    background-color: palevioletred;
+}
+
+#marrom {
+    @extend %centerAll, %ball;
+    background-color: maroon;
+}
+
+#cinza {
+    @extend %centerAll, %ball;
+    background-color: grey;
+}
+
+#azul {
+    @extend %centerAll, %ball;
+    background-color: blue;
+}
+
+#ciano {
+    @extend %centerAll, %ball;
+    background-color: cyan;
+}
+
+#verde {
+    @extend %centerAll, %ball;
+    background-color: green;
+}
+
+#verde-aqua {
+    @extend %centerAll, %ball;
+    background-color: greenyellow;
+}
+
+#amarelo {
+    @extend %centerAll, %ball;
+    background-color: yellow;
+}
+
+#preto {
+    @extend %centerAll, %ball;
+    background-color: black;
 }
