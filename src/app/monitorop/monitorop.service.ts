@@ -1,3 +1,4 @@
+import { MonitorOp } from './monitorOp';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { NgxXml2jsonService } from 'ngx-xml2json';
