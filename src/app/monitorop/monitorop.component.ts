@@ -47,6 +47,15 @@ export class MonitoropComponent implements OnInit {
     this.getTableOP();
   }
 
+  apllyPriori( prioridade ) {
+    let color = '';
+    if (prioridade === 10) {
+      color = 'red';
+    }
+    console.log(color);
+    return color;
+  }
+
   getTableOP() {
     this.monitorService.getTableMonOP().subscribe( doc => {
       let localData = this.monitorService.convertXMLtoJSON(doc);
