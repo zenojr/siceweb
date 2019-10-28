@@ -88,45 +88,93 @@
                     <!-- ID Column -->
                     <ng-container matColumnDef="repassadeira">
                         <th mat-header-cell *matHeaderCellDef mat-sort-header> Repassadeira </th>
-                        <td mat-cell *matCellDef="let row"> {{row.numRep}} </td>
+                        <td mat-cell *matCellDef="let row"> {{ row.numRep }} </td>
                     </ng-container>
 
                     <!-- Destino Column -->
                     <ng-container matColumnDef="destino">
                         <th mat-header-cell *matHeaderCellDef mat-sort-header> Destino </th>
-                        <td mat-cell *matCellDef="let row"> {{row.destino}} </td>
+                        <td mat-cell *matCellDef="let row"> {{ row.destino }} </td>
                     </ng-container>
 
                     <!-- O.P Column -->
-                    <ng-container matColumnDef="op">
+                    <ng-container matColumnDef="numOp">
                         <th mat-header-cell *matHeaderCellDef mat-sort-header> O.P </th>
-                        <td mat-cell *matCellDef="let row"> {{row.numOp}} </td>
+                        <td mat-cell *matCellDef="let row"> {{ row.numOp }} </td>
                     </ng-container>
 
                     <!-- nº Pedido Column -->
                     <ng-container matColumnDef="nrPedido">
                         <th mat-header-cell *matHeaderCellDef mat-sort-header> Nº Pedido </th>
-                        <td mat-cell *matCellDef="let row"> {{row.nrPedido}} </td>
+                        <td mat-cell *matCellDef="let row"> {{ row.nrPedido }} </td>
                     </ng-container>
 
                     <!-- lote Column -->
                     <ng-container matColumnDef="lote">
                         <th mat-header-cell *matHeaderCellDef mat-sort-header> Lote </th>
-                        <td mat-cell *matCellDef="let row"> {{row.lote}} </td>
+                        <td mat-cell *matCellDef="let row"> {{ row.lote }} </td>
                     </ng-container>
-                    <span></span>
+                    
+
                     <!-- Cod. Prod Column -->
                     <ng-container matColumnDef="itCodigo">
                         <th mat-header-cell *matHeaderCellDef mat-sort-header> Cod. Prod. </th>
-                        <td mat-cell *matCellDef="let row"> {{row.itCodigo}} </td>
+                        <td mat-cell *matCellDef="let row"> {{ row.itCodigo }} </td>
                     </ng-container>
                     
                     <!-- Desc.Prod. Column -->
                     <ng-container matColumnDef="descItem">
                         <th mat-header-cell *matHeaderCellDef mat-sort-header> Desc.Prod. </th>
-                        <td mat-cell *matCellDef="let row"> {{row.descItem  }} </td>
+                        <td mat-cell *matCellDef="let row"> {{ row.descItem }} </td>
+                    </ng-container>
+
+                    <!-- Dim.Bobina. Column -->
+                    <ng-container matColumnDef="dimBob">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Dim.Bobina </th>
+                        <td mat-cell *matCellDef="let row"> {{ row.dimBob }} </td>
+                    </ng-container>
+
+                    <!-- Rep. p/ Dim. Column -->
+                    <ng-container matColumnDef="dimBobDest">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Rep. p/Dim. </th>
+                        <td mat-cell *matCellDef="let row"> {{ row.dimBobDest }} </td>
+                    </ng-container>
+
+                    <!-- Endereço Column -->
+                    <ng-container matColumnDef="endereco">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Endereço </th>
+                        <td mat-cell *matCellDef="let row"> {{ row.endereco }} </td>
                     </ng-container>
                 
+                    <!-- Bobina Column -->
+                    <ng-container matColumnDef="quantPed">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Bobina </th>
+                        <td mat-cell *matCellDef="let row"> {{ row.quantPed }} </td>
+                    </ng-container>
+
+                    <!-- Rolo Column -->
+                    <ng-container matColumnDef="quantRolo">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Rolo </th>
+                        <td mat-cell *matCellDef="let row"> {{ row.quantRolo }} </td>
+                    </ng-container>
+
+                    <!-- Retalho Column -->
+                    <ng-container matColumnDef="quantRet">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Retalho </th>
+                        <td mat-cell *matCellDef="let row"> {{ row.quantRet }} </td>
+                    </ng-container>
+
+                    <!-- Sucata Column -->
+                    <ng-container matColumnDef="quantSuc">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Sucata </th>
+                        <td mat-cell *matCellDef="let row"> {{ row.quantSuc }} </td>
+                    </ng-container>
+
+                    <!-- Dt. Priori Column -->
+                    <ng-container matColumnDef="dtPriori">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Dt. Priori </th>
+                        <td mat-cell *matCellDef="let row"> {{ row.dtPriori }} </td>
+                    </ng-container>
                     
                     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                     <tr mat-row *matRowDef="let row; columns: displayedColumns;">

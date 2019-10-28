@@ -43,8 +43,13 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 table {
-    width: 99%;
+    width: 100%;
     margin: 8px;
+
+}
+
+.mat-column-itCodigo, .mat-column-nrPedido  {
+    padding-left: 10px;
 }
 
 .buttons  {
@@ -56,18 +61,6 @@ table {
     width: 20px;
 }
 
-#update {
-    background-color: rgb(90, 168, 25);
-}
-
-#report {
-    background-color: #00AEC7
-}
-
-#send {
-    background-color: rgb(74, 105, 243);
-}
-
 .closer {
     @extend %buttonConfig;
 }
@@ -77,7 +70,7 @@ table {
 // }
 
 td {
-    padding: 10px;
+    
 }
 
 mat-form-field {
@@ -95,17 +88,23 @@ mat-form-field {
     flex: 1 1 auto;
 }
 
-
-mat-column-descItem {
-    margin-left: 10px;
-}
-
 .legenda {
     margin: 15px;
     width: 400px;
     height: 40px;
     @extend %centerHoriz;
+}
 
+#update {
+    background-color: rgb(90, 168, 25);
+}
+
+#report {
+    background-color: #00AEC7
+}
+
+#send {
+    background-color: rgb(74, 105, 243);
 }
 
 #vermelho {

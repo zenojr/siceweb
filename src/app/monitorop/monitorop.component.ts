@@ -17,11 +17,19 @@ export class MonitoropComponent implements OnInit {
   monitorOp: MonitorOp[];
   displayedColumns: string[] = ['repassadeira',
                                 'destino',
-                                'op',
+                                'numOp',
                                 'nrPedido',
                                 'lote',
                                 'itCodigo',
-                                'descItem'];
+                                'descItem',
+                                'dimBob',
+                                'dimBobDest',
+                                'endereco',
+                                'quantPed',
+                                'quantRolo',
+                                'quantRet',
+                                'quantSuc',
+                                'dtPriori'];
   dataSource: any;
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
