@@ -1,10 +1,4 @@
-%ball {
-    width: 30px;
-    height: 30px;
-    margin: 5px;
-    border-radius: 50%;
-    color: rgba($color: #ff0000, $alpha: 1);
-}
+
 
 %centerAll {
     display: flex;
@@ -48,7 +42,7 @@ table {
 
 }
 
-.mat-column-itCodigo, .mat-column-nrPedido  {
+.mat-column-itCodigo, .mat-column-nrPedido, .mat-column-quantPed  {
     padding-left: 10px;
 }
 
@@ -65,13 +59,6 @@ table {
     @extend %buttonConfig;
 }
     
-// td, th {
-//     width: 25%;
-// }
-
-td {
-    
-}
 
 mat-form-field {
     font-size: 14px;
@@ -88,12 +75,6 @@ mat-form-field {
     flex: 1 1 auto;
 }
 
-.legenda {
-    margin: 15px;
-    width: 400px;
-    height: 40px;
-    @extend %centerHoriz;
-}
 
 #update {
     background-color: rgb(90, 168, 25);
@@ -107,52 +88,3 @@ mat-form-field {
     background-color: rgb(74, 105, 243);
 }
 
-#vermelho {
-    @extend %centerAll, %ball;
-    background-color: tomato;
-}
-
-#rosa {
-    @extend %centerAll, %ball;
-    background-color: palevioletred;
-}
-
-#marrom {
-    @extend %centerAll, %ball;
-    background-color: maroon;
-}
-
-#cinza {
-    @extend %centerAll, %ball;
-    background-color: grey;
-}
-
-#azul {
-    @extend %centerAll, %ball;
-    background-color: blue;
-}
-
-#ciano {
-    @extend %centerAll, %ball;
-    background-color: cyan;
-}
-
-#verde {
-    @extend %centerAll, %ball;
-    background-color: green;
-}
-
-#verde-aqua {
-    @extend %centerAll, %ball;
-    background-color: greenyellow;
-}
-
-#amarelo {
-    @extend %centerAll, %ball;
-    background-color: yellow;
-}
-
-#preto {
-    @extend %centerAll, %ball;
-    background-color: black;
-}

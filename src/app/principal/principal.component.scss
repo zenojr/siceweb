@@ -1,6 +1,38 @@
-%center {   display: flex;
-    justify-content: center;
-        align-items: center;
+%ball {
+    width: 20px;
+    height: 20px;
+    margin: 5px;
+    border-radius: 50%;
+    // color: rgba($color: #ff0000, $alpha: 1);
+}
+
+%centerAll {
+        display: flex;
+justify-content: center;
+    align-items: center;
+}
+
+%centerHoriz {
+        display: flex;
+justify-content: center;
+}
+
+%center {   
+        display: flex;
+justify-content: center;
+    align-items: center;
+}
+
+.legenda {
+    padding-right: 10px;
+    padding-left: 15px;
+    margin: 15px;
+    width: 500px;
+    height: 40px;
+    @extend %centerAll;
+    background-color: rgba($color: #ffffff, $alpha: 0.7);
+    color: black;
+    border-radius: 3px;
 }
 
 @font-face {
@@ -42,3 +74,52 @@ button {
     width: 150px;
 }
 
+#vermelho {
+    @extend %centerAll, %ball;
+    background-color: tomato;
+}
+
+#rosa {
+    @extend %centerAll, %ball;
+    background-color: palevioletred;
+}
+
+#marrom {
+    @extend %centerAll, %ball;
+    background-color: maroon;
+}
+
+#cinza {
+    @extend %centerAll, %ball;
+    background-color: grey;
+}
+
+#azul {
+    @extend %centerAll, %ball;
+    background-color: blue;
+}
+
+#ciano {
+    @extend %centerAll, %ball;
+    background-color: cyan;
+}
+
+#verde {
+    @extend %centerAll, %ball;
+    background-color: green;
+}
+
+#verde-aqua {
+    @extend %centerAll, %ball;
+    background-color: greenyellow;
+}
+
+#amarelo {
+    @extend %centerAll, %ball;
+    background-color: yellow;
+}
+
+#preto {
+    @extend %centerAll, %ball;
+    background-color: black;
+}

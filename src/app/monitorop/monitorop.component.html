@@ -30,12 +30,12 @@
             <div class="form-table">
                 <div class="form">
                     <mat-form-field>
-                            <input matInput 
-                                    (keyup)      = "applyFilter($event.target.value)" 
-                                    placeholder  = "Ordem nº de produção"
-                                    autocomplete = "off"
-                                    [(ngModel)]  = "op"
-                                    type         = "number">                    
+                        <input matInput 
+                               (keyup)      = "applyFilter($event.target.value)" 
+                               placeholder  = "Ordem nº de produção"
+                               autocomplete = "off"
+                               [(ngModel)]  = "op"
+                               type         = "number">                    
                     </mat-form-field>
                     <button mat-button 
                             *ngIf      = "op" 
@@ -47,10 +47,10 @@
                     </button>
                     <mat-form-field>
                         <input matInput 
-                                (keyup)="applyFilter($event.target.value)" 
-                                placeholder  = "Lote"
-                                autocomplete = "off"
-                                [(ngModel)]  = "lot">
+                               (keyup)="applyFilter($event.target.value)" 
+                               placeholder  = "Lote"
+                               autocomplete = "off"
+                               [(ngModel)]  = "lot">
                     </mat-form-field>
                     <button mat-button 
                             *ngIf      = "lot" 
@@ -63,22 +63,9 @@
                 </div>
                 
                 <!-- <span class="spacer"></span> -->
-                <div class="legenda">
-                    <div id="vermelho">1</div>
-                    <div id="rosa">    2</div>
-                    <div id="marrom">  3</div>
-                    <div id="cinza">   4</div>
-                    <div id="azul">    5</div>
-                    <div id="ciano">   6</div>
-                    <div id="verde">   7</div>
-                    <div id="verde-aqua">8</div>
-                    <div id="amarelo"> 9</div>
-                    <div id="preto">  10</div>
-                </div>
+                
             </div>
             
-            
-
             <div class="mat-elevation-z8">
                 <table mat-table
                        [dataSource]="dataSource"
