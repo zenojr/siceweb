@@ -3,7 +3,7 @@ import { trigger,
          state,
          style,
          animate,
-         transition        } from '@angular/animations';
+         transition } from '@angular/animations';
 
 @Component({
   selector: 'app-principal',
@@ -18,21 +18,15 @@ export class PrincipalComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.getPosition();
+    
   }
 
-  getPosition() {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(this.showPosition);
-    } else {
-      console.log( 'Not suported Geolocation' );
-    }
-  }
+  
 
   showPosition(position) {
     const location = {
       longitude: position.coords.longitude,
-       latitude: position.coords.latitude
+      latitude: position.coords.latitude
     }
     console.log(location);
   }

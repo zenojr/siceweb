@@ -5,7 +5,6 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 
-
 @Component({
   selector: 'app-monitorop',
   templateUrl: './monitorop.component.html',
@@ -16,25 +15,30 @@ export class MonitoropComponent implements OnInit {
   lot = '';
   data: any;
   monitorOp: MonitorOp[];
-  
-  displayedColumns: string[] = ['repassadeira'];
+  displayedColumns: string[] = ['repassadeira',
+                                'destino',
+                                'op',
+                                'nrPedido',
+                                'lote',
+                                'itCodigo',
+                                'descItem'];
   dataSource: any;
-  
+
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
-  
+
   constructor( private monitorService: MonitoropService ) {
-    
+
     // Assign the data to the data source for the table to render
     this.dataSource = new MatTableDataSource(this.data);
   }
-  
+
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
     this.getTableOP();
   }
-  
+
   getTableOP() {
     this.monitorService.getTableMonOP().subscribe( doc => {
       let localData = this.monitorService.convertXMLtoJSON(doc);
@@ -45,25 +49,23 @@ export class MonitoropComponent implements OnInit {
       this.dataSource.data = localData;
     });
   }
-  
+
   clear( filterValue: string ) {
     this.op = '';
     this.applyFilter(filterValue);
   }
-  
+
   clearlot( filterValue: string ) {
     this.lot = '';
     this.applyFilter(filterValue);
   }
-  
+
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
-    
+
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
   }
-  
-  
-  
+
 }

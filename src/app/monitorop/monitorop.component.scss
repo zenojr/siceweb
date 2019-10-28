@@ -72,8 +72,12 @@ table {
     @extend %buttonConfig;
 }
     
-td, th {
-    width: 25%;
+// td, th {
+//     width: 25%;
+// }
+
+td {
+    padding: 10px;
 }
 
 mat-form-field {
@@ -89,6 +93,11 @@ mat-form-field {
 
 .spacer {
     flex: 1 1 auto;
+}
+
+
+mat-column-descItem {
+    margin-left: 10px;
 }
 
 .legenda {
