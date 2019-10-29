@@ -30,6 +30,44 @@ input[type=number]::-webkit-outer-spin-button {
     color: gray;
  }
 
+ .nine {
+     background-color: yellow;
+ }
+ .eigth {
+    background-color: greenyellow;
+ } 
+
+ .seven {
+    background-color: green;
+ }
+
+ .six {
+    background-color: cyan;
+ }
+
+ .five {
+    background-color: blue;
+ }
+
+ .four {
+    background-color: gray;
+ }
+
+ .three {
+    background-color: brown;
+ }
+
+ .two {
+    background-color: pink;
+ }
+
+ .one {
+    background-color: tomato;
+ }
+
+
+
+ 
 .table-container { 
     @extend %centerHoriz;
     background-color: rgba($color: #ffffff, $alpha: 0.8);

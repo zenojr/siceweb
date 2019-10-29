@@ -1,11 +1,12 @@
 
-import { MonitorOp } from './monitorOp';
-import { MonitoropService } from './monitorop.service';
-import { Component, OnInit, ViewChild, Input } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
+import { MonitorOp          } from './monitorOp';
+import { MonitoropService   } from './monitorop.service';
+import { Component, OnInit,
+         ViewChild, Input   } from '@angular/core';
+import { MatPaginator       } from '@angular/material/paginator';
+import { MatSort            } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-
+import { map                } from 'rxjs/operators';
 
 @Component({
   selector: 'app-monitorop',
@@ -61,17 +62,46 @@ export class MonitoropComponent implements OnInit {
     return color;
   }
 
+  getTableOPv2() {
+    this.monitorService.getTableMonOP()
+        .pipe( map( response => {
+          const resJson = this.monitorService.convertXMLtoJSON(response);
+          const opArray = [];
+          // tslint:disable-next-line:forin
+          for (const key in resJson) {
+            opArray.push({ ...resJson[key], id: key });
+          }
+        })).subscribe(  );
+  }
+
+
   getTableOP() {
-    this.monitorService.getTableMonOP().subscribe( doc => {
-      let localData = this.monitorService.convertXMLtoJSON(doc);
-      localData = localData['Root'];
-      localData = localData['ttOp'];
-      localData = localData['Registro'];
-      console.log(localData);
-      this.dataSource.data = localData;
+    this.monitorService.getTableMonOP()
+      .pipe( map( res => {
+        const resJson = this.monitorService.convertXMLtoJSON(res);
+        return resJson;
+      })).subscribe( doc => {
+      let monOp = doc;
+      monOp = monOp['Root'];
+      monOp = monOp['ttOp'];
+      monOp = monOp['Registro'];
+      console.log(monOp);
+      this.dataSource.data = monOp;
 
     });
   }
+
+  // getTableOP() {
+  //   this.monitorService.getTableMonOP().subscribe( doc => {
+  //     let localData = this.monitorService.convertXMLtoJSON(doc);
+  //     localData = localData['Root'];
+  //     localData = localData['ttOp'];
+  //     localData = localData['Registro'];
+  //     console.log(localData);
+  //     this.dataSource.data = localData;
+
+  //   });
+  // }
 
   clear( filterValue: string ) {
     this.op = '';
