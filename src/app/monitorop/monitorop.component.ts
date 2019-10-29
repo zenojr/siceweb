@@ -1,9 +1,11 @@
+
 import { MonitorOp } from './monitorOp';
 import { MonitoropService } from './monitorop.service';
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+
 
 @Component({
   selector: 'app-monitorop',
@@ -15,7 +17,8 @@ export class MonitoropComponent implements OnInit {
   lot = '';
   data: any;
   monitorOp: MonitorOp[];
-  displayedColumns: string[] = ['repassadeira',
+  displayedColumns: string[] = ['prioridade',
+                                'repassadeira',
                                 'destino',
                                 'numOp',
                                 'nrPedido',
@@ -29,7 +32,8 @@ export class MonitoropComponent implements OnInit {
                                 'quantRolo',
                                 'quantRet',
                                 'quantSuc',
-                                'dtPriori'];
+                                'dtPriori'
+                                ];
   dataSource: any;
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
@@ -47,7 +51,8 @@ export class MonitoropComponent implements OnInit {
     this.getTableOP();
   }
 
-  apllyPriori( prioridade ) {
+  apllyPriori(  ) {
+    const prioridade = 10;
     let color = '';
     if (prioridade === 10) {
       color = 'red';
@@ -64,6 +69,7 @@ export class MonitoropComponent implements OnInit {
       localData = localData['Registro'];
       console.log(localData);
       this.dataSource.data = localData;
+
     });
   }
 
