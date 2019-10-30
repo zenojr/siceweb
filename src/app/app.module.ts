@@ -21,6 +21,7 @@ import { MatDividerModule,
 import { FormsModule             } from '@angular/forms';
 import { PrincipalComponent } from './principal/principal.component';
 import { MonitoropComponent } from './monitorop/monitorop.component';
+import { PrioridadePipe } from './monitorop/prioridade.pipe';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { MonitoropComponent } from './monitorop/monitorop.component';
     AppComponent,
     LoginComponent,
     PrincipalComponent,
-    MonitoropComponent
+    MonitoropComponent,
+    PrioridadePipe
   ],
   imports: [
     BrowserModule,
