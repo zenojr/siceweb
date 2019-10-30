@@ -1,154 +1,145 @@
 
+// Scss rules
 %centerAll {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 %centerHoriz {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 %buttonConfig {
-    float: right;
-    margin: 20px 5px 0px 5px;
-    color: grey;
-    color: grey;
+  float: right;
+  margin: 20px 5px 0px 5px;
+  color: grey;
+  color: grey;
 }
 
-input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button { 
-  -webkit-appearance: none; 
-  margin: 0; 
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 
 .title {
-    @extend %centerHoriz;
-    color: gray;
- }
- 
- 
- 
- .table-container { 
-     @extend %centerHoriz;
-     background-color: rgba($color: #ffffff, $alpha: 0.8);
-     flex-direction: column;
-    }
-    
-    table {
-        
-    }
-    
-    .mat-cell {
-        font-size: 85%;
-    }
-    
-    .colorRow {
-        color: yellow;
-    }
-    
-    .mat-column-itCodigo, 
-    .mat-column-nrPedido, 
-    .mat-column-quantPed,
-    .mat-column-lote,
-    .mat-column-repassadeira  {
-        padding-left: 10px;
-    }
-    
-    .buttons  {
-        @extend %buttonConfig;
-        margin-bottom: 5px;
-    }
-    
-    .buttons img {
-        width: 20px;
-    }
-    
-    .closer {
-        @extend %buttonConfig;
-    }
-    
-    
-    mat-form-field {
-        font-size: 12px;
-        margin: 8px;      
-    }
-    
-    .form-table {
-        @extend %centerHoriz;
-        justify-content: space-between;
-        
-    }
-    
-    .spacer {
-        flex: 1 1 auto;
-    }
-    
-    
-    #update {
-        background-color: rgb(90, 168, 25);
-    }
-    
+  @extend %centerHoriz;
+  color: gray;
+}
+
+.table-container {
+  @extend %centerHoriz;
+  background-color: rgba($color: #ffffff, $alpha: 0.8);
+  flex-direction: column;
+}
+
+.mat-cell {
+  font-size: 85%;
+  padding-left: 6px;
+}
+
+
+.buttons {
+  @extend %buttonConfig;
+  margin-bottom: 5px;
+}
+
+.buttons img {
+  width: 20px;
+}
+
+.closer {
+  @extend %buttonConfig;
+}
+
+mat-form-field {
+  font-size: 12px;
+  margin: 8px;
+}
+
+.form-table {
+  @extend %centerHoriz;
+  justify-content: space-between;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+#update {
+  background-color: rgb(90, 168, 25);
+}
+
 #report {
-    background-color: #00AEC7
+  background-color: #00aec7;
 }
 
 #send {
-    background-color: rgb(74, 105, 243);
+  background-color: rgb(74, 105, 243);
 }
 
 .bullet {
-    @extend %centerAll;
-    width: 22px;
-    height: 22px;
-    border-radius: 50%;
-    filter: drop-shadow(0px 0px 2px #000000);
-    
+  @extend %centerAll;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  filter: drop-shadow(0px 0px 2px #000000);
 }
 
- .ten {
-     background-color: black;
-     color: white;
- }
+@media only screen and (max-width: 1007px) {
+    table {
+        width: 95%;
+    }
 
- .nine { 
-     background-color: yellow;
- }
- .eigth {
-    background-color: greenyellow;
-    
- } 
+    .mat-cell {
+        font-size: 75%;
+        padding-left: 2px;
+    }
+}
 
- .seven {
-    background-color: green;
-    color: white;
- }
 
- .six {
-    background-color: cyan;
-    
- }
+.ten {
+  background-color: black;
+  color: white;
+}
 
- .five {
-    background-color: blue;
-    color: white;
- }
+.nine {
+  background-color: yellow;
+}
 
- .four {
-    background-color: gray;
- }
+.eigth {
+  background-color: greenyellow;
+}
 
- .three {
-    background-color: brown;
- }
+.seven {
+  background-color: green;
+  color: white;
+}
 
- .two {
-    background-color: pink;
- }
+.six {
+  background-color: cyan;
+}
 
- .one {
-    background-color: tomato;
- }
+.five {
+  background-color: blue;
+  color: white;
+}
 
+.four {
+  background-color: gray;
+}
+
+.three {
+  background-color: brown;
+}
+
+.two {
+  background-color: pink;
+}
+
+.one {
+  background-color: tomato;
+}

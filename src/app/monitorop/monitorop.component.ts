@@ -1,12 +1,14 @@
 
-import { MonitorOp          } from './monitorOp';
-import { MonitoropService   } from './monitorop.service';
-import { Component, OnInit,
-         ViewChild, Input   } from '@angular/core';
-import { MatPaginator       } from '@angular/material/paginator';
-import { MatSort            } from '@angular/material/sort';
+import { MonitorOp } from './monitorOp';
+import { MonitoropService } from './monitorop.service';
+import {
+  Component, OnInit,
+  ViewChild, Input
+} from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { map                } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-monitorop',
@@ -14,33 +16,33 @@ import { map                } from 'rxjs/operators';
   styleUrls: ['./monitorop.component.scss']
 })
 export class MonitoropComponent implements OnInit {
-  op  = '';
+  op = '';
   lot = '';
   data: any;
   monitorOp: MonitorOp[];
   displayedColumns: string[] = ['prioridade',
-                                'repassadeira',
-                                'destino',
-                                'numOp',
-                                'nrPedido',
-                                'lote',
-                                'itCodigo',
-                                'descItem',
-                                'dimBob',
-                                'dimBobDest',
-                                'endereco',
-                                'quantPed',
-                                'quantRolo',
-                                'quantRet',
-                                'quantSuc',
-                                'dtPriori'
-                                ];
+    'repassadeira',
+    'destino',
+    'numOp',
+    'nrPedido',
+    'lote',
+    'itCodigo',
+    'descItem',
+    'dimBob',
+    'dimBobDest',
+    'endereco',
+    'quantPed',
+    'quantRolo',
+    'quantRet',
+    'quantSuc',
+    'dtPriori'
+  ];
   dataSource: any;
 
-  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
-  @ViewChild(MatSort, {static: true}) sort: MatSort;
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
 
-  constructor( private monitorService: MonitoropService ) {
+  constructor(private monitorService: MonitoropService) {
 
     // Assign the data to the data source for the table to render
     this.dataSource = new MatTableDataSource(this.data);
@@ -52,7 +54,7 @@ export class MonitoropComponent implements OnInit {
     this.getTableOP();
   }
 
-  apllyPriori(  ) {
+  apllyPriori() {
     const prioridade = 10;
     let color = '';
     if (prioridade === 10) {
@@ -64,51 +66,39 @@ export class MonitoropComponent implements OnInit {
 
   getTableOPv2() {
     this.monitorService.getTableMonOP()
-        .pipe( map( response => {
-          const resJson = this.monitorService.convertXMLtoJSON(response);
-          const opArray = [];
-          // tslint:disable-next-line:forin
-          for (const key in resJson) {
-            opArray.push({ ...resJson[key], id: key });
-          }
-        })).subscribe(  );
+      .pipe(map(response => {
+        const resJson = this.monitorService.convertXMLtoJSON(response);
+        const opArray = [];
+        // tslint:disable-next-line:forin
+        for (const key in resJson) {
+          opArray.push({ ...resJson[key], id: key });
+        }
+      })).subscribe();
   }
 
 
   getTableOP() {
     this.monitorService.getTableMonOP()
-      .pipe( map( res => {
+      .pipe(map(res => {
         const resJson = this.monitorService.convertXMLtoJSON(res);
         return resJson;
-      })).subscribe( doc => {
-      let monOp = doc;
-      monOp = monOp['Root'];
-      monOp = monOp['ttOp'];
-      monOp = monOp['Registro'];
-      console.log(monOp);
-      this.dataSource.data = monOp;
+      })).subscribe(doc => {
+        let monOp = doc;
+        monOp = monOp['Root'];
+        monOp = monOp['ttOp'];
+        monOp = monOp['Registro'];
+        console.log(monOp);
+        this.dataSource.data = monOp;
 
-    });
+      });
   }
 
-  // getTableOP() {
-  //   this.monitorService.getTableMonOP().subscribe( doc => {
-  //     let localData = this.monitorService.convertXMLtoJSON(doc);
-  //     localData = localData['Root'];
-  //     localData = localData['ttOp'];
-  //     localData = localData['Registro'];
-  //     console.log(localData);
-  //     this.dataSource.data = localData;
-
-  //   });
-  // }
-
-  clear( filterValue: string ) {
+  clear(filterValue: string) {
     this.op = '';
     this.applyFilter(filterValue);
   }
 
-  clearlot( filterValue: string ) {
+  clearlot(filterValue: string) {
     this.lot = '';
     this.applyFilter(filterValue);
   }
