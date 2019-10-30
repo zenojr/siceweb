@@ -1,5 +1,4 @@
 
-
 %centerAll {
     display: flex;
     justify-content: center;
@@ -29,6 +28,76 @@ input[type=number]::-webkit-outer-spin-button {
     @extend %centerHoriz;
     color: gray;
  }
+ 
+ 
+ 
+ .table-container { 
+     @extend %centerHoriz;
+     background-color: rgba($color: #ffffff, $alpha: 0.8);
+     flex-direction: column;
+    }
+    
+    table {
+        
+    }
+    
+    .mat-cell {
+        font-size: 12px;
+    }
+    
+    .colorRow {
+        color: yellow;
+    }
+    
+    .mat-column-itCodigo, 
+    .mat-column-nrPedido, 
+    .mat-column-quantPed,
+    .mat-column-lote  {
+        padding-left: 10px;
+    }
+    
+    .buttons  {
+        @extend %buttonConfig;
+        margin-bottom: 5px;
+    }
+    
+    .buttons img {
+        width: 20px;
+    }
+    
+    .closer {
+        @extend %buttonConfig;
+    }
+    
+    
+    mat-form-field {
+        font-size: 12px;
+        margin: 8px;      
+    }
+    
+    .form-table {
+        @extend %centerHoriz;
+        justify-content: space-between;
+        
+    }
+    
+    .spacer {
+        flex: 1 1 auto;
+    }
+    
+    
+    #update {
+        background-color: rgb(90, 168, 25);
+    }
+    
+#report {
+    background-color: #00AEC7
+}
+
+#send {
+    background-color: rgb(74, 105, 243);
+}
+
 
  .ten {
      
@@ -68,71 +137,4 @@ input[type=number]::-webkit-outer-spin-button {
  .one {
     background-color: tomato;
  }
-
-
-
- 
-.table-container { 
-    @extend %centerHoriz;
-    background-color: rgba($color: #ffffff, $alpha: 0.8);
-    flex-direction: column;
-}
-
-table {
-    width: 100%;
-    margin: 8px;
-}
-
-.colorRow {
-    color: yellow;
-}
-
-.mat-column-itCodigo, 
-.mat-column-nrPedido, 
-.mat-column-quantPed,
-.mat-column-lote  {
-    padding-left: 10px;
-}
-
-.buttons  {
-    @extend %buttonConfig;
-    margin-bottom: 5px;
-}
-
-.buttons img {
-    width: 20px;
-}
-
-.closer {
-    @extend %buttonConfig;
-}
-    
-
-mat-form-field {
-    font-size: 14px;
-    margin: 8px;      
-}
-
-.form-table {
-    @extend %centerHoriz;
-    justify-content: space-between;
-    
-}
-
-.spacer {
-    flex: 1 1 auto;
-}
-
-
-#update {
-    background-color: rgb(90, 168, 25);
-}
-
-#report {
-    background-color: #00AEC7
-}
-
-#send {
-    background-color: rgb(74, 105, 243);
-}
 
