@@ -30,13 +30,18 @@ input[type="number"]::-webkit-outer-spin-button {
   color: gray;
 }
 
+.tabela {
+    height: 380px;
+    overflow: auto;
+}
+
 .table-container {
   @extend %centerHoriz;
   background-color: rgba($color: #ffffff, $alpha: 0.8);
   flex-direction: column;
 }
 
-.mat-cell {
+.mat-cell .mat-header-cell {
   font-size: 85%;
   padding-left: 6px;
 }
@@ -96,7 +101,7 @@ mat-form-field {
 
     .mat-cell {
         font-size: 75%;
-        padding-left: 2px;
+        padding-left: 3px;
     }
 }
 

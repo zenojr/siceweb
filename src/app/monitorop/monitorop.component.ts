@@ -20,7 +20,8 @@ export class MonitoropComponent implements OnInit {
   lot = '';
   data: any;
   monitorOp: MonitorOp[];
-  displayedColumns: string[] = ['prioridade',
+  displayedColumns: string[] = [
+    'prioridade',
     'repassadeira',
     'destino',
     'numOp',
@@ -39,7 +40,7 @@ export class MonitoropComponent implements OnInit {
   ];
   dataSource: any;
 
-  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+  // @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   constructor(private monitorService: MonitoropService) {
@@ -49,7 +50,7 @@ export class MonitoropComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.dataSource.paginator = this.paginator;
+    // this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
     this.getTableOP();
   }
@@ -63,19 +64,6 @@ export class MonitoropComponent implements OnInit {
     console.log(color);
     return color;
   }
-
-  getTableOPv2() {
-    this.monitorService.getTableMonOP()
-      .pipe(map(response => {
-        const resJson = this.monitorService.convertXMLtoJSON(response);
-        const opArray = [];
-        // tslint:disable-next-line:forin
-        for (const key in resJson) {
-          opArray.push({ ...resJson[key], id: key });
-        }
-      })).subscribe();
-  }
-
 
   getTableOP() {
     this.monitorService.getTableMonOP()
@@ -106,9 +94,9 @@ export class MonitoropComponent implements OnInit {
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
 
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
-    }
+    // if (this.dataSource.paginator) {
+    //   this.dataSource.paginator.firstPage();
+    // }
   }
 
 }
