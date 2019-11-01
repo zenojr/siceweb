@@ -17,7 +17,9 @@ import { MatDividerModule,
          MatTableModule,
          MatPaginatorModule,
          MatSortModule,
-         MatTabsModule           } from '@angular/material';
+         MatTabsModule,
+         MatSelectModule,
+                   } from '@angular/material';
 import { FormsModule             } from '@angular/forms';
 import { PrincipalComponent } from './principal/principal.component';
 import { MonitoropComponent } from './monitorop/monitorop.component';
@@ -50,7 +52,8 @@ import { PrioridadePipe } from './monitorop/prioridade.pipe';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    MatTabsModule
+    MatTabsModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

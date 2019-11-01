@@ -18,13 +18,18 @@
   color: grey;
 }
 
+//Scss rules END
+
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 
-
+.inputRep {
+    width: 20px;
+    text-align: center;
+}
 
 .title {
   @extend %centerHoriz;
