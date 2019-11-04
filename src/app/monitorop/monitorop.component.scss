@@ -30,7 +30,7 @@ input[type="number"]::-webkit-outer-spin-button {
   position: absolute;
   width: 100%;
   height: 100%;
-  background-color: rgba($color: #ffffff, $alpha: 0.07);
+  background-color: rgba($color: #ffffff, $alpha: 0.8);
   z-index: 1;
   @extend %centerAll;
 }
@@ -115,15 +115,15 @@ mat-form-field {
 }
 
 #update {
-  background-color: rgb(90, 168, 25);
+  // background-color: rgb(90, 168, 25);
 }
 
 #report {
-  background-color: #00aec7;
+  // background-color: #00aec7;
 }
 
 #send {
-  background-color: rgb(74, 105, 243);
+  // background-color: rgb(74, 105, 243);
 }
 
 .bullet {

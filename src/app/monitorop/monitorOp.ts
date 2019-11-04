@@ -1,6 +1,5 @@
 
 export class MonitorOp {
-
       itCodigo: string;
       descItem: string;
       endereco: string;

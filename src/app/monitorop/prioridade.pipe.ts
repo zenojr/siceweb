@@ -5,16 +5,13 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
   name: 'prioridade'
 })
 export class PrioridadePipe implements PipeTransform {
-
-
   transform(value: any, ...args: any[]): any {
-    let data = value
+    let data = value;
     if (data == 10) {
-      return data 
+      return data;
     } else if ( data == 8 ) {
       data = 'Mudou';
       return data;
     }
   }
-
 }

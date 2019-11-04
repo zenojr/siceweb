@@ -14,36 +14,34 @@ import { Observable } from 'rxjs';
   styleUrls: ['./monitorop.component.scss']
 })
 export class MonitoropComponent implements OnInit {
-  op = '';
-  lot = '';
-  data: any;
-  monitorOp: MonitorOp[];
+       op = '';
+      lot = '';
   loading = true;
+              data: any;
+        dataSource: any;
+         monitorOp: MonitorOp[];
   displayedColumns: string[] = [
-    'prioridade',
-    'repassadeira',
-    'destino',
-    'numOp',
-    'nrPedido',
-    'lote',
-    'itCodigo',
-    'descItem',
-    'dimBob',
-    'dimBobDest',
-    'endereco',
-    'quantPed',
-    'quantRolo',
-    'quantRet',
-    'quantSuc',
-    'dtPriori'
-  ];
-  dataSource: any;
+                    'prioridade',
+                    'repassadeira',
+                    'destino',
+                    'numOp',
+                    'nrPedido',
+                    'lote',
+                    'itCodigo',
+                    'descItem',
+                    'dimBob',
+                    'dimBobDest',
+                    'endereco',
+                    'quantPed',
+                    'quantRolo',
+                    'quantRet',
+                    'quantSuc',
+                    'dtPriori'];
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
-  @ViewChild(MatSort, { static: true }) sort: MatSort;
+  @ViewChild(MatSort,      { static: true })      sort: MatSort;
 
   constructor(private monitorService: MonitoropService) {
-
     // Assign the data to the data source for the table to render
     this.dataSource = new MatTableDataSource(this.data);
   }
@@ -51,10 +49,8 @@ export class MonitoropComponent implements OnInit {
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
-
     this.getTableOP();
   }
-
 
   getTableOP() {
     this.monitorService.getTableMonOP()
@@ -62,16 +58,16 @@ export class MonitoropComponent implements OnInit {
         const resJson = this.monitorService.convertXMLtoJSON(res);
         return resJson;
       })).subscribe(doc => {
-        let monOp = doc;
-        monOp = monOp['Root'];
-        monOp = monOp['ttOp'];
-        monOp = monOp['Registro'];
-        console.log(monOp);
-        this.dataSource.data = monOp;
-        this.loading = false;
-        console.log(this.loading);
+          let monOp = doc;
+          monOp = monOp['Root'];
+          monOp = monOp['ttOp'];
+          monOp = monOp['Registro'];
+          console.log(monOp);
+          this.dataSource.data = monOp;
+          this.loading = false;
+          console.log(this.loading);
       });
-  }
+    }
 
   clear(filterValue: string) {
     this.op = '';
@@ -85,10 +81,8 @@ export class MonitoropComponent implements OnInit {
 
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
-
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
   }
-
 }
