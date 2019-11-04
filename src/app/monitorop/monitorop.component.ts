@@ -17,6 +17,8 @@ export class MonitoropComponent implements OnInit {
        op = '';
       lot = '';
   loading = true;
+             error: any;
+          repLocal: [];
               data: any;
         dataSource: any;
          monitorOp: MonitorOp[];
@@ -50,6 +52,14 @@ export class MonitoropComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
     this.getTableOP();
+    this.getRepassadeiras();
+  }
+
+  getRepassadeiras() {
+    
+    setInterval(() => {
+      console.log(this.repLocal);
+    }, 3000);
   }
 
   getTableOP() {
@@ -65,8 +75,8 @@ export class MonitoropComponent implements OnInit {
           console.log(monOp);
           this.dataSource.data = monOp;
           this.loading = false;
-          console.log(this.loading);
-      });
+      }, error => this.error = console.log(error)
+      );
     }
 
   clear(filterValue: string) {

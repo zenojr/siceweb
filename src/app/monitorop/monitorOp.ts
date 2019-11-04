@@ -1,5 +1,5 @@
 
-export class MonitorOp {
+export interface MonitorOp {
       itCodigo: string;
       descItem: string;
       endereco: string;
