@@ -18,6 +18,7 @@ export class MonitoropComponent implements OnInit {
   lot = '';
   data: any;
   monitorOp: MonitorOp[];
+  loading = true;
   displayedColumns: string[] = [
     'prioridade',
     'repassadeira',
@@ -54,15 +55,6 @@ export class MonitoropComponent implements OnInit {
     this.getTableOP();
   }
 
-  apllyPriori() {
-    const prioridade = 10;
-    let color = '';
-    if (prioridade === 10) {
-      color = 'red';
-    }
-    console.log(color);
-    return color;
-  }
 
   getTableOP() {
     this.monitorService.getTableMonOP()
@@ -76,7 +68,8 @@ export class MonitoropComponent implements OnInit {
         monOp = monOp['Registro'];
         console.log(monOp);
         this.dataSource.data = monOp;
-
+        this.loading = false;
+        console.log(this.loading);
       });
   }
 

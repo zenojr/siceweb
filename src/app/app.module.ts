@@ -19,7 +19,8 @@ import { MatDividerModule,
          MatSortModule,
          MatTabsModule,
          MatSelectModule,
-                   } from '@angular/material';
+         MatProgressBarModule,
+         MatProgressSpinnerModule    } from '@angular/material';
 import { FormsModule             } from '@angular/forms';
 import { PrincipalComponent } from './principal/principal.component';
 import { MonitoropComponent } from './monitorop/monitorop.component';
@@ -53,7 +54,9 @@ import { PrioridadePipe } from './monitorop/prioridade.pipe';
     MatPaginatorModule,
     MatSortModule,
     MatTabsModule,
-    MatSelectModule
+    MatSelectModule,
+    MatProgressBarModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
