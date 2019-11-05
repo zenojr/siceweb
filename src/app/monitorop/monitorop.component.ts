@@ -26,6 +26,7 @@ export class MonitoropComponent implements OnInit {
   loading = true;
   selected = 0;
   error: any;
+  // repLocal: string[] = [];
   repLocal: string[] = [];
   data: any;
   dataSource: any;
@@ -62,11 +63,12 @@ export class MonitoropComponent implements OnInit {
     this.getTableOP();
   }
 
-  getRepassadeiras(valueRep, numOP, seqItem) {
+  getRepassadeiras(valueRep, numOP, dtPri, seqItem) {
     const valor = valueRep.value;
     const op = numOP;
     const seq = seqItem;
-    this.repLocal.push(valor, op, seq);
+    const dt = dtPri;
+    this.repLocal.push(valor, op, seq, dt);
     console.log(this.repLocal);
   }
 
