@@ -63,6 +63,13 @@ export class MonitoropComponent implements OnInit {
     this.getTableOP();
   }
 
+
+  sendTest() {
+    this.monitorService.sendRep().subscribe( doc => {
+      console.log(doc);
+    });
+  }
+
   getRepassadeiras(valueRep, numOP, dtPri, seqItem) {
     const valor = valueRep.value;
     const op = numOP;

@@ -9,12 +9,18 @@ import { NgxXml2jsonService } from 'ngx-xml2json';
 export class MonitoropService {
 
   urlMonOP = 'http://192.168.0.7:8080/cgi-bin/wspd_cgi.sh/WService=emswebelt/scb001ws.p?seq=0';
+  urlNodeServer = 'http://192.168.0.241:3000';
   constructor( private http: HttpClient,
                private xml2Json: NgxXml2jsonService ) { }
 
   getTableMonOP() {
     const request = this.http.get(this.urlMonOP, { responseType: 'text' });
     return request;
+  }
+
+  sendRep() {
+    console.log('send');
+    return this.http.get('http://localhost:3000/angular');
   }
 
   convertXMLtoJSON(doc) {
