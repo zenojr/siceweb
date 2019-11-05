@@ -8,41 +8,48 @@ import { MatTableDataSource } from '@angular/material/table';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
+export interface Repass {
+  repassadeira: string;
+  op: number;
+  dtop: string;
+  seqItem: number;
+}
+
 @Component({
   selector: 'app-monitorop',
   templateUrl: './monitorop.component.html',
   styleUrls: ['./monitorop.component.scss']
 })
 export class MonitoropComponent implements OnInit {
-       op = '';
-      lot = '';
+  op = '';
+  lot = '';
   loading = true;
-    selected = 0;
-             error: any;
-          repLocal: string[] = [];
-              data: any;
-        dataSource: any;
-         monitorOp: MonitorOp[];
+  selected = 0;
+  error: any;
+  repLocal: string[] = [];
+  data: any;
+  dataSource: any;
+  monitorOp: MonitorOp[];
   displayedColumns: string[] = [
-                    'prioridade',
-                    'repassadeira',
-                    'destino',
-                    'numOp',
-                    'nrPedido',
-                    'lote',
-                    'itCodigo',
-                    'descItem',
-                    'dimBob',
-                    'dimBobDest',
-                    'endereco',
-                    'quantPed',
-                    'quantRolo',
-                    'quantRet',
-                    'quantSuc',
-                    'dtPriori'];
+    'prioridade',
+    'repassadeira',
+    'destino',
+    'numOp',
+    'nrPedido',
+    'lote',
+    'itCodigo',
+    'descItem',
+    'dimBob',
+    'dimBobDest',
+    'endereco',
+    'quantPed',
+    'quantRolo',
+    'quantRet',
+    'quantSuc',
+    'dtPriori'];
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
-  @ViewChild(MatSort,      { static: true })      sort: MatSort;
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   constructor(private monitorService: MonitoropService) {
     // Assign the data to the data source for the table to render
@@ -55,29 +62,30 @@ export class MonitoropComponent implements OnInit {
     this.getTableOP();
   }
 
-  getRepassadeiras(valueRep, numOP) {
+  getRepassadeiras(valueRep, numOP, seqItem) {
     const valor = valueRep.value;
     const op = numOP;
-    this.repLocal.push( valor, op );
-    console.log( this.repLocal );
+    const seq = seqItem;
+    this.repLocal.push(valor, op, seq);
+    console.log(this.repLocal);
   }
 
   getTableOP() {
     this.monitorService.getTableMonOP()
       .pipe(map(res => {
-          const resJson = this.monitorService.convertXMLtoJSON(res);
-          return resJson;
+        const resJson = this.monitorService.convertXMLtoJSON(res);
+        return resJson;
       })).subscribe(doc => {
-          let monOp = doc;
-          monOp = monOp['Root'];
-          monOp = monOp['ttOp'];
-          monOp = monOp['Registro'];
-          console.log(monOp);
-          this.dataSource.data = monOp;
-          this.loading = false;
+        let monOp = doc;
+        monOp = monOp['Root'];
+        monOp = monOp['ttOp'];
+        monOp = monOp['Registro'];
+        console.log(monOp);
+        this.dataSource.data = monOp;
+        this.loading = false;
       }, error => this.error = console.log(error)
       );
-    }
+  }
 
   clear(filterValue: string) {
     this.op = '';
