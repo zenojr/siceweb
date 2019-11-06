@@ -9,9 +9,9 @@ import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
 export interface Repass {
-  repassadeira: string;
-  op: number;
-  dtop: string;
+  rep: string;
+  dtOp: number;
+  opValue: string;
   seqItem: number;
 }
 
@@ -26,7 +26,6 @@ export class MonitoropComponent implements OnInit {
   loading = true;
   selected = 0;
   error: any;
-  // repLocal: string[] = [];
   repLocal: string[] = [];
   data: any;
   dataSource: any;
@@ -61,22 +60,24 @@ export class MonitoropComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
     this.getTableOP();
-  }
 
 
-  sendTest() {
-    this.monitorService.sendRep().subscribe( doc => {
-      console.log(doc);
-    });
   }
+
+  handleRep( dataRep: Repass ) {
+    console.log( 'Here modafoca: '  + dataRep.dtOp );
+  }
+
 
   getRepassadeiras(valueRep, numOP, dtPri, seqItem) {
     const valor = valueRep.value;
     const op = numOP;
     const seq = seqItem;
     const dt = dtPri;
-    this.repLocal.push(valor, op, seq, dt);
-    console.log(this.repLocal);
+    let dataOut = {  rep: valor, dtOp: op, opValue: seq, seqItem: dt };
+    // this.repLocal.push(valor, op, seq, dt);
+    this.handleRep(dataOut);
+
   }
 
   getTableOP() {
