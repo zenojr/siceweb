@@ -43,14 +43,24 @@
                                placeholder="Ordem nº de produção"
                                autocomplete="off" [(ngModel)]="op" type="number">
                     </mat-form-field>
-                    <button mat-button *ngIf="op" matSuffix mat-icon-button aria-label="Clear" (click)="clear('')">
+                    <button mat-button 
+                            *ngIf="op" 
+                            matSuffix 
+                            mat-icon-button 
+                            aria-label="Clear" 
+                            (click)="clear('')">
                         <mat-icon> <img src="../../assets/img/icons/close-24px.svg" alt="Close"> </mat-icon>
                     </button>
                     <mat-form-field>
                         <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Lote" autocomplete="off"
-                            [(ngModel)]="lot">
+                            [(ngModel)]="lote">
                     </mat-form-field>
-                    <button mat-button *ngIf="lot" matSuffix mat-icon-button aria-label="Clear" (click)="clearlot('')">
+                    <button mat-button 
+                            *ngIf="lote" 
+                            matSuffix 
+                            mat-icon-button 
+                            aria-label="Clear" 
+                            (click)="clearlot('')">
                         <mat-icon> <img src="../../assets/img/icons/close-24px.svg" alt="Close"> </mat-icon>
                     </button>
                 </div>
@@ -87,8 +97,8 @@
                     <ng-container matColumnDef="repassadeira">
                         <th mat-header-cell *matHeaderCellDef mat-sort-header> Rep. </th>
                         <td mat-cell *matCellDef="let row"> 
-                            <mat-select class="inputRep" #selectFE 
-                                        (selectionChange)="getRepassadeiras(selectFE, row.numOp, row.seqItem, row.dtPriori)">
+                            <mat-select class="inputRep" #selectRepFE 
+                                        (selectionChange)="getRepassadeiras(row.dtPriori, row.numOp, selectRepFE, row.seqItem)">
                                 <mat-option value="0"></mat-option>
                                 <mat-option value="4">4</mat-option>
                                 <mat-option value="7">7</mat-option>

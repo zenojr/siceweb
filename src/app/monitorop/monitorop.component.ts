@@ -9,9 +9,9 @@ import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
 export interface Repass {
-  rep: string;
-  dtOp: number;
-  opValue: string;
+  dtPri: string;
+  numOp: number;
+  repassadeira: number;
   seqItem: number;
 }
 
@@ -22,11 +22,12 @@ export interface Repass {
 })
 export class MonitoropComponent implements OnInit {
   op = '';
-  lot = '';
+  lote = '';
   loading = true;
   selected = 0;
   error: any;
   repLocal: string[] = [];
+  arrOut = [];
   data: any;
   dataSource: any;
   monitorOp: MonitorOp[];
@@ -60,25 +61,32 @@ export class MonitoropComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
     this.getTableOP();
-
-
   }
 
   handleRep( dataRep: Repass ) {
-    console.log( 'Here modafoca: '  + dataRep.dtOp );
+    console.log( 'Here modafoca: '  + dataRep.numOp );
   }
 
-
-  getRepassadeiras(valueRep, numOP, dtPri, seqItem) {
-    const valor = valueRep.value;
-    const op = numOP;
-    const seq = seqItem;
-    const dt = dtPri;
-    let dataOut = {  rep: valor, dtOp: op, opValue: seq, seqItem: dt };
-    // this.repLocal.push(valor, op, seq, dt);
-    this.handleRep(dataOut);
-
+  getRepassadeiras(  dtPri, numOP, valorRep, seqItem, dataRep: Repass) {
+    const valor = valorRep.value;
+    const op    = numOP;
+    const seq   = seqItem;
+    const dt    = dtPri;
+    dataRep     = { dtPri: dt, numOp: op, repassadeira: valor, seqItem: seq };
+    this.arrOut.push(dataRep);
+    console.log(this.arrOut);
   }
+
+  // getRepassadeiras(valueRep, numOP, dtPri, seqItem) {
+  //   const valor = valueRep.value;
+  //   const op    = numOP;
+  //   const seq   = seqItem;
+  //   const dt    = dtPri;
+  //   const dataOut = {  rep: valor, dtOp: op, opValue: seq, seqItem: dt };
+  //   this.arrOut.push(dataOut);
+  //   this.handleRep(dataOut);
+  //   console.log( this.arrOut );
+  // }
 
   getTableOP() {
     this.monitorService.getTableMonOP()
@@ -103,7 +111,7 @@ export class MonitoropComponent implements OnInit {
   }
 
   clearlot(filterValue: string) {
-    this.lot = '';
+    this.lote = '';
     this.applyFilter(filterValue);
   }
 
