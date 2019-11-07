@@ -72,21 +72,13 @@ export class MonitoropComponent implements OnInit {
     const op    = numOP;
     const seq   = seqItem;
     const dt    = dtPri;
-    dataRep     = { dtPri: dt, numOp: op, repassadeira: valor, seqItem: seq };
+    dataRep     = { numOp: op,
+                    dtPri: dt,
+                    repassadeira: valor,
+                    seqItem: seq };
     this.arrOut.push(dataRep);
     console.log(this.arrOut);
   }
-
-  // getRepassadeiras(valueRep, numOP, dtPri, seqItem) {
-  //   const valor = valueRep.value;
-  //   const op    = numOP;
-  //   const seq   = seqItem;
-  //   const dt    = dtPri;
-  //   const dataOut = {  rep: valor, dtOp: op, opValue: seq, seqItem: dt };
-  //   this.arrOut.push(dataOut);
-  //   this.handleRep(dataOut);
-  //   console.log( this.arrOut );
-  // }
 
   getTableOP() {
     this.monitorService.getTableMonOP()
