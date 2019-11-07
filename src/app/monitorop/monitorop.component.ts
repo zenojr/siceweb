@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 
 import { MonitorOp } from './monitorOp';
 import { MonitoropService } from './monitorop.service';
@@ -52,7 +53,7 @@ export class MonitoropComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
-  constructor(private monitorService: MonitoropService) {
+  constructor(private monitorService: MonitoropService, public http: HttpClient) {
     // Assign the data to the data source for the table to render
     this.dataSource = new MatTableDataSource(this.data);
   }
@@ -63,8 +64,16 @@ export class MonitoropComponent implements OnInit {
     this.getTableOP();
   }
 
-  handleRep( dataRep: Repass ) {
-    console.log( 'Here modafoca: '  + dataRep.numOp );
+  sendRepassadeiras() {
+    let recebe = this.arrOut;
+    const url = 'http://192.168.0.7:8080/cgi-bin/wspd_cgi.sh/WService=emswebelt/scb002V2ws.p';
+    recebe.forEach( data => {
+      console.log(data.numOp);
+      this.http.get(url + '?recebe=' +  data.dtPri + ' ' +
+                                        data.numOp + ' ' +
+                                        data.repassadeira + ' ' +
+                                        data.seqItem).subscribe(doc => console.log(doc));
+    });
   }
 
   getRepassadeiras(  dtPri, numOP, valorRep, seqItem, dataRep: Repass) {
@@ -72,10 +81,10 @@ export class MonitoropComponent implements OnInit {
     const op    = numOP;
     const seq   = seqItem;
     const dt    = dtPri;
-    dataRep     = { numOp: op,
-                    dtPri: dt,
-                    repassadeira: valor,
-                    seqItem: seq };
+    dataRep     = { "numOp": op,
+                    "dtPri": dt,
+                    "repassadeira": valor,
+                    "seqItem": seq };
     this.arrOut.push(dataRep);
     console.log(this.arrOut);
   }

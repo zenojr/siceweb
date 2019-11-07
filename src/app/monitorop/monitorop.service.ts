@@ -9,6 +9,7 @@ import { NgxXml2jsonService } from 'ngx-xml2json';
 export class MonitoropService {
 
   urlMonOP = 'http://192.168.0.7:8080/cgi-bin/wspd_cgi.sh/WService=emswebelt/scb001ws.p?seq=0';
+  urlSendRep = 'http://192.168.0.7:8080/cgi-bin/wspd_cgi.sh/WService=emswebelt/scb002V2ws.p';
   urlNodeServer = 'http://192.168.0.241:3000';
   constructor( private http: HttpClient,
                private xml2Json: NgxXml2jsonService ) { }
