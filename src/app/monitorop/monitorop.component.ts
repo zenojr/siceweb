@@ -65,26 +65,41 @@ export class MonitoropComponent implements OnInit {
   }
 
   sendRepassadeiras() {
-    let recebe = this.arrOut;
+    const recebe = this.arrOut;
     const url = 'http://192.168.0.7:8080/cgi-bin/wspd_cgi.sh/WService=emswebelt/scb002V2ws.p';
+    let bigStringOut = '';
     recebe.forEach( data => {
-      console.log(data.numOp);
-      this.http.get(url + '?recebe=' +  data.dtPri + ' ' +
-                                        data.numOp + ' ' +
-                                        data.repassadeira + ' ' +
-                                        data.seqItem).subscribe(doc => console.log(doc));
+      const bigString = data.dtPri + ',' +
+                        data.numOp + ',' +
+                        data.repassadeira + ',' +
+                        data.seqItem + ';';
+      bigStringOut += bigString;
     });
+    console.log(bigStringOut);
+    return this.http.get( url + '?recebe=' + bigStringOut ).subscribe(doc => console.log(doc));
   }
 
-  getRepassadeiras(  dtPri, numOP, valorRep, seqItem, dataRep: Repass) {
+  getRepassadeiras(dtPri, numOP, valorRep, seqItem, dataRep: Repass) {
     const valor = valorRep.value;
     const op    = numOP;
     const seq   = seqItem;
     const dt    = dtPri;
-    dataRep     = { "numOp": op,
-                    "dtPri": dt,
-                    "repassadeira": valor,
-                    "seqItem": seq };
+    dataRep     = { numOp: op,
+                    dtPri: dt,
+                    repassadeira: valor,
+                    seqItem: seq };
+
+    this.arrOut.forEach( data => {
+      console.log( 'dentro do array ' + data.numOp + ' ' + op );
+      if ( valor == '0' ) {
+        console.log('valor ' + valor);
+        this.arrOut.pop();
+      }
+      if ( data.numOp == op && data.seqItem == seq ) {
+        console.log('Igual modafoca!');
+      }
+    });
+
     this.arrOut.push(dataRep);
     console.log(this.arrOut);
   }
