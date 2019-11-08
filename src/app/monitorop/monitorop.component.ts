@@ -91,9 +91,11 @@ export class MonitoropComponent implements OnInit {
 
     this.arrOut.forEach( data => {
       console.log( 'dentro do array ' + data.numOp + ' ' + op );
+      let indexPos =  +1;
+      console.log(indexPos);
       if ( valor == '0' ) {
         console.log('valor ' + valor);
-        this.arrOut.pop();
+        console.log(this.arrOut[indexPos]);
       }
       if ( data.numOp == op && data.seqItem == seq ) {
         console.log('Igual modafoca!');
