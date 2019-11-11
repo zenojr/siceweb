@@ -94,7 +94,6 @@ export class MonitoropComponent implements OnInit {
     const op    = numOP;
     const seq   = seqItem;
     const dt    = dtPri;
-    const arrayInstance =  this.arrOut;
     dataRep     = { numOp: op,
                     dtPri: dt,
                     repassadeira: valor,
@@ -102,10 +101,26 @@ export class MonitoropComponent implements OnInit {
 
     this.arrOut.push(dataRep);
     console.log(this.arrOut);
-    this.arrOut.forEach(doc => {
-      let index = this.arrOut.indexOf();
-      console.log(doc.index);
+
+    const arrayInstance =  this.arrOut;
+    let index = 0;
+    arrayInstance.forEach(doc => {
+      index++;
+      const currentRep = doc['repassadeira'];
+      if ( currentRep == 0 ) {
+        arrayInstance.forEach(docRemove => {
+          const numOpInt = docRemove['numOp'];
+          const remover =  this.arrOut[index];
+          console.log(remover);
+        });
+      }
+      console.log(currentRep + ' ' +  index);
     });
+    // for (let i = 0; i < arrayInstance.length; i++) {
+    //   const numop = this.arrOut['numOp'];
+    //   console.log(numop);
+
+    // }
 
   }
 
