@@ -79,31 +79,34 @@ export class MonitoropComponent implements OnInit {
     return this.http.get( url + '?recebe=' + bigStringOut ).subscribe(doc => console.log(doc));
   }
 
+  sanitizeArr(arrayIn) {
+    let array = arrayIn;
+    console.log('inside sanitizer: ' + arrayIn);
+    array.forEach(element => {
+      let lastElement = element;
+      console.log('lastNumop: ' + lastElement['numOp']);
+      console.log('elementOp: ' + element['numOp']);
+    });
+  }
+
   getRepassadeiras(dtPri, numOP, valorRep, seqItem, dataRep: Repass) {
     const valor = valorRep.value;
     const op    = numOP;
     const seq   = seqItem;
     const dt    = dtPri;
+    const arrayInstance =  this.arrOut;
     dataRep     = { numOp: op,
                     dtPri: dt,
                     repassadeira: valor,
                     seqItem: seq };
 
-    this.arrOut.forEach( data => {
-      console.log( 'dentro do array ' + data.numOp + ' ' + op );
-      let indexPos =  +1;
-      console.log(indexPos);
-      if ( valor == '0' ) {
-        console.log('valor ' + valor);
-        console.log(this.arrOut[indexPos]);
-      }
-      if ( data.numOp == op && data.seqItem == seq ) {
-        console.log('Igual modafoca!');
-      }
-    });
-
     this.arrOut.push(dataRep);
     console.log(this.arrOut);
+    this.arrOut.forEach(doc => {
+      let index = this.arrOut.indexOf();
+      console.log(doc.index);
+    });
+
   }
 
   getTableOP() {
