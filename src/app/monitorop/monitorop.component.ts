@@ -95,42 +95,30 @@ export class MonitoropComponent implements OnInit {
     });
   }
 
-  // filterRemoveRepZero(arrayObj){
-  //   if( 'numOp' in arrayObj == op && 'seqItem' in arrayObj == seq ){
-  //     return true;
-  //   } else {
-  //     return false;
-  //   }
-  // }
-
   getRepassadeiras(dtPri, numOP, valorRep, seqItem, dataRep: Repass) {
+    
     let valor = valorRep.value;
     let op    = numOP;
     let seq   = seqItem;
     let dt    = dtPri;
-    dataRep     = { numOp: op,
-                    dtPri: dt,
-                    repassadeira: valor,
-                    seqItem: seq };
-
+    let index = 0;
+    dataRep   = { numOp: op,
+                  dtPri: dt,
+                  repassadeira: valor,
+                  seqItem: seq };
+    index++
+    console.log( index + 'fira' )
+    this.arrOut.forEach( data => {
+      console.log( 'dentro do array ' + data.numOp + ' ' + op );
+      
+      if ( data.numOp == op && data.seqItem == seq ) {
+        console.log('Igual modafoca!' + index);
+      }
+    });
+    
     this.arrOut.push(dataRep);
-    this.arrOut = this.arrOut.filter( doc => {
-        if ( doc['numOp'] == op && doc['seqItem'] == seq ){
-          console.log( 'Update Array' + console.log(this.arrOut));
-          return true;
-        } else {
-          console.log( 'nothing happened' );
-          return false;
-        }
-      });
-    
     console.log(this.arrOut);
-    
-    valor = '';
-    op = '';
-    seq = '';
-    dt = '';
-    
+
     // let arrayControl = []
 
     // arrayControl.push(op, dt, valor, seq);
