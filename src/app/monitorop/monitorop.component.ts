@@ -66,17 +66,24 @@ export class MonitoropComponent implements OnInit {
 
   sendRepassadeiras() {
     const recebe = this.arrOut;
+    console.log('recebe: ' + recebe);
     const url = 'http://192.168.0.7:8080/cgi-bin/wspd_cgi.sh/WService=emswebelt/scb002V2ws.p';
     let bigStringOut = '';
-    recebe.forEach( data => {
-      const bigString = data.dtPri + ',' +
-                        data.numOp + ',' +
-                        data.repassadeira + ',' +
-                        data.seqItem + ';';
-      bigStringOut += bigString;
+    recebe.forEach(element => {
+        const bigString = element + ';'
+        bigStringOut += bigString;
     });
+
     console.log(bigStringOut);
-    return this.http.get( url + '?recebe=' + bigStringOut ).subscribe(doc => console.log(doc));
+    // recebe.forEach( data => {
+    //   const bigString = data.dtPri + ',' +
+    //                     data.numOp + ',' +
+    //                     data.repassadeira + ',' +
+    //                     data.seqItem + ';';
+    //   bigStringOut += bigString;
+    // });
+    // console.log(bigStringOut);
+    return this.http.get( url + '?recebe=' + bigStringOut ).subscribe(doc => console.log(' Data Send '));
   }
 
   sanitizeArr(arrayIn) {
@@ -98,8 +105,10 @@ export class MonitoropComponent implements OnInit {
                     dtPri: dt,
                     repassadeira: valor,
                     seqItem: seq };
-
-    this.arrOut.push(dataRep);
+    let arrayControl = []
+    arrayControl.push(op, dt, valor, seq);
+    console.log(arrayControl);
+    this.arrOut.push(arrayControl);
     console.log(this.arrOut);
 
     // const arrayInstance =  this.arrOut;
