@@ -1,5 +1,4 @@
 import { HttpClient } from '@angular/common/http';
-
 import { MonitorOp } from './monitorOp';
 import { MonitoropService } from './monitorop.service';
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
@@ -21,6 +20,7 @@ export interface Repass {
   templateUrl: './monitorop.component.html',
   styleUrls: ['./monitorop.component.scss']
 })
+
 export class MonitoropComponent implements OnInit {
   op = '';
   lote = '';
@@ -102,26 +102,18 @@ export class MonitoropComponent implements OnInit {
     this.arrOut.push(dataRep);
     console.log(this.arrOut);
 
-    const arrayInstance =  this.arrOut;
-    let index = 0;
-    arrayInstance.forEach(doc => {
-      index++;
-      const currentRep = doc['repassadeira'];
-      if ( currentRep == 0 ) {
-        arrayInstance.forEach(docRemove => {
-          const numOpInt = docRemove['numOp'];
-          const remover =  this.arrOut[index];
-          console.log(remover);
-        });
-      }
-      console.log(currentRep + ' ' +  index);
-    });
-    // for (let i = 0; i < arrayInstance.length; i++) {
-    //   const numop = this.arrOut['numOp'];
-    //   console.log(numop);
+    // const arrayInstance =  this.arrOut;
+    // let index = 0;
+    // arrayInstance.forEach(doc => {
+    //   index++;
+    //   const currentRep = doc['repassadeira'];
+    //   const currentNumOp = doc['numOp'];
+    //   if ( currentRep == 0 ) {
 
-    // }
-
+    //   }
+    //   console.log(currentRep + ' ' +  index);
+    // });
+    
   }
 
   getTableOP() {
