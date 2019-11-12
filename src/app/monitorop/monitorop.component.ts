@@ -66,23 +66,22 @@ export class MonitoropComponent implements OnInit {
 
   sendRepassadeiras() {
     const recebe = this.arrOut;
-    console.log('recebe: ' + recebe);
+    // console.log('recebe: ' + recebe);
     const url = 'http://192.168.0.7:8080/cgi-bin/wspd_cgi.sh/WService=emswebelt/scb002V2ws.p';
     let bigStringOut = '';
-    recebe.forEach(element => {
-        const bigString = element + ';'
-        bigStringOut += bigString;
-    });
-
-    console.log(bigStringOut);
-    // recebe.forEach( data => {
-    //   const bigString = data.dtPri + ',' +
-    //                     data.numOp + ',' +
-    //                     data.repassadeira + ',' +
-    //                     data.seqItem + ';';
-    //   bigStringOut += bigString;
+    // recebe.forEach(element => {
+    //     const bigString = element + ';'
+    //     bigStringOut += bigString;
     // });
     // console.log(bigStringOut);
+    recebe.forEach( data => {
+      const bigString = data.dtPri + ',' +
+                        data.numOp + ',' +
+                        data.repassadeira + ',' +
+                        data.seqItem + ';';
+      bigStringOut += bigString;
+    });
+    console.log(bigStringOut);
     return this.http.get( url + '?recebe=' + bigStringOut ).subscribe(doc => console.log(' Data Send '));
   }
 
@@ -96,32 +95,48 @@ export class MonitoropComponent implements OnInit {
     });
   }
 
+  // filterRemoveRepZero(arrayObj){
+  //   if( 'numOp' in arrayObj == op && 'seqItem' in arrayObj == seq ){
+  //     return true;
+  //   } else {
+  //     return false;
+  //   }
+  // }
+
   getRepassadeiras(dtPri, numOP, valorRep, seqItem, dataRep: Repass) {
-    const valor = valorRep.value;
-    const op    = numOP;
-    const seq   = seqItem;
-    const dt    = dtPri;
+    let valor = valorRep.value;
+    let op    = numOP;
+    let seq   = seqItem;
+    let dt    = dtPri;
     dataRep     = { numOp: op,
                     dtPri: dt,
                     repassadeira: valor,
                     seqItem: seq };
-    let arrayControl = []
-    arrayControl.push(op, dt, valor, seq);
-    console.log(arrayControl);
-    this.arrOut.push(arrayControl);
+
+    this.arrOut.push(dataRep);
+    this.arrOut = this.arrOut.filter( doc => {
+        if ( doc['numOp'] == op && doc['seqItem'] == seq ){
+          console.log( 'Update Array' + console.log(this.arrOut));
+          return true;
+        } else {
+          console.log( 'nothing happened' );
+          return false;
+        }
+      });
+    
     console.log(this.arrOut);
+    
+    valor = '';
+    op = '';
+    seq = '';
+    dt = '';
+    
+    // let arrayControl = []
 
-    // const arrayInstance =  this.arrOut;
-    // let index = 0;
-    // arrayInstance.forEach(doc => {
-    //   index++;
-    //   const currentRep = doc['repassadeira'];
-    //   const currentNumOp = doc['numOp'];
-    //   if ( currentRep == 0 ) {
-
-    //   }
-    //   console.log(currentRep + ' ' +  index);
-    // });
+    // arrayControl.push(op, dt, valor, seq);
+    // console.log(arrayControl);
+    // this.arrOut.push(arrayControl);
+    // console.log(this.arrOut);
     
   }
 
