@@ -9,7 +9,7 @@ import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
 export interface Repass {
-  dtPri: string;
+  dtOp: string;
   numOp: number;
   repassadeira: number;
   seqItem: number;
@@ -32,7 +32,6 @@ export class MonitoropComponent implements OnInit {
   data: any;
   dataSource: any;
   monitorOp: MonitorOp[];
-  index = 0;
   
   displayedColumns: string[] = [
     'prioridade',
@@ -77,44 +76,34 @@ export class MonitoropComponent implements OnInit {
     // });
     // console.log(bigStringOut);
     recebe.forEach( data => {
-      const bigString = data.dtPri + ',' +
+      const bigString = data.dtOp + ',' +
                         data.numOp + ',' +
                         data.repassadeira + ',' +
                         data.seqItem + ';';
       bigStringOut += bigString;
     });
     console.log(bigStringOut);
-    return this.http.get( url + '?recebe=' + bigStringOut ).subscribe(doc => console.log(' Data Send '));
+    return this.http.get( url + '?recebe=' + bigStringOut ).subscribe(doc => console.log(' Data Send ' + doc));
   }
 
-  sanitizeArr(arrayIn) {
-    let array = arrayIn;
-    console.log('inside sanitizer: ' + arrayIn);
-    array.forEach(element => {
-      let lastElement = element;
-      console.log('lastNumop: ' + lastElement['numOp']);
-      console.log('elementOp: ' + element['numOp']);
-    });
-  }
 
-  getRepassadeiras(dtPri, numOP, valorRep, seqItem) {
+  getRepassadeiras(dtOp, numOP, valorRep, seqItem) {
     let dataRep: Repass
     let valor = valorRep.value;
     let op    = numOP;
     let seq   = seqItem;
-    let dt    = dtPri;
+    let dt    = dtOp;
     
     dataRep   = { numOp: op,
-                  dtPri: dt,
+                  dtOp: dt,
                   repassadeira: valor,
                   seqItem: seq };
-    this.index++
-    console.log( this.index + 'fora' )
+
     this.arrOut.forEach( doc => {
       console.log( 'dentro do array ' + doc.numOp + ' = ' + op + ' and ' + doc.seqItem + ' = ' + seq );      
       if ( doc.numOp == op && doc.seqItem == seq ) {
            doc.numOp = op;
-           doc.dtPri = dt;
+           doc.dtOp = dt;
            doc.repassadeira = valor;
            doc.seqItem = seq;
            op = null;
@@ -126,7 +115,7 @@ export class MonitoropComponent implements OnInit {
       }
     });
     
-    if ( op != null ) {
+    if ( op != null && seq != null ) {
       this.arrOut.push(dataRep);
       console.log(this.arrOut);
     }
