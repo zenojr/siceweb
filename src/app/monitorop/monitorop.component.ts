@@ -32,6 +32,7 @@ export class MonitoropComponent implements OnInit {
   data: any;
   dataSource: any;
   monitorOp: MonitorOp[];
+  let index = 0;
   displayedColumns: string[] = [
     'prioridade',
     'repassadeira',
@@ -101,18 +102,18 @@ export class MonitoropComponent implements OnInit {
     let op    = numOP;
     let seq   = seqItem;
     let dt    = dtPri;
-    let index = 0;
+    
     dataRep   = { numOp: op,
                   dtPri: dt,
                   repassadeira: valor,
                   seqItem: seq };
-    index++
-    console.log( index + 'fira' )
+    this.index++
+    console.log( index + 'fora' )
     this.arrOut.forEach( data => {
       console.log( 'dentro do array ' + data.numOp + ' ' + op );
       
       if ( data.numOp == op && data.seqItem == seq ) {
-        console.log('Igual modafoca!' + index);
+        console.log('Igual modafoca!' + this.index);
       }
     });
     
