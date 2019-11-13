@@ -83,7 +83,9 @@ export class MonitoropComponent implements OnInit {
       bigStringOut += bigString;
     });
     console.log(bigStringOut);
-    return this.http.get( url + '?recebe=' + bigStringOut ).subscribe(doc => console.log(' Data Send ' + doc));
+    this.http.get( url + '?recebe=' + bigStringOut ).subscribe(doc => console.log(' Data Send '));
+
+    this.getTableOP();
   }
 
 
