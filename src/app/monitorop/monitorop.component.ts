@@ -32,7 +32,8 @@ export class MonitoropComponent implements OnInit {
   data: any;
   dataSource: any;
   monitorOp: MonitorOp[];
-  let index = 0;
+  index = 0;
+  
   displayedColumns: string[] = [
     'prioridade',
     'repassadeira',
@@ -96,8 +97,8 @@ export class MonitoropComponent implements OnInit {
     });
   }
 
-  getRepassadeiras(dtPri, numOP, valorRep, seqItem, dataRep: Repass) {
-    
+  getRepassadeiras(dtPri, numOP, valorRep, seqItem) {
+    let dataRep: Repass
     let valor = valorRep.value;
     let op    = numOP;
     let seq   = seqItem;
@@ -108,17 +109,28 @@ export class MonitoropComponent implements OnInit {
                   repassadeira: valor,
                   seqItem: seq };
     this.index++
-    console.log( index + 'fora' )
-    this.arrOut.forEach( data => {
-      console.log( 'dentro do array ' + data.numOp + ' ' + op );
-      
-      if ( data.numOp == op && data.seqItem == seq ) {
-        console.log('Igual modafoca!' + this.index);
+    console.log( this.index + 'fora' )
+    this.arrOut.forEach( doc => {
+      console.log( 'dentro do array ' + doc.numOp + ' = ' + op + ' and ' + doc.seqItem + ' = ' + seq );      
+      if ( doc.numOp == op && doc.seqItem == seq ) {
+           doc.numOp = op;
+           doc.dtPri = dt;
+           doc.repassadeira = valor;
+           doc.seqItem = seq;
+           op = null;
+           dt = null;
+           valor = null;
+           seq = null;
+           console.log('Inside Repeat');
+           console.log(this.arrOut);
       }
     });
     
-    this.arrOut.push(dataRep);
-    console.log(this.arrOut);
+    if ( op != null ) {
+      this.arrOut.push(dataRep);
+      console.log(this.arrOut);
+    }
+    
 
     // let arrayControl = []
 
