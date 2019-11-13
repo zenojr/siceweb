@@ -100,7 +100,7 @@ export class MonitoropComponent implements OnInit {
                   seqItem: seq };
 
     this.arrOut.forEach( doc => {
-      console.log( 'dentro do array ' + doc.numOp + ' = ' + op + ' and ' + doc.seqItem + ' = ' + seq );      
+      // console.log( 'dentro do array ' + doc.numOp + ' = ' + op + ' and ' + doc.seqItem + ' = ' + seq );      
       if ( doc.numOp == op && doc.seqItem == seq ) {
            doc.numOp = op;
            doc.dtOp = dt;
