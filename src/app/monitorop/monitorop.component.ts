@@ -68,18 +68,24 @@ export class MonitoropComponent implements OnInit {
 
   sendRepassadeiras() {
     const recebe = this.arrOut;
-    const url = 'http://192.168.0.7:8080/cgi-bin/wspd_cgi.sh/WService=emswebelt/scb002V2ws.p';
+    // console.log('recebe: ' + recebe);
+    const url = 'http://192.168.0.7:8080/cgi-bin/wspd_cgi.sh/WService=emswebelttst/scb002wsV2.p';
     let bigStringOut = '';
+
     recebe.forEach( data => {
       const bigString = data.dtOp + ',' +
                         data.numOp + ',' +
                         data.repassadeira + ',' +
-                        data.seqItem + ','
+                        data.seqItem + ',' + 
                         data.destino + ';';
       bigStringOut += bigString;
     });
     console.log(bigStringOut);
-    this.http.get( url + '?recebe=' + bigStringOut ).subscribe(doc => console.log(' Data Send '));
+    this.http.get( url + '?recebe=' + bigStringOut, { responseType: 'text' } )
+    .subscribe(doc => {console.log(' Data Send ' + doc )}, error => this.error = console.log(error) );
+    
+
+    this.arrOut = [];
     this.getTableOP();
   }
 
