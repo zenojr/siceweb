@@ -13,6 +13,7 @@ export interface Repass {
   numOp: number;
   repassadeira: number;
   seqItem: number;
+  destino: string;
 }
 
 @Component({
@@ -67,39 +68,35 @@ export class MonitoropComponent implements OnInit {
 
   sendRepassadeiras() {
     const recebe = this.arrOut;
-    // console.log('recebe: ' + recebe);
     const url = 'http://192.168.0.7:8080/cgi-bin/wspd_cgi.sh/WService=emswebelt/scb002V2ws.p';
     let bigStringOut = '';
-    // recebe.forEach(element => {
-    //     const bigString = element + ';'
-    //     bigStringOut += bigString;
-    // });
-    // console.log(bigStringOut);
     recebe.forEach( data => {
       const bigString = data.dtOp + ',' +
                         data.numOp + ',' +
                         data.repassadeira + ',' +
-                        data.seqItem + ';';
+                        data.seqItem + ','
+                        data.destino + ';';
       bigStringOut += bigString;
     });
     console.log(bigStringOut);
     this.http.get( url + '?recebe=' + bigStringOut ).subscribe(doc => console.log(' Data Send '));
-
     this.getTableOP();
   }
 
 
-  getRepassadeiras(dtOp, numOP, valorRep, seqItem) {
+  getRepassadeiras(dtOp, numOP, valorRep, seqItem, destino) {
     let dataRep: Repass
     let valor = valorRep.value;
     let op    = numOP;
     let seq   = seqItem;
     let dt    = dtOp;
+    let dest  = destino
     
     dataRep   = { numOp: op,
                   dtOp: dt,
                   repassadeira: valor,
-                  seqItem: seq };
+                  seqItem: seq,
+                  destino: dest };
 
     this.arrOut.forEach( doc => {
       // console.log( 'dentro do array ' + doc.numOp + ' = ' + op + ' and ' + doc.seqItem + ' = ' + seq );      
@@ -108,10 +105,12 @@ export class MonitoropComponent implements OnInit {
            doc.dtOp = dt;
            doc.repassadeira = valor;
            doc.seqItem = seq;
+           doc.destino = dest;
            op = null;
            dt = null;
            valor = null;
            seq = null;
+           dest = null;
            console.log('Inside Repeat');
            console.log(this.arrOut);
       }
