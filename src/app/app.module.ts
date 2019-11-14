@@ -20,7 +20,7 @@ import { MatDividerModule,
          MatTabsModule,
          MatSelectModule,
          MatProgressBarModule,
-         MatProgressSpinnerModule    } from '@angular/material';
+         MatProgressSpinnerModule} from '@angular/material';
 import { FormsModule             } from '@angular/forms';
 import { PrincipalComponent } from './principal/principal.component';
 import { MonitoropComponent } from './monitorop/monitorop.component';

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpEventType } from '@angular/common/http';
 import { MonitorOp } from './monitorOp';
 import { MonitoropService } from './monitorop.service';
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
@@ -7,6 +7,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 export interface Repass {
   dtOp: string;
@@ -26,11 +27,12 @@ export class MonitoropComponent implements OnInit {
   op = '';
   lote = '';
   loading = true;
+  valLoad = 0;
   sending = false;
   selected = 0;
   error: any;
   repLocal: string[] = [];
-  arrOut = [];
+  arrOut = null;
   data: any;
   dataSource: any;
   monitorOp: MonitorOp[];
@@ -56,7 +58,9 @@ export class MonitoropComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
-  constructor(private monitorService: MonitoropService, public http: HttpClient) {
+  constructor(private monitorService: MonitoropService, 
+              public http: HttpClient,
+              private snackBar: MatSnackBar) {
     // Assign the data to the data source for the table to render
     this.dataSource = new MatTableDataSource(this.data);
   }
@@ -65,12 +69,18 @@ export class MonitoropComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
     this.getTableOP();
+    
   }
 
+  
   sendRepassadeiras() {
-    this.sending = true;
+    if( this.arrOut == null ){
+        this.snackBar.open('Nenhum produto selecionado.', 
+                           '[X] Fechar', { duration: 5000});
+    } else {
+
+      this.sending = true;
     const recebe = this.arrOut;
-    // console.log('recebe: ' + recebe);
     const url = 'http://192.168.0.7:8080/cgi-bin/wspd_cgi.sh/WService=emswebelttst/scb002wsV2.p';
     let bigStringOut = '';
 
@@ -85,21 +95,18 @@ export class MonitoropComponent implements OnInit {
     console.log(bigStringOut);
     this.http.get( url + '?recebe=' + bigStringOut, { responseType: 'text' } )
     .subscribe(doc => {
-
       console.log(' Data Send ' + doc )
-      if ( doc == 'OK' ) {
-        
+      if ( doc == 'OK' ) {        
         this.arrOut = [];
-        this.getTableOP();
-        
+        this.getTableOP();        
       } else {
-        alert('Erro ao gravar');
-        this.sending = false;
+        alert('Erro ao gravar' + doc);
       }
-    }, error => this.error = console.log(error) );
+    }, error => this.error = console.log(error) );  
+
+    }
     
   }
-
 
   getRepassadeiras(dtOp, numOP, valorRep, seqItem, destino) {
     let dataRep: Repass
@@ -107,27 +114,25 @@ export class MonitoropComponent implements OnInit {
     let op    = numOP;
     let seq   = seqItem;
     let dt    = dtOp;
-    let dest  = destino
-    
+    let dest  = destino    
     dataRep   = { numOp: op,
                   dtOp: dt,
                   repassadeira: valor,
                   seqItem: seq,
                   destino: dest };
 
-    this.arrOut.forEach( doc => {
-      // console.log( 'dentro do array ' + doc.numOp + ' = ' + op + ' and ' + doc.seqItem + ' = ' + seq );      
+    this.arrOut.forEach( doc => {    
       if ( doc.numOp == op && doc.seqItem == seq ) {
            doc.numOp = op;
            doc.dtOp = dt;
            doc.repassadeira = valor;
            doc.seqItem = seq;
            doc.destino = dest;
-           op = null;
-           dt = null;
+           op    = null;
+           dt    = null;
            valor = null;
-           seq = null;
-           dest = null;
+           seq   = null;
+           dest  = null;
            console.log('Inside Repeat');
            console.log(this.arrOut);
       }
@@ -138,13 +143,6 @@ export class MonitoropComponent implements OnInit {
       console.log(this.arrOut);
     }
     
-
-    // let arrayControl = []
-
-    // arrayControl.push(op, dt, valor, seq);
-    // console.log(arrayControl);
-    // this.arrOut.push(arrayControl);
-    // console.log(this.arrOut);
     
   }
 
@@ -160,6 +158,7 @@ export class MonitoropComponent implements OnInit {
         monOp = monOp['Registro'];
         console.log(monOp);
         this.dataSource.data = monOp;
+        
         this.loading = false;
         this.sending = false;
       }, error => this.error = console.log(error)
