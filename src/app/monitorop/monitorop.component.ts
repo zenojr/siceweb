@@ -26,6 +26,7 @@ export class MonitoropComponent implements OnInit {
   op = '';
   lote = '';
   loading = true;
+  sending = false;
   selected = 0;
   error: any;
   repLocal: string[] = [];
@@ -67,6 +68,7 @@ export class MonitoropComponent implements OnInit {
   }
 
   sendRepassadeiras() {
+    this.sending = true;
     const recebe = this.arrOut;
     // console.log('recebe: ' + recebe);
     const url = 'http://192.168.0.7:8080/cgi-bin/wspd_cgi.sh/WService=emswebelttst/scb002wsV2.p';
@@ -82,11 +84,20 @@ export class MonitoropComponent implements OnInit {
     });
     console.log(bigStringOut);
     this.http.get( url + '?recebe=' + bigStringOut, { responseType: 'text' } )
-    .subscribe(doc => {console.log(' Data Send ' + doc )}, error => this.error = console.log(error) );
-    
+    .subscribe(doc => {
 
-    this.arrOut = [];
-    this.getTableOP();
+      console.log(' Data Send ' + doc )
+      if ( doc == 'OK' ) {
+        
+        this.arrOut = [];
+        this.getTableOP();
+        
+      } else {
+        alert('Erro ao gravar');
+        this.sending = false;
+      }
+    }, error => this.error = console.log(error) );
+    
   }
 
 
@@ -150,6 +161,7 @@ export class MonitoropComponent implements OnInit {
         console.log(monOp);
         this.dataSource.data = monOp;
         this.loading = false;
+        this.sending = false;
       }, error => this.error = console.log(error)
       );
   }

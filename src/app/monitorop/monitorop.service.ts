@@ -1,6 +1,6 @@
 import { MonitorOp } from './monitorOp';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpEventType } from '@angular/common/http';
 import { NgxXml2jsonService } from 'ngx-xml2json';
 
 @Injectable({
@@ -16,7 +16,7 @@ export class MonitoropService {
                private xml2Json: NgxXml2jsonService ) { }
 
   getTableMonOP() {
-    const request = this.http.get(this.urlMonOP, { responseType: 'text' });
+    const request = this.http.get(this.urlMonOP, { responseType: 'text', reportProgress: true });    
     return request;
   }
 
