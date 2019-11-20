@@ -1,9 +1,26 @@
-<div class="loading" *ngIf="loading">
+<!-- <div class="loading" *ngIf="loading">
     <div>
         <mat-spinner>
         </mat-spinner>
     </div>
+    <div style="position:relative; top: 60px; left: 30px;">
+        <h2>Carregando OPs ...</h2>
+    </div>
+</div> -->
+
+<div class="sending" *ngIf="loading">        
+    <div>        
+        <div>
+            <mat-spinner>
+            </mat-spinner>
+        </div>        
+        <div style="position:relative; top: 15px; left: 30px;">
+            <h2>carregango OPs...</h2>
+        </div>
+        
+    </div>
 </div>
+
 <div class="sending" *ngIf="sending">        
     <div>        
         <div>
@@ -11,7 +28,7 @@
             </mat-spinner>
         </div>        
         <div style="position:relative; top: 60px; left: 30px;">
-                <h2>Gravando dados ...</h2>
+            <h2>Enviando OPs...</h2>
         </div>
         
     </div>
@@ -21,19 +38,19 @@
         <div class="table-header">
             <div class="">
                 <div class="buttons">
-                    <button mat-raised-button id="update">
+                    <button (click)="reloadTableOP()" mat-raised-button id="update">
                         <img src="../../assets/img/icons/sync-alt-solid.svg" 
                              alt="Atualizar Lista">
                         Atualizar Lista
                     </button>
                 </div>
-                <div class="buttons">
+                <!-- <div class="buttons">
                     <button mat-raised-button id="report">
                         <img src="../../assets/img/icons/edit-regular.svg" 
                         alt="Relatório de endereço">
                         Relatório de end.
                     </button>
-                </div>
+                </div> -->
                 <div class="buttons">
                     <button (click)="sendRepassadeiras()" mat-raised-button id="send">
                         <img src="../../assets/img/icons/paper-plane-solid.svg" 

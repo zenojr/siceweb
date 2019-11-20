@@ -26,13 +26,14 @@ export interface Repass {
 export class MonitoropComponent implements OnInit {
   op = '';
   lote = '';
-  loading = true;
   valLoad = 0;
+  loading = true;
+  reload = false;
   sending = false;
   selected = 0;
   error: any;
   repLocal: string[] = [];
-  arrOut = null;
+  arrOut = [];
   data: any;
   dataSource: any;
   monitorOp: MonitorOp[];
@@ -146,6 +147,11 @@ export class MonitoropComponent implements OnInit {
     
   }
 
+  reloadTableOP(){
+    this.loading = true;
+    this.getTableOP();
+  }
+
   getTableOP() {
     this.monitorService.getTableMonOP()
       .pipe(map(res => {
@@ -161,6 +167,7 @@ export class MonitoropComponent implements OnInit {
         
         this.loading = false;
         this.sending = false;
+        this.reload  = false;
       }, error => this.error = console.log(error)
       );
   }
