@@ -1,0 +1,96 @@
+
+
+<div class="sending" *ngIf="loading">        
+    <div>        
+        <div>
+            <mat-spinner>
+            </mat-spinner>
+        </div>        
+        <div style="position:relative; top: 15px; left: 30px;">
+            <h2>carregando OPs...</h2>
+        </div>
+        
+    </div>
+</div>
+
+<div class="sending" *ngIf="sending">        
+    <div>        
+        <div>
+            <mat-spinner>
+            </mat-spinner>
+        </div>        
+        <div style="position:relative; top: 60px; left: 30px;">
+            <h2>Enviando OPs...</h2>
+        </div>
+        
+    </div>
+</div>
+<div class="container">
+    <div class="table-container">
+        <div class="table-header">
+            
+                <div class="buttons">
+                    <button (click)="reloadTableOP()" mat-raised-button id="update">
+                        <img src="../../assets/img/icons/sync-alt-solid.svg" 
+                             alt="Atualizar Lista">
+                        Atualizar Lista
+                    </button>
+                </div>
+                <!-- <div class="buttons">
+                    <button mat-raised-button id="report">
+                        <img src="../../assets/img/icons/edit-regular.svg" 
+                        alt="Relatório de endereço">
+                        Relatório de end.
+                    </button>
+                </div> -->
+                <div class="buttons">
+                    <button (click)="sendRepassadeiras()" mat-raised-button id="send">
+                        <img src="../../assets/img/icons/paper-plane-solid.svg" 
+                        alt="Enviar produtos">
+                        Enviar prod. p/ rep.
+                    </button>
+                </div>
+            
+            <div class="title">
+                <h3> Monitor de itens: Ordem de produção. </h3>
+            </div>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="table-body">
+            <div class="form-table">
+                <div class="form">
+                    <mat-form-field>
+                        <input matInput (keyup)="applyFilter($event.target.value)" 
+                               placeholder="Ordem nº de produção"
+                               autocomplete="off" [(ngModel)]="op" type="number">
+                    </mat-form-field>
+                    <button mat-button 
+                            *ngIf="op" 
+                            matSuffix 
+                            mat-icon-button 
+                            aria-label="Clear" 
+                            (click)="clear('')">
+                        <mat-icon> <img src="../../assets/img/icons/close-24px.svg" alt="Close"> </mat-icon>
+                    </button>
+                    <mat-form-field>
+                        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Lote" autocomplete="off"
+                            [(ngModel)]="lote">
+                    </mat-form-field>
+                    <button mat-button 
+                            *ngIf="lote" 
+                            matSuffix 
+                            mat-icon-button 
+                            aria-label="Clear" 
+                            (click)="clearlot('')">
+                        <mat-icon> <img src="../../assets/img/icons/close-24px.svg" alt="Close"> </mat-icon>
+                    </button>
+                </div>
+
+                <!-- <span class="spacer"></span> -->
+
+            </div>
+
+            
+        </div>
+    </div>
+</div>

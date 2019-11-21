@@ -25,6 +25,7 @@ import { FormsModule             } from '@angular/forms';
 import { PrincipalComponent } from './principal/principal.component';
 import { MonitoropComponent } from './monitorop/monitorop.component';
 import { PrioridadePipe } from './monitorop/prioridade.pipe';
+import { RepassadeiraComponent } from './repassadeira/repassadeira.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { PrioridadePipe } from './monitorop/prioridade.pipe';
     LoginComponent,
     PrincipalComponent,
     MonitoropComponent,
-    PrioridadePipe
+    PrioridadePipe,
+    RepassadeiraComponent
   ],
   imports: [
     BrowserModule,
