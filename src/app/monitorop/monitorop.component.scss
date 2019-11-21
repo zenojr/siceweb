@@ -134,18 +134,6 @@ mat-form-field {
   flex: 1 1 auto;
 }
 
-#update {
-  // background-color: rgb(90, 168, 25);
-}
-
-#report {
-  // background-color: #00aec7;
-}
-
-#send {
-  // background-color: rgb(74, 105, 243);
-}
-
 .bullet {
   @extend %centerAll;
   width: 22px;
@@ -154,14 +142,18 @@ mat-form-field {
   filter: drop-shadow(0px 0px 2px #000000);
 }
 
-@media only screen and (max-width: 1007px) {
+@media only screen and (max-width: 1024px) {
     table {
-        width: 95%;
+        max-width: 85%;
     }
 
     .mat-cell {
-        font-size: 75%;
-        padding-left: 3px;
+        font-size: 70%;
+        
+    }
+
+    .headerTable {
+      padding-right: 2px;
     }
 }
 
