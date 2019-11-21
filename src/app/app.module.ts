@@ -20,7 +20,8 @@ import { MatDividerModule,
          MatTabsModule,
          MatSelectModule,
          MatProgressBarModule,
-         MatProgressSpinnerModule} from '@angular/material';
+         MatProgressSpinnerModule,
+         MatButtonToggleModule} from '@angular/material';
 import { FormsModule             } from '@angular/forms';
 import { PrincipalComponent } from './principal/principal.component';
 import { MonitoropComponent } from './monitorop/monitorop.component';
@@ -58,7 +59,8 @@ import { RepassadeiraComponent } from './repassadeira/repassadeira.component';
     MatTabsModule,
     MatSelectModule,
     MatProgressBarModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatButtonToggleModule
   ],
   providers: [],
   bootstrap: [AppComponent]

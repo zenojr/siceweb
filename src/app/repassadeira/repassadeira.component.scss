@@ -70,7 +70,7 @@
   }
   
   .table-header {
-      height: 45px;
+      height: 60px;
   }
   
   .table-container {
@@ -78,29 +78,7 @@
     background-color: rgba($color: #ffffff, $alpha: 0.8);
     flex-direction: column;
   }
-  
-  .mat-cell .mat-header-cell {
-    font-size: 85%;
-    padding-left: 6px;
-  }
-  
-  .mat-column-numRep,
-  .mat-column-destino,
-  .mat-column-numOp,
-  .mat-column-nrPedido,
-  .mat-column-lote,
-  .mat-column-itCodigo,
-  .mat-column-descItem,
-  .mat-column-dimBob,
-  .mat-column-dimBobDest,
-  .mat-column-endereco,
-  .mat-column-quantPed,
-  .mat-column-quantRolo,
-  .mat-column-quantRet,
-  .mat-column-quantSuc,
-  .mat-column-dtPriori {
-      padding-right: 6px;
-  }
+
   
   .buttons {
     @extend %buttonConfig;
@@ -115,32 +93,12 @@
     @extend %buttonConfig;
   }
   
-  mat-form-field {
-    font-size: 12px;
-    margin: 8px;
-  }
-  
-  .mat-tab-labels {
-      height: 40px;
-  }
-  
-  .form-table {
-    @extend %centerHoriz;
-    justify-content: space-between;
-    height: 45px;
-  }
   
   .spacer {
     flex: 1 1 auto;
   }
   
-  .bullet {
-    @extend %centerAll;
-    width: 22px;
-    height: 22px;
-    border-radius: 50%;
-    filter: drop-shadow(0px 0px 2px #000000);
-  }
+  
   
   @media only screen and (max-width: 1024px) {
       table {
@@ -158,46 +116,4 @@
   }
   
   
-  .ten {
-    background-color: black;
-    color: white;
-  }
-  
-  .nine {
-    background-color: yellow;
-  }
-  
-  .eigth {
-    background-color: greenyellow;
-  }
-  
-  .seven {
-    background-color: green;
-    color: white;
-  }
-  
-  .six {
-    background-color: cyan;
-  }
-  
-  .five {
-    background-color: blue;
-    color: white;
-  }
-  
-  .four {
-    background-color: gray;
-  }
-  
-  .three {
-    background-color: brown;
-  }
-  
-  .two {
-    background-color: pink;
-  }
-  
-  .one {
-    background-color: tomato;
-  }
   
