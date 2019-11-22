@@ -45,25 +45,17 @@ export class LoginComponent implements OnInit {
         loginJSON = loginJSON["Root"];
         loginJSON = loginJSON["ttLogin"];
         loginJSON = loginJSON["Registro"];
+        const usuario = loginJSON["usuario"];
+        const setor = loginJSON["setor"];
+        const repassa = loginJSON["repassa"];
+        const monOP = loginJSON["monitorOp"];
+        const expedicao = loginJSON["expedicao"];
         console.log(loginJSON);
-        this.loginJsonData = loginJSON;
+        this.loginService.getLoginUser(usuario, setor, repassa, monOP, expedicao);
       }
     });
 
   }
 
-  getLogin(data) {
-    data.subscribe( res => {
-      console.log(res);
-      let parser;
-      let xmlDoc;
-      const text = res;
-      
-      parser = new DOMParser();
-      xmlDoc = parser.parseFromString(text, "text/xml");
-      console.log(xmlDoc);
-
-    });
-  }
-
+  
 }
