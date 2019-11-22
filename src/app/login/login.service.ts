@@ -17,6 +17,8 @@ export class LoginService {
     return request;
   }
 
+  
+
   convertXMLtoJSON(doc) {
     const   data =  doc.toString();
     const parser = new DOMParser();
