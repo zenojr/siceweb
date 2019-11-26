@@ -6,43 +6,40 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { map } from 'rxjs/operators';
-import { Observable } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { clearInterval } from 'timers';
 
 export interface Repass {
-  dtOp: string;
-  numOp: number;
+          dtOp: string;
+         numOp: number;
   repassadeira: number;
-  seqItem: number;
-  destino: string;
+       seqItem: number;
+       destino: string;
 }
 
 @Component({
-  selector: 'app-monitorop',
+     selector: 'app-monitorop',
   templateUrl: './monitorop.component.html',
-  styleUrls: ['./monitorop.component.scss']
+    styleUrls: ['./monitorop.component.scss']
 })
 
 export class MonitoropComponent implements OnInit {
-  op = '';
-  lote = '';
+       op = '';
+     lote = '';
   valLoad = 0;
   loading = true;
-  dbOut = false;
-  reload = false;
+    dbOut = false;
+   reload = false;
   sending = false;
   countReconect = 60;
-  start = 10;
-  selected = 0;
+     start = 10;
+  selected = 0;  
   error: any;
   repLocal: string[] = [];
   arrOut = [];
   data: any;
   dataSource: any;
   monitorOp: MonitorOp[];
-  
   displayedColumns: string[] = [
     'prioridade',
     'repassadeira',
@@ -74,45 +71,37 @@ export class MonitoropComponent implements OnInit {
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
-    this.getTableOP();
-    
+    this.getTableOP();    
   }
-
   
   sendRepassadeiras() {
     if( this.arrOut == null ){
-        this.snackBar.open('Nenhum produto selecionado.', 
-                           '[X] Fechar', { duration: 5000});
+      this.snackBar.open('Nenhum produto selecionado.', '[X] Fechar', { duration: 5000});
     } else {
-
       this.sending = true;
-    const recebe = this.arrOut;
-    const url = 'http://192.168.0.7:8080/cgi-bin/wspd_cgi.sh/WService=emswebelttst/scb002wsV2.p';
-    let bigStringOut = '';
-
-    recebe.forEach( data => {
-      const bigString = data.dtOp + ',' +
-                        data.numOp + ',' +
-                        data.repassadeira + ',' +
-                        data.seqItem + ',' + 
-                        data.destino + ';';
-      bigStringOut += bigString;
+      const recebe = this.arrOut;
+      const url = 'http://192.168.0.7:8080/cgi-bin/wspd_cgi.sh/WService=emswebelttst/scb002wsV2.p';
+      let bigStringOut = '';
+      recebe.forEach( data => {
+        const bigString = data.dtOp + ',' +
+                          data.numOp + ',' +
+                          data.repassadeira + ',' +
+                          data.seqItem + ',' + 
+                          data.destino + ';';
+        bigStringOut += bigString;
     });
     console.log(bigStringOut);
     this.http.get( url + '?recebe=' + bigStringOut, { responseType: 'text' } )
     .subscribe(doc => {
       console.log(' Data Send ' + doc )
-      if ( doc == 'OK' ) {        
+      if( doc == 'OK' ) {        
         this.arrOut = [];
         this.getTableOP();        
       } else {
-        this.snackBar.open('Erro ao gravar dados', 
-                           '[X] Fechar', { duration: 5000});
+        this.snackBar.open('Erro ao gravar dados', '[X] Fechar', { duration: 5000});
       }
-    }, error => this.error = console.log(error) );  
-
-    }
-    
+    }, error => this.error = console.log(error)); 
+    }    
   }
 
   getRepassadeiras(dtOp, numOP, valorRep, seqItem, destino) {
@@ -127,7 +116,6 @@ export class MonitoropComponent implements OnInit {
                   repassadeira: valor,
                   seqItem: seq,
                   destino: dest };
-
     this.arrOut.forEach( doc => {    
       if ( doc.numOp == op && doc.seqItem == seq ) {
            doc.numOp = op;
@@ -140,7 +128,6 @@ export class MonitoropComponent implements OnInit {
            valor = null;
            seq   = null;
            dest  = null;
-           console.log('Inside Repeat');
            console.log(this.arrOut);
       }
     });
@@ -149,8 +136,6 @@ export class MonitoropComponent implements OnInit {
       this.arrOut.push(dataRep);
       console.log(this.arrOut);
     }
-    
-    
   }
 
   reloadTableOP(){
@@ -165,15 +150,12 @@ export class MonitoropComponent implements OnInit {
       let log = 0;
       log = start - down;
       this.countReconect = log;
-      console.log(this.countReconect);
-        
+      console.log(this.countReconect);        
     } else {
       this.loading = true;
       this.dbOut = false;                
-      this.countReconect = 60;
-      
-    }
-    
+      this.countReconect = 60;      
+    }    
     return this.countReconect;
   }
 
@@ -194,9 +176,7 @@ export class MonitoropComponent implements OnInit {
               this.countDown();
             } else {
               location.reload();
-              clearInterval;
-            }
-            
+            }            
           }, 1000);
         } else {
           monOp = monOp['ttOp'];        
@@ -206,7 +186,6 @@ export class MonitoropComponent implements OnInit {
           this.sending = false;
           this.reload  = false;
         }
-
       }, error => this.error = console.log('This ' +  error)
       );
   }
