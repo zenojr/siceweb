@@ -8,6 +8,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 export interface Repass {
   dtOp: string;
@@ -28,8 +29,11 @@ export class MonitoropComponent implements OnInit {
   lote = '';
   valLoad = 0;
   loading = true;
+  dbOut = false;
   reload = false;
   sending = false;
+  countReconect = 60;
+  start = 10;
   selected = 0;
   error: any;
   repLocal: string[] = [];
@@ -61,8 +65,8 @@ export class MonitoropComponent implements OnInit {
 
   constructor(private monitorService: MonitoropService, 
               public http: HttpClient,
-              private snackBar: MatSnackBar) {
-    // Assign the data to the data source for the table to render
+              private snackBar: MatSnackBar,
+              private route: Router) {
     this.dataSource = new MatTableDataSource(this.data);
   }
 
@@ -152,6 +156,25 @@ export class MonitoropComponent implements OnInit {
     this.getTableOP();
   }
 
+  countDown(){
+    if( this.countReconect > 0 ) {
+      let start = this.countReconect;
+      let down = 1;
+      let log = 0;
+      log = start - down;
+      this.countReconect = log;
+      console.log(this.countReconect);
+        
+    } else {
+      this.loading = true;
+      this.dbOut = false;                
+      this.countReconect = 60;
+      
+    }
+    
+    return this.countReconect;
+  }
+
   getTableOP() {
     this.monitorService.getTableMonOP()
       .pipe(map(res => {
@@ -160,15 +183,28 @@ export class MonitoropComponent implements OnInit {
       })).subscribe(doc => {
         let monOp = doc;
         monOp = monOp['Root'];
-        monOp = monOp['ttOp'];
-        monOp = monOp['Registro'];
-        console.log(monOp);
-        this.dataSource.data = monOp;
-        
-        this.loading = false;
-        this.sending = false;
-        this.reload  = false;
-      }, error => this.error = console.log(error)
+        if( monOp == undefined ) {
+          console.log( 'Database is Out');
+          this.loading = false;
+          this.dbOut = true;          
+          setInterval( () => {
+            if( this.countReconect >= 1 ){
+              this.countDown();
+            } else {
+              location.reload();
+            }
+            
+          }, 1000);
+        } else {
+          monOp = monOp['ttOp'];        
+          monOp = monOp['Registro'];
+          this.dataSource.data = monOp;
+          this.loading = false;
+          this.sending = false;
+          this.reload  = false;
+        }
+
+      }, error => this.error = console.log('This ' +  error)
       );
   }
 

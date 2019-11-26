@@ -5,8 +5,6 @@ import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { MonitoropService } from '../monitorop/monitorop.service';
 
-
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -54,8 +52,5 @@ export class LoginComponent implements OnInit {
         this.loginService.getLoginUser(usuario, setor, repassa, monOP, expedicao);
       }
     });
-
   }
-
-  
 }
