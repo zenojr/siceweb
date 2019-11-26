@@ -9,6 +9,7 @@ import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { clearInterval } from 'timers';
 
 export interface Repass {
   dtOp: string;
@@ -105,7 +106,8 @@ export class MonitoropComponent implements OnInit {
         this.arrOut = [];
         this.getTableOP();        
       } else {
-        alert('Erro ao gravar' + doc);
+        this.snackBar.open('Erro ao gravar dados', 
+                           '[X] Fechar', { duration: 5000});
       }
     }, error => this.error = console.log(error) );  
 
@@ -192,6 +194,7 @@ export class MonitoropComponent implements OnInit {
               this.countDown();
             } else {
               location.reload();
+              clearInterval;
             }
             
           }, 1000);

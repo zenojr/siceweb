@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { LoginService } from '../login/login.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -12,11 +13,12 @@ export class PrincipalComponent implements OnInit {
 
   monitor = false;
   user = '';
-  setor = '';
-  repassa = '';
-  monitorOP = '';
-  expedicao = '';
-  constructor( public loginService: LoginService ) { }
+  setor = null;
+  repassa = null;
+  monitorOP = null;
+  expedicao = null;
+  constructor( public loginService: LoginService,
+               private route: Router ) { }
 
   ngOnInit() {
     this.loginService.currentUser.subscribe( user => this.user = user );
@@ -27,6 +29,14 @@ export class PrincipalComponent implements OnInit {
     console.log(this.user + ' ' + this.setor + ' ' + 
                 this.repassa + ' ' + this.monitorOP + ' ' +
                 this.expedicao);
+    this.guardData();
+  }
+
+  guardData(){
+    if( this.user == 'NULL' || this.setor == 'NULL' ) {
+      console.log('Get out')
+      this.route.navigateByUrl('/');
+    } 
   }
 
   showPosition(position) {
