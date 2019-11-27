@@ -30,7 +30,7 @@ export class RepassadeiraComponent implements OnInit {
                     'codLote',
                     'lance'];
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
-  @ViewChild(MatSort, { static: true }) sort: MatSort;
+  @ViewChild(MatSort,      { static: true })      sort: MatSort;
     
   user      = '';
   setor     = null;
