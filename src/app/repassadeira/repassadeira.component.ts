@@ -16,10 +16,10 @@ import { RepassOp            } from './repassOp';
 })
 export class RepassadeiraComponent implements OnInit {
               data: any;
+             error: any;
           repassOp: RepassOp[]
         dataSource: any;
   displayedColumns: string[] = [
-                    'produzir',
                     'prioridade',
                     'dtPriori',
                     'destino',
@@ -41,7 +41,7 @@ export class RepassadeiraComponent implements OnInit {
   constructor( private     repService: RepassadeiraService,
                private monitorService: MonitoropService,
                private   loginService: LoginService ) {
-               this.dataSource = new MatTableDataSource(this.data);
+               this.dataSource = new MatTableDataSource(this.repassOp);
               }
   ngOnInit() {  
     this.dataSource.paginator = this.paginator;
@@ -80,7 +80,16 @@ export class RepassadeiraComponent implements OnInit {
                         repOp = repOp['ttOp'];
                         repOp = repOp['Registro'];
                         console.log(repOp);
+                        this.dataSource.data = repOp;
                       }
-                    });
+                    }, error => this.error = console.log('This ' + error) );
   }
+
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+    if( this.dataSource.paginator ) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
+
 } // The end

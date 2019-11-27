@@ -97,14 +97,18 @@
   .spacer {
     flex: 1 1 auto;
   }
+
+  table {
+    width: 100%;
+  }
   
-  
+  .mat-cell {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
   
   @media only screen and (max-width: 1024px) {
-      table {
-          max-width: 85%;
-      }
-  
+      
       .mat-cell {
           font-size: 70%;
           
