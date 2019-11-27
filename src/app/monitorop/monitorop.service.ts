@@ -19,7 +19,7 @@ export class MonitoropService {
     const request = this.http.get(this.urlMonOP, { responseType: 'text', reportProgress: true });    
     return request;
   }
-
+  
   sendRep() {
     console.log('send');
     return this.http.get('http://localhost:3000/angular');

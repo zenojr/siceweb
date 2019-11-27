@@ -31,7 +31,7 @@ export class MonitoropComponent implements OnInit {
     dbOut = false;
    reload = false;
   sending = false;
-  countReconect = 60;
+  countReconect = 0;
      start = 10;
   selected = 0;  
   error: any;
@@ -83,11 +83,11 @@ export class MonitoropComponent implements OnInit {
       const url = 'http://192.168.0.7:8080/cgi-bin/wspd_cgi.sh/WService=emswebelttst/scb002wsV2.p';
       let bigStringOut = '';
       recebe.forEach( data => {
-        const bigString = data.dtOp + ',' +
-                          data.numOp + ',' +
+        const bigString = data.dtOp         + ',' +
+                          data.numOp        + ',' +
                           data.repassadeira + ',' +
-                          data.seqItem + ',' + 
-                          data.destino + ';';
+                          data.seqItem      + ',' + 
+                          data.destino      + ';';
         bigStringOut += bigString;
     });
     console.log(bigStringOut);
@@ -99,6 +99,11 @@ export class MonitoropComponent implements OnInit {
         this.getTableOP();        
       } else {
         this.snackBar.open('Erro ao gravar dados', '[X] Fechar', { duration: 5000});
+        setTimeout( () => {
+          location.reload();
+          
+        }, 5000 );
+        
       }
     }, error => this.error = console.log(error)); 
     }    
@@ -131,7 +136,7 @@ export class MonitoropComponent implements OnInit {
            console.log(this.arrOut);
       }
     });
-    
+
     if ( op != null && seq != null ) {
       this.arrOut.push(dataRep);
       console.log(this.arrOut);
@@ -154,7 +159,7 @@ export class MonitoropComponent implements OnInit {
     } else {
       this.loading = true;
       this.dbOut = false;                
-      this.countReconect = 60;      
+           
     }    
     return this.countReconect;
   }
@@ -169,15 +174,19 @@ export class MonitoropComponent implements OnInit {
         monOp = monOp['Root'];
         if( monOp == undefined ) {
           console.log( 'Database is Out');
+          this.countReconect = 10;
           this.loading = false;
           this.dbOut = true;          
-          setInterval( () => {
+          let execute = setInterval( () => {
             if( this.countReconect >= 1 ){
               this.countDown();
             } else {
+              clearInterval(execute);
+              this.countReconect = -1;
               location.reload();
             }            
           }, 1000);
+          return execute;
         } else {
           monOp = monOp['ttOp'];        
           monOp = monOp['Registro'];

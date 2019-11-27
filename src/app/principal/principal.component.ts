@@ -2,7 +2,6 @@ import { Component, OnInit, Input } from '@angular/core';
 import { LoginService } from '../login/login.service';
 import { Router } from '@angular/router';
 
-
 @Component({
   selector: 'app-principal',
   templateUrl: './principal.component.html',
@@ -10,23 +9,22 @@ import { Router } from '@angular/router';
   animations: []
 })
 export class PrincipalComponent implements OnInit {
-
-  monitor = false;
-  user = '';
-  setor = null;
-  repassa = null;
+  monitor   = false;
+  user      = '';
+  setor     = null;
+  repassa   = null;
   monitorOP = null;
   expedicao = null;
   constructor( public loginService: LoginService,
                private route: Router ) { }
 
   ngOnInit() {
-    this.loginService.currentUser.subscribe( user => this.user = user );
-    this.loginService.currentSetor.subscribe( setor => this.setor = setor );
-    this.loginService.currentRepassa.subscribe( repassa => this.repassa = repassa );
+    this.loginService.currentUser.subscribe(    user    => this.user      = user );
+    this.loginService.currentSetor.subscribe(   setor   => this.setor     = setor );
+    this.loginService.currentRepassa.subscribe( repassa => this.repassa   = repassa );
     this.loginService.currentMonitor.subscribe( monitor => this.monitorOP = monitor );
     this.loginService.currentExpedicao.subscribe( expedicao => this.expedicao = expedicao );
-    console.log(this.user + ' ' + this.setor + ' ' + 
+    console.log(this.user    + ' ' + this.setor     + ' ' + 
                 this.repassa + ' ' + this.monitorOP + ' ' +
                 this.expedicao);
     this.guardData();
