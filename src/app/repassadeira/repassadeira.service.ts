@@ -12,8 +12,8 @@ export class RepassadeiraService {
   constructor( private http: HttpClient,
                private xml2Json: NgxXml2jsonService ) { }
 
-getOpRepassadeiras(numRepassa?) {
-  const request = this.http.get(this.urlOpRepassadeiras + 'seq=0&numRepassa=%204', 
+getOpRepassadeiras(numRepassa) {
+  const request = this.http.get(this.urlOpRepassadeiras + 'numRepassa=' + numRepassa, 
                   { responseType: 'text', reportProgress: true });
   return request;
 }               

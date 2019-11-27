@@ -151,14 +151,14 @@ export class MonitoropComponent implements OnInit {
   countDown(){
     if( this.countReconect > 0 ) {
       let start = this.countReconect;
-      let down = 1;
-      let log = 0;
-      log = start - down;
+       let down = 1;
+        let log = 0;
+            log = start - down;
       this.countReconect = log;
       console.log(this.countReconect);        
     } else {
       this.loading = true;
-      this.dbOut = false;                
+        this.dbOut = false;                
            
     }    
     return this.countReconect;
