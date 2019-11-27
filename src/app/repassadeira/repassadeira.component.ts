@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { RepassadeiraService } from './repassadeira.service';
+import { MonitoropService } from '../monitorop/monitorop.service';
+import { LoginService } from '../login/login.service';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-repassadeira',
@@ -7,9 +11,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RepassadeiraComponent implements OnInit {
 
-  constructor() { }
+  constructor( private     repService: RepassadeiraService,
+               private monitorService: MonitoropService,
+               private   loginService: LoginService ) { }
+  ngOnInit() {  
 
-  ngOnInit() {
+    this.getDataOp();
+  }
+
+  getDataOp() {
+    this.repService.getOpRepassadeiras()
+                   .pipe(map(res => {
+                     const resJson = this.monitorService.convertXMLtoJSON(res);
+                     return resJson;
+                    })).subscribe(doc => {
+                      let monOp = doc;
+                      console.log(monOp);
+                    });
   }
 
 }

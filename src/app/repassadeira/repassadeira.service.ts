@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpEventType } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { NgxXml2jsonService } from 'ngx-xml2json';
 
 @Injectable({
@@ -7,11 +7,15 @@ import { NgxXml2jsonService } from 'ngx-xml2json';
 })
 export class RepassadeiraService {
 
+  urlOpRepassadeiras = 'http://192.168.0.7:8080/cgi-bin/wspd_cgi.sh/WService=emswebelt/scb004ws.p?';
+
   constructor( private http: HttpClient,
                private xml2Json: NgxXml2jsonService ) { }
 
-getOpRepassadeiras() {
-
+getOpRepassadeiras(numRepassa?) {
+  const request = this.http.get(this.urlOpRepassadeiras + 'seq=0&numRepassa=%204', 
+                  { responseType: 'text', reportProgress: true });
+  return request;
 }               
                
 }
