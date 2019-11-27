@@ -9,7 +9,7 @@ export class RepassadeiraService {
 
   urlOpRepassadeiras = 'http://192.168.0.7:8080/cgi-bin/wspd_cgi.sh/WService=emswebelt/scb004ws.p?';
 
-  constructor( private http: HttpClient,
+  constructor( private     http: HttpClient,
                private xml2Json: NgxXml2jsonService ) { }
 
 getOpRepassadeiras(numRepassa) {
