@@ -20,6 +20,7 @@ export class RepassadeiraComponent implements OnInit {
           repassOp: RepassOp[]
         dataSource: any;
   displayedColumns: string[] = [
+                    'produzir',
                     'prioridade',
                     'dtPriori',
                     'destino',
@@ -31,7 +32,7 @@ export class RepassadeiraComponent implements OnInit {
                     'lance'];
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort,      { static: true })      sort: MatSort;
-    
+  
   user      = '';
   setor     = null;
   repassa   = null;
@@ -41,7 +42,7 @@ export class RepassadeiraComponent implements OnInit {
   constructor( private     repService: RepassadeiraService,
                private monitorService: MonitoropService,
                private   loginService: LoginService ) {
-               this.dataSource = new MatTableDataSource(this.repassOp);
+                 this.dataSource = new MatTableDataSource(this.repassOp);
               }
   ngOnInit() {  
     this.dataSource.paginator = this.paginator;
