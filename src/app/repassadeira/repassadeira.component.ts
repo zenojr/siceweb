@@ -8,6 +8,7 @@ import { MatPaginator        } from '@angular/material/paginator';
 import { MatSort             } from '@angular/material/sort';
 import { MatTableDataSource  } from '@angular/material/table';
 import { RepassOp            } from './repassOp';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-repassadeira',
@@ -41,15 +42,16 @@ export class RepassadeiraComponent implements OnInit {
 
   constructor( private     repService: RepassadeiraService,
                private monitorService: MonitoropService,
-               private   loginService: LoginService ) {
+               private   loginService: LoginService,
+               private          route: Router ) {
                  this.dataSource = new MatTableDataSource(this.repassOp);
               }
   ngOnInit() {  
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
 
-    this.loginService.currentUser.subscribe( user => this.user = user );
-    this.loginService.currentSetor.subscribe( setor => this.setor = setor );
+    this.loginService.currentUser.subscribe(       user => this.user = user );
+    this.loginService.currentSetor.subscribe(     setor => this.setor = setor );
     this.loginService.currentRepassa.subscribe( repassa => this.repassa = repassa );
     this.loginService.currentMonitor.subscribe( monitor => this.monitorOP = monitor );
     this.loginService.currentExpedicao.subscribe( expedicao => this.expedicao = expedicao );
@@ -57,11 +59,21 @@ export class RepassadeiraComponent implements OnInit {
     console.log(this.user    + ' ' + this.setor     + ' ' + 
                 this.repassa + ' ' + this.monitorOP + ' ' +
                 this.expedicao);
-
-    setTimeout(() => {
-      this.getDataOp(this.setor);
-    }, 2000 );
+    this.guardData();
     
+    
+      this.getDataOp(this.setor);
+    
+    
+  }
+
+  guardData(){
+    if( this.user == 'NULL' || this.setor == 'NULL') {
+      console.log('Get out')
+      this.route.navigateByUrl('/');
+    } else if ( this.repassa == 'no'  ) {
+      console.log('sem acesso a repassa');
+    }
   }
 
   getDataOp(setor) {
