@@ -1,20 +1,22 @@
-import { HttpClient, HttpEventType } from '@angular/common/http';
-import { MonitorOp } from './monitorOp';
-import { MonitoropService } from './monitorop.service';
-import { Component, OnInit, ViewChild, Input } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
+import { HttpClient         } from '@angular/common/http';
+import { MonitorOp          } from './monitorOp';
+import { MonitoropService   } from './monitorop.service';
+import { Component, OnInit, 
+         ViewChild          } from '@angular/core';
+import { MatPaginator       } from '@angular/material/paginator';
+import { MatSort            } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { map } from 'rxjs/operators';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
+import { map                } from 'rxjs/operators';
+import { MatSnackBar        } from '@angular/material/snack-bar';
+import { Router             } from '@angular/router';
+import { LoginService       } from '../login/login.service';
 
 export interface Repass {
-          dtOp: string;
-         numOp: number;
-  repassadeira: number;
-       seqItem: number;
-       destino: string;
+         dtOp: string;
+        numOp: number;
+ repassadeira: number;
+      seqItem: number;
+      destino: string;
 }
 
 @Component({
@@ -24,22 +26,27 @@ export interface Repass {
 })
 
 export class MonitoropComponent implements OnInit {
-       op = '';
-     lote = '';
-  valLoad = 0;
-  loading = true;
-    dbOut = false;
-   reload = false;
-  sending = false;
+       op       = '';
+     lote       = '';
+  valLoad       = 0;
+  loading       = true;
+    dbOut       = false;
+   reload       = false;
+  sending       = false;
+  user          = '';
+  setor         = null;
+  repassa       = null;
+  monitorOP     = null;
+  expedicao     = null;
   countReconect = 0;
-     start = 10;
-  selected = 0;  
-  error: any;
-  repLocal: string[] = [];
-  arrOut = [];
-  data: any;
+  start         = 10;
+  arrOut        = [];
+
+       error: any;
+    repLocal: string[] = [];  
+        data: any;
   dataSource: any;
-  monitorOp: MonitorOp[];
+   monitorOp: MonitorOp[];
   displayedColumns: string[] = [
     'prioridade',
     'repassadeira',
@@ -59,19 +66,31 @@ export class MonitoropComponent implements OnInit {
     'dtPriori'];
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
-  @ViewChild(MatSort, { static: true }) sort: MatSort;
+  @ViewChild(MatSort,      { static: true }) sort:      MatSort;
 
   constructor(private monitorService: MonitoropService, 
-              public http: HttpClient,
-              private snackBar: MatSnackBar,
-              private route: Router) {
+              public            http: HttpClient,
+              private       snackBar: MatSnackBar,
+              public    loginService: LoginService,
+              private          route: Router) {
     this.dataSource = new MatTableDataSource(this.data);
   }
 
   ngOnInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
-    this.getTableOP();    
+       this.loginService.currentUser.subscribe( user      => this.user      = user );
+      this.loginService.currentSetor.subscribe( setor     => this.setor     = setor );
+    this.loginService.currentRepassa.subscribe( repassa   => this.repassa   = repassa );
+    this.loginService.currentMonitor.subscribe( monitor   => this.monitorOP = monitor );
+  this.loginService.currentExpedicao.subscribe( expedicao => this.expedicao = expedicao );
+
+    if( this.user == 'NULL' || this.setor == 'NULL' ) {
+        console.log('Get out')
+        this.route.navigateByUrl('/');
+    } else if ( this.monitorOP == 'yes' ) {
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+        this.getTableOP();
+    }
   }
   
   sendRepassadeiras() {
@@ -98,12 +117,10 @@ export class MonitoropComponent implements OnInit {
         this.arrOut = [];
         this.getTableOP();        
       } else {
-        this.snackBar.open('Erro ao gravar dados', '[X] Fechar', { duration: 5000});
+        this.snackBar.open('Erro ao gravar dados', '[X] Fechar', { duration: 5000 });
         setTimeout( () => {
-          location.reload();
-          
-        }, 5000 );
-        
+          location.reload();          
+        }, 5000 );        
       }
     }, error => this.error = console.log(error)); 
     }    

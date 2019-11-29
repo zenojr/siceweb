@@ -5,7 +5,7 @@
                 <img src="../../assets/img/AF_Marca_Corfio_RGB_neg.png" alt="">
             </span>
             <div class="legenda">
-                <div id="vermelho">  </div>1 
+                <div id="vermelho">  </div>1
                 <div id="rosa">      </div>2
                 <div id="marrom">    </div>3
                 <div id="cinza">     </div>4
@@ -27,9 +27,9 @@
     </mat-toolbar>
     <div class="menu">    
         <mat-tab-group backgroundColor="primary">
-            <mat-tab label="Monitor OP"> <app-monitorop></app-monitorop> </mat-tab>
-            <mat-tab label="Repassadeira"> <app-repassadeira></app-repassadeira> </mat-tab>
-            <mat-tab label="Expedição"> Content 3 </mat-tab>
+            <mat-tab *ngIf="monitorMenu"      label="Monitor OP">   <app-monitorop></app-monitorop> </mat-tab>
+            <mat-tab *ngIf="repassadeiraMenu" label="Repassadeira"> <app-repassadeira></app-repassadeira> </mat-tab>
+            <mat-tab *ngIf="expedicaoMenu"    label="Expedição">    Content 3 </mat-tab>
         </mat-tab-group>
     </div>
 </div>
