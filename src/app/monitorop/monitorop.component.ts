@@ -26,16 +26,16 @@ export interface Repass {
 })
 
 export class MonitoropComponent implements OnInit {
-       op       = '';
-     lote       = '';
-  valLoad       = 0;
-  loading       = true;
-    dbOut       = false;
-   reload       = false;
-  sending       = false;
-  user          = '';
-  setor         = null;
-  repassa       = null;
+         op     = '';
+       lote     = '';
+    valLoad     = 0;
+    loading     = true;
+      dbOut     = false;
+     reload     = false;
+    sending     = false;
+       user     = '';
+      setor     = null;
+    repassa     = null;
   monitorOP     = null;
   expedicao     = null;
   countReconect = 0;

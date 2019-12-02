@@ -18,8 +18,8 @@ import { Router } from '@angular/router';
 export class RepassadeiraComponent implements OnInit {
               data: any;
              error: any;
-          repassOp: RepassOp[]
         dataSource: any;
+          repassOp: RepassOp[]
   displayedColumns: string[] = [
                     'produzir',
                     'prioridade',
@@ -31,14 +31,15 @@ export class RepassadeiraComponent implements OnInit {
                     'endereco',
                     'codLote',
                     'lance'];
+         producao = true;
+        impressao = false;
+             user = '';
+            setor = null;
+          repassa = null;
+        monitorOP = null;
+        expedicao = null;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort,      { static: true })      sort: MatSort;
-  
-  user      = '';
-  setor     = null;
-  repassa   = null;
-  monitorOP = null;
-  expedicao = null;
 
   constructor( private     repService: RepassadeiraService,
                private monitorService: MonitoropService,
@@ -49,7 +50,6 @@ export class RepassadeiraComponent implements OnInit {
   ngOnInit() {  
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
-
     this.loginService.currentUser.subscribe(       user => this.user = user );
     this.loginService.currentSetor.subscribe(     setor => this.setor = setor );
     this.loginService.currentRepassa.subscribe( repassa => this.repassa = repassa );
@@ -59,12 +59,20 @@ export class RepassadeiraComponent implements OnInit {
     console.log(this.user    + ' ' + this.setor     + ' ' + 
                 this.repassa + ' ' + this.monitorOP + ' ' +
                 this.expedicao);
-    this.guardData();
-    
-    
-      this.getDataOp(this.setor);
-    
-    
+    this.guardData();    
+    this.getDataOp(this.setor);    
+  }
+
+
+  menuControl(data) {
+    console.log(data);
+    if( data == 'prod' ) {
+      this.producao  = true;
+      this.impressao = false;
+    } else if ( data == 'imp' ) {
+      this.producao  = false;
+      this.impressao = true;
+    }
   }
 
   guardData(){
