@@ -21,13 +21,14 @@ import { MatDividerModule,
          MatSelectModule,
          MatProgressBarModule,
          MatProgressSpinnerModule,
-         MatButtonToggleModule} from '@angular/material';
+         MatButtonToggleModule,
+         MatExpansionModule,
+         MatDialogModule} from '@angular/material';
 import { FormsModule             } from '@angular/forms';
-import { PrincipalComponent } from './principal/principal.component';
-import { MonitoropComponent } from './monitorop/monitorop.component';
-import { PrioridadePipe } from './monitorop/prioridade.pipe';
-import { RepassadeiraComponent } from './repassadeira/repassadeira.component';
-
+import { PrincipalComponent      } from './principal/principal.component';
+import { MonitoropComponent      } from './monitorop/monitorop.component';
+import { PrioridadePipe          } from './monitorop/prioridade.pipe';
+import { RepassadeiraComponent   } from './repassadeira/repassadeira.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,9 @@ import { RepassadeiraComponent } from './repassadeira/repassadeira.component';
     MatSelectModule,
     MatProgressBarModule,
     MatProgressSpinnerModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    MatExpansionModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

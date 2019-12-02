@@ -1,5 +1,5 @@
 import { Component, OnInit,
-         ViewChild           } from '@angular/core';
+         ViewChild, Inject   } from '@angular/core';
 import { RepassadeiraService } from './repassadeira.service';
 import { MonitoropService    } from '../monitorop/monitorop.service';
 import { LoginService        } from '../login/login.service';
@@ -9,6 +9,9 @@ import { MatSort             } from '@angular/material/sort';
 import { MatTableDataSource  } from '@angular/material/table';
 import { RepassOp            } from './repassOp';
 import { Router } from '@angular/router';
+import {MatDialog, 
+        MatDialogRef, 
+        MAT_DIALOG_DATA      } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-repassadeira',
@@ -33,6 +36,7 @@ export class RepassadeiraComponent implements OnInit {
                     'lance'];
          producao = true;
         impressao = false;
+          loading = true;
              user = '';
             setor = null;
           repassa = null;
@@ -44,7 +48,8 @@ export class RepassadeiraComponent implements OnInit {
   constructor( private     repService: RepassadeiraService,
                private monitorService: MonitoropService,
                private   loginService: LoginService,
-               private          route: Router ) {
+               private          route: Router,
+               private         dialog: MatDialog ) {
                  this.dataSource = new MatTableDataSource(this.repassOp);
               }
   ngOnInit() {  
@@ -63,6 +68,13 @@ export class RepassadeiraComponent implements OnInit {
     this.getDataOp(this.setor);    
   }
 
+  produzir(){
+    
+      
+    
+  }
+
+  
 
   menuControl(data) {
     console.log(data);
@@ -102,6 +114,7 @@ export class RepassadeiraComponent implements OnInit {
                         repOp = repOp['Registro'];
                         console.log(repOp);
                         this.dataSource.data = repOp;
+                        this.loading = false;
                       }
                     }, error => this.error = console.log('This ' + error) );
   }
@@ -112,5 +125,7 @@ export class RepassadeiraComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
+
+  
 
 } // The end
