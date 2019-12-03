@@ -9,9 +9,13 @@ import { MatSort             } from '@angular/material/sort';
 import { MatTableDataSource  } from '@angular/material/table';
 import { RepassOp            } from './repassOp';
 import { Router } from '@angular/router';
-import {MatDialog, 
-        MatDialogRef, 
-        MAT_DIALOG_DATA      } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+
+export interface DialogData {
+  animal: string;
+  name: string;
+}
+
 
 @Component({
   selector: 'app-repassadeira',
@@ -19,6 +23,9 @@ import {MatDialog,
   styleUrls: ['./repassadeira.component.scss']
 })
 export class RepassadeiraComponent implements OnInit {
+
+  animal: string;
+  name = 'stringteste pass data';              
               data: any;
              error: any;
         dataSource: any;
@@ -49,7 +56,7 @@ export class RepassadeiraComponent implements OnInit {
                private monitorService: MonitoropService,
                private   loginService: LoginService,
                private          route: Router,
-               private         dialog: MatDialog ) {
+               public          dialog: MatDialog) {
                  this.dataSource = new MatTableDataSource(this.repassOp);
               }
   ngOnInit() {  
@@ -68,13 +75,23 @@ export class RepassadeiraComponent implements OnInit {
     this.getDataOp(this.setor);    
   }
 
-  produzir(){
-    
-      
-    
+  
+  openDialog(): void {
+    const dialogRef = this.dialog.open(RepassadeiraForm, {
+      width: '800px',
+      data: {name: this.name, animal: this.animal}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.animal = result;
+    });
   }
 
-  
+
+  produzir(){
+    alert('Open');
+  }
 
   menuControl(data) {
     console.log(data);
@@ -126,6 +143,21 @@ export class RepassadeiraComponent implements OnInit {
     }
   }
 
-  
-
 } // The end
+
+@Component({
+  selector: 'repassadeira-form',
+  templateUrl: 'repassadeiraForm.html',
+})
+export class RepassadeiraForm {
+
+  
+  constructor(
+    public repassForm: MatDialogRef<RepassadeiraForm>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+
+  onNoClick(): void {
+    this.repassForm.close();
+  }
+
+}
