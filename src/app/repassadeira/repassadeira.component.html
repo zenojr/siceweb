@@ -2,118 +2,117 @@
 
 
 <div class="container"> 
-        <div class="table-container">
-        
-        <mat-divider></mat-divider>
-        <span></span>
-        <div class="subMenu">
-                <mat-accordion>
-                        <mat-expansion-panel>
-                                <mat-expansion-panel-header>
-                                <mat-panel-title>
-                                Produção
-                                </mat-panel-title>
-                                <mat-panel-description>
-                                Entrada de O.Ps para produção
-                                </mat-panel-description>
-                                </mat-expansion-panel-header>
+	<div class="table-container">        
+	<mat-divider></mat-divider>
+	<span></span>
+	<div class="subMenu">
+		<mat-accordion>
+			<mat-expansion-panel>
+				<mat-expansion-panel-header>
+				<mat-panel-title>
+				Produção
+				</mat-panel-title>
+				<mat-panel-description>
+				Entrada de O.Ps para produção
+				</mat-panel-description>
+				</mat-expansion-panel-header>
 
-                                <div class="sending" *ngIf="loading">        
-									<div>        
-										<div>
-											<mat-spinner>
-											</mat-spinner>
-										</div>        
-											<div style="position:relative; top: 15px; left: 30px;">
-											<h2>carregando O.Ps...</h2>
-										</div>                
-									</div>
-                                </div>
+				<div class="sending" *ngIf="loading">        
+					<div>        
+						<div>
+							<mat-spinner>
+							</mat-spinner>
+						</div>        
+							<div style="position:relative; top: 15px; left: 30px;">
+							<h2>carregando O.Ps...</h2>
+						</div>                
+					</div>
+				</div>
 
-                                <div class="tabela mat-elevation-z8" >
-                                        <table mat-table [dataSource]="dataSource" matSort>
-                                                <ng-container matColumnDef="produzir">
-                                                <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
-                                                <td mat-cell *matCellDef="let row">
-                                                        <button (click)="openDialog()" mat-flat-button color="primary">Produzir</button>
-                                                </td>
-                                                </ng-container>
-                                                
-                                                <!-- prioridade Column -->
-                                                <ng-container matColumnDef="prioridade">
-                                                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Prioridade </th>
-                                                        <td mat-cell *matCellDef="let row"> {{ row.prioridade }} </td>
-                                                </ng-container>
-                        
-                                                <!-- dtPriori Column -->
-                                                <ng-container matColumnDef="dtPriori">
-                                                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Data Prioridade </th>
-                                                        <td mat-cell *matCellDef="let row"> {{ row.dtPriori }} </td>
-                                                </ng-container>
-                        
-                                                <!-- destino Column -->
-                                                <ng-container matColumnDef="destino">
-                                                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Destino </th>
-                                                        <td mat-cell *matCellDef="let row"> {{ row.destino }} </td>
-                                                </ng-container>
-                        
-                                                <!-- op Column -->
-                                                <ng-container matColumnDef="numOp">
-                                                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Ordem Produção </th>
-                                                        <td mat-cell *matCellDef="let row"> {{ row.numOp }} </td>
-                                                </ng-container>
-                        
-                                                <!-- itCodigo Column -->
-                                                <ng-container matColumnDef="itCodigo">
-                                                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Código Produto </th>
-                                                        <td mat-cell *matCellDef="let row"> {{ row.itCodigo }} </td>
-                                                </ng-container>
-                        
-                                                <!-- descItem Column -->
-                                                <ng-container matColumnDef="descItem">
-                                                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Desc. Prod. </th>
-                                                        <td mat-cell *matCellDef="let row"> {{ row.descItem }} </td>
-                                                </ng-container>
-                        
-                                                <!-- endereco Column -->
-                                                <ng-container matColumnDef="endereco">
-                                                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Endereco </th>
-                                                        <td mat-cell *matCellDef="let row"> {{ row.endereco }} </td>
-                                                </ng-container>
-                        
-                                                <!-- codLote Column -->
-                                                <ng-container matColumnDef="codLote">
-                                                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Lote </th>
-                                                        <td mat-cell *matCellDef="let row"> {{ row.codLote }} </td>
-                                                </ng-container>
-                        
-                                                <!-- lance Column -->
-                                                <ng-container matColumnDef="lance">
-                                                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Lance </th>
-                                                        <td mat-cell *matCellDef="let row"> {{ row.lance }} </td>
-                                                </ng-container>
-                                                
-                                                <!-- <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr> -->
-                                                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                                                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-                                        </table>
-                                        <mat-paginator [pageSizeOptions]="[25, 50, 100]"></mat-paginator>
-                                </div>
-                                                
-                        </mat-expansion-panel>
-                        <mat-expansion-panel>
-                                <mat-expansion-panel-header>
-                                <mat-panel-title>
-                                Impressão
-                                </mat-panel-title>
-                                <mat-panel-description>
-                                Impressão de etiqueta
-                                </mat-panel-description>
-                                </mat-expansion-panel-header>
-                                <p>I'm visible because I am open</p>
-                        </mat-expansion-panel>
-                </mat-accordion>                                      
-        </div>
-                                                                          
-        </div>
+				<div class="tabela mat-elevation-z8" >
+					<table mat-table [dataSource]="dataSource" matSort>
+						<ng-container matColumnDef="produzir">
+						<th mat-header-cell *matHeaderCellDef mat-sort-header></th>
+						<td mat-cell *matCellDef="let row">
+								<button (click)="openDialog()" mat-flat-button color="primary">Produzir</button>
+						</td>
+						</ng-container>
+						
+						<!-- prioridade Column -->
+						<ng-container matColumnDef="prioridade">
+								<th mat-header-cell *matHeaderCellDef mat-sort-header> Prioridade </th>
+								<td mat-cell *matCellDef="let row"> {{ row.prioridade }} </td>
+						</ng-container>
+
+						<!-- dtPriori Column -->
+						<ng-container matColumnDef="dtPriori">
+								<th mat-header-cell *matHeaderCellDef mat-sort-header> Data Prioridade </th>
+								<td mat-cell *matCellDef="let row"> {{ row.dtPriori }} </td>
+						</ng-container>
+
+						<!-- destino Column -->
+						<ng-container matColumnDef="destino">
+								<th mat-header-cell *matHeaderCellDef mat-sort-header> Destino </th>
+								<td mat-cell *matCellDef="let row"> {{ row.destino }} </td>
+						</ng-container>
+
+						<!-- op Column -->
+						<ng-container matColumnDef="numOp">
+								<th mat-header-cell *matHeaderCellDef mat-sort-header> Ordem Produção </th>
+								<td mat-cell *matCellDef="let row"> {{ row.numOp }} </td>
+						</ng-container>
+
+						<!-- itCodigo Column -->
+						<ng-container matColumnDef="itCodigo">
+								<th mat-header-cell *matHeaderCellDef mat-sort-header> Código Produto </th>
+								<td mat-cell *matCellDef="let row"> {{ row.itCodigo }} </td>
+						</ng-container>
+
+						<!-- descItem Column -->
+						<ng-container matColumnDef="descItem">
+								<th mat-header-cell *matHeaderCellDef mat-sort-header> Desc. Prod. </th>
+								<td mat-cell *matCellDef="let row"> {{ row.descItem }} </td>
+						</ng-container>
+
+						<!-- endereco Column -->
+						<ng-container matColumnDef="endereco">
+								<th mat-header-cell *matHeaderCellDef mat-sort-header> Endereco </th>
+								<td mat-cell *matCellDef="let row"> {{ row.endereco }} </td>
+						</ng-container>
+
+						<!-- codLote Column -->
+						<ng-container matColumnDef="codLote">
+								<th mat-header-cell *matHeaderCellDef mat-sort-header> Lote </th>
+								<td mat-cell *matCellDef="let row"> {{ row.codLote }} </td>
+						</ng-container>
+
+						<!-- lance Column -->
+						<ng-container matColumnDef="lance">
+								<th mat-header-cell *matHeaderCellDef mat-sort-header> Lance </th>
+								<td mat-cell *matCellDef="let row"> {{ row.lance }} </td>
+						</ng-container>
+						
+						<!-- <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr> -->
+						<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+						<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+					</table>
+					<mat-paginator [pageSizeOptions]="[25, 50, 100]"></mat-paginator>
+				</div>
+									
+			</mat-expansion-panel>
+			<mat-expansion-panel>
+				<mat-expansion-panel-header>
+				<mat-panel-title>
+					Impressão
+				</mat-panel-title>
+				<mat-panel-description>
+					Impressão de etiqueta
+				</mat-panel-description>
+				</mat-expansion-panel-header>
+					<p>I'm visible because I am open</p>
+			</mat-expansion-panel>
+		</mat-accordion>                                      
+	</div>
+																		
+	</div>
 </div>

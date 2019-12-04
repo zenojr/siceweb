@@ -9,7 +9,10 @@ import { MatSort             } from '@angular/material/sort';
 import { MatTableDataSource  } from '@angular/material/table';
 import { RepassOp            } from './repassOp';
 import { Router } from '@angular/router';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog,
+         MatDialogRef, 
+         MAT_DIALOG_DATA     } from '@angular/material/dialog';
+import { FormRepComponent    } from './form-rep/form-rep.component';
 
 export interface DialogData {
   animal: string;
@@ -77,7 +80,7 @@ export class RepassadeiraComponent implements OnInit {
 
   
   openDialog(): void {
-    const dialogRef = this.dialog.open(RepassadeiraForm, {
+    const dialogRef = this.dialog.open(FormRepComponent, {
       width: '800px',
       data: {name: this.name, animal: this.animal}
     });
@@ -145,19 +148,18 @@ export class RepassadeiraComponent implements OnInit {
 
 } // The end
 
-@Component({
-  selector: 'repassadeira-form',
-  templateUrl: 'repassadeiraForm.html',
-})
-export class RepassadeiraForm {
-
+// @Component({
+//   selector: 'repassadeira-form',
+//   templateUrl: 'repassadeiraForm.html',
+// })
+// export class RepassadeiraForm {
   
-  constructor(
-    public repassForm: MatDialogRef<RepassadeiraForm>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+//   constructor(
+//     public repassForm: MatDialogRef<RepassadeiraForm>,
+//     @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
 
-  onNoClick(): void {
-    this.repassForm.close();
-  }
+//   onNoClick(): void {
+//     this.repassForm.close();
+//   }
 
-}
+// }
