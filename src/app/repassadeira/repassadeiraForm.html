@@ -22,9 +22,22 @@
   #codProd{
     width: 120px;
   }
+  
+  #descProd {
+    width: 200px;
+  }
+
+  #dimBob{
+    width: 120px;
+  }
+
+  #bobMadeira{
+    width: 100px;
+  }
 </style>
 
 <div class="containerRep">
+  <h1></h1>
   <mat-grid-list class="formRep" cols="1"  rowHeight="2:1">
       <mat-grid-tile>
 
@@ -38,13 +51,13 @@
         <mat-form-field id="codProd">
           <input matInput placeholder="Cód.Prod.">
         </mat-form-field>
-        <mat-form-field>
-          <input matInput>
+        <mat-form-field id="descProd">
+          <input matInput placeholder="Desc.Prod">
         </mat-form-field>
-        <mat-form-field>
+        <mat-form-field id="dimBob">
           <input matInput placeholder="Dimensão Bob.">
         </mat-form-field>
-        <mat-form-field>
+        <mat-form-field id="bobMadeira">
           <input matInput placeholder="Bob.Madeira">
         </mat-form-field>
         <mat-form-field>

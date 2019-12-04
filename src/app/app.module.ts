@@ -28,7 +28,7 @@ import { FormsModule             } from '@angular/forms';
 import { PrincipalComponent      } from './principal/principal.component';
 import { MonitoropComponent      } from './monitorop/monitorop.component';
 import { PrioridadePipe          } from './monitorop/prioridade.pipe';
-import { RepassadeiraComponent   } from './repassadeira/repassadeira.component';
+import { RepassadeiraComponent, RepassadeiraForm   } from './repassadeira/repassadeira.component';
 
 @NgModule({
   declarations: [
@@ -37,8 +37,12 @@ import { RepassadeiraComponent   } from './repassadeira/repassadeira.component';
     PrincipalComponent,
     MonitoropComponent,
     PrioridadePipe,
-    RepassadeiraComponent
+    RepassadeiraComponent,
+    RepassadeiraForm
   ],
+
+  entryComponents: [RepassadeiraForm],
+
   imports: [
     BrowserModule,
     AppRoutingModule,
