@@ -2,9 +2,9 @@
   </style>
   
   <div class="containerRep">
-    <!-- <h1> {{ data.name }} </h1> -->
-    <mat-grid-list class="formRep" cols="4"  rowHeight="2:1">
-        <mat-grid-tile colspan="4" rowspan="4" >
+    <h1> {{ data.name }} </h1>
+    <mat-grid-list class="formRep" cols="4"  rowHeight="3:2">
+        <mat-grid-tile colspan="4" rowspan="2" >
   
           <div class="firstBlock">
           <mat-form-field id="ordemProd">
@@ -25,7 +25,7 @@
           <mat-form-field id="bobMadeira">
             <input matInput placeholder="Bob.Madeira">
           </mat-form-field>
-          <mat-form-field>
+          <mat-form-field id="lote">
             <input matInput placeholder="Lote">
           </mat-form-field>
           <mat-form-field id="lance">
@@ -34,17 +34,39 @@
           </div>
   
         </mat-grid-tile>
+
         <mat-grid-tile colspan="4" rowspan="2">
             <div class="firstBlock">
                 <mat-form-field id="obsOP">
-                    <input matInput placeholder="Obs. O.P">
+                        <input matInput placeholder="Obs. O.P">                    
+                </mat-form-field>
+                <mat-form-field id="bobFinal">                    
+                    <input matInput placeholder="Bob. Final">                    
+                </mat-form-field>
+                <mat-form-field id="variacao">                    
+                    <input matInput placeholder="Pode Variar">                    
+                </mat-form-field>
+                <mat-form-field id="varPermMin">
+                    <input matInput placeholder="Var. Permitida Min.">
+                </mat-form-field>
+                <mat-form-field id="varPerMax">
+                    <input matInput placeholder="Var. Permitida Max.">
+                </mat-form-field>
+                <mat-form-field id="quantBob">
+                    <input matInput placeholder="Quant. Bobina">
+                </mat-form-field>
+                <mat-form-field id="quantRolo">
+                    <input matInput placeholder="Quant. Rolo">
+                </mat-form-field>
+                <mat-form-field id="quantRetalho">
+                    <input matInput placeholder="Quant. Retalho">
+                </mat-form-field>
+                <mat-form-field id="quantSuc">
+                    <input matInput placeholder="Quant. Sucata">
                 </mat-form-field>
             </div>
         </mat-grid-tile>
-
-    </mat-grid-list>
-    
-    
+    </mat-grid-list>        
   </div>
       
     

@@ -1,39 +1,80 @@
 
-    .firstBlock {
-        display: flex;
-      flex-wrap: wrap;
-    }
-    mat-form-field {
-        margin: 5px;
-    }
+%spacementDefault {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
 
-    #lance{
-        width: 50px;
-    }
-    #ordemProd{
-        width: 90px;
-    }
-  
-    #cliente{
-        width: 200px;
-    }
-  
-    #codProd{
-        width: 120px;
-    }
-    
-    #descProd {
-        width: 200px;
-    }
-  
-    #dimBob{
-        width: 120px;
-    }
-  
-    #bobMadeira{
-        width: 100px;
-    }
+%centerAll {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-    #obsOP {
-        width: 100%;
-    }
+%smallInput {
+    width: 80px;
+}
+
+%mediumInput {
+    width: 150px;
+}
+
+%bigInput {
+    width: 350px;
+}
+
+
+
+.firstBlock {
+    @extend %spacementDefault;
+}
+mat-form-field {
+    margin: 5px;
+}
+
+#lance, #ordemProd
+{
+    @extend %smallInput;
+}
+
+#cliente, #codProd, 
+#lote, #dimBob,
+#bobMadeira, #quantBob, #quantRolo,
+#quantRetalho, #quantSuc {
+    @extend %mediumInput;
+}
+
+#obsOP, #descProd {
+    @extend %bigInput;
+}
+
+// #lance{
+//     width: 50px;
+// }
+// #ordemProd{
+//     width: 90px;
+// }
+
+// #cliente{
+//     width: 200px;
+// }
+
+// #codProd{
+//     width: 120px;
+// }
+
+// #descProd {
+//     width: 200px;
+// }
+
+// #dimBob{
+//     width: 120px;
+// }
+
+// #bobMadeira{
+//     width: 100px;
+// }
+
+// #obsOP {
+//     width: 450px;
+// }
