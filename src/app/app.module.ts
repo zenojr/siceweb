@@ -23,7 +23,8 @@ import { MatDividerModule,
          MatProgressSpinnerModule,
          MatButtonToggleModule,
          MatExpansionModule,
-         MatDialogModule} from '@angular/material';
+         MatDialogModule,
+         MatRadioModule} from '@angular/material';
 import { FormsModule             } from '@angular/forms';
 import { PrincipalComponent      } from './principal/principal.component';
 import { MonitoropComponent      } from './monitorop/monitorop.component';
@@ -68,7 +69,8 @@ import { FormRepComponent } from './repassadeira/form-rep/form-rep.component';
     MatProgressSpinnerModule,
     MatButtonToggleModule,
     MatExpansionModule,
-    MatDialogModule
+    MatDialogModule,
+    MatRadioModule
   ],
   providers: [],
   bootstrap: [AppComponent]

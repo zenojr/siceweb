@@ -81,7 +81,7 @@ export class RepassadeiraComponent implements OnInit {
   
   openDialog(): void {
     const dialogRef = this.dialog.open(FormRepComponent, {
-      width: '800px',
+      width: '1000px',
       data: {name: this.name, animal: this.animal}
     });
 
@@ -148,18 +148,3 @@ export class RepassadeiraComponent implements OnInit {
 
 } // The end
 
-// @Component({
-//   selector: 'repassadeira-form',
-//   templateUrl: 'repassadeiraForm.html',
-// })
-// export class RepassadeiraForm {
-  
-//   constructor(
-//     public repassForm: MatDialogRef<RepassadeiraForm>,
-//     @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
-
-//   onNoClick(): void {
-//     this.repassForm.close();
-//   }
-
-// }

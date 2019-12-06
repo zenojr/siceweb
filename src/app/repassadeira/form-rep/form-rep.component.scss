@@ -12,14 +12,18 @@
 }
 
 %smallInput {
-    width: 80px;
+    width: 65px;
 }
 
 %mediumInput {
-    width: 150px;
+    width: 120px;
 }
 
 %bigInput {
+    width: 250px;
+}
+
+%largestInput {
     width: 350px;
 }
 
@@ -27,54 +31,51 @@
 
 .firstBlock {
     @extend %spacementDefault;
-}
-mat-form-field {
-    margin: 5px;
+    margin-top: 25px;
 }
 
-#lance, #ordemProd
+.secondBlock{
+    @extend %spacementDefault;
+}
+
+.thirdBlock{
+    @extend %spacementDefault;
+}
+
+.contRadio{
+    margin: 20px 0px 0px 0px;    
+}
+
+mat-radio-button{
+    margin: 0px 10px 0px 0px;
+}
+
+.containerRep{
+    padding: 0px;
+}
+
+.quantidades {
+    @extend %spacementDefault;
+}
+
+#lance, #ordemProd, 
+#bobMadeira, #quantBob, #quantRolo,
+#quantRetalho, #quantSuc, #bobina, 
+#rolo, #retalho, #sucata
 {
     @extend %smallInput;
 }
 
-#cliente, #codProd, 
-#lote, #dimBob,
-#bobMadeira, #quantBob, #quantRolo,
-#quantRetalho, #quantSuc {
+#codProd, #ajusteSpark
+#lote, #dimBob, #sitLab {
     @extend %mediumInput;
 }
 
-#obsOP, #descProd {
+#cliente, #descProd {
     @extend %bigInput;
 }
 
-// #lance{
-//     width: 50px;
-// }
-// #ordemProd{
-//     width: 90px;
-// }
+#obsOP, #obsRep {
+    @extend %largestInput;
+}
 
-// #cliente{
-//     width: 200px;
-// }
-
-// #codProd{
-//     width: 120px;
-// }
-
-// #descProd {
-//     width: 200px;
-// }
-
-// #dimBob{
-//     width: 120px;
-// }
-
-// #bobMadeira{
-//     width: 100px;
-// }
-
-// #obsOP {
-//     width: 450px;
-// }

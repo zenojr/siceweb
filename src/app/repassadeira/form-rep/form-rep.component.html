@@ -1,72 +1,109 @@
-<style>
-  </style>
-  
-  <div class="containerRep">
-    <h1> {{ data.name }} </h1>
-    <mat-grid-list class="formRep" cols="4"  rowHeight="3:2">
-        <mat-grid-tile colspan="4" rowspan="2" >
-  
-          <div class="firstBlock">
-          <mat-form-field id="ordemProd">
-            <input matInput placeholder="Ordem Prod.">
-          </mat-form-field>
-          <mat-form-field id="cliente">
-            <input matInput placeholder="Cliente">
-          </mat-form-field>
-          <mat-form-field id="codProd">
-            <input matInput placeholder="Cód.Prod.">
-          </mat-form-field>
-          <mat-form-field id="descProd">
-            <input matInput placeholder="Desc.Prod">
-          </mat-form-field>
-          <mat-form-field id="dimBob">
-            <input matInput placeholder="Dimensão Bob.">
-          </mat-form-field>
-          <mat-form-field id="bobMadeira">
-            <input matInput placeholder="Bob.Madeira">
-          </mat-form-field>
-          <mat-form-field id="lote">
-            <input matInput placeholder="Lote">
-          </mat-form-field>
-          <mat-form-field id="lance">
-            <input matInput placeholder="Lance">
-          </mat-form-field>
-          </div>
-  
-        </mat-grid-tile>
 
-        <mat-grid-tile colspan="4" rowspan="2">
-            <div class="firstBlock">
-                <mat-form-field id="obsOP">
-                        <input matInput placeholder="Obs. O.P">                    
-                </mat-form-field>
-                <mat-form-field id="bobFinal">                    
-                    <input matInput placeholder="Bob. Final">                    
-                </mat-form-field>
-                <mat-form-field id="variacao">                    
-                    <input matInput placeholder="Pode Variar">                    
-                </mat-form-field>
-                <mat-form-field id="varPermMin">
-                    <input matInput placeholder="Var. Permitida Min.">
-                </mat-form-field>
-                <mat-form-field id="varPerMax">
-                    <input matInput placeholder="Var. Permitida Max.">
-                </mat-form-field>
-                <mat-form-field id="quantBob">
-                    <input matInput placeholder="Quant. Bobina">
-                </mat-form-field>
-                <mat-form-field id="quantRolo">
-                    <input matInput placeholder="Quant. Rolo">
-                </mat-form-field>
-                <mat-form-field id="quantRetalho">
-                    <input matInput placeholder="Quant. Retalho">
-                </mat-form-field>
-                <mat-form-field id="quantSuc">
-                    <input matInput placeholder="Quant. Sucata">
-                </mat-form-field>
-            </div>
-        </mat-grid-tile>
-    </mat-grid-list>        
-  </div>
+  <div class="containerRep">    
+    <div class="firstBlock">
+    <mat-form-field id="ordemProd">
+      <input matInput value="123456" placeholder="O.P.">
+    </mat-form-field>
+    <mat-form-field id="cliente">
+      <input matInput placeholder="Cliente">
+    </mat-form-field>
+    <mat-form-field id="codProd">
+      <input matInput placeholder="Cód.Prod.">
+    </mat-form-field>
+    <mat-form-field id="descProd">
+      <input matInput placeholder="Desc.Prod">
+    </mat-form-field>
+    <mat-form-field id="dimBob">
+      <input matInput placeholder="Dimensão Bob.">
+    </mat-form-field>
+    <mat-form-field id="bobMadeira">
+      <input matInput placeholder="Bob.Madeira">
+    </mat-form-field>
+    <mat-form-field id="lote">
+      <input matInput placeholder="Lote">
+    </mat-form-field>
+    <mat-form-field id="lance">
+      <input matInput placeholder="Lance">
+    </mat-form-field>
+    <mat-form-field id="obsOP">
+        <input matInput placeholder="Obs. O.P">
+    </mat-form-field>
+    <mat-form-field id="bobFinal">   
+        <input matInput placeholder="Bob. Final">
+    </mat-form-field>
+    <mat-form-field id="variacao">                    
+        <input matInput placeholder="Pode Variar">                    
+    </mat-form-field>
+    <mat-form-field id="varPermMin">
+        <input matInput placeholder="Var. Permitida Min.">
+    </mat-form-field>
+    <mat-form-field id="varPerMax">
+        <input matInput placeholder="Var. Permitida Max.">
+    </mat-form-field>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="quantidades">
+      <mat-form-field id="quantBob">
+          <input matInput value="0" placeholder="Qtd.Bobina">
+      </mat-form-field>
+      <mat-form-field id="quantRolo">
+          <input matInput value="0" placeholder="Qtd.Rolo">
+      </mat-form-field>
+      <mat-form-field id="quantRetalho">
+          <input matInput value="0" placeholder="Qtd.Retalho">
+      </mat-form-field>
+      <mat-form-field id="quantSuc">
+          <input matInput value="0" placeholder="Qtd.Sucata">
+      </mat-form-field>
+    </div>
+    <mat-divider></mat-divider>
+        <span>some data</span>
+    <mat-divider></mat-divider>          
+    <span>Quant Produzida</span>
+
+    <div class="secondBlock">
+    <mat-form-field id="bobina">
+        <input matInput placeholder="Bobina">
+    </mat-form-field>
+    <mat-form-field id="rolo">
+        <input matInput placeholder="Rolo">
+    </mat-form-field>
+    <mat-form-field id="retalho">
+        <input matInput placeholder="Retalho">
+    </mat-form-field>
+    <mat-form-field id="sucata">
+        <input matInput placeholder="Sucata">
+    </mat-form-field>
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <div class="thirdBlock">
+    <mat-form-field id="ajusteSpark">
+      <input matInput placeholder="Ajuste Spark">
+    </mat-form-field>
+    <div class="contRadio">
+      <label> Teste do Spark: </label>
+      <mat-radio-group >
+        <mat-radio-button value="sim">Sim</mat-radio-button>
+        <mat-radio-button value="nao">Não</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <div class="contRadio">        
+      <mat-radio-group >
+        <mat-radio-button value="sim">Devolver</mat-radio-button>
+        <mat-radio-button value="nao">Produzir</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <mat-form-field id="obsRep">
+      <input matInput placeholder="Obs. Rep">
+    </mat-form-field>
+    <mat-form-field id="sitLab">
+      <input matInput placeholder="Sit. Lab">
+    </mat-form-field>
+    <button color="primary" mat-raised-button>Salvar</button>    
+    </div>
+
+
       
     
