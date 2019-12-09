@@ -1,11 +1,10 @@
-
   <div class="containerRep">    
     <div class="firstBlock">
     <mat-form-field id="ordemProd">
-      <input matInput class="green" value="123456" placeholder="O.P.">
+      <input matInput class="green" placeholder="O.P." value="123456" >
     </mat-form-field>
     <mat-form-field id="cliente">
-      <input matInput class="green" placeholder="Cliente">
+      <input matInput class="green" placeholder="Cliente" value="{{ data.name }}" disabled>
     </mat-form-field>
     <mat-form-field id="codProd">
       <input matInput class="green" placeholder="Cód.Prod.">
@@ -17,7 +16,7 @@
       <input matInput class="green" placeholder="Dimensão Bob.">
     </mat-form-field>
     <mat-form-field id="bobMadeira">
-      <input matInput class="green" placeholder="Bob.Madeira">
+      <input matInput class="green" placeholder="Bob.Mad.">
     </mat-form-field>
     <mat-form-field id="lote">
       <input matInput class="green" placeholder="Lote">
@@ -75,20 +74,22 @@
         </mat-form-field>
       </div>
     <mat-divider></mat-divider>          
-    <span>Quant Produzida</span>
+    <span id="titleProd">
+      <b>Quant Produzida</b>
+    </span>
 
     <div class="secondBlock">
     <mat-form-field id="bobina">
-        <input matInput placeholder="Bobina">
+        <input class="white" matInput placeholder="Bobina">
     </mat-form-field>
     <mat-form-field id="rolo">
-        <input matInput placeholder="Rolo">
+        <input class="white" matInput placeholder="Rolo">
     </mat-form-field>
     <mat-form-field id="retalho">
-        <input matInput placeholder="Retalho">
+        <input class="white" matInput placeholder="Retalho">
     </mat-form-field>
     <mat-form-field id="sucata">
-        <input matInput placeholder="Sucata">
+        <input class="white" matInput placeholder="Sucata">
     </mat-form-field>
     </div>
 
@@ -104,7 +105,7 @@
       </mat-radio-group>
     </div>
     <mat-form-field id="ajusteSpark">
-      <input matInput placeholder="Ajuste Spark">
+      <input class="green" matInput placeholder="Ajuste Spark">
     </mat-form-field>
     <div class="contRadio">        
       <mat-radio-group >
@@ -116,7 +117,7 @@
       <input matInput placeholder="Obs. Rep">
     </mat-form-field>
     <mat-form-field id="sitLab">
-      <input matInput placeholder="Sit. Lab">
+      <input class="yellow" matInput placeholder="Sit. Lab">
     </mat-form-field>
     <button color="primary" mat-raised-button>Salvar</button>    
     </div>

@@ -24,14 +24,18 @@
 }
 
 %largestInput {
-    width: 350px;
+    width: 310px;
 }
-
-
 
 .firstBlock {
     @extend %spacementDefault;
     margin-top: 25px;
+
+    
+}
+
+mat-form-field {
+    text-align: center;
 }
 
 .secondBlock{
@@ -52,6 +56,7 @@ mat-radio-button{
 
 .containerRep{
     padding: 0px;
+    
 }
 
 .quantidades {
@@ -63,13 +68,27 @@ mat-radio-button{
 }
 
 .green {
-    background-color: rgb(160, 216, 160);
+    background-color: #b8e0d2;
     border-radius: 2px;
 }
 
 .yellow {
-    background-color: yellow;
+    background-color: #F58A07;
     border-radius: 2px;
+}
+
+.white {
+    background-color: white;
+    border-radius: 2px;
+}
+
+.contRadio{
+    // background-color: #C46A71;
+    border-radius: 2px;
+}
+
+#titleProd {
+    @extend %centerAll;
 }
 
 #reloadBtn {
@@ -78,25 +97,24 @@ mat-radio-button{
     margin-right: -20px;
 }
 
-#lance, #ordemProd, 
-#bobMadeira, #quantBob, #quantRolo,
-#quantRetalho, #quantSuc, #bobina, 
-#rolo, #retalho, #sucata, #quantBob,
-#quantRolo, #quantRetalho, #quantSuc
+#lance, #ordemProd, #quantBob, #quantRolo,
+#quantRetalho, #quantSuc, #bobina, #bobFinal,
+#rolo, #retalho, #sucata, #quantBob, #variacao,
+#quantRolo, #quantRetalho, #quantSuc, #bobMadeira
 {
     @extend %smallInput;
 }
 
-#codProd, #ajusteSpark
-#lote, #dimBob, #sitLab {
+#codProd, #ajusteSpark, #lote, #dimBob, 
+#varPermMin, #varPerMax {
     @extend %mediumInput;
 }
 
-#cliente, #descProd {
+#sitLab {
     @extend %bigInput;
 }
 
-#obsOP, #obsRep {
+#cliente, #descProd, #obsOP, #obsRep {
     @extend %largestInput;
 }
 

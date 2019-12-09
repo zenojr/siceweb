@@ -15,8 +15,27 @@ import { MatDialog,
 import { FormRepComponent    } from './form-rep/form-rep.component';
 
 export interface DialogData {
-  animal: string;
-  name: string;
+              op: string;
+         cliente: string;
+         codProd: string;
+        descProd: string;
+          dimBob: string;
+          bobMad: string;
+            lote: string;
+           lance: number;
+           obsOp: string;
+        bobFinal: string;
+      podeVariar: string;
+          varMax: number;
+          varMin: number;
+          qtdBob: number;
+         qtdRolo: number;
+      qtdRetalho: number;
+       qtdSucata: number;
+        corteBob: number;
+       corteRolo: number;
+        corteRet: number;
+        corteSuc: number;
 }
 
 
@@ -79,10 +98,31 @@ export class RepassadeiraComponent implements OnInit {
   }
 
   
-  openDialog(): void {
+  openDialog( op,
+              cliente,
+              codProd,
+              descProd,
+              dimBob,
+              bobMad,
+              lote,
+              lance,
+              obsOp,
+              bobFinal,
+              podeVariar,
+              varMax,
+              varMin,
+              qtdBob,
+              qtdRolo,
+              qtdRetalho,
+              qtdSucata,
+              corteBob,
+              corteRolo,
+              corteRet,
+              corteSuc ): void {
+    
     const dialogRef = this.dialog.open(FormRepComponent, {
       width: '1000px',
-      data: {name: this.name, animal: this.animal}
+      data: {name: op, animal: this.animal}
     });
 
     dialogRef.afterClosed().subscribe(result => {
