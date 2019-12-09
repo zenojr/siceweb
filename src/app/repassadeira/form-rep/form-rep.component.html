@@ -57,7 +57,21 @@
       </mat-form-field>
     </div>
     <mat-divider></mat-divider>
-        <span>some data</span>
+      <div class="cortes">
+        <mat-form-field id="quantBob">
+            <input matInput value="0" placeholder="Corte Bob.">
+        </mat-form-field>
+        <mat-form-field id="quantRolo">
+            <input matInput value="0" placeholder="Corte Rolo">
+        </mat-form-field>
+        <button mat-mini-fab color="primary"><img src="../../../assets/img/baseline_cached_white_18dp.png" alt=""></button>
+        <mat-form-field id="quantRetalho">
+            <input matInput value="0" placeholder="Corte Ret.">
+        </mat-form-field>
+        <mat-form-field id="quantSuc">
+            <input matInput value="0" placeholder="Corte Suc.">
+        </mat-form-field>
+      </div>
     <mat-divider></mat-divider>          
     <span>Quant Produzida</span>
 
@@ -79,9 +93,7 @@
     <mat-divider></mat-divider>
 
     <div class="thirdBlock">
-    <mat-form-field id="ajusteSpark">
-      <input matInput placeholder="Ajuste Spark">
-    </mat-form-field>
+    
     <div class="contRadio">
       <label> Teste do Spark: </label>
       <mat-radio-group >
@@ -89,6 +101,9 @@
         <mat-radio-button value="nao">Não</mat-radio-button>
       </mat-radio-group>
     </div>
+    <mat-form-field id="ajusteSpark">
+      <input matInput placeholder="Ajuste Spark">
+    </mat-form-field>
     <div class="contRadio">        
       <mat-radio-group >
         <mat-radio-button value="sim">Devolver</mat-radio-button>

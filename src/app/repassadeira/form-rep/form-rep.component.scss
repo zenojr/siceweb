@@ -58,10 +58,15 @@ mat-radio-button{
     @extend %spacementDefault;
 }
 
+.cortes {
+    @extend %spacementDefault;
+}
+
 #lance, #ordemProd, 
 #bobMadeira, #quantBob, #quantRolo,
 #quantRetalho, #quantSuc, #bobina, 
-#rolo, #retalho, #sucata
+#rolo, #retalho, #sucata, #quantBob,
+#quantRolo, #quantRetalho, #quantSuc
 {
     @extend %smallInput;
 }
