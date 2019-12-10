@@ -98,36 +98,58 @@ export class RepassadeiraComponent implements OnInit {
   }
 
   
-  openDialog( op,
-              cliente,
-              codProd,
-              descProd,
-              dimBob,
-              bobMad,
-              lote,
-              lance,
-              obsOp,
-              bobFinal,
-              podeVariar,
-              varMax,
-              varMin,
-              qtdBob,
-              qtdRolo,
-              qtdRetalho,
-              qtdSucata,
-              corteBob,
-              corteRolo,
-              corteRet,
-              corteSuc ): void {
+  openDialog( opDOM,
+              clienteDOM,
+              codProdDOM,
+              descProdDOM,
+              dimBobDOM,
+              bobMadDOM,
+              loteDOM,
+              lanceDOM,
+              obsOpDOM,
+              bobFinalDOM,
+              podeVariarDOM,
+              varMaxDOM,
+              varMinDOM,
+              qtdBobDOM,
+              qtdRoloDOM,
+              qtdRetalhoDOM,
+              qtdSucataDOM,
+              corteBobDOM,
+              corteRoloDOM,
+              corteRetDOM,
+              corteSucDOM ): void {
     
     const dialogRef = this.dialog.open(FormRepComponent, {
-      width: '1000px',
-      data: {name: op, animal: this.animal}
+      width: '1000px',      
+      data: {    op: opDOM,
+            cliente: clienteDOM,
+            codProd: codProdDOM,
+           descProd: descProdDOM,
+             dimBob: dimBobDOM,
+             bobMad: bobMadDOM,
+               lote: loteDOM,
+              lance: lanceDOM,
+              obsOp: obsOpDOM,
+           bobFinal: bobFinalDOM,
+         podeVariar: podeVariarDOM,
+             varMax: varMaxDOM,
+             varMin: varMinDOM,
+             qtdBob: qtdBobDOM,
+            qtdRolo: qtdRoloDOM,
+         qtdRetalho: qtdRetalhoDOM,
+          qtdSucata: qtdSucataDOM,
+           corteBob: corteBobDOM,
+          corteRolo: corteRoloDOM,
+           corteRet: corteRetDOM,
+           corteSuc: corteSucDOM }
     });
+
+    console.log( clienteDOM );
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-      this.animal = result;
+      // this.animal = result;
     });
   }
 

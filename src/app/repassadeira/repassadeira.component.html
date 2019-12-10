@@ -34,7 +34,27 @@
 						<ng-container matColumnDef="produzir">
 						<th mat-header-cell *matHeaderCellDef mat-sort-header></th>
 						<td mat-cell *matCellDef="let row">
-								<button (click)="openDialog( row.numOp, row.nomeCli )" 
+								<button (click)="openDialog( row.numOp, 
+															 row.nomeCli,
+															 row.itCodigo,
+															 row.descItem,
+															 row.dimBob,
+															 row.bobMad,
+															 row.codLote,
+															 row.lance,
+															 row.observ,
+															 row.finalBob,
+															 row.podeVar,
+															 row.qtPedMax,
+															 row.qtPedMin,
+															 row.quantPed,
+															 row.quantRolo,
+															 row.quantRetalho,
+															 row.quantSucata,
+															 row.corteBob,
+															 row.corteRol,
+															 row.corteRet,
+															 row.corteSuc )" 
 								mat-flat-button color="primary">Produzir</button>
 						</td>
 						</ng-container>

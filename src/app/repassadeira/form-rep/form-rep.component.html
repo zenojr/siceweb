@@ -1,13 +1,16 @@
   <div class="containerRep">    
     <div class="firstBlock">
     <mat-form-field id="ordemProd">
-      <input matInput class="green" placeholder="O.P." value="123456" >
+      <input matInput 
+             class="green" 
+             placeholder="O.P." 
+             value="{{ data.op }}" >
     </mat-form-field>
     <mat-form-field id="cliente">
-      <input matInput class="green" placeholder="Cliente" value="{{ data.name }}" disabled>
+      <input matInput class="green" placeholder="Cliente"   value="{{ data.cliente }}" disabled>
     </mat-form-field>
     <mat-form-field id="codProd">
-      <input matInput class="green" placeholder="Cód.Prod.">
+      <input matInput class="green" placeholder="Cód.Prod." value=" {{ data.codProd }} ">
     </mat-form-field>
     <mat-form-field id="descProd">
       <input matInput class="green" placeholder="Desc.Prod">
@@ -54,6 +57,7 @@
       <mat-form-field id="quantSuc">
           <input matInput class="green" value="0" placeholder="Qtd.Sucata">
       </mat-form-field>
+      <!-- here -->
     </div>
     <mat-divider></mat-divider>
       <div class="cortes">
