@@ -62,7 +62,7 @@
       <input matInput class="yellow" placeholder="Corte Bob." value="{{ data.corteBob }}" disabled>
     </mat-form-field>
     <mat-form-field id="quantRolo">
-      <input matInput class="yellow" placeholder="Corte Rolo" value="{{ data.corteRolo }}" disabled>
+      <input matInput class="yellow" placeholder="Corte Rolo" value="{{ data.corteRolo | inputZero }}" disabled>
     </mat-form-field>
     <button id="reloadBtn" mat-mini-fab color="primary">
       <img src="../../../assets/img/baseline_cached_white_18dp.png" alt="">

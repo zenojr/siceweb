@@ -31,6 +31,7 @@ import { MonitoropComponent      } from './monitorop/monitorop.component';
 import { PrioridadePipe          } from './monitorop/prioridade.pipe';
 import { RepassadeiraComponent   } from './repassadeira/repassadeira.component';
 import { FormRepComponent } from './repassadeira/form-rep/form-rep.component';
+import { InputZeroPipe } from './repassadeira/form-rep/input-zero.pipe';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { FormRepComponent } from './repassadeira/form-rep/form-rep.component';
     MonitoropComponent,
     PrioridadePipe,
     RepassadeiraComponent,
-    FormRepComponent
+    FormRepComponent,
+    InputZeroPipe
   ],
 
   entryComponents: [FormRepComponent],
