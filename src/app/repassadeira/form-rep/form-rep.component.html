@@ -1,109 +1,106 @@
-  <div class="containerRep">    
-    <div class="firstBlock">
+<div class="containerRep">
+  <div class="firstBlock">
     <mat-form-field id="ordemProd">
-      <input matInput 
-             class="green" 
-             placeholder="O.P." 
-             value="{{ data.op }}" >
+      <input matInput class="green" placeholder="O.P." value="{{ data.op }}" disabled>
     </mat-form-field>
     <mat-form-field id="cliente">
-      <input matInput class="green" placeholder="Cliente"   value="{{ data.cliente }}" disabled>
+      <input matInput class="green" placeholder="Cliente" value="{{ data.cliente }}" disabled>
     </mat-form-field>
     <mat-form-field id="codProd">
-      <input matInput class="green" placeholder="Cód.Prod." value=" {{ data.codProd }} ">
+      <input matInput class="green" placeholder="Cód.Prod." value="{{ data.codProd }}" disabled>
     </mat-form-field>
     <mat-form-field id="descProd">
-      <input matInput class="green" placeholder="Desc.Prod">
+      <input matInput class="green" placeholder="Desc.Prod" value="{{ data.descProd }}" disabled>
     </mat-form-field>
     <mat-form-field id="dimBob">
-      <input matInput class="green" placeholder="Dimensão Bob.">
+      <input matInput class="green" placeholder="Dimensão Bob." value="{{ data.dimBob }}" disabled>
     </mat-form-field>
     <mat-form-field id="bobMadeira">
-      <input matInput class="green" placeholder="Bob.Mad.">
+      <input matInput class="green" placeholder="Bob.Mad." value="{{ data.bobMad }}" disabled>
     </mat-form-field>
     <mat-form-field id="lote">
-      <input matInput class="green" placeholder="Lote">
+      <input matInput class="green" placeholder="Lote" value="{{ data.lote }}" disabled>
     </mat-form-field>
     <mat-form-field id="lance">
-      <input matInput class="green" placeholder="Lance">
+      <input matInput class="green" placeholder="Lance" value="{{ data.lance }}" disabled>
     </mat-form-field>
     <mat-form-field id="obsOP">
-        <input matInput class="green" placeholder="Obs. O.P">
+      <input matInput class="green" placeholder="Obs. O.P" value="{{ data.obsOp }}" disabled>
     </mat-form-field>
-    <mat-form-field id="bobFinal">   
-        <input matInput class="green" placeholder="Bob. Final">
+    <mat-form-field id="bobFinal">
+      <input matInput class="green" placeholder="Bob. Final" value="{{ data.bobFinal }}" disabled>
     </mat-form-field>
-    <mat-form-field id="variacao">                    
-        <input matInput class="green" placeholder="Pode Variar">                    
+    <mat-form-field id="variacao">
+      <input matInput class="green" placeholder="Pode Variar" value="{{ data.podeVariar }}" disabled>
     </mat-form-field>
     <mat-form-field id="varPermMin">
-        <input matInput class="green" placeholder="Var. Permitida Min.">
+      <input matInput class="green" placeholder="Var. Permitida Min." value="{{ data.varMax }}" disabled>
     </mat-form-field>
     <mat-form-field id="varPerMax">
-        <input matInput class="green" placeholder="Var. Permitida Max.">
+      <input matInput class="green" placeholder="Var. Permitida Max." value="{{ data.varMin }}" disabled>
     </mat-form-field>
-    </div>
-    <mat-divider></mat-divider>
-    <div class="quantidades">
-      <mat-form-field id="quantBob">
-          <input matInput class="green" value="0" placeholder="Qtd.Bobina">
-      </mat-form-field>
-      <mat-form-field id="quantRolo">
-          <input matInput class="green" value="0" placeholder="Qtd.Rolo">
-      </mat-form-field>
-      <mat-form-field id="quantRetalho">
-          <input matInput class="green" value="0" placeholder="Qtd.Retalho">
-      </mat-form-field>
-      <mat-form-field id="quantSuc">
-          <input matInput class="green" value="0" placeholder="Qtd.Sucata">
-      </mat-form-field>
-      <!-- here -->
-    </div>
-    <mat-divider></mat-divider>
-      <div class="cortes">
-        <mat-form-field id="quantBob">
-            <input matInput class="yellow" value="0" placeholder="Corte Bob.">
-        </mat-form-field>
-        <mat-form-field id="quantRolo">
-            <input matInput class="yellow" value="0" placeholder="Corte Rolo">
-        </mat-form-field>
-        <button id="reloadBtn"mat-mini-fab color="primary">
-          <img src="../../../assets/img/baseline_cached_white_18dp.png" alt="">
-        </button>
-        <mat-form-field id="quantRetalho">
-            <input matInput class="yellow" value="0" placeholder="Corte Ret.">
-        </mat-form-field>
-        <mat-form-field id="quantSuc">
-            <input matInput class="yellow" value="0" placeholder="Corte Suc.">
-        </mat-form-field>
-      </div>
-    <mat-divider></mat-divider>          
-    <span id="titleProd">
-      <b>Quant Produzida</b>
-    </span>
+  </div>
+  <mat-divider></mat-divider>
+  <div class="quantidades">
+    <mat-form-field id="quantBob">
+      <input matInput class="green" placeholder="Qtd.Bobina" value="{{ data.qtdBob }}" disabled>
+    </mat-form-field>
+    <mat-form-field id="quantRolo">
+      <input matInput class="green" placeholder="Qtd.Rolo" value="{{ data.qtdRolo }}" disabled>
+    </mat-form-field>
+    <mat-form-field id="quantRetalho">
+      <input matInput class="green" placeholder="Qtd.Retalho" value="{{ data.qtdRetalho }}" disabled>
+    </mat-form-field>
+    <mat-form-field id="quantSuc">
+      <input matInput class="green" placeholder="Qtd.Sucata" value="{{ data.qtdSucata }}" disabled>
+    </mat-form-field>
+    <!-- here -->
+  </div>
+  <mat-divider></mat-divider>
+  <div class="cortes">
+    <mat-form-field id="quantBob">
+      <input matInput class="yellow" placeholder="Corte Bob." value="{{ data.corteBob }}" disabled>
+    </mat-form-field>
+    <mat-form-field id="quantRolo">
+      <input matInput class="yellow" placeholder="Corte Rolo" value="{{ data.corteRolo }}" disabled>
+    </mat-form-field>
+    <button id="reloadBtn" mat-mini-fab color="primary">
+      <img src="../../../assets/img/baseline_cached_white_18dp.png" alt="">
+    </button>
+    <mat-form-field id="quantRetalho">
+      <input matInput class="yellow" placeholder="Corte Ret." value="{{ data.corteRet }}" disabled>
+    </mat-form-field>
+    <mat-form-field id="quantSuc">
+      <input matInput class="yellow" placeholder="Corte Suc." value="{{ data.corteSuc }}" disabled>
+    </mat-form-field>
+  </div>
+  <mat-divider></mat-divider>
+  <span id="titleProd">
+    <b>Quant Produzida</b>
+  </span>
 
-    <div class="secondBlock">
+  <div class="secondBlock">
     <mat-form-field id="bobina">
-        <input class="white" matInput placeholder="Bobina">
+      <input class="white" matInput placeholder="Bobina">
     </mat-form-field>
     <mat-form-field id="rolo">
-        <input class="white" matInput placeholder="Rolo">
+      <input class="white" matInput placeholder="Rolo">
     </mat-form-field>
     <mat-form-field id="retalho">
-        <input class="white" matInput placeholder="Retalho">
+      <input class="white" matInput placeholder="Retalho">
     </mat-form-field>
     <mat-form-field id="sucata">
-        <input class="white" matInput placeholder="Sucata">
+      <input class="white" matInput placeholder="Sucata">
     </mat-form-field>
-    </div>
+  </div>
 
-    <mat-divider></mat-divider>
+  <mat-divider></mat-divider>
 
-    <div class="thirdBlock">
-    
+  <div class="thirdBlock">
+
     <div class="contRadio">
       <label> Teste do Spark: </label>
-      <mat-radio-group >
+      <mat-radio-group>
         <mat-radio-button value="sim">Sim</mat-radio-button>
         <mat-radio-button value="nao">Não</mat-radio-button>
       </mat-radio-group>
@@ -111,8 +108,8 @@
     <mat-form-field id="ajusteSpark">
       <input class="green" matInput placeholder="Ajuste Spark">
     </mat-form-field>
-    <div class="contRadio">        
-      <mat-radio-group >
+    <div class="contRadio">
+      <mat-radio-group>
         <mat-radio-button value="sim">Devolver</mat-radio-button>
         <mat-radio-button value="nao">Produzir</mat-radio-button>
       </mat-radio-group>
@@ -123,9 +120,5 @@
     <mat-form-field id="sitLab">
       <input class="yellow" matInput placeholder="Sit. Lab">
     </mat-form-field>
-    <button color="primary" mat-raised-button>Salvar</button>    
-    </div>
-
-
-      
-    
+    <button color="primary" mat-raised-button>Salvar</button>
+  </div>

@@ -1,20 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
 
 @font-face {
-    font-family: 'Muli-Regular';
-    src: url('./assets/font/Muli-Regular.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+  font-family: "Muli-Regular";
+  src: url("./assets/font/Muli-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
 }
 
-.mat-dialog-container{
-    padding: 10px !important;
-    background-color: #95B8D1;
+.mat-dialog-container {
+  padding: 10px !important;
+  background-color: #95b8d1;
 }
 
-html, body { height: 100%; }
-body { 
-    margin: 0; 
-    font-family: 'Muli-Regular', Verdana, sans-serif;
+html,
+body {
+  height: 100%;
 }
-
+body {
+  margin: 0;
+  font-family: "Muli-Regular", Verdana, sans-serif;
+}
