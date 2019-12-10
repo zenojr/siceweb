@@ -20,4 +20,5 @@ export interface DialogData {
   corteRolo: number;
   corteRet: number;
   corteSuc: number;
+  spark: number;
 }
