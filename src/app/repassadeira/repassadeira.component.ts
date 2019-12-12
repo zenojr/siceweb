@@ -91,7 +91,8 @@ export class RepassadeiraComponent implements OnInit {
     corteRoloDOM,
     corteRetDOM,
     corteSucDOM,
-    sparkDOM): void {
+    sparkDOM,
+    amostraDOM): void {
 
     const dialogRef = this.dialog.open(FormRepComponent, {
       width: '1000px',
@@ -117,7 +118,8 @@ export class RepassadeiraComponent implements OnInit {
         corteRolo: corteRoloDOM,
         corteRet: corteRetDOM,
         corteSuc: corteSucDOM,
-        spark: sparkDOM
+        spark: sparkDOM,
+        amostra: amostraDOM
       }
     });
 

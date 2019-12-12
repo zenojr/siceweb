@@ -38,6 +38,10 @@ mat-form-field {
     text-align: center;
 }
 
+.mat-input-element:disabled {
+    color: black;
+}
+
 .secondBlock{
     @extend %spacementDefault;
 }
