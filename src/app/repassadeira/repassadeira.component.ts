@@ -135,6 +135,7 @@ export class RepassadeiraComponent implements OnInit {
              'Peça ao recebimento validar o metro a metro da bobina.' + ',' + 'ERRO METRO A METRO');
     } else if( mmValidaDOM == 5 ) {
       let insertDOM = prompt( 'Informe a ponta de fora:');
+      
       if( insertDOM == mPontaForaDOM  ) {
         console.log
         const dialogRef = this.dialog.open(FormRepComponent, {
