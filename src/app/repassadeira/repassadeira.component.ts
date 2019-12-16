@@ -18,7 +18,6 @@ import { FormRepComponent } from './form-rep/form-rep.component';
 })
 export class RepassadeiraComponent implements OnInit {
   animal: string;
-  name = 'stringteste pass data';
   data: any;
   error: any;
   dataSource: any;
@@ -34,6 +33,7 @@ export class RepassadeiraComponent implements OnInit {
     'endereco',
     'codLote',
     'lance'];
+  name = 'stringteste pass data';
   producao = true;
   impressao = false;
   loading = true;
@@ -56,10 +56,10 @@ export class RepassadeiraComponent implements OnInit {
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
-    this.loginService.currentUser.subscribe(user => this.user = user);
-    this.loginService.currentSetor.subscribe(setor => this.setor = setor);
-    this.loginService.currentRepassa.subscribe(repassa => this.repassa = repassa);
-    this.loginService.currentMonitor.subscribe(monitor => this.monitorOP = monitor);
+    this.loginService.currentUser.subscribe(          user => this.user      = user);
+    this.loginService.currentSetor.subscribe(        setor => this.setor     = setor);
+    this.loginService.currentRepassa.subscribe(    repassa => this.repassa   = repassa);
+    this.loginService.currentMonitor.subscribe(    monitor => this.monitorOP = monitor);
     this.loginService.currentExpedicao.subscribe(expedicao => this.expedicao = expedicao);
 
     console.log(this.user + ' ' + this.setor + ' ' +
@@ -68,7 +68,6 @@ export class RepassadeiraComponent implements OnInit {
     this.guardData();
     this.getDataOp(this.setor);
   }
-
 
   openDialog(opDOM,
     clienteDOM,
@@ -92,43 +91,53 @@ export class RepassadeiraComponent implements OnInit {
     corteRetDOM,
     corteSucDOM,
     sparkDOM,
-    amostraDOM): void {
+    amostraDOM,
+    mmValidaDOM): void {
 
-    const dialogRef = this.dialog.open(FormRepComponent, {
-      width: '1000px',
-      data: {
-        op: opDOM,
-        cliente: clienteDOM,
-        codProd: codProdDOM,
-        descProd: descProdDOM,
-        dimBob: dimBobDOM,
-        bobMad: bobMadDOM,
-        lote: loteDOM,
+    if( mmValidaDOM == 0 ) {
+      const dialogRef = this.dialog.open(FormRepComponent, {
+        width: '1000px',
+        data: {
+           op: opDOM,
+      cliente: clienteDOM,
+      codProd: codProdDOM,
+     descProd: descProdDOM,
+       dimBob: dimBobDOM,
+       bobMad: bobMadDOM,
+         lote: loteDOM,
         lance: lanceDOM,
         obsOp: obsOpDOM,
-        bobFinal: bobFinalDOM,
-        podeVariar: podeVariarDOM,
-        varMax: varMaxDOM,
-        varMin: varMinDOM,
-        qtdBob: qtdBobDOM,
-        qtdRolo: qtdRoloDOM,
-        qtdRetalho: qtdRetalhoDOM,
-        qtdSucata: qtdSucataDOM,
-        corteBob: corteBobDOM,
-        corteRolo: corteRoloDOM,
-        corteRet: corteRetDOM,
-        corteSuc: corteSucDOM,
+     bobFinal: bobFinalDOM,
+   podeVariar: podeVariarDOM,
+       varMax: varMaxDOM,
+       varMin: varMinDOM,
+       qtdBob: qtdBobDOM,
+      qtdRolo: qtdRoloDOM,
+   qtdRetalho: qtdRetalhoDOM,
+    qtdSucata: qtdSucataDOM,
+     corteBob: corteBobDOM,
+    corteRolo: corteRoloDOM,
+     corteRet: corteRetDOM,
+     corteSuc: corteSucDOM,
         spark: sparkDOM,
-        amostra: amostraDOM
-      }
-    });
+      amostra: amostraDOM,
+     mmValida: mmValidaDOM
+        }
+      });
+
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('The dialog was closed');      
+      });
+
+    } else if( mmValidaDOM == 1 ) {
+      alert('Esta bobina não pode ser repassada pois o metro a metro não foi validado. Peça ao recebimento validar o metro a metro da bobina.' + ',' + 'ERRO METRO A METRO');
+    } else if( mmValidaDOM == 5 ) {
+      prompt( 'Informe a ponta de fora:' );
+    }
 
     console.log(clienteDOM);
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      // this.animal = result;
-    });
+    
   }
 
 

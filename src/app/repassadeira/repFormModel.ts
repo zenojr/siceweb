@@ -22,4 +22,5 @@ export interface DialogData {
   corteSuc: number;
   spark: number;
   amostra: string;
+  mmValida: number;
 }
