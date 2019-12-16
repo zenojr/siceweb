@@ -33,13 +33,12 @@ export class RepassadeiraComponent implements OnInit {
     'endereco',
     'codLote',
     'lance'];
-  name = 'stringteste pass data';
-  producao = true;
+  producao  = true;
   impressao = false;
-  loading = true;
-  user = '';
-  setor = null;
-  repassa = null;
+  loading   = true;
+  user      = '';
+  setor     = null;
+  repassa   = null;
   monitorOP = null;
   expedicao = null;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
@@ -175,10 +174,7 @@ export class RepassadeiraComponent implements OnInit {
   
       }
     }
-
-    console.log(clienteDOM);
-
-    
+    console.log(clienteDOM); 
   }
 
 
