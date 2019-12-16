@@ -23,4 +23,5 @@ export interface DialogData {
   spark: number;
   amostra: string;
   mmValida: number;
+  mPontaFora: number;
 }

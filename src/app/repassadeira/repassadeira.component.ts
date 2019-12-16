@@ -92,7 +92,8 @@ export class RepassadeiraComponent implements OnInit {
     corteSucDOM,
     sparkDOM,
     amostraDOM,
-    mmValidaDOM): void {
+    mmValidaDOM,
+    mPontaForaDOM): void {
 
     if( mmValidaDOM == 0 ) {
       const dialogRef = this.dialog.open(FormRepComponent, {
@@ -121,7 +122,8 @@ export class RepassadeiraComponent implements OnInit {
      corteSuc: corteSucDOM,
         spark: sparkDOM,
       amostra: amostraDOM,
-     mmValida: mmValidaDOM
+     mmValida: mmValidaDOM,
+   mPontaFora: mPontaForaDOM
         }
       });
 
@@ -130,9 +132,48 @@ export class RepassadeiraComponent implements OnInit {
       });
 
     } else if( mmValidaDOM == 1 ) {
-      alert('Esta bobina não pode ser repassada pois o metro a metro não foi validado. Peça ao recebimento validar o metro a metro da bobina.' + ',' + 'ERRO METRO A METRO');
+      alert('Esta bobina não pode ser repassada pois o metro a metro não foi validado.' +
+             'Peça ao recebimento validar o metro a metro da bobina.' + ',' + 'ERRO METRO A METRO');
     } else if( mmValidaDOM == 5 ) {
-      prompt( 'Informe a ponta de fora:' );
+      let insertDOM = prompt( 'Informe a ponta de fora:');
+      if( insertDOM == mPontaForaDOM  ) {
+        console.log
+        const dialogRef = this.dialog.open(FormRepComponent, {
+          width: '1000px',
+          data: {
+             op: opDOM,
+        cliente: clienteDOM,
+        codProd: codProdDOM,
+       descProd: descProdDOM,
+         dimBob: dimBobDOM,
+         bobMad: bobMadDOM,
+           lote: loteDOM,
+          lance: lanceDOM,
+          obsOp: obsOpDOM,
+       bobFinal: bobFinalDOM,
+     podeVariar: podeVariarDOM,
+         varMax: varMaxDOM,
+         varMin: varMinDOM,
+         qtdBob: qtdBobDOM,
+        qtdRolo: qtdRoloDOM,
+     qtdRetalho: qtdRetalhoDOM,
+      qtdSucata: qtdSucataDOM,
+       corteBob: corteBobDOM,
+      corteRolo: corteRoloDOM,
+       corteRet: corteRetDOM,
+       corteSuc: corteSucDOM,
+          spark: sparkDOM,
+        amostra: amostraDOM,
+       mmValida: mmValidaDOM,
+     mPontaFora: mPontaForaDOM
+          }
+        });
+  
+        dialogRef.afterClosed().subscribe(result => {
+          console.log('The dialog was closed');      
+        });
+  
+      }
     }
 
     console.log(clienteDOM);
