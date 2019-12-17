@@ -57,7 +57,7 @@
     <!-- here -->
   </div>
   <mat-divider></mat-divider>
-  <div class="cortes">
+  <div class="cortes" *ngIf="data.mmValida == 5">
     <mat-form-field id="quantBob">
       <input matInput class="yellow" placeholder="Corte Bob." value="{{ data.corteBob }}" disabled>
     </mat-form-field>

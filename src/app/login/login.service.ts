@@ -7,7 +7,7 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class LoginService {
-  url = 'http://192.168.0.7:8080/cgi-bin/wspd_cgi.sh/WService=emswebelt/scb003ws_new.p?';
+  url = 'http://192.168.0.7:8080/cgi-bin/wspd_cgi.sh/WService=emswebelttst/scb003ws_new.p?';
 
   constructor( private     http: HttpClient,
                private xml2Json: NgxXml2jsonService ) { }

@@ -7,7 +7,7 @@ import { NgxXml2jsonService } from 'ngx-xml2json';
 })
 export class RepassadeiraService {
 
-  urlOpRepassadeiras = 'http://192.168.0.7:8080/cgi-bin/wspd_cgi.sh/WService=emswebelt/scb004ws.p?';
+  urlOpRepassadeiras = 'http://192.168.0.7:8080/cgi-bin/wspd_cgi.sh/WService=emswebelttst/scb004ws.p?';
 
   constructor( private     http: HttpClient,
                private xml2Json: NgxXml2jsonService ) { }

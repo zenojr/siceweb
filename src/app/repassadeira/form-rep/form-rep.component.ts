@@ -18,7 +18,7 @@ export class FormRepComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log(this.data['corteRolo'] );
+    console.log(this.data['mmValida'] );
   }
 
   onNoClick(): void {
