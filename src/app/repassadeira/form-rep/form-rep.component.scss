@@ -29,9 +29,7 @@
 
 .firstBlock {
     @extend %spacementDefault;
-    margin-top: 25px;
-
-    
+    margin-top: 25px;    
 }
 
 mat-form-field {
@@ -59,8 +57,7 @@ mat-radio-button{
 }
 
 .containerRep{
-    padding: 0px;
-    
+    padding: 0px;    
 }
 
 .quantidades {
@@ -89,6 +86,13 @@ mat-radio-button{
 .contRadio{
     // background-color: #C46A71;
     border-radius: 2px;
+}
+
+#closeBtn{
+     width: 16px;
+    height: 16px;
+    
+    float: right;
 }
 
 #titleProd {

@@ -10,6 +10,7 @@ import { RepassOp } from './repassOp';
 import { Router } from '@angular/router';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormRepComponent } from './form-rep/form-rep.component';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-repassadeira',
@@ -45,6 +46,7 @@ export class RepassadeiraComponent implements OnInit {
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   constructor(
+    public    snackBar: MatSnackBar,
     private repService: RepassadeiraService,
     private monitorService: MonitoropService,
     private loginService: LoginService,
@@ -177,7 +179,10 @@ export class RepassadeiraComponent implements OnInit {
         dialogRef.afterClosed().subscribe(result => {
           console.log('The dialog was closed');      
         });
-  
+      } else {
+        this.snackBar.open('Ponta de fora não confere.', '[X]Fechar', {           
+          duration: 3000
+        });
       }
     }
     console.log(clienteDOM); 

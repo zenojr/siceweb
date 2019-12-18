@@ -1,7 +1,7 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject     } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { DialogData } from '../repFormModel';
-import { inject } from '@angular/core/testing';
+import { DialogData                    } from '../repFormModel';
+import { MatSnackBar                   } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-form-rep',
@@ -14,6 +14,7 @@ export class FormRepComponent implements OnInit {
 
   constructor(
     public repassForm: MatDialogRef<FormRepComponent>,
+    public   snackBar: MatSnackBar,
     @Inject(MAT_DIALOG_DATA) public data: DialogData
   ) { }
 
@@ -33,6 +34,10 @@ export class FormRepComponent implements OnInit {
       this.indexCorteRol++;
       console.log( 'indexControlInside' + this.indexCorteRol);
     } else {
+      this.snackBar.open('Corte rolo finalizado.', '[X]Fechar', {           
+        duration: 3000
+      });
+      
       return this.indexCorteRol;
     }
     
