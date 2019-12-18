@@ -29,7 +29,7 @@ export class MonitoropComponent implements OnInit {
          op     = '';
        lote     = '';
     valLoad     = 0;
-    loading     = true;
+    loading     = false;
       dbOut     = false;
      reload     = false;
     sending     = false;
@@ -77,7 +77,12 @@ export class MonitoropComponent implements OnInit {
   }
 
   ngOnInit() {
-       this.loginService.currentUser.subscribe( user      => this.user      = user );
+       
+  }
+
+  startAll(){
+    this.loading = true;
+    this.loginService.currentUser.subscribe( user      => this.user      = user );
       this.loginService.currentSetor.subscribe( setor     => this.setor     = setor );
     this.loginService.currentRepassa.subscribe( repassa   => this.repassa   = repassa );
     this.loginService.currentMonitor.subscribe( monitor   => this.monitorOP = monitor );

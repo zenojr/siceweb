@@ -1,230 +1,242 @@
-
-<div class="sending" *ngIf="dbOut">        
-    <div>                
-        <div style="position:relative; top: 15px; left: 30px;">
-            <h2>Tentando reconectar com servidor... {{ countReconect }}</h2>
-        </div>
-        
-    </div>
-</div>
-
-<div class="sending" *ngIf="loading">        
-    <div>        
-        <div>
-            <mat-spinner>
-            </mat-spinner>
-        </div>        
-        <div style="position:relative; top: 15px; left: 30px;">
-            <h2>carregando O.Ps...</h2>
-        </div>
-        
-    </div>
-</div>
-
-<div class="sending" *ngIf="sending">        
-    <div>        
-        <div>
-            <mat-spinner>
-            </mat-spinner>
-        </div>        
-        <div style="position:relative; top: 60px; left: 30px;">
-            <h2>Enviando OPs...</h2>
-        </div>
-        
-    </div>
-</div>
-<div class="container">
-    <div class="table-container">
-        <div class="table-header">
-            
-                <div class="buttons">
-                    <button (click)="reloadTableOP()" mat-raised-button id="update">
-                        <img src="../../assets/img/icons/sync-alt-solid.svg" 
-                             alt="Atualizar Lista">
-                        Atualizar Lista
-                    </button>
-                </div>
-                <!-- <div class="buttons">
-                    <button mat-raised-button id="report">
-                        <img src="../../assets/img/icons/edit-regular.svg" 
-                        alt="Relatório de endereço">
-                        Relatório de end.
-                    </button>
-                </div> -->
-                <div class="buttons">
-                    <button (click)="sendRepassadeiras()" mat-raised-button id="send">
-                        <img src="../../assets/img/icons/paper-plane-solid.svg" 
-                        alt="Enviar produtos">
-                        Enviar prod. p/ rep.
-                    </button>
-                </div>
-            
-            <div class="title">
-                <h3> Monitor de itens: Ordem de produção. </h3>
+<mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header (click)="startAll()">
+        <mat-panel-title>
+          Monitor O.P
+        </mat-panel-title>
+        <mat-panel-description>
+          Monitor de ordens de produção.
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      
+      <div class="sending" *ngIf="dbOut">        
+        <div>                
+            <div style="position:relative; top: 15px; left: 30px;">
+                <h2>Tentando reconectar com servidor... {{ countReconect }}</h2>
             </div>
+            
         </div>
-        <mat-divider></mat-divider>
-        <div class="table-body">
-            <div class="form-table">
-                <div class="form">
-                    <mat-form-field>
-                        <input matInput (keyup)="applyFilter($event.target.value)" 
-                               placeholder="Ordem nº de produção"
-                               autocomplete="off" [(ngModel)]="op" type="number">
-                    </mat-form-field>
-                    <button mat-button 
-                            *ngIf="op" 
-                            matSuffix 
-                            mat-icon-button
-                            aria-label="Clear" 
-                            (click)="clear('')">
-                    <mat-icon> <img src="../../assets/img/icons/close-24px.svg" alt="Close"> </mat-icon>
-                    </button>
-                    <mat-form-field>
-                        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Lote" autocomplete="off"
-                            [(ngModel)]="lote">
-                    </mat-form-field>
-                    <button mat-button 
-                            *ngIf="lote" 
-                            matSuffix 
-                            mat-icon-button 
-                            aria-label="Clear" 
-                            (click)="clearlot('')">
+    </div>
+
+    <div class="sending" *ngIf="loading">        
+        <div>        
+            <div>
+                <mat-spinner>
+                </mat-spinner>
+            </div>        
+            <div style="position:relative; top: 15px; left: 30px;">
+                <h2>carregando O.Ps...</h2>
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="sending" *ngIf="sending">        
+        <div>        
+            <div>
+                <mat-spinner>
+                </mat-spinner>
+            </div>        
+            <div style="position:relative; top: 60px; left: 30px;">
+                <h2>Enviando OPs...</h2>
+            </div>
+            
+        </div>
+    </div>
+    <div class="container">
+        <div class="table-container">
+            <div class="table-header">
+                
+                    <div class="buttons">
+                        <button (click)="reloadTableOP()" mat-raised-button id="update">
+                            <img src="../../assets/img/icons/sync-alt-solid.svg" 
+                                 alt="Atualizar Lista">
+                            Atualizar Lista
+                        </button>
+                    </div>
+                    <!-- <div class="buttons">
+                        <button mat-raised-button id="report">
+                            <img src="../../assets/img/icons/edit-regular.svg" 
+                            alt="Relatório de endereço">
+                            Relatório de end.
+                        </button>
+                    </div> -->
+                    <div class="buttons">
+                        <button (click)="sendRepassadeiras()" mat-raised-button id="send">
+                            <img src="../../assets/img/icons/paper-plane-solid.svg" 
+                            alt="Enviar produtos">
+                            Enviar prod. p/ rep.
+                        </button>
+                    </div>
+                
+                <div class="title">
+                    <h3> Monitor de itens: Ordem de produção. </h3>
+                </div>
+            </div>
+            <mat-divider></mat-divider>
+            <div class="table-body">
+                <div class="form-table">
+                    <div class="form">
+                        <mat-form-field>
+                            <input matInput (keyup)="applyFilter($event.target.value)" 
+                                   placeholder="Ordem nº de produção"
+                                   autocomplete="off" [(ngModel)]="op" type="number">
+                        </mat-form-field>
+                        <button mat-button 
+                                *ngIf="op" 
+                                matSuffix 
+                                mat-icon-button
+                                aria-label="Clear" 
+                                (click)="clear('')">
                         <mat-icon> <img src="../../assets/img/icons/close-24px.svg" alt="Close"> </mat-icon>
-                    </button>
+                        </button>
+                        <mat-form-field>
+                            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Lote" autocomplete="off"
+                                [(ngModel)]="lote">
+                        </mat-form-field>
+                        <button mat-button 
+                                *ngIf="lote" 
+                                matSuffix 
+                                mat-icon-button 
+                                aria-label="Clear" 
+                                (click)="clearlot('')">
+                            <mat-icon> <img src="../../assets/img/icons/close-24px.svg" alt="Close"> </mat-icon>
+                        </button>
+                    </div>
+    
                 </div>
-
-            </div>
-
-            <div class="tabela mat-elevation-z8">
-                <table mat-table [dataSource]="dataSource" matSort>
-                    <!-- Prioridade Column -->
-                    <ng-container matColumnDef="prioridade">
-                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Prio. </th>
-                        <td mat-cell *matCellDef="let row">
-                            <div class="bullet" [ngClass]="{ 
-                                          'ten':row.prioridade === '10',
-                                         'nine':row.prioridade === '9', 
-                                        'eigth':row.prioridade === '8',
-                                        'seven':row.prioridade === '7',
-                                          'six':row.prioridade === '6',
-                                         'five':row.prioridade === '5',
-                                         'four':row.prioridade === '4',
-                                        'three':row.prioridade === '3',
-                                          'two':row.prioridade === '2',
-                                          'one':row.prioridade === '1'}">
-                                {{ row.prioridade }}
-                            </div>
-                        </td>
-                    </ng-container>
-
-                    <!-- ID Column -->
-                    <ng-container matColumnDef="repassadeira">
-                        <th class="headerTable" mat-header-cell *matHeaderCellDef mat-sort-header> Rep. </th>
-                        <td mat-cell *matCellDef="let row"> 
-                            <mat-select class="inputRep" #selectRepFE 
-                                        (selectionChange)="getRepassadeiras(row.dtOp, row.numOp, selectRepFE, row.seqItem, row.destino)">
-                                <mat-option value="0"></mat-option>
-                                <mat-option value="4">4</mat-option>
-                                <mat-option value="7">7</mat-option>
-                                <mat-option value="9">9</mat-option>
-                                <mat-option value="12">12</mat-option>
-                                <mat-option value="19">19</mat-option>
-                                <mat-option value="99">99</mat-option>
-                            </mat-select>    
-                        </td>
-                    </ng-container>
-
-                    <!-- Destino Column -->
-                    <ng-container matColumnDef="destino">
-                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Dest. </th>
-                        <td mat-cell *matCellDef="let row"> {{ row.destino }} </td>
-                    </ng-container>
-
-                    <!-- O.P Column -->
-                    <ng-container matColumnDef="numOp">
-                        <th mat-header-cell *matHeaderCellDef mat-sort-header> O.P </th>
-                        <td mat-cell *matCellDef="let row"> {{ row.numOp }} </td>
-                    </ng-container>
-
-                    <!-- nº Pedido Column -->
-                    <ng-container matColumnDef="nrPedido">
-                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Nº Pedido </th>
-                        <td mat-cell *matCellDef="let row"> {{ row.nrPedido }} </td>
-                    </ng-container>
-
-                    <!-- lote Column -->
-                    <ng-container matColumnDef="lote">
-                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Lote </th>
-                        <td mat-cell *matCellDef="let row"> {{ row.lote }} </td>
-                    </ng-container>
-
-                    <!-- Cod. Prod Column -->
-                    <ng-container matColumnDef="itCodigo">
-                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Cod. Prod. </th>
-                        <td mat-cell *matCellDef="let row"> {{ row.itCodigo }} </td>
-                    </ng-container>
-
-                    <!-- Desc.Prod. Column -->
-                    <ng-container matColumnDef="descItem">
-                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Descrição do Produto </th>
-                        <td mat-cell *matCellDef="let row"> {{ row.descItem }} </td>
-                    </ng-container>
-
-                    <!-- Dim.Bobina. Column -->
-                    <ng-container matColumnDef="dimBob">
-                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Dim. da Bobina </th>
-                        <td mat-cell *matCellDef="let row"> {{ row.dimBob }} </td>
-                    </ng-container>
-
-                    <!-- Rep. p/ Dim. Column -->
-                    <ng-container matColumnDef="dimBobDest">
-                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Rep. p/Dim. </th>
-                        <td mat-cell *matCellDef="let row"> {{ row.dimBobDest }} </td>
-                    </ng-container>
-
-                    <!-- Endereço Column -->
-                    <ng-container matColumnDef="endereco">
-                        <th mat-header-cell *matHeaderCellDef mat-sort-header> End. </th>
-                        <td mat-cell *matCellDef="let row"> {{ row.endereco }} </td>
-                    </ng-container>
-
-                    <!-- Bobina Column -->
-                    <ng-container matColumnDef="quantPed">
-                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Bob. </th>
-                        <td mat-cell *matCellDef="let row"> {{ row.quantPed }} </td>
-                    </ng-container>
-
-                    <!-- Rolo Column -->
-                    <ng-container matColumnDef="quantRolo">
-                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Rolo </th>
-                        <td mat-cell *matCellDef="let row"> {{ row.quantRolo }} </td>
-                    </ng-container>
-
-                    <!-- Retalho Column -->
-                    <ng-container matColumnDef="quantRet">
-                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Ret. </th>
-                        <td mat-cell *matCellDef="let row"> {{ row.quantRet }} </td>
-                    </ng-container>
-
-                    <!-- Sucata Column -->
-                    <ng-container matColumnDef="quantSuc">
-                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Sucata </th>
-                        <td mat-cell *matCellDef="let row"> {{ row.quantSuc }} </td>
-                    </ng-container>
-
-                    <!-- Dt. Priori Column -->
-                    <ng-container matColumnDef="dtPriori">
-                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Dt. Priori </th>
-                        <td mat-cell *matCellDef="let row"> {{ row.dtPriori }} </td>
-                    </ng-container>
-
-                    <!-- <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr> -->
-                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-                </table>
-                <mat-paginator [pageSizeOptions]="[50, 100, 200]"></mat-paginator>
+    
+                <div class="tabela mat-elevation-z8">
+                    <table mat-table [dataSource]="dataSource" matSort>
+                        <!-- Prioridade Column -->
+                        <ng-container matColumnDef="prioridade">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Prio. </th>
+                            <td mat-cell *matCellDef="let row">
+                                <div class="bullet" [ngClass]="{ 
+                                              'ten':row.prioridade === '10',
+                                             'nine':row.prioridade === '9', 
+                                            'eigth':row.prioridade === '8',
+                                            'seven':row.prioridade === '7',
+                                              'six':row.prioridade === '6',
+                                             'five':row.prioridade === '5',
+                                             'four':row.prioridade === '4',
+                                            'three':row.prioridade === '3',
+                                              'two':row.prioridade === '2',
+                                              'one':row.prioridade === '1'}">
+                                    {{ row.prioridade }}
+                                </div>
+                            </td>
+                        </ng-container>
+    
+                        <!-- ID Column -->
+                        <ng-container matColumnDef="repassadeira">
+                            <th class="headerTable" mat-header-cell *matHeaderCellDef mat-sort-header> Rep. </th>
+                            <td mat-cell *matCellDef="let row"> 
+                                <mat-select class="inputRep" #selectRepFE 
+                                            (selectionChange)="getRepassadeiras(row.dtOp, row.numOp, selectRepFE, row.seqItem, row.destino)">
+                                    <mat-option value="0"></mat-option>
+                                    <mat-option value="4">4</mat-option>
+                                    <mat-option value="7">7</mat-option>
+                                    <mat-option value="9">9</mat-option>
+                                    <mat-option value="12">12</mat-option>
+                                    <mat-option value="19">19</mat-option>
+                                    <mat-option value="99">99</mat-option>
+                                </mat-select>    
+                            </td>
+                        </ng-container>
+    
+                        <!-- Destino Column -->
+                        <ng-container matColumnDef="destino">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Dest. </th>
+                            <td mat-cell *matCellDef="let row"> {{ row.destino }} </td>
+                        </ng-container>
+    
+                        <!-- O.P Column -->
+                        <ng-container matColumnDef="numOp">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> O.P </th>
+                            <td mat-cell *matCellDef="let row"> {{ row.numOp }} </td>
+                        </ng-container>
+    
+                        <!-- nº Pedido Column -->
+                        <ng-container matColumnDef="nrPedido">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Nº Pedido </th>
+                            <td mat-cell *matCellDef="let row"> {{ row.nrPedido }} </td>
+                        </ng-container>
+    
+                        <!-- lote Column -->
+                        <ng-container matColumnDef="lote">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Lote </th>
+                            <td mat-cell *matCellDef="let row"> {{ row.lote }} </td>
+                        </ng-container>
+    
+                        <!-- Cod. Prod Column -->
+                        <ng-container matColumnDef="itCodigo">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Cod. Prod. </th>
+                            <td mat-cell *matCellDef="let row"> {{ row.itCodigo }} </td>
+                        </ng-container>
+    
+                        <!-- Desc.Prod. Column -->
+                        <ng-container matColumnDef="descItem">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Descrição do Produto </th>
+                            <td mat-cell *matCellDef="let row"> {{ row.descItem }} </td>
+                        </ng-container>
+    
+                        <!-- Dim.Bobina. Column -->
+                        <ng-container matColumnDef="dimBob">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Dim. da Bobina </th>
+                            <td mat-cell *matCellDef="let row"> {{ row.dimBob }} </td>
+                        </ng-container>
+    
+                        <!-- Rep. p/ Dim. Column -->
+                        <ng-container matColumnDef="dimBobDest">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Rep. p/Dim. </th>
+                            <td mat-cell *matCellDef="let row"> {{ row.dimBobDest }} </td>
+                        </ng-container>
+    
+                        <!-- Endereço Column -->
+                        <ng-container matColumnDef="endereco">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> End. </th>
+                            <td mat-cell *matCellDef="let row"> {{ row.endereco }} </td>
+                        </ng-container>
+    
+                        <!-- Bobina Column -->
+                        <ng-container matColumnDef="quantPed">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Bob. </th>
+                            <td mat-cell *matCellDef="let row"> {{ row.quantPed }} </td>
+                        </ng-container>
+    
+                        <!-- Rolo Column -->
+                        <ng-container matColumnDef="quantRolo">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Rolo </th>
+                            <td mat-cell *matCellDef="let row"> {{ row.quantRolo }} </td>
+                        </ng-container>
+    
+                        <!-- Retalho Column -->
+                        <ng-container matColumnDef="quantRet">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Ret. </th>
+                            <td mat-cell *matCellDef="let row"> {{ row.quantRet }} </td>
+                        </ng-container>
+    
+                        <!-- Sucata Column -->
+                        <ng-container matColumnDef="quantSuc">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Sucata </th>
+                            <td mat-cell *matCellDef="let row"> {{ row.quantSuc }} </td>
+                        </ng-container>
+    
+                        <!-- Dt. Priori Column -->
+                        <ng-container matColumnDef="dtPriori">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Dt. Priori </th>
+                            <td mat-cell *matCellDef="let row"> {{ row.dtPriori }} </td>
+                        </ng-container>
+    
+                        <!-- <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr> -->
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                    </table>
+                    <mat-paginator [pageSizeOptions]="[50, 100, 200]"></mat-paginator>
+                </div>
             </div>
         </div>
     </div>
-</div>
+    </mat-expansion-panel>    
+</mat-accordion>

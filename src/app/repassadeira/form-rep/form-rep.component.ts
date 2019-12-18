@@ -36,10 +36,8 @@ export class FormRepComponent implements OnInit {
     } else {
       this.snackBar.open('Corte rolo finalizado.', '[X]Fechar', {           
         duration: 3000
-      });
-      
+      });      
       return this.indexCorteRol;
-    }
-    
+    }    
   }
 }
