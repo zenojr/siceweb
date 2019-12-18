@@ -10,7 +10,7 @@ import { inject } from '@angular/core/testing';
 })
 export class FormRepComponent implements OnInit {
 
-  
+  indexCorteRol = 0;
 
   constructor(
     public repassForm: MatDialogRef<FormRepComponent>,
@@ -25,4 +25,16 @@ export class FormRepComponent implements OnInit {
     this.repassForm.close();
   }
 
+  nextBtn(){
+    let controlStop = this.data['corteRol'];
+    console.log( 'control lenght: ' + controlStop.length );
+    console.log( 'indexControl: '   + this.indexCorteRol );
+    if( this.indexCorteRol < controlStop.length -1 ){
+      this.indexCorteRol++;
+      console.log( 'indexControlInside' + this.indexCorteRol);
+    } else {
+      return this.indexCorteRol;
+    }
+    
+  }
 }

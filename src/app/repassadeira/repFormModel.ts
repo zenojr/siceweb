@@ -24,4 +24,5 @@ export interface DialogData {
   amostra: string;
   mmValida: number;
   mPontaFora: number;
+  corteRol: string;
 }

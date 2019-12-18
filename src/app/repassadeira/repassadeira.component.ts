@@ -92,7 +92,8 @@ export class RepassadeiraComponent implements OnInit {
     sparkDOM,
     amostraDOM,
     mmValidaDOM,
-    mPontaForaDOM): void {
+    mPontaForaDOM,
+    corteRolDOM): void {
 
     if( mmValidaDOM == 0 ) {
       const dialogRef = this.dialog.open(FormRepComponent, {
@@ -122,10 +123,9 @@ export class RepassadeiraComponent implements OnInit {
         spark: sparkDOM,
       amostra: amostraDOM,
      mmValida: mmValidaDOM,
-   mPontaFora: mPontaForaDOM
-        }
+   mPontaFora: mPontaForaDOM,
+     corteRol: corteRolDOM }
       });
-
       dialogRef.afterClosed().subscribe(result => {
         console.log('The dialog was closed');      
       });
@@ -135,9 +135,13 @@ export class RepassadeiraComponent implements OnInit {
              'Peça ao recebimento validar o metro a metro da bobina.' + ',' + 'ERRO METRO A METRO');
     } else if( mmValidaDOM == 5 ) {
       let insertDOM = prompt( 'Informe a ponta de fora:');
+      let corteRolLocal = corteRolDOM;
+      corteRolLocal = corteRolLocal.split(",");
+      let indexCorteRol = 0;
+      
       
       if( insertDOM == mPontaForaDOM  ) {
-        console.log
+        
         const dialogRef = this.dialog.open(FormRepComponent, {
           width: '1000px',
           data: {
@@ -165,7 +169,8 @@ export class RepassadeiraComponent implements OnInit {
           spark: sparkDOM,
         amostra: amostraDOM,
        mmValida: mmValidaDOM,
-     mPontaFora: mPontaForaDOM
+     mPontaFora: mPontaForaDOM,
+       corteRol: corteRolLocal
           }
         });
   
@@ -186,10 +191,10 @@ export class RepassadeiraComponent implements OnInit {
   menuControl(data) {
     console.log(data);
     if (data == 'prod') {
-      this.producao = true;
+      this.producao  = true;
       this.impressao = false;
     } else if (data == 'imp') {
-      this.producao = false;
+      this.producao  = false;
       this.impressao = true;
     }
   }
