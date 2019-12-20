@@ -19,7 +19,7 @@ import { MatSnackBar } from '@angular/material';
 })
 export class RepassadeiraComponent implements OnInit {
   animal: string;
-  data: any;
+  // data: any;
   error: any;
   dataSource: any;
   repassOp: RepassOp[]
@@ -132,9 +132,12 @@ export class RepassadeiraComponent implements OnInit {
         console.log('The dialog was closed');      
       });
 
-    } else if( mmValidaDOM == 1 ) {
-      alert('Esta bobina não pode ser repassada pois o metro a metro não foi validado.' +
-             'Peça ao recebimento validar o metro a metro da bobina.' + ',' + 'ERRO METRO A METRO');
+    } else if( mmValidaDOM == 1 ) {      
+      this.snackBar.open('Esta bobina não pode ser repassada pois o metro a metro não foi validado.' +
+                         'Solicite ao recebimento para validar o metro a metro da bobina.' + ',' + 
+                         'ERRO METRO A METRO', '[X]Fechar', {           
+                         duration: 10000
+      });
     } else if( mmValidaDOM == 5 ) {
       let insertDOM = prompt( 'Informe a ponta de fora:');
       let corteRolLocal = corteRolDOM;

@@ -6,77 +6,77 @@
 <div class="containerRep">
   <div class="firstBlock">
     <mat-form-field id="ordemProd">
-      <input matInput class="green" placeholder="O.P." value="{{ data.op }}" disabled>
+      <input matInput class="green" placeholder="O.P." value="{{ data.op }}" #op disabled>
     </mat-form-field>
     <mat-form-field id="cliente">
-      <input matInput class="green" placeholder="Cliente" value="{{ data.cliente }}" disabled>
+      <input matInput class="green" placeholder="Cliente" value="{{ data.cliente }}" #cliente disabled>
     </mat-form-field>
     <mat-form-field id="codProd">
-      <input matInput class="green" placeholder="Cód.Prod." value="{{ data.codProd }}" disabled>
+      <input matInput class="green" placeholder="Cód.Prod." value="{{ data.codProd }}" #codProd disabled>
     </mat-form-field>
     <mat-form-field id="descProd">
-      <input matInput class="green" placeholder="Desc.Prod" value="{{ data.descProd }}" disabled>
+      <input matInput class="green" placeholder="Desc.Prod" value="{{ data.descProd }}" #descProd disabled>
     </mat-form-field>
     <mat-form-field id="dimBob">
-      <input matInput class="green" placeholder="Dimensão Bob." value="{{ data.dimBob }}" disabled>
+      <input matInput class="green" placeholder="Dimensão Bob." value="{{ data.dimBob }}" #dimBob disabled>
     </mat-form-field>
     <mat-form-field id="bobMadeira">
-      <input matInput class="green" placeholder="Bob.Mad." value="{{ data.bobMad }}" disabled>
+      <input matInput class="green" placeholder="Bob.Mad." value="{{ data.bobMad }}" #bobMad disabled>
     </mat-form-field>
     <mat-form-field id="lote">
-      <input matInput class="green" placeholder="Lote" value="{{ data.lote }}" disabled>
+      <input matInput class="green" placeholder="Lote" value="{{ data.lote }}" #lote disabled>
     </mat-form-field>
     <mat-form-field id="lance">
-      <input matInput class="green" placeholder="Lance" value="{{ data.lance }}" disabled>
+      <input matInput class="green" placeholder="Lance" value="{{ data.lance }}" #lance disabled>
     </mat-form-field>
     <mat-form-field id="obsOP">
-      <input matInput class="green" placeholder="Obs. O.P" value="{{ data.obsOp }}" disabled>
+      <input matInput class="green" placeholder="Obs. O.P" value="{{ data.obsOp }}" #obsOp disabled>
     </mat-form-field>
     <mat-form-field id="bobFinal">
-      <input matInput class="green" placeholder="Bob. Final" value="{{ data.bobFinal }}" disabled>
+      <input matInput class="green" placeholder="Bob. Final" value="{{ data.bobFinal }}" #bobFinal disabled>
     </mat-form-field>
     <mat-form-field id="variacao">
-      <input matInput class="green" placeholder="Pode Variar" value="{{ data.podeVariar }}" disabled>
+      <input matInput class="green" placeholder="Pode Variar" value="{{ data.podeVariar }}" #podeVariar disabled>
     </mat-form-field>
     <mat-form-field id="varPermMin">
-      <input matInput class="green" placeholder="Var. Permitida Min." value="{{ data.varMax }}" disabled>
+      <input matInput class="green" placeholder="Var. Permitida Min." value="{{ data.varMax }}" #varMax disabled>
     </mat-form-field>
     <mat-form-field id="varPerMax">
-      <input matInput class="green" placeholder="Var. Permitida Max." value="{{ data.varMin }}" disabled>
+      <input matInput class="green" placeholder="Var. Permitida Max." value="{{ data.varMin }}" #varMin disabled>
     </mat-form-field>
   </div>
   <mat-divider></mat-divider>
   <div class="quantidades">
     <mat-form-field id="quantBob">
-      <input matInput class="green" placeholder="Qtd.Bobina" value="{{ data.qtdBob }}" disabled>
+      <input matInput class="green" placeholder="Qtd.Bobina" value="{{ data.qtdBob }}" #qtdBob disabled>
     </mat-form-field>
     <mat-form-field id="quantRolo">
-      <input matInput class="green" placeholder="Qtd.Rolo" value="{{ data.qtdRolo }}" disabled>
+      <input matInput class="green" placeholder="Qtd.Rolo" value="{{ data.qtdRolo }}" #qtdRolo disabled>
     </mat-form-field>
     <mat-form-field id="quantRetalho">
-      <input matInput class="green" placeholder="Qtd.Retalho" value="{{ data.qtdRetalho }}" disabled>
+      <input matInput class="green" placeholder="Qtd.Retalho" value="{{ data.qtdRetalho }}" #qtdRetalho disabled>
     </mat-form-field>
     <mat-form-field id="quantSuc">
-      <input matInput class="green" placeholder="Qtd.Sucata" value="{{ data.qtdSucata }}" disabled>
+      <input matInput class="green" placeholder="Qtd.Sucata" value="{{ data.qtdSucata }}" #qtdSucata disabled>
     </mat-form-field>
     <!-- here -->
   </div>
   <mat-divider></mat-divider>
   <div class="cortes" *ngIf="data.mmValida == 5">
     <mat-form-field id="quantBob">
-      <input matInput class="yellow" placeholder="Corte Bob." value="{{ data.corteBob }}" disabled>
+      <input matInput class="yellow" placeholder="Corte Bob." value="{{ data.corteBob }}" #corteBob disabled>
     </mat-form-field>
     <mat-form-field id="quantRolo">
-      <input matInput class="yellow" placeholder="Corte Rolo" value="{{ data.corteRol[indexCorteRol] }}" disabled>
+      <input matInput class="yellow" placeholder="Corte Rolo" value="{{ data.corteRol[indexCorteRol] }}" #corteRol disabled>
     </mat-form-field> 
     <button (click)="nextBtn()" id="reloadBtn" mat-mini-fab color="primary">
       <img src="../../../assets/img/baseline_cached_white_18dp.png" alt="">
     </button>
     <mat-form-field id="quantRetalho">
-      <input matInput class="yellow" placeholder="Corte Ret." value="{{ data.corteRet }}" disabled>
+      <input matInput class="yellow" placeholder="Corte Ret." value="{{ data.corteRet }}" #corteRet disabled>
     </mat-form-field>
     <mat-form-field id="quantSuc">
-      <input matInput class="yellow" placeholder="Corte Suc." value="{{ data.corteSuc }}" disabled>
+      <input matInput class="yellow" placeholder="Corte Suc." value="{{ data.corteSuc }}" #corteSuc disabled>
     </mat-form-field>
   </div>
   <mat-divider></mat-divider>
@@ -86,16 +86,16 @@
  
   <div class="secondBlock">
     <mat-form-field id="bobina">
-      <input class="white" matInput placeholder="Bobina">
+      <input class="white" matInput placeholder="Bobina" #bobinaProd >
     </mat-form-field>
     <mat-form-field id="rolo">
-      <input class="white" matInput placeholder="Rolo">
+      <input class="white" matInput placeholder="Rolo" #roloProd >
     </mat-form-field>
     <mat-form-field id="retalho">
-      <input class="white" matInput placeholder="Retalho">
+      <input class="white" matInput placeholder="Retalho" #retalhoProd >
     </mat-form-field>
     <mat-form-field id="sucata">
-      <input class="white" matInput placeholder="Sucata">
+      <input class="white" matInput placeholder="Sucata" #sucataProd>
     </mat-form-field>
   </div>
 
@@ -105,7 +105,7 @@
 
     <div class="contRadio">
       <label> Teste do Spark: </label>
-      <mat-radio-group>
+      <mat-radio-group [(ngModel)]="testeSpark">
         <mat-radio-button value="sim">Sim</mat-radio-button>
         <mat-radio-button value="nao">Não</mat-radio-button>
       </mat-radio-group>
@@ -114,16 +114,40 @@
       <input class="green" matInput placeholder="Ajuste Spark" value="{{ data.spark }}" disabled>
     </mat-form-field>
     <div class="contRadio">
-      <mat-radio-group>
+      <mat-radio-group [(ngModel)]="devProd" >
         <mat-radio-button value="sim">Devolver</mat-radio-button>
         <mat-radio-button value="nao">Produzir</mat-radio-button>
       </mat-radio-group>
     </div>
     <mat-form-field id="obsRep">
-      <input matInput placeholder="Obs. Rep" class="white">
+      <input matInput placeholder="Obs. Rep" class="white" #obsRepassadeira>
     </mat-form-field>
     <mat-form-field id="sitLab">
-      <input class="yellow" matInput placeholder="Sit. Lab" value="{{ data.amostra }}" disabled>
+      <input class="yellow" matInput placeholder="Sit. Lab" value="{{ data.amostra }}" #amostra disabled>
     </mat-form-field>
-    <button color="primary" mat-raised-button>Salvar</button>
+    <button (click)="saveFormData(op.value,
+                                  cliente.value,
+                                  codProd.value,
+                                  descProd.value,
+                                  dimBob.value,
+                                  bobMad.value,
+                                  lote.value,
+                                  lance.value,
+                                  obsOp.value,
+                                  bobFinal.value,
+                                  podeVariar.value,
+                                  varMax.value,
+                                  varMin.value,
+                                  qtdBob.value,
+                                  qtdRolo.value,
+                                  qtdRetalho.value,
+                                  qtdSucata.value,
+                                  bobinaProd.value,
+                                  roloProd.value,
+                                  retalhoProd.value,
+                                  sucataProd.value,
+                                  obsRepassadeira.value,
+                                  amostra.value)" 
+      color="primary" mat-raised-button>Salvar
+    </button>
   </div>

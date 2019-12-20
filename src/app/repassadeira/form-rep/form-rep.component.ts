@@ -11,7 +11,8 @@ import { MatSnackBar                   } from '@angular/material/snack-bar';
 export class FormRepComponent implements OnInit {
 
   indexCorteRol = 0;
-
+  testeSpark = '';
+  devProd = '';
   constructor(
     public repassForm: MatDialogRef<FormRepComponent>,
     public   snackBar: MatSnackBar,
@@ -22,14 +23,49 @@ export class FormRepComponent implements OnInit {
     console.log(this.data['mmValida'] );
   }
 
+  saveFormData(op,
+              cliente,
+              codProd,
+              descProd,
+              dimBob,
+              bobMad,
+              lote,
+              lance,
+              obsOp,
+              bobFinal,
+              podeVariar,
+              varMax,
+              varMin,
+              qtdBob,
+              qtdRolo,
+              qtdRetalho,
+              qtdSucata,              
+              bobinaProd,
+              roloProd,
+              retalhoProd,
+              sucataProd,
+              obsRepassadeira,
+              amostra){
+         
+  let corteBob = this.data['corteBob'];
+  let corteRol = this.data['corteRol'];
+  corteRol = corteRol[corteRol.length -1];
+  let corteRet = this.data['corteRet'];
+  let corteSuc = this.data['corteSuc'];
+  
+
+  console.log( op, cliente, codProd, descProd, dimBob, bobMad, lote, lance, obsOp, bobFinal, 
+               podeVariar, varMax, varMin, qtdBob, qtdRolo, qtdRetalho, qtdSucata, corteBob,
+               corteRol,corteRet,corteSuc, bobinaProd, roloProd, retalhoProd, 
+               sucataProd, obsRepassadeira, amostra );
+  }
+
   onNoClick(): void {
     this.repassForm.close();
   }
 
   nextBtn(){
-    let controlStop = this.data['corteRol'];
-    console.log( 'control lenght: ' + controlStop.length );
-    console.log( 'indexControl: '   + this.indexCorteRol );
+    let controlStop = this.data['corteRol'];    
     if( this.indexCorteRol < controlStop.length -1 ){
       this.indexCorteRol++;
       console.log( 'indexControlInside' + this.indexCorteRol);
