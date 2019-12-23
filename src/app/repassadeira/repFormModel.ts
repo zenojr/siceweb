@@ -26,4 +26,5 @@ export interface DialogData {
   tara?: number;
   mPontaFora: number;
   corteRol: string;
+  quantEtq: number;
 }

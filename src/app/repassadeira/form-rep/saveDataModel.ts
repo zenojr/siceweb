@@ -1,4 +1,4 @@
-export interface saveDataRep {
+export class DataRepOut {
       numOp: number;
    itCodigo: string;
     codLote: string;
@@ -16,8 +16,6 @@ export interface saveDataRep {
      Observ: string;
      codImp: number;
 codProblema: number;
- codProbSuc: number;
-     superv: string;
-      senha: string;
+ codProbSuc: number;     
 }
 

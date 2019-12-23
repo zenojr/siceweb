@@ -20,10 +20,10 @@ import { MatSnackBar } from '@angular/material';
 export class RepassadeiraComponent implements OnInit {
   animal: string;
   // data: any;
-       error: any;
-  dataSource: any;
-    repassOp: RepassOp[]
-  displayedColumns: string[] = [
+           error: any;
+      dataSource: any;
+        repassOp: RepassOp[]
+displayedColumns: string[] = [
     'produzir',
     'prioridade',
     'dtPriori',
@@ -95,8 +95,10 @@ export class RepassadeiraComponent implements OnInit {
     amostraDOM,
     mmValidaDOM,
     mPontaForaDOM,
-    corteRolDOM): void {
+    corteRolDOM,
+    quantEtqDOM): void {
 
+      console.log('inside rep component' + quantEtqDOM);
     if( mmValidaDOM == 0 ) {
       const dialogRef = this.dialog.open(FormRepComponent, {
         width: '1000px',
@@ -126,7 +128,8 @@ export class RepassadeiraComponent implements OnInit {
       amostra: amostraDOM,
      mmValida: mmValidaDOM,
    mPontaFora: mPontaForaDOM,
-     corteRol: corteRolDOM }
+     corteRol: corteRolDOM,
+     quantEtq: quantEtqDOM}
       });
       dialogRef.afterClosed().subscribe(result => {
         console.log('The dialog was closed');      
@@ -174,7 +177,8 @@ export class RepassadeiraComponent implements OnInit {
         amostra: amostraDOM,
        mmValida: mmValidaDOM,
      mPontaFora: mPontaForaDOM,
-       corteRol: corteRolLocal
+       corteRol: corteRolLocal,
+       quantEtq: quantEtqDOM
           }
         });
   
