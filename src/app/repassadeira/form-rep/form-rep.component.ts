@@ -13,6 +13,7 @@ export class FormRepComponent implements OnInit {
   indexCorteRol = 0;
   testeSpark = '';
   devProd = '';
+  taraOut = 'null';
   constructor(
     public repassForm: MatDialogRef<FormRepComponent>,
     public   snackBar: MatSnackBar,
@@ -20,32 +21,33 @@ export class FormRepComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log(this.data['mmValida'] );
+    console.log(this.data['mmValida'] );        
   }
 
   saveFormData(op,
-              cliente,
-              codProd,
-              descProd,
-              dimBob,
-              bobMad,
-              lote,
-              lance,
-              obsOp,
-              bobFinal,
-              podeVariar,
-              varMax,
-              varMin,
-              qtdBob,
-              qtdRolo,
-              qtdRetalho,
-              qtdSucata,              
-              bobinaProd,
-              roloProd,
-              retalhoProd,
-              sucataProd,
-              obsRepassadeira,
-              amostra){
+               cliente,
+               codProd,
+               descProd,
+               dimBob,
+               bobMad,
+               lote,
+               lance,
+               obsOp,
+               bobFinal,
+               podeVariar,
+               varMax,
+               varMin,
+               qtdBob,
+               qtdRolo,
+               qtdRetalho,
+               qtdSucata,              
+               bobinaProd,
+               roloProd,
+               retalhoProd,
+               sucataProd,
+               obsRepassadeira,
+               spark,
+               amostra){
          
   let corteBob = this.data['corteBob'];
   let corteRol = this.data['corteRol'];
@@ -57,7 +59,7 @@ export class FormRepComponent implements OnInit {
   console.log( op, cliente, codProd, descProd, dimBob, bobMad, lote, lance, obsOp, bobFinal, 
                podeVariar, varMax, varMin, qtdBob, qtdRolo, qtdRetalho, qtdSucata, corteBob,
                corteRol,corteRet,corteSuc, bobinaProd, roloProd, retalhoProd, 
-               sucataProd, obsRepassadeira, amostra );
+               sucataProd, this.taraOut, spark, obsRepassadeira, amostra );
   }
 
   onNoClick(): void {

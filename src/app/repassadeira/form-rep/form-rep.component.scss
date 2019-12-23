@@ -108,13 +108,14 @@ mat-radio-button{
 #lance, #ordemProd, #quantBob, #quantRolo,
 #quantRetalho, #quantSuc, #bobina, #bobFinal,
 #rolo, #retalho, #sucata, #quantBob, #variacao,
-#quantRolo, #quantRetalho, #quantSuc, #bobMadeira
+#quantRolo, #quantRetalho, #quantSuc, #bobMadeira,
+#tara
 {
     @extend %smallInput;
 }
 
-#codProd, #ajusteSpark, #lote, #dimBob, 
-#varPermMin, #varPerMax {
+#codProd, #lote, #dimBob, 
+#varPermMin, #varPerMax, #ajusteSpark {
     @extend %mediumInput;
 }
 

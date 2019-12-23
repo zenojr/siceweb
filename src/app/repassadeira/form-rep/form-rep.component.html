@@ -86,16 +86,16 @@
  
   <div class="secondBlock">
     <mat-form-field id="bobina">
-      <input class="white" matInput placeholder="Bobina" #bobinaProd >
+      <input class="white" matInput placeholder="Bobina" #bobinaProd autocomplete="off">
     </mat-form-field>
     <mat-form-field id="rolo">
-      <input class="white" matInput placeholder="Rolo" #roloProd >
+      <input class="white" matInput placeholder="Rolo" #roloProd autocomplete="off">
     </mat-form-field>
     <mat-form-field id="retalho">
-      <input class="white" matInput placeholder="Retalho" #retalhoProd >
+      <input class="white" matInput placeholder="Retalho" #retalhoProd autocomplete="off">
     </mat-form-field>
     <mat-form-field id="sucata">
-      <input class="white" matInput placeholder="Sucata" #sucataProd>
+      <input class="white" matInput placeholder="Sucata" #sucataProd autocomplete="off">
     </mat-form-field>
   </div>
 
@@ -110,8 +110,16 @@
         <mat-radio-button value="nao">Não</mat-radio-button>
       </mat-radio-group>
     </div>
+    <!-- <mat-form-field *ngIf="dimBob.value != 'ROLO' " id="tara">
+      <input class="white" matInput placeholder="Tara" value="0" #taraOut>
+    </mat-form-field> -->
+    
+    <mat-form-field id="tara" *ngIf="dimBob.value != 'ROLO' ">
+      <input class="white" matInput placeholder="Tara" [(ngModel)]="taraOut" autocomplete="off">
+    </mat-form-field>
+
     <mat-form-field id="ajusteSpark">
-      <input class="green" matInput placeholder="Ajuste Spark" value="{{ data.spark }}" disabled>
+      <input class="green" matInput placeholder="Ajuste Spark" value="{{ data.spark }}" #spark disabled>
     </mat-form-field>
     <div class="contRadio">
       <mat-radio-group [(ngModel)]="devProd" >
@@ -146,6 +154,7 @@
                                   roloProd.value,
                                   retalhoProd.value,
                                   sucataProd.value,
+                                  spark.value,
                                   obsRepassadeira.value,
                                   amostra.value)" 
       color="primary" mat-raised-button>Salvar

@@ -20,9 +20,9 @@ import { MatSnackBar } from '@angular/material';
 export class RepassadeiraComponent implements OnInit {
   animal: string;
   // data: any;
-  error: any;
+       error: any;
   dataSource: any;
-  repassOp: RepassOp[]
+    repassOp: RepassOp[]
   displayedColumns: string[] = [
     'produzir',
     'prioridade',
@@ -136,20 +136,19 @@ export class RepassadeiraComponent implements OnInit {
       this.snackBar.open('Esta bobina não pode ser repassada pois o metro a metro não foi validado.' +
                          'Solicite ao recebimento para validar o metro a metro da bobina.' + ',' + 
                          'ERRO METRO A METRO', '[X]Fechar', {           
-                         duration: 10000
+          duration: 10000
       });
     } else if( mmValidaDOM == 5 ) {
       let insertDOM = prompt( 'Informe a ponta de fora:');
       let corteRolLocal = corteRolDOM;
       corteRolLocal = corteRolLocal.split(",");
       let indexCorteRol = 0;
-      
-      
+            
       if( insertDOM == mPontaForaDOM  ) {
         
         const dialogRef = this.dialog.open(FormRepComponent, {
           width: '1000px',
-          data: {
+           data: {
              op: opDOM,
         cliente: clienteDOM,
         codProd: codProdDOM,

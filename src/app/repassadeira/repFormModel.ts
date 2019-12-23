@@ -23,6 +23,7 @@ export interface DialogData {
   spark: number;
   amostra: string;
   mmValida: number;
+  tara?: number;
   mPontaFora: number;
   corteRol: string;
 }
