@@ -5,20 +5,18 @@ import { MatSnackBar                   } from '@angular/material/snack-bar';
 import { DataRepOut                    } from './saveDataModel';
 import { LoginService                  } from '../../login/login.service';
 
-
 @Component({
   selector: 'app-form-rep',
   templateUrl: './form-rep.component.html',
   styleUrls: ['./form-rep.component.scss']
 })
 export class FormRepComponent implements OnInit {
-
   indexCorteRol = 0;
-  testeSpark = '';
-  devProd = '';
-  taraOut: number;
-  user = '';
-  repassadeira
+     testeSpark = '';
+        devProd = '';
+           user = '';
+repassadeira: any;
+     taraOut: number;
   constructor(
     public repassForm: MatDialogRef<FormRepComponent>,
     public   snackBar: MatSnackBar,
@@ -60,18 +58,18 @@ export class FormRepComponent implements OnInit {
          
   let corteBob = this.data['corteBob'];
   let corteRol = this.data['corteRol'];
-  corteRol = corteRol[corteRol.length -1];
+      corteRol = corteRol[corteRol.length -1];
   let corteRet = this.data['corteRet'];
   let corteSuc = this.data['corteSuc'];
   let quantEtq = this.data['quantEtq'];
   let codImp   = this.data['codImp'];
   let codProblema = this.data['codProblema'];
-  let codProbSuc = this.data['codProdSuc'];
-
+  let codProbSuc = this.data['codProbSuc'];
+  
   console.log( op, cliente, codProd, descProd, dimBob, bobMad, lote, lance, obsOp, bobFinal, 
                podeVariar, varMax, varMin, qtdBob, qtdRolo, qtdRetalho, qtdSucata, corteBob,
                corteRol,corteRet,corteSuc, bobinaProd, roloProd, retalhoProd, 
-               sucataProd, this.taraOut, spark, obsRepassadeira, amostra);
+               sucataProd, this.taraOut, spark, obsRepassadeira, amostra, codProbSuc );
   this.dataRepOut = {
       numOp: op,
    itCodigo: codProd,
@@ -90,9 +88,10 @@ export class FormRepComponent implements OnInit {
      Observ: obsRepassadeira,
      codImp: codImp,
 codProblema: codProblema,
- codProbSuc: codProbSuc,
-     
+ codProbSuc: codProbSuc     
   }               
+
+  console.log( this.dataRepOut );
 
   }
 

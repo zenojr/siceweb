@@ -96,9 +96,12 @@ displayedColumns: string[] = [
     mmValidaDOM,
     mPontaForaDOM,
     corteRolDOM,
-    quantEtqDOM): void {
+    quantEtqDOM,
+    codImpDOM,
+    codProblemaDOM,
+    codProbSucDOM): void {
 
-      console.log('inside rep component' + quantEtqDOM);
+      console.log('inside rep component' + codProbSucDOM);
     if( mmValidaDOM == 0 ) {
       const dialogRef = this.dialog.open(FormRepComponent, {
         width: '1000px',
@@ -129,7 +132,11 @@ displayedColumns: string[] = [
      mmValida: mmValidaDOM,
    mPontaFora: mPontaForaDOM,
      corteRol: corteRolDOM,
-     quantEtq: quantEtqDOM}
+     quantEtq: quantEtqDOM,
+       codImp: codImpDOM,
+  codProblema: codProblemaDOM,
+   codProbSuc: codProbSucDOM
+      }
       });
       dialogRef.afterClosed().subscribe(result => {
         console.log('The dialog was closed');      
@@ -178,7 +185,10 @@ displayedColumns: string[] = [
        mmValida: mmValidaDOM,
      mPontaFora: mPontaForaDOM,
        corteRol: corteRolLocal,
-       quantEtq: quantEtqDOM
+       quantEtq: quantEtqDOM,
+         codImp: codImpDOM,
+    codProblema: codProblemaDOM,
+     codProbSuc: codProbSucDOM
           }
         });
   
