@@ -1,16 +1,16 @@
-import { Component, OnInit, ViewChild, Inject } from '@angular/core';
-import { RepassadeiraService } from './repassadeira.service';
-import { MonitoropService } from '../monitorop/monitorop.service';
-import { LoginService } from '../login/login.service';
-import { map } from 'rxjs/operators';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
-import { RepassOp } from './repassOp';
-import { Router } from '@angular/router';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { FormRepComponent } from './form-rep/form-rep.component';
-import { MatSnackBar } from '@angular/material';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { RepassadeiraService          } from './repassadeira.service';
+import { MonitoropService             } from '../monitorop/monitorop.service';
+import { LoginService                 } from '../login/login.service';
+import { map                          } from 'rxjs/operators';
+import { MatPaginator                 } from '@angular/material/paginator';
+import { MatSort                      } from '@angular/material/sort';
+import { MatTableDataSource           } from '@angular/material/table';
+import { RepassOp                     } from './repassOp';
+import { Router                       } from '@angular/router';
+import { MatDialog                    } from '@angular/material/dialog';
+import { FormRepComponent             } from './form-rep/form-rep.component';
+import { MatSnackBar                  } from '@angular/material';
 
 @Component({
   selector: 'app-repassadeira',
@@ -18,22 +18,20 @@ import { MatSnackBar } from '@angular/material';
   styleUrls: ['./repassadeira.component.scss']
 })
 export class RepassadeiraComponent implements OnInit {
-  animal: string;
-  // data: any;
+          animal: string;
            error: any;
       dataSource: any;
         repassOp: RepassOp[]
-displayedColumns: string[] = [
-    'produzir',
-    'prioridade',
-    'dtPriori',
-    'destino',
-    'numOp',
-    'itCodigo',
-    'descItem',
-    'endereco',
-    'codLote',
-    'lance'];
+displayedColumns: string[] = ['produzir',
+                              'prioridade',
+                              'dtPriori',
+                              'destino',
+                              'numOp',
+                              'itCodigo',
+                              'descItem',
+                              'endereco',
+                              'codLote',
+                              'lance'];
   producao  = true;
   impressao = false;
   loading   = true;
@@ -46,66 +44,65 @@ displayedColumns: string[] = [
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   constructor(
-    public    snackBar: MatSnackBar,
-    private repService: RepassadeiraService,
+    public        snackBar: MatSnackBar,
+    private     repService: RepassadeiraService,
     private monitorService: MonitoropService,
-    private loginService: LoginService,
-    private route: Router,
-    public dialog: MatDialog) {
+    private   loginService: LoginService,
+    private          route: Router,
+    public          dialog: MatDialog) {
     this.dataSource = new MatTableDataSource(this.repassOp);
   }
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
-    this.loginService.currentUser.subscribe(          user => this.user      = user);
-    this.loginService.currentSetor.subscribe(        setor => this.setor     = setor);
-    this.loginService.currentRepassa.subscribe(    repassa => this.repassa   = repassa);
-    this.loginService.currentMonitor.subscribe(    monitor => this.monitorOP = monitor);
+    this.loginService.currentUser.subscribe(user           => this.user      = user);
+    this.loginService.currentSetor.subscribe(setor         => this.setor     = setor);
+    this.loginService.currentRepassa.subscribe(repassa     => this.repassa   = repassa);
+    this.loginService.currentMonitor.subscribe(monitor     => this.monitorOP = monitor);
     this.loginService.currentExpedicao.subscribe(expedicao => this.expedicao = expedicao);
 
-    console.log(this.user + ' ' + this.setor + ' ' +
-      this.repassa + ' ' + this.monitorOP + ' ' +
-      this.expedicao);
+    console.log(this.user + ' ' +     this.setor + ' ' +
+             this.repassa + ' ' + this.monitorOP + ' ' +
+             this.expedicao);
     this.guardData();
     this.getDataOp(this.setor);
   }
 
   openDialog(opDOM,
-    clienteDOM,
-    codProdDOM,
-    descProdDOM,
-    dimBobDOM,
-    bobMadDOM,
-    loteDOM,
-    lanceDOM,
-    obsOpDOM,
-    bobFinalDOM,
-    podeVariarDOM,
-    varMaxDOM,
-    varMinDOM,
-    qtdBobDOM,
-    qtdRoloDOM,
-    qtdRetalhoDOM,
-    qtdSucataDOM,
-    corteBobDOM,
-    corteRoloDOM,
-    corteRetDOM,
-    corteSucDOM,
-    sparkDOM,
-    amostraDOM,
-    mmValidaDOM,
-    mPontaForaDOM,
-    corteRolDOM,
-    quantEtqDOM,
-    codImpDOM,
-    codProblemaDOM,
-    codProbSucDOM): void {
-
-      console.log('inside rep component' + codProbSucDOM);
+             clienteDOM,
+             codProdDOM,
+             descProdDOM,
+             dimBobDOM,
+             bobMadDOM,
+             loteDOM,
+             lanceDOM,
+             obsOpDOM,
+             bobFinalDOM,
+             podeVariarDOM,
+             varMaxDOM,
+             varMinDOM,
+             qtdBobDOM,
+             qtdRoloDOM,
+             qtdRetalhoDOM,
+             qtdSucataDOM,
+             corteBobDOM,
+             corteRoloDOM,
+             corteRetDOM,
+             corteSucDOM,
+             sparkDOM,
+             amostraDOM,
+             mmValidaDOM,
+             mPontaForaDOM,
+             corteRolDOM,
+             quantEtqDOM,
+             codImpDOM,
+             codProblemaDOM,
+             codProbSucDOM): void {
     if( mmValidaDOM == 0 ) {
       const dialogRef = this.dialog.open(FormRepComponent, {
         width: '1000px',
-        data: {
+
+         data: {
            op: opDOM,
       cliente: clienteDOM,
       codProd: codProdDOM,
@@ -135,8 +132,7 @@ displayedColumns: string[] = [
      quantEtq: quantEtqDOM,
        codImp: codImpDOM,
   codProblema: codProblemaDOM,
-   codProbSuc: codProbSucDOM
-      }
+   codProbSuc: codProbSucDOM }
       });
       dialogRef.afterClosed().subscribe(result => {
         console.log('The dialog was closed');      
@@ -151,11 +147,8 @@ displayedColumns: string[] = [
     } else if( mmValidaDOM == 5 ) {
       let insertDOM = prompt( 'Informe a ponta de fora:');
       let corteRolLocal = corteRolDOM;
-      corteRolLocal = corteRolLocal.split(",");
-      let indexCorteRol = 0;
-            
-      if( insertDOM == mPontaForaDOM  ) {
-        
+      corteRolLocal = corteRolLocal.split(",");                  
+      if( insertDOM == mPontaForaDOM  ) {        
         const dialogRef = this.dialog.open(FormRepComponent, {
           width: '1000px',
            data: {
@@ -190,8 +183,7 @@ displayedColumns: string[] = [
     codProblema: codProblemaDOM,
      codProbSuc: codProbSucDOM
           }
-        });
-  
+        });  
         dialogRef.afterClosed().subscribe(result => {
           console.log('The dialog was closed');      
         });
@@ -242,6 +234,7 @@ displayedColumns: string[] = [
         repOp = repOp['Root'];
         if (repOp == undefined) {
           console.log('Database is Out');
+          this.snackBar.open('Base de dados Off-line ❗', '[X] Fechar', { duration: 5000});
         } else {
           repOp = repOp['ttOp'];
           repOp = repOp['Registro'];
