@@ -15,6 +15,8 @@ export class FormRepComponent implements OnInit {
      testeSpark = '';
         devProd = '';
            user = '';
+        arrSave = [];
+       error: any;
 repassadeira: any;
      taraOut: number;
   constructor(
@@ -92,8 +94,48 @@ codProblema: codProblema,
   }               
 
   console.log( this.dataRepOut );
+  const recebe = this.dataRepOut;
+  let bigStringOut = '';
+  console.log(recebe);
+  for(let key in recebe){
+    bigStringOut+=recebe[key] + '&';
+  }
+  console.log(bigStringOut);
 
   }
+
+  // sendRepassadeiras() {
+  //   if( this.arrOut == null ){
+  //     this.snackBar.open('Nenhum produto selecionado.', '[X] Fechar', { duration: 5000});
+  //   } else {
+  //     this.sending = true;
+  //     const recebe = this.arrOut;
+  //     const url = 'http://192.168.0.7:8080/cgi-bin/wspd_cgi.sh/WService=emswebelttst/scb002wsV2.p';
+  //     let bigStringOut = '';
+  //     recebe.forEach( data => {
+  //       const bigString = data.dtOp         + ',' +
+  //                         data.numOp        + ',' +
+  //                         data.repassadeira + ',' +
+  //                         data.seqItem      + ',' + 
+  //                         data.destino      + ';';
+  //       bigStringOut += bigString;
+  //   });
+  //   console.log(bigStringOut);
+  //   this.http.get( url + '?recebe=' + bigStringOut, { responseType: 'text' } )
+  //   .subscribe(doc => {
+  //     console.log(' Data Send ' + doc )
+  //     if( doc == 'OK' ) {        
+  //       this.arrOut = [];
+  //       this.getTableOP();        
+  //     } else {
+  //       this.snackBar.open('Erro ao gravar dados', '[X] Fechar', { duration: 5000 });
+  //       setTimeout( () => {
+  //         location.reload();          
+  //       }, 5000 );        
+  //     }
+  //   }, error => this.error = console.log(error)); 
+  //   }    
+  // }
 
   onNoClick(): void {
     this.repassForm.close();
