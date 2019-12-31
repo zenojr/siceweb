@@ -97,7 +97,7 @@ export class MonitoropComponent implements OnInit {
         this.getTableOP();
     }
   }
-  
+
   sendRepassadeiras() {
     if( this.arrOut == null ){
       this.snackBar.open('Nenhum produto selecionado.', '[X] Fechar', { duration: 5000});

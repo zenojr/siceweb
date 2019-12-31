@@ -95,11 +95,10 @@ codProblema: codProblema,
 
   console.log( this.dataRepOut );
   const recebe = this.dataRepOut;
+  const url = 'http://192.168.0.7:8080/cgi-bin/wspd_cgi.sh/WService=emswebelttst/scb005ws.p';
   let bigStringOut = '';
   console.log(recebe);
-  for(let key in recebe){
-    bigStringOut+=recebe[key] + '&';
-  }
+  bigStringOut = url + '?' + 'numOp=' + recebe['numOp'] + 'itCodigo=' + recebe['itCodigo']
   console.log(bigStringOut);
 
   }
