@@ -60,10 +60,9 @@ displayedColumns: string[] = ['produzir',
     this.loginService.currentRepassa.subscribe(repassa     => this.repassa   = repassa);
     this.loginService.currentMonitor.subscribe(monitor     => this.monitorOP = monitor);
     this.loginService.currentExpedicao.subscribe(expedicao => this.expedicao = expedicao);
-
-    console.log(this.user + ' ' +     this.setor + ' ' +
-             this.repassa + ' ' + this.monitorOP + ' ' +
-             this.expedicao);
+    console.log( 'inside repassadeiras' + this.user + ' ' + 
+                  this.setor + ' ' + this.repassa + ' ' + 
+                  this.monitorOP + ' ' + this.expedicao);
     this.guardData();
     this.getDataOp(this.setor);
   }

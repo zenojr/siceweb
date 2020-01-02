@@ -30,7 +30,9 @@ repassadeira: any;
   ngOnInit() {
     console.log(this.data['mmValida'] );
     this.loginService.currentUser.subscribe( user => this.user = user );
-    this.loginService.currentRepassa.subscribe( repassa => this.repassadeira = repassa );
+    // this.loginService.currentRepassa.subscribe( repassa => this.repassadeira = repassa );
+    this.loginService.currentSetor.subscribe( repassa => this.repassadeira = repassa.slice(13));
+    console.log( 'inside form' +  this.repassadeira);
   }
 
   saveFormData(op,
@@ -67,8 +69,8 @@ repassadeira: any;
   let codImp   = this.data['codImp'];
   let codProblema = this.data['codProblema'];
   let codProbSuc = this.data['codProbSuc'];
-  
-  console.log( op, cliente, codProd, descProd, dimBob, bobMad, lote, lance, obsOp, bobFinal, 
+  console.log( 'here is' + this.data['spark'] );
+  console.log( 'let in' + op, cliente, codProd, descProd, dimBob, bobMad, lote, lance, obsOp, bobFinal, 
                podeVariar, varMax, varMin, qtdBob, qtdRolo, qtdRetalho, qtdSucata, corteBob,
                corteRol,corteRet,corteSuc, bobinaProd, roloProd, retalhoProd, 
                sucataProd, this.taraOut, spark, obsRepassadeira, amostra, codProbSuc );
@@ -94,12 +96,50 @@ codProblema: codProblema,
   }               
 
   console.log( this.dataRepOut );
-  const recebe = this.dataRepOut;
+  const dataOut = this.dataRepOut;
   const url = 'http://192.168.0.7:8080/cgi-bin/wspd_cgi.sh/WService=emswebelttst/scb005ws.p';
   let bigStringOut = '';
-  console.log(recebe);
-  bigStringOut = url + '?' + 'numOp=' + recebe['numOp'] + 'itCodigo=' + recebe['itCodigo']
+  console.log(dataOut);
+  bigStringOut = url + '?'     + 
+                 'numOp='      + dataOut['numOp']      + '&' +
+                 'itCodigo='   + dataOut['itCodigo']   + '&' +
+                 'codLote='    + dataOut['codLote']    + '&' + 
+                 'lance='      + dataOut['lance']      + '&' +
+                 'tara='       + dataOut['tara']       + '&' +
+                 'ajSpark='    + dataOut['ajSpark']    + '&' +
+                 'destino='    + dataOut['destino']    + '&' +
+                 'usuario='    + dataOut['usuario']    + '&' +
+                 'numRepassa=' + dataOut['numRepassa'] + '&' +
+                 'quantMetro=' + dataOut['quantMetro'] + '&' +
+                 'quantRolo='  + dataOut['quantRolo']  + '&' +
+                 'quantRet='   + dataOut['quantRet']   + '&' +
+                 'quantSuc='   + dataOut['quantSuc']   + '&' +
+                 'DevProd='    + dataOut['DevProd']    + '&' +
+                 'Observ='     + dataOut['Observ']     + '&' +
+                 'codImp='     + dataOut['codImp']     + '&' +
+                 'codProblema='+ dataOut['codProblema']+ '&' +
+                 'codProbSuc=' + dataOut['codProbSuc'];
+
   console.log(bigStringOut);
+  // numOp=575131
+  // itCodigo=CMA0504NAZ-ALI
+  // codLote=709062703BD
+  // lance=2
+  // tara=undefined
+  // ajSpark=
+  // destino=FEHRMANN COM ATAC IMPORTACAO 
+  //  EXPORT LTDA
+  // usuario=ZENO
+  // numRepassa=4
+  // quantMetro=500
+  // quantRolo=0
+  // quantRet=0
+  // quantSuc=0
+  // DevProd=
+  // Observ=12,5
+  // codImp=0
+  // codProblema=0
+  // codProbSuc=0
 
   }
 
