@@ -1,5 +1,5 @@
 <div id="closeBtn">
-  <a (click)="onNoClick()">
+  <a (click)="closeRepForm()">
     <img src="../../../assets/img/icons/baseline_close_black_18dp.png" alt="Fechar">
   </a>  
 </div>
@@ -128,7 +128,7 @@
       </mat-radio-group>
     </div>
     <mat-form-field id="obsRep">
-      <input matInput placeholder="Obs. Rep" class="white" #obsRepassadeira>
+      <input matInput placeholder="Obs. Rep" class="white" [(ngModel)]="obsRepass" #obsRepassadeira>
     </mat-form-field>
     <mat-form-field id="sitLab">
       <input class="yellow" matInput placeholder="Sit. Lab" value="{{ data.amostra }}" #amostra disabled>

@@ -13,9 +13,9 @@ import { FormRepComponent             } from './form-rep/form-rep.component';
 import { MatSnackBar                  } from '@angular/material';
 
 @Component({
-  selector: 'app-repassadeira',
+     selector: 'app-repassadeira',
   templateUrl: './repassadeira.component.html',
-  styleUrls: ['./repassadeira.component.scss']
+    styleUrls: ['./repassadeira.component.scss']
 })
 export class RepassadeiraComponent implements OnInit {
           animal: string;
@@ -56,10 +56,10 @@ displayedColumns: string[] = ['produzir',
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
     this.loginService.currentUser.subscribe(user           => this.user      = user);
-    this.loginService.currentSetor.subscribe(setor         => this.setor     = setor);
-    this.loginService.currentRepassa.subscribe(repassa     => this.repassa   = repassa);
+    this.loginService.currentSetor.subscribe(setor         => this.setor     = setor);    
     this.loginService.currentMonitor.subscribe(monitor     => this.monitorOP = monitor);
     this.loginService.currentExpedicao.subscribe(expedicao => this.expedicao = expedicao);
+    this.repassa = this.setor
     console.log( 'inside repassadeiras' + this.user + ' ' + 
                   this.setor + ' ' + this.repassa + ' ' + 
                   this.monitorOP + ' ' + this.expedicao);
@@ -100,7 +100,6 @@ displayedColumns: string[] = ['produzir',
     if( mmValidaDOM == 0 ) {
       const dialogRef = this.dialog.open(FormRepComponent, {
         width: '1000px',
-
          data: {
            op: opDOM,
       cliente: clienteDOM,
@@ -193,11 +192,6 @@ displayedColumns: string[] = ['produzir',
       }
     }
     console.log(clienteDOM); 
-  }
-
-
-  produzir() {
-    alert('Open');
   }
 
   menuControl(data) {

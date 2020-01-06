@@ -38,24 +38,24 @@ repassadeira: any;
   }
 
  saveFormData(){
-  let numOp =  this.data['op'];
-  let itCodigo = this.data['codProd'];
-  let codLote = this.data['lote']
-  let lance =  this.data['lance']
-  let tara =  this.taraOut;
-  let ajSpark =  this.data['spark']
-  let destino = this.data['cliente']
-  let usuario = this.user;
-  let numRepassa =  this.repassadeira;
-  let quantMetro =  this.data['quantEtq']
-  let quantRolo =  this.data['qtdRolo']
-  let quantRet =  this.data['qtdRetalho']
-  let quantSuc =  this.data['qtdSucata']
-  let DevProd = this.devProd
-  let Observ = this.obsRepass
-  let codImp =  this.data['codImp'];
+  let numOp       = this.data['op'];
+  let itCodigo    = this.data['codProd'];
+  let codLote     = this.data['lote']
+  let lance       =  this.data['lance']
+  let tara        =  this.taraOut;
+  let ajSpark     =  this.data['spark']
+  let destino     = this.data['cliente']
+  let usuario     = this.user;
+  let numRepassa  =  this.repassadeira;
+  let quantMetro  =  this.data['quantEtq']
+  let quantRolo   =  this.data['qtdRolo']
+  let quantRet    =  this.data['qtdRetalho']
+  let quantSuc    =  this.data['qtdSucata']
+  let DevProd     = this.devProd
+  let Observ      = this.obsRepass
+  let codImp      =  this.data['codImp'];
   let codProblema =  this.data['codProblema'];
-  let codProbSuc =  this.data['codProbSuc'];
+  let codProbSuc  =  this.data['codProbSuc'];
 
   const url = 'http://192.168.0.7:8080/cgi-bin/wspd_cgi.sh/WService=emswebelttst/scb005ws.p';
   let bigStringOut = '';  
@@ -84,7 +84,7 @@ repassadeira: any;
 
  }
 
-  onNoClick(): void {
+  closeRepForm(): void {
     this.repassForm.close();
   }
 
