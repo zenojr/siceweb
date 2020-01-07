@@ -40,6 +40,7 @@ displayedColumns: string[] = ['produzir',
   repassa   = null;
   monitorOP = null;
   expedicao = null;
+  saved     = false;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
@@ -130,10 +131,19 @@ displayedColumns: string[] = ['produzir',
      quantEtq: quantEtqDOM,
        codImp: codImpDOM,
   codProblema: codProblemaDOM,
-   codProbSuc: codProbSucDOM }
+   codProbSuc: codProbSucDOM,
+        saved: this.saved }
       });
+
+      
+      
       dialogRef.afterClosed().subscribe(result => {
-        console.log('The dialog was closed');      
+        console.log('The dialog was closed' + this.saved);
+        console.log(result);
+        if(result == true){
+          this.
+        }
+
       });
 
     } else if( mmValidaDOM == 1 ) {      
@@ -183,7 +193,8 @@ displayedColumns: string[] = ['produzir',
           }
         });  
         dialogRef.afterClosed().subscribe(result => {
-          console.log('The dialog was closed');      
+          console.log('The dialog was closed');
+          this.getDataOp(this.setor);                
         });
       } else {
         this.snackBar.open('Ponta de fora não confere.', '[X]Fechar', {           

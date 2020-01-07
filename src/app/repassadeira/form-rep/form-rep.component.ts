@@ -36,7 +36,8 @@ export class FormRepComponent implements OnInit {
   ngOnInit() {    
     this.loginService.currentUser.subscribe( user => this.user = user );    
     this.loginService.currentSetor.subscribe( repassa => this.repassadeira = repassa.slice(13));
-    console.log( 'inside form' +  this.repassadeira);
+    console.log( 'inside form' +  this.data.saved);
+    
   }
 
   saveFormData(bobinaProd,
@@ -70,6 +71,8 @@ export class FormRepComponent implements OnInit {
   let codProblema = this.data['codProblema'];
   let codProbSuc  = this.data['codProbSuc'];
 
+  
+
   if( this.testeSpark != 'sim' ){
       this.snackBar.open('Teste Spark não realizado ❕', '[X]Fechar', {           
       duration: 3000
@@ -102,7 +105,8 @@ export class FormRepComponent implements OnInit {
       if( response == 'ERRO 05' ) {
         alert('ERRO');
       } else {
-        this.repServ.getOpRepassadeiras(this.repassadeira);
+        this.data.saved = true;
+        this.closeRepForm()
       }
     }, error =>  this.error = console.log(error)
     )
@@ -113,7 +117,8 @@ export class FormRepComponent implements OnInit {
  }
 
   closeRepForm(): void {
-    this.repassForm.close();
+    this.repassForm.close(this.data.saved);
+    
   }
 
   nextBtn(){

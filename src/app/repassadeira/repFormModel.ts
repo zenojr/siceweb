@@ -30,4 +30,5 @@ export interface DialogData {
   codImp: number;
   codProblema: number;
   codProbSuc: number;
+  saved?: boolean;
 }
