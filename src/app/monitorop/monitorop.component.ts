@@ -99,7 +99,8 @@ export class MonitoropComponent implements OnInit {
   }
 
   sendRepassadeiras() {
-    if( this.arrOut == null ){
+    alert( this.arrOut.length );
+    if( this.arrOut.length < 1 ){
       this.snackBar.open('Nenhum produto selecionado.', '[X] Fechar', { duration: 5000});
     } else {
       this.sending = true;

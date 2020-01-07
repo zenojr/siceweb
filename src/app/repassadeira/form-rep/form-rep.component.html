@@ -70,7 +70,7 @@
       <input matInput class="yellow" placeholder="Corte Rolo" value="{{ data.corteRol[indexCorteRol] }}" #corteRol disabled>
     </mat-form-field> 
     <button (click)="nextBtn()" id="reloadBtn" mat-mini-fab color="primary">
-      <img src="../../../assets/img/baseline_cached_white_18dp.png" alt="">
+      <img src="../../../assets/img/baseline_cached_white_18dp.png" alt="reload">
     </button>
     <mat-form-field id="quantRetalho">
       <input matInput class="yellow" placeholder="Corte Ret." value="{{ data.corteRet }}" #corteRet disabled>
@@ -133,30 +133,11 @@
     <mat-form-field id="sitLab">
       <input class="yellow" matInput placeholder="Sit. Lab" value="{{ data.amostra }}" #amostra disabled>
     </mat-form-field>
-    <button (click)="saveFormData(op.value,
-                                  cliente.value,
-                                  codProd.value,
-                                  descProd.value,
-                                  dimBob.value,
-                                  bobMad.value,
-                                  lote.value,
-                                  lance.value,
-                                  obsOp.value,
-                                  bobFinal.value,
-                                  podeVariar.value,
-                                  varMax.value,
-                                  varMin.value,
-                                  qtdBob.value,
-                                  qtdRolo.value,
-                                  qtdRetalho.value,
-                                  qtdSucata.value,
-                                  bobinaProd.value,
+    <button (click)="saveFormData(bobinaProd.value,
                                   roloProd.value,
                                   retalhoProd.value,
                                   sucataProd.value,
-                                  spark.value,
-                                  obsRepassadeira.value,
-                                  amostra.value)" 
+                                  obsRepassadeira.value)" 
       color="primary" mat-raised-button>Salvar
     </button>
   </div>
