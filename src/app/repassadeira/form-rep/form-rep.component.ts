@@ -36,8 +36,7 @@ export class FormRepComponent implements OnInit {
   ngOnInit() {    
     this.loginService.currentUser.subscribe( user => this.user = user );    
     this.loginService.currentSetor.subscribe( repassa => this.repassadeira = repassa.slice(13));
-    console.log( 'inside form' +  this.data.saved);
-    
+    console.log( 'inside form' +  this.data.saved);    
   }
 
   saveFormData(bobinaProd,
@@ -101,12 +100,16 @@ export class FormRepComponent implements OnInit {
                    'codProbSuc=' + codProbSuc;
     this.http.get( bigStringOut, {responseType: 'text'} )
     .subscribe( response => {
-      console.log( 'DataRecieve' + response );
+      console.log( 'Data_Recieved' + response );
       if( response == 'ERRO 05' ) {
         alert('ERRO');
       } else {
+        this.snackBar.open('O.P Salva com sucesso.', '[X]Fechar', {           
+          duration: 3000
+        });      
         this.data.saved = true;
-        this.closeRepForm()
+        this.closeRepForm();
+        
       }
     }, error =>  this.error = console.log(error)
     )
@@ -117,6 +120,7 @@ export class FormRepComponent implements OnInit {
  }
 
   closeRepForm(): void {
+    
     this.repassForm.close(this.data.saved);
     
   }

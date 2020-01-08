@@ -68,6 +68,7 @@ displayedColumns: string[] = ['produzir',
     this.getDataOp(this.setor);
   }
 
+
   openDialog(opDOM,
              clienteDOM,
              codProdDOM,
@@ -98,6 +99,10 @@ displayedColumns: string[] = ['produzir',
              codImpDOM,
              codProblemaDOM,
              codProbSucDOM): void {
+
+    loteDOM
+
+              
     if( mmValidaDOM == 0 ) {
       const dialogRef = this.dialog.open(FormRepComponent, {
         width: '1000px',
@@ -141,7 +146,7 @@ displayedColumns: string[] = ['produzir',
         console.log('The dialog was closed' + this.saved);
         console.log(result);
         if(result == true){
-          this.
+          this.getDataOp(this.setor);
         }
 
       });
@@ -189,12 +194,16 @@ displayedColumns: string[] = ['produzir',
        quantEtq: quantEtqDOM,
          codImp: codImpDOM,
     codProblema: codProblemaDOM,
-     codProbSuc: codProbSucDOM
+     codProbSuc: codProbSucDOM,
+          saved: this.saved
           }
         });  
         dialogRef.afterClosed().subscribe(result => {
-          console.log('The dialog was closed');
-          this.getDataOp(this.setor);                
+          console.log('The dialog was closed' + this.saved);
+        console.log(result);
+        if(result == true){
+          this.getDataOp(this.setor);
+        }
         });
       } else {
         this.snackBar.open('Ponta de fora não confere.', '[X]Fechar', {           
@@ -225,10 +234,12 @@ displayedColumns: string[] = ['produzir',
     }
   }
 
+
   getDataOp(setor) {
     let repassadeira = setor;
     repassadeira = repassadeira.slice(13);
     console.log(repassadeira);
+
     this.repService.getOpRepassadeiras(repassadeira)
       .pipe(map(res => {
         const resJson = this.monitorService.convertXMLtoJSON(res);
@@ -237,14 +248,14 @@ displayedColumns: string[] = ['produzir',
         let repOp = doc;
         repOp = repOp['Root'];
         if (repOp == undefined) {
-          console.log('Database is Out');
           this.snackBar.open('Base de dados Off-line ❗', '[X] Fechar', { duration: 5000});
         } else {
           repOp = repOp['ttOp'];
-          repOp = repOp['Registro'];
+          repOp = repOp['Registro'];          
           console.log(repOp);
           this.dataSource.data = repOp;
           this.loading = false;
+          console.log(typeof(repOp));
         }
       }, error => this.error = console.log('This ' + error));
   }
