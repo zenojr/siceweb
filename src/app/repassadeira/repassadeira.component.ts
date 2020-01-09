@@ -68,7 +68,6 @@ displayedColumns: string[] = ['produzir',
     this.getDataOp(this.setor);
   }
 
-
   openDialog(opDOM,
              clienteDOM,
              codProdDOM,
@@ -98,10 +97,14 @@ displayedColumns: string[] = ['produzir',
              quantEtqDOM,
              codImpDOM,
              codProblemaDOM,
-             codProbSucDOM): void {
+             codProbSucDOM,
+             numOpPendDOM): void {
 
-    loteDOM
-
+    
+    console.log( 'Final Bob: ' + bobFinalDOM + ' numOp: ' + numOpPendDOM )
+    if( bobFinalDOM == "Sim" && numOpPendDOM != "" ) {
+      alert( 'EXISTEM LANCES DAS OP`s:' + numOpPendDOM + ' PARA SEREM PRODUZIDOS DESSE LOTE. VERIFIQUE❗' )
+    }
               
     if( mmValidaDOM == 0 ) {
       const dialogRef = this.dialog.open(FormRepComponent, {
@@ -137,7 +140,8 @@ displayedColumns: string[] = ['produzir',
        codImp: codImpDOM,
   codProblema: codProblemaDOM,
    codProbSuc: codProbSucDOM,
-        saved: this.saved }
+        saved: this.saved,
+    numOpPend: numOpPendDOM}
       });
 
       
@@ -195,7 +199,8 @@ displayedColumns: string[] = ['produzir',
          codImp: codImpDOM,
     codProblema: codProblemaDOM,
      codProbSuc: codProbSucDOM,
-          saved: this.saved
+          saved: this.saved,
+      numOpPend: numOpPendDOM
           }
         });  
         dialogRef.afterClosed().subscribe(result => {
@@ -248,14 +253,14 @@ displayedColumns: string[] = ['produzir',
         let repOp = doc;
         repOp = repOp['Root'];
         if (repOp == undefined) {
-          this.snackBar.open('Base de dados Off-line ❗', '[X] Fechar', { duration: 5000});
+          this.snackBar.open('Base de dados Off-line ❗', '[x] Fechar', { duration: 5000});
         } else {
           repOp = repOp['ttOp'];
           repOp = repOp['Registro'];          
           console.log(repOp);
           this.dataSource.data = repOp;
           this.loading = false;
-          console.log(typeof(repOp));
+          
         }
       }, error => this.error = console.log('This ' + error));
   }
