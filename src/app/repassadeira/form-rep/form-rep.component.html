@@ -109,10 +109,7 @@
         <mat-radio-button value="sim">Sim</mat-radio-button>
         <mat-radio-button value="nao">Não</mat-radio-button>
       </mat-radio-group>
-    </div>
-    <!-- <mat-form-field *ngIf="dimBob.value != 'ROLO' " id="tara">
-      <input class="white" matInput placeholder="Tara" value="0" #taraOut>
-    </mat-form-field> -->
+    </div>    
     
     <mat-form-field id="tara" *ngIf="dimBob.value != 'ROLO' ">
       <input class="white" matInput placeholder="Tara" [(ngModel)]="taraOut" autocomplete="off">
@@ -128,7 +125,7 @@
       </mat-radio-group>
     </div>
     <mat-form-field id="obsRep">
-      <input matInput placeholder="Obs. Rep" class="white" [(ngModel)]="obsRepass" #obsRepassadeira>
+      <input matInput placeholder="Obs. Rep" class="white" [(ngModel)]="obsRepass" #obsRepassadeira autocomplete="off">
     </mat-form-field>
     <mat-form-field id="sitLab">
       <input class="yellow" matInput placeholder="Sit. Lab" value="{{ data.amostra }}" #amostra disabled>

@@ -102,8 +102,8 @@ displayedColumns: string[] = ['produzir',
 
     
     console.log( 'Final Bob: ' + bobFinalDOM + ' numOp: ' + numOpPendDOM )
-    if( bobFinalDOM == "Sim" && numOpPendDOM != "" ) {
-      alert( 'EXISTEM LANCES DAS OP`s:' + numOpPendDOM + ' PARA SEREM PRODUZIDOS DESSE LOTE. VERIFIQUE❗' )
+    if( bobFinalDOM == "Sim" && numOpPendDOM != ' ' ) {
+      alert( '🚨 EXISTEM LANCES DAS OP`s:' + numOpPendDOM + ' PARA SEREM PRODUZIDOS DESSE LOTE. VERIFIQUE ❗' )
     }
               
     if( mmValidaDOM == 0 ) {
