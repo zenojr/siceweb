@@ -6,6 +6,7 @@ import { DataRepOut                    } from './saveDataModel';
 import { LoginService                  } from '../../login/login.service';
 import { HttpClient                    } from '@angular/common/http';
 import { RepassadeiraService           } from '../repassadeira.service';
+import { FormControl, Validators       } from '@angular/forms';
 
 @Component({
      selector: 'app-form-rep',
@@ -18,9 +19,10 @@ export class FormRepComponent implements OnInit {
   user          = '';
   obsRepass     = '';
   indexCorteRol = 0;
-  bobina        = 0;
+  //bobina        = 0;
   taraOut       = 0;
   arrSave       = [];
+  blockRol      = false;
          error: any;
   repassadeira: any;
   constructor(
@@ -33,10 +35,10 @@ export class FormRepComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public dataRepOut: DataRepOut
   ) { }
 
-  ngOnInit() {    
+  ngOnInit() {
     this.loginService.currentUser.subscribe( user => this.user = user );    
     this.loginService.currentSetor.subscribe( repassa => this.repassadeira = repassa.slice(13));
-    console.log( 'inside form' +  this.data.saved);     
+    console.log( 'inside form' +  this.data.saved);  
   }
 
   saveFormData(bobinaProd,
@@ -45,11 +47,11 @@ export class FormRepComponent implements OnInit {
                sucataProd,
                obsRepassadeira){
 
-  let erroSaving  = [];                
-  let quantMetro  = 0;
-  let quantRolo   = 0;
-  let quantRet    = 0;
-  let quantSuc    = 0;
+  let errorSaving  = [];
+  let quantMetro:   number;
+  let quantRolo:    number;
+  let quantRet:     number;
+  let quantSuc:     number;
   let Observ      = '';
   let numOp       = this.data['op'];
   let itCodigo    = this.data['codProd'];
@@ -70,20 +72,25 @@ export class FormRepComponent implements OnInit {
   let codProblema = this.data['codProblema'];
   let codProbSuc  = this.data['codProbSuc'];
 
-  console.log( this.data['corteRol'] );
+  console.log( 'Corte Rol:' + this.data['corteRol'].length )
+
+  if(this.data['corteRol'].length > 1 ) {
+    this.blockRol = true;
+    errorSaving.push( '🚨 Você deve deve confirmar todos os cortes de rolo para salvar a produção.' )
+  }
 
   if( quantRolo > 5){
-    erroSaving.push( '🚨 A quantidade de rolos produzido ultrapassa o limite permitido - ' );
+    errorSaving.push( '🚨 A quantidade de rolos produzido ultrapassa o limite permitido ' );
   }
 
   if( this.data['qtdRolo'] == 0 && quantRolo > 2 ){
-    erroSaving.push( '🚨 Não foi solicitado produção de rolos e o valor informado é maior que o permitido.' );
+    errorSaving.push( '🚨 Não foi solicitado produção de rolos e o valor informado é maior que o permitido.' );
   }
 
   if( this.testeSpark != 'sim' ){
-      this.snackBar.open('🚨 Teste Spark não realizado ❕', '[X]Fechar', {           
-      duration: 3000
-    });      
+      this.snackBar.open('🚨 Teste Spark não realizado ❕', '[x]Fechar', {           
+        duration: 3000
+      });      
   } else {
     const url = 'http://192.168.0.7:8080/cgi-bin/wspd_cgi.sh/WService=emswebelttst/scb005ws.p';
     let bigStringOut = '';  
@@ -107,7 +114,7 @@ export class FormRepComponent implements OnInit {
                    'codProblema='+ codProblema+ '&' +
                    'codProbSuc=' + codProbSuc;
 
-    if(erroSaving.length < 1) {
+    if(errorSaving.length < 1) {
       this.http.get( bigStringOut, {responseType: 'text'} )
       .subscribe( response => {      
         console.log( 'Data_Recieved: ' + response );
@@ -120,7 +127,7 @@ export class FormRepComponent implements OnInit {
         
       }, error =>  this.error = console.log(error));
     } else {
-      this.snackBar.open('ERRO: ' + erroSaving , '[X]Fechar', {           
+      this.snackBar.open('ERRO: ' + errorSaving , '[X]Fechar', {           
         duration: 8000
       });      
     }
@@ -133,10 +140,13 @@ export class FormRepComponent implements OnInit {
   }
 
   nextBtn(){
+    console.log( this.data['corteRol'] );
     let controlStop = this.data['corteRol'];    
     if( this.indexCorteRol < controlStop.length -1 ){
-      this.indexCorteRol++;      
+      this.indexCorteRol++;
+      this.blockRol = true
     } else {
+      this.blockRol = false;
       this.snackBar.open('Corte rolo finalizado.', '[X]Fechar', {           
         duration: 3000
       });      
