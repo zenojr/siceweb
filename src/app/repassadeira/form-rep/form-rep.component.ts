@@ -14,15 +14,26 @@ import { FormControl, Validators       } from '@angular/forms';
     styleUrls: ['./form-rep.component.scss']
 })
 export class FormRepComponent implements OnInit {
+
+  
+  // inputBob = new FormControl('', [Validators.required]);
+ 
+  errorSaving   = []
   testeSpark    = '';
   devProd       = '';
   user          = '';
   obsRepass     = '';
+  quantMetro    = 0;
+  quantRolo     = 0;
+  quantRet      = 0;
+  quantSuc      = 0;
   indexCorteRol = 0;
   //bobina        = 0;
   taraOut       = 0;
   arrSave       = [];
   blockRol      = false;
+  infoBob       = true;
+  inforolo      = true;
          error: any;
   repassadeira: any;
   constructor(
@@ -39,6 +50,13 @@ export class FormRepComponent implements OnInit {
     this.loginService.currentUser.subscribe( user => this.user = user );    
     this.loginService.currentSetor.subscribe( repassa => this.repassadeira = repassa.slice(13));
     console.log( 'inside form' +  this.data.saved);  
+    this.getErrorMessage();
+  }
+
+  getErrorMessage(){
+    if( this.data['qtdBob'] != 0 ){      
+      // this.inputBob.hasError('required') ? 'Você deve informar um valor' : '';      
+    }     
   }
 
   saveFormData(bobinaProd,
@@ -47,11 +65,6 @@ export class FormRepComponent implements OnInit {
                sucataProd,
                obsRepassadeira){
 
-  let errorSaving  = [];
-  let quantMetro:   number;
-  let quantRolo:    number;
-  let quantRet:     number;
-  let quantSuc:     number;
   let Observ      = '';
   let numOp       = this.data['op'];
   let itCodigo    = this.data['codProd'];
@@ -62,29 +75,43 @@ export class FormRepComponent implements OnInit {
   let destino     = this.data['cliente'];
   let usuario     = this.user;
   let numRepassa  = this.repassadeira;
-  quantMetro      = bobinaProd;
-  quantRolo       = roloProd;
-  quantRet        = retalhoProd;
-  quantSuc        = sucataProd;
+  this.quantMetro = bobinaProd;
+  this.quantRolo  = roloProd;
+  this.quantRet   = retalhoProd;
+  this.quantSuc   = sucataProd;
   let DevProd     = this.devProd;
   Observ          = obsRepassadeira;
   let codImp      = this.data['codImp'];
   let codProblema = this.data['codProblema'];
   let codProbSuc  = this.data['codProbSuc'];
 
-  console.log( 'Corte Rol:' + this.data['corteRol'].length )
+  if( this.data['qtdRolo'] > 0 ){
+    this.errorSaving.pop();
+    this.errorSaving.push( 'Informe a produção de Rolo' );
+    this.inforolo = true;
+  } else {
+    this.inforolo = false;
+  }
+  
+  if( this.data['qtdBob'] > 0 ){
+    this.errorSaving.pop();
+    this.errorSaving.push( 'Informe a produção de bobina' );
+    this.infoBob = true;
+  } else {
+    this.infoBob = false;
+  }
 
   if(this.data['corteRol'].length > 1 ) {
     this.blockRol = true;
-    errorSaving.push( '🚨 Você deve deve confirmar todos os cortes de rolo para salvar a produção.' )
+    this.errorSaving.push( '🚨 Você deve deve confirmar todos os cortes de rolo para salvar a produção.' )
   }
 
-  if( quantRolo > 5){
-    errorSaving.push( '🚨 A quantidade de rolos produzido ultrapassa o limite permitido ' );
+  if( this.quantRolo > 5){
+    this.errorSaving.push( '🚨 A quantidade de rolos produzido ultrapassa o limite permitido ' );
   }
 
-  if( this.data['qtdRolo'] == 0 && quantRolo > 2 ){
-    errorSaving.push( '🚨 Não foi solicitado produção de rolos e o valor informado é maior que o permitido.' );
+  if( this.data['qtdRolo'] == 0 && this.quantRolo > 2 ){
+    this.errorSaving.push( '🚨 Não foi solicitado produção de rolos e o valor informado é maior que o permitido.' );
   }
 
   if( this.testeSpark != 'sim' ){
@@ -95,26 +122,26 @@ export class FormRepComponent implements OnInit {
     const url = 'http://192.168.0.7:8080/cgi-bin/wspd_cgi.sh/WService=emswebelttst/scb005ws.p';
     let bigStringOut = '';  
         bigStringOut = url + '?' + 
-                   'numOp='      + numOp      + '&' +
-                   'itCodigo='   + itCodigo   + '&' +
-                   'codLote='    + codLote    + '&' + 
-                   'lance='      + lance      + '&' +
-                   'tara='       + tara       + '&' +
-                   'ajSpark='    + ajSpark    + '&' +
-                   'destino='    + destino    + '&' +
-                   'usuario='    + usuario    + '&' +
-                   'numRepassa=' + numRepassa + '&' +
-                   'quantMetro=' + quantMetro + '&' +
-                   'quantRolo='  + quantRolo  + '&' +
-                   'quantRet='   + quantRet   + '&' +
-                   'quantSuc='   + quantSuc   + '&' +
-                   'DevProd='    + DevProd    + '&' +
-                   'Observ='     + Observ     + '&' +
-                   'codImp='     + codImp     + '&' +
-                   'codProblema='+ codProblema+ '&' +
+                   'numOp='      + numOp           + '&' +
+                   'itCodigo='   + itCodigo        + '&' +
+                   'codLote='    + codLote         + '&' + 
+                   'lance='      + lance           + '&' +
+                   'tara='       + tara            + '&' +
+                   'ajSpark='    + ajSpark         + '&' +
+                   'destino='    + destino         + '&' +
+                   'usuario='    + usuario         + '&' +
+                   'numRepassa=' + numRepassa      + '&' +
+                   'quantMetro=' + this.quantMetro + '&' +
+                   'quantRolo='  + this.quantRolo  + '&' +
+                   'quantRet='   + this.quantRet   + '&' +
+                   'quantSuc='   + this.quantSuc   + '&' +
+                   'DevProd='    + DevProd         + '&' +
+                   'Observ='     + Observ          + '&' +
+                   'codImp='     + codImp          + '&' +
+                   'codProblema='+ codProblema     + '&' +
                    'codProbSuc=' + codProbSuc;
 
-    if(errorSaving.length < 1) {
+    if(this.errorSaving.length < 1) {
       this.http.get( bigStringOut, {responseType: 'text'} )
       .subscribe( response => {      
         console.log( 'Data_Recieved: ' + response );
@@ -127,7 +154,7 @@ export class FormRepComponent implements OnInit {
         
       }, error =>  this.error = console.log(error));
     } else {
-      this.snackBar.open('ERRO: ' + errorSaving , '[X]Fechar', {           
+      this.snackBar.open('ERRO: ' + this.errorSaving , '[X]Fechar', {           
         duration: 8000
       });      
     }

@@ -24,14 +24,16 @@ import { MatDividerModule,
          MatButtonToggleModule,
          MatExpansionModule,
          MatDialogModule,
-         MatRadioModule} from '@angular/material';
-import { FormsModule             } from '@angular/forms';
+         MatRadioModule,
+         MatFormFieldModule      } from '@angular/material';
+import { FormsModule, 
+         ReactiveFormsModule     } from '@angular/forms';
 import { PrincipalComponent      } from './principal/principal.component';
 import { MonitoropComponent      } from './monitorop/monitorop.component';
 import { PrioridadePipe          } from './monitorop/prioridade.pipe';
 import { RepassadeiraComponent   } from './repassadeira/repassadeira.component';
-import { FormRepComponent } from './repassadeira/form-rep/form-rep.component';
-import { InputZeroPipe } from './repassadeira/form-rep/input-zero.pipe';
+import { FormRepComponent        } from './repassadeira/form-rep/form-rep.component';
+import { InputZeroPipe           } from './repassadeira/form-rep/input-zero.pipe';
 
 @NgModule({
   declarations: [
@@ -72,7 +74,9 @@ import { InputZeroPipe } from './repassadeira/form-rep/input-zero.pipe';
     MatButtonToggleModule,
     MatExpansionModule,
     MatDialogModule,
-    MatRadioModule
+    MatRadioModule,
+    MatFormFieldModule,
+    ReactiveFormsModule 
   ],
   providers: [],
   bootstrap: [AppComponent]
