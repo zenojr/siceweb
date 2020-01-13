@@ -14,7 +14,6 @@ import { FormControl, Validators       } from '@angular/forms';
     styleUrls: ['./form-rep.component.scss']
 })
 export class FormRepComponent implements OnInit {
-
   
   // inputBob = new FormControl('', [Validators.required]);
  
@@ -28,12 +27,13 @@ export class FormRepComponent implements OnInit {
   quantRet      = 0;
   quantSuc      = 0;
   indexCorteRol = 0;
-  //bobina        = 0;
   taraOut       = 0;
   arrSave       = [];
   blockRol      = false;
-  infoBob       = true;
-  inforolo      = true;
+  blockBob      = false;
+  blockRolo     = false;
+  blockRetalho  = false;
+  blockSucata   = false;
          error: any;
   repassadeira: any;
   constructor(
@@ -85,20 +85,36 @@ export class FormRepComponent implements OnInit {
   let codProblema = this.data['codProblema'];
   let codProbSuc  = this.data['codProbSuc'];
 
+  if( this.data['qtdSucata'] > 0){
+    this.errorSaving.pop();
+    this.errorSaving.push('Informe a produção de sucata');
+    this.blockRetalho = true;
+  } else {
+    this.blockRetalho = false;
+  }
+
+  if ( this.data['qtdRetalho'] > 0 ) {
+    this.errorSaving.pop();
+    this.errorSaving.push('Informe a produção de Retalho');
+    this.blockRetalho = true;
+  } else {
+    this.blockRetalho = false
+  }
+
   if( this.data['qtdRolo'] > 0 ){
     this.errorSaving.pop();
     this.errorSaving.push( 'Informe a produção de Rolo' );
-    this.inforolo = true;
+    this.blockRolo = true;
   } else {
-    this.inforolo = false;
+    this.blockRolo = false;
   }
   
   if( this.data['qtdBob'] > 0 ){
     this.errorSaving.pop();
     this.errorSaving.push( 'Informe a produção de bobina' );
-    this.infoBob = true;
+    this.blockBob = true;
   } else {
-    this.infoBob = false;
+    this.blockBob = false;
   }
 
   if(this.data['corteRol'].length > 1 ) {

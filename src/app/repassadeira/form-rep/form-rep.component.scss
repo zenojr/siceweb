@@ -99,6 +99,10 @@ mat-radio-button{
     @extend %centerAll;
 }
 
+.prodError {
+    background-color: #ec6161;
+}
+
 #reloadBtn {
     margin-top: 10px;
     margin-left: -20px;

@@ -86,17 +86,20 @@
  
   <div class="secondBlock">
     <mat-form-field id="bobina">
-      <input type="number"  class="white" matInput placeholder="Bobina" #bobinaProd autocomplete="off" [required]="infoBob">            
+      <input type="number" class="white" matInput placeholder="Bobina" #bobinaProd 
+             autocomplete="off" [required]="blockBob" [ngClass]="{prodError: blockBob}">            
     </mat-form-field>
     <mat-form-field id="rolo">
-      <input type="number" class="white" matInput placeholder="Rolo" #roloProd autocomplete="off">
-      <mat-error *ngIf="!infoRolo"> Informe a quantidade de Rolo </mat-error>
+      <input type="number" class="white" matInput placeholder="Rolo" #roloProd 
+             autocomplete="off" [required]="blockRolo" [ngClass]="{prodError: blockRolo}">      
     </mat-form-field>
     <mat-form-field id="retalho">
-      <input type="number" class="white" matInput placeholder="Retalho" #retalhoProd autocomplete="off">
+      <input type="number" class="white" matInput placeholder="Retalho" #retalhoProd 
+             autocomplete="off" [required]="blockRetalho" [ngClass]="{prodError: blockRetalho}" >
     </mat-form-field>
     <mat-form-field id="sucata">
-      <input type="number" class="white" matInput placeholder="Sucata" #sucataProd autocomplete="off">
+      <input type="number" class="white" matInput placeholder="Sucata" #sucataProd 
+             autocomplete="off" [required]="blockSucata" [ngClass]="{prodError: blockSucata}" >
     </mat-form-field>
   </div>
 
