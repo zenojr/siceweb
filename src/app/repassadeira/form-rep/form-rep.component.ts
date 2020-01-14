@@ -53,6 +53,13 @@ export class FormRepComponent implements OnInit {
     this.getErrorMessage();
   }
 
+  getMotDevolucao() {
+    const url = 'http://192.168.0.7:8080/cgi-bin/wspd_cgi.sh/WService=emswebelttst/scb013ws.p?tipo=devolucao';
+    this.http.get( url, {responseType: 'text'} ).subscribe( response => {
+      console.log(response);
+    });
+  }
+
   getErrorMessage(){
     if( this.data['qtdBob'] != 0 ){      
       // this.inputBob.hasError('required') ? 'Você deve informar um valor' : '';      

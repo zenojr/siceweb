@@ -108,7 +108,7 @@
   <div class="thirdBlock">
 
     <div class="contRadio">
-      <label> Teste do Spark: </label>
+      <label>Teste Spark:</label>
       <mat-radio-group [(ngModel)]="testeSpark">
         <mat-radio-button value="sim">Sim</mat-radio-button>
         <mat-radio-button value="nao">Não</mat-radio-button>
@@ -123,12 +123,12 @@
       <input class="green" matInput placeholder="Ajuste Spark" value="{{ data.spark }}" #spark disabled>
     </mat-form-field>
     <div class="contRadio">
-      <mat-radio-group [(ngModel)]="devProd"  >
-        <mat-radio-button value="Devolver">Devolver</mat-radio-button>
-        <mat-radio-button value="Produzir">Produzir</mat-radio-button>
+      <mat-radio-group [(ngModel)]="devProd">
+        <mat-radio-button (click)="getMotDevolucao()" value="devolver">Devolver</mat-radio-button>
+        <mat-radio-button value="produzir">Produzir</mat-radio-button>
       </mat-radio-group>
 
-      <mat-form-field *ngIf="devProd === 'Devolver'">        
+      <mat-form-field *ngIf="devProd === 'devolver'">        
         <mat-select [(value)]="selected" placeholder="Selecione uma opção">          
           <mat-option value="option1">Option 1</mat-option>
           <mat-option value="option2">Option 2</mat-option>
@@ -136,9 +136,6 @@
         </mat-select>
       </mat-form-field>
       
-
-      
-
     </div>
     <mat-form-field id="obsRep">
       <input matInput placeholder="Obs. Rep" class="white" [(ngModel)]="obsRepass" #obsRepassadeira autocomplete="off">
