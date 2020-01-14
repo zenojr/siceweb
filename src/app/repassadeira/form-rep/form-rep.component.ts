@@ -7,6 +7,7 @@ import { LoginService                  } from '../../login/login.service';
 import { HttpClient                    } from '@angular/common/http';
 import { RepassadeiraService           } from '../repassadeira.service';
 import { FormControl, Validators       } from '@angular/forms';
+import { MonitoropService              } from '../../monitorop/monitorop.service'
 
 @Component({
      selector: 'app-form-rep',
@@ -34,6 +35,7 @@ export class FormRepComponent implements OnInit {
   blockRolo     = false;
   blockRetalho  = false;
   blockSucata   = false;
+  motDevolucao: any;
          error: any;
   repassadeira: any;
   constructor(
@@ -42,6 +44,7 @@ export class FormRepComponent implements OnInit {
     public loginService: LoginService,
     public         http: HttpClient,
     public      repServ: RepassadeiraService,
+    public    monOpServ: MonitoropService,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
     @Inject(MAT_DIALOG_DATA) public dataRepOut: DataRepOut
   ) { }
@@ -55,8 +58,13 @@ export class FormRepComponent implements OnInit {
 
   getMotDevolucao() {
     const url = 'http://192.168.0.7:8080/cgi-bin/wspd_cgi.sh/WService=emswebelttst/scb013ws.p?tipo=devolucao';
-    this.http.get( url, {responseType: 'text'} ).subscribe( response => {
-      console.log(response);
+    this.http.get( url, {responseType: 'text'} ).subscribe( response => {      
+      this.motDevolucao = this.monOpServ.convertXMLtoJSON(response);
+      this.motDevolucao = this.motDevolucao['Root'];
+      this.motDevolucao = this.motDevolucao['ttProblema'];
+      this.motDevolucao = this.motDevolucao['Registro'];
+      
+      console.log(this.motDevolucao);
     });
   }
 

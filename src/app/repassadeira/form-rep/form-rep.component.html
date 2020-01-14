@@ -128,11 +128,13 @@
         <mat-radio-button value="produzir">Produzir</mat-radio-button>
       </mat-radio-group>
 
+      <!-- <li *ngFor="let item of motDevolucao">
+        <ul> {{ item.descricao }} </ul>
+      </li> -->
+
       <mat-form-field *ngIf="devProd === 'devolver'">        
-        <mat-select [(value)]="selected" placeholder="Selecione uma opção">          
-          <mat-option value="option1">Option 1</mat-option>
-          <mat-option value="option2">Option 2</mat-option>
-          <mat-option value="option3">Option 3</mat-option>
+        <mat-select  placeholder="Selecione uma opção">          
+          <mat-option *ngFor="let motivo of motDevolucao">{{ motivo.descricao }}</mat-option>          
         </mat-select>
       </mat-form-field>
       
