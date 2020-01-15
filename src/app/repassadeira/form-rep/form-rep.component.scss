@@ -123,11 +123,11 @@ mat-radio-button{
     @extend %mediumInput;
 }
 
-#sitLab {
+#sitLab , #obsRep {
     @extend %bigInput;
 }
 
-#cliente, #descProd, #obsOP, #obsRep {
+#cliente, #descProd, #obsOP {
     @extend %largestInput;
 }
 

@@ -108,7 +108,7 @@ displayedColumns: string[] = ['produzir',
               
     if( mmValidaDOM == 0 ) {
       const dialogRef = this.dialog.open(FormRepComponent, {
-        width: '1000px',
+        width: '1050px',        
          data: {
            op: opDOM,
       cliente: clienteDOM,
@@ -167,7 +167,7 @@ displayedColumns: string[] = ['produzir',
       corteRolLocal = corteRolLocal.split(",");                  
       if( insertDOM == mPontaForaDOM  ) {        
         const dialogRef = this.dialog.open(FormRepComponent, {
-          width: '1000px',
+          width: '1050px',
            data: {
              op: opDOM,
         cliente: clienteDOM,

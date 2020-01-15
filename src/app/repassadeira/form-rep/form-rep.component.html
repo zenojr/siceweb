@@ -81,12 +81,12 @@
   </div>
   <mat-divider></mat-divider>
   <span id="titleProd">
-    <b>Quant Produzida</b>
+    <h5>Quant Produzida</h5>
   </span>
  
   <div class="secondBlock">
     <mat-form-field id="bobina">
-      <input type="number" class="white" matInput placeholder="Bobina" #bobinaProd 
+      <input type="number" class="white" matInput placeholder="Bobina" #bobinaProd
              autocomplete="off" [required]="blockBob" [ngClass]="{prodError: blockBob}">            
     </mat-form-field>
     <mat-form-field id="rolo">
@@ -128,13 +128,10 @@
         <mat-radio-button value="produzir">Produzir</mat-radio-button>
       </mat-radio-group>
 
-      <!-- <li *ngFor="let item of motDevolucao">
-        <ul> {{ item.descricao }} </ul>
-      </li> -->
-
       <mat-form-field *ngIf="devProd === 'devolver'">        
-        <mat-select  placeholder="Selecione uma opção">          
-          <mat-option *ngFor="let motivo of motDevolucao">{{ motivo.descricao }}</mat-option>          
+        <mat-select [(ngModel)]="motDevSelect" placeholder="Selecione uma opção">          
+          <mat-option value="{{ motivo.codProblema }}" 
+                      *ngFor="let motivo of motDevolucao">{{ motivo.descricao }}</mat-option>          
         </mat-select>
       </mat-form-field>
       

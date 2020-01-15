@@ -29,12 +29,14 @@ export class FormRepComponent implements OnInit {
   quantSuc      = 0;
   indexCorteRol = 0;
   taraOut       = 0;
+  motDevSelect  = null;
   arrSave       = [];
   blockRol      = false;
   blockBob      = false;
   blockRolo     = false;
   blockRetalho  = false;
   blockSucata   = false;
+  blockDevolver = false;
   motDevolucao: any;
          error: any;
   repassadeira: any;
@@ -65,6 +67,7 @@ export class FormRepComponent implements OnInit {
       this.motDevolucao = this.motDevolucao['Registro'];
       
       console.log(this.motDevolucao);
+
     });
   }
 
@@ -100,36 +103,49 @@ export class FormRepComponent implements OnInit {
   let codProblema = this.data['codProblema'];
   let codProbSuc  = this.data['codProbSuc'];
 
-  if( this.data['qtdSucata'] > 0){
-    this.errorSaving.pop();
-    this.errorSaving.push('Informe a produção de sucata');
-    this.blockRetalho = true;
+  
+  this.errorSaving = [];
+
+  if( this.devProd === 'devolver' && this.motDevSelect == null || this.motDevSelect == 0){
+      // this.errorSaving.pop();
+      this.errorSaving.push('Selecione um motivo de devolução');
+      this.blockDevolver = true;
+      alert('block here')
   } else {
-    this.blockRetalho = false;
+      this.blockDevolver = false;
   }
 
-  if ( this.data['qtdRetalho'] > 0 ) {
-    this.errorSaving.pop();
-    this.errorSaving.push('Informe a produção de Retalho');
-    this.blockRetalho = true;
+  if( this.data['qtdSucata'] > 0){
+      // this.errorSaving.pop();
+      this.errorSaving.push('Informe a produção de sucata');
+      this.blockRetalho = true;
   } else {
-    this.blockRetalho = false
+      this.blockRetalho = false;
+  }
+
+  if( this.data['qtdRetalho'] > 0 ) {
+      // this.errorSaving.pop();
+      this.errorSaving.push('Informe a produção de Retalho');
+      this.blockRetalho = true;
+  } else {
+      this.blockRetalho = false
   }
 
   if( this.data['qtdRolo'] > 0 ){
-    this.errorSaving.pop();
+    // this.errorSaving.pop();
     this.errorSaving.push( 'Informe a produção de Rolo' );
     this.blockRolo = true;
   } else {
     this.blockRolo = false;
   }
   
-  if( this.data['qtdBob'] > 0 ){
-    this.errorSaving.pop();
+  if( this.data['qtdBob'] > 0 && this.quantMetro == 0){
+    // this.errorSaving.pop();
     this.errorSaving.push( 'Informe a produção de bobina' );
-    this.blockBob = true;
+    this.blockBob = true;    
   } else {
     this.blockBob = false;
+
   }
 
   if(this.data['corteRol'].length > 1 ) {
