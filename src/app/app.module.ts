@@ -25,7 +25,8 @@ import { MatDividerModule,
          MatExpansionModule,
          MatDialogModule,
          MatRadioModule,
-         MatFormFieldModule      } from '@angular/material';
+         MatFormFieldModule,
+         MatTooltipModule        } from '@angular/material';
 import { FormsModule, 
          ReactiveFormsModule     } from '@angular/forms';
 import { PrincipalComponent      } from './principal/principal.component';
@@ -76,7 +77,8 @@ import { InputZeroPipe           } from './repassadeira/form-rep/input-zero.pipe
     MatDialogModule,
     MatRadioModule,
     MatFormFieldModule,
-    ReactiveFormsModule 
+    ReactiveFormsModule,
+    MatTooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]

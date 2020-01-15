@@ -61,12 +61,30 @@
 															 row.codProblema,
 															 row.codProbSuc,
 															 row.numOpPend )" 
-							mat-flat-button color="primary">Produzir</button>
+							mat-flat-button color="primary" matTooltip="O.P:__________________{{row.numOp}} 	  
+																		NOME:________________{{row.nomeCli}}
+																		COD:_________________{{row.itCodigo}}
+																		DESC:________________{{row.descItem}}
+																		DIM.BOB:_____________{{row.dimBob}}
+																		BOB.MAD:_____________{{row.bobMad}}
+																		LOTE:________________{{row.codLote}}
+																		LANCE:_______________{{row.lance}}
+																		OBS:_________________{{row.observ}}
+																		FIM.BOB:_____________{{row.finalBob}}
+																		VAR:_________________{{row.podeVar}}
+																		VAR.MAX:_____________{{row.qtPedMax}}
+																		VAR.MIN:_____________{{row.qtPedMin}}
+																		QTD.BOB:_____________{{row.quantPed}}
+																		QTD.ROL:_____________{{row.quantRolo}}
+																		QTD.RET:_____________{{row.quantRet}}
+																		QTD.SUC:_____________{{row.quantSuc}}"																		
+							matTooltipPosition="left" matTooltipClass="custom-tooltip" >Produzir</button>
+							
 						</td>
 						</ng-container>
 						
 						<!-- prioridade Column -->
-						<ng-container matColumnDef="prioridade">
+						<ng-container matColumnDef="prioridade" class="firstColumn">
 								<th mat-header-cell *matHeaderCellDef mat-sort-header> Prioridade </th>
 								<td mat-cell *matCellDef="let row"> {{ row.prioridade }} </td>
 						</ng-container>

@@ -1,4 +1,5 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, 
+         ViewEncapsulation            } from '@angular/core';
 import { RepassadeiraService          } from './repassadeira.service';
 import { MonitoropService             } from '../monitorop/monitorop.service';
 import { LoginService                 } from '../login/login.service';
@@ -15,7 +16,8 @@ import { MatSnackBar                  } from '@angular/material';
 @Component({
      selector: 'app-repassadeira',
   templateUrl: './repassadeira.component.html',
-    styleUrls: ['./repassadeira.component.scss']
+    styleUrls: ['./repassadeira.component.scss'],
+encapsulation: ViewEncapsulation.None
 })
 export class RepassadeiraComponent implements OnInit {
           animal: string;
