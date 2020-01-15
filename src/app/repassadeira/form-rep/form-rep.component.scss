@@ -49,7 +49,8 @@ mat-form-field {
 }
 
 .contRadio{
-    margin: 20px 0px 0px 0px;    
+    margin: 20px 0px 0px 0px;
+    font-size: 14px;
 }
 
 mat-radio-button{
@@ -97,6 +98,7 @@ mat-radio-button{
 
 #titleProd {
     @extend %centerAll;
+    height: 20px;
 }
 
 .prodError {
@@ -113,13 +115,13 @@ mat-radio-button{
 #quantRetalho, #quantSuc, #bobina, #bobFinal,
 #rolo, #retalho, #sucata, #quantBob, #variacao,
 #quantRolo, #quantRetalho, #quantSuc, #bobMadeira,
-#tara
+#tara, #ajusteSpark
 {
     @extend %smallInput;
 }
 
 #codProd, #lote, #dimBob, 
-#varPermMin, #varPerMax, #ajusteSpark {
+#varPermMin, #varPerMax {
     @extend %mediumInput;
 }
 
