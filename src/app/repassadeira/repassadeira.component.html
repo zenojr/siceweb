@@ -60,7 +60,8 @@
 															 row.codImp,
 															 row.codProblema,
 															 row.codProbSuc,
-															 row.numOpPend )" 
+															 row.numOpPend )"
+															 class="button-prod"
 							mat-flat-button color="primary" matTooltip="O.P:...................................{{row.numOp}} &#13; 	  
 																		NOME:..............................{{row.nomeCli}} &#13;
 																		COD:.................................{{row.itCodigo}} &#13;
@@ -86,7 +87,7 @@
 						<!-- prioridade Column -->
 						<ng-container matColumnDef="prioridade" class="firstColumn">
 								<th mat-header-cell *matHeaderCellDef mat-sort-header> Prioridade </th>
-								<td mat-cell *matCellDef="let row"> {{ row.prioridade }} </td>
+								<td mat-cell *matCellDef="let row"> <span class="priori-cell"> {{ row.prioridade }} </span> </td>
 						</ng-container>
 
 						<!-- dtPriori Column -->
