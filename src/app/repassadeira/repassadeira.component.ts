@@ -23,6 +23,7 @@ export class RepassadeiraComponent implements OnInit {
           animal: string;
            error: any;
       dataSource: any;
+         preview: any;
         repassOp: RepassOp[]
 displayedColumns: string[] = ['produzir',
                               'prioridade',
@@ -68,6 +69,18 @@ displayedColumns: string[] = ['produzir',
                   this.monitorOP + ' ' + this.expedicao);
     this.guardData();
     this.getDataOp(this.setor);
+
+    this.preview = `<html>
+                    <body>
+                    <head>
+                      <title>Preview</title>
+                      <meta charset="utf-8">
+                    </head>
+                    <h2> Preview inside html </h2>
+                      <p>Line break</p>
+                    </body>
+                    </html>`
+
   }
 
   openDialog(opDOM,
