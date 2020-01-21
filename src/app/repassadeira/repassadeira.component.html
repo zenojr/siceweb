@@ -4,7 +4,7 @@
 	<mat-divider></mat-divider>
 	<span></span>
 	<div class="subMenu">
-		<mat-accordion>
+		<mat-accordion *ngIf="repSelected">
 			<mat-expansion-panel>
 				<mat-expansion-panel-header>
 				<mat-panel-title>
@@ -158,7 +158,6 @@
 					<p>I'm visible because I am open</p>
 			</mat-expansion-panel>
 		</mat-accordion>                                      
-	</div>
-																		
+	</div>																		
 	</div>
 </div>

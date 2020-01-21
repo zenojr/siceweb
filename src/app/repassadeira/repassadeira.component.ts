@@ -13,6 +13,10 @@ import { MatDialog                    } from '@angular/material/dialog';
 import { FormRepComponent             } from './form-rep/form-rep.component';
 import { MatSnackBar                  } from '@angular/material';
 
+export class SelectRep {
+  repassadeira: any;
+}
+
 @Component({
      selector: 'app-repassadeira',
   templateUrl: './repassadeira.component.html',
@@ -21,8 +25,10 @@ encapsulation: ViewEncapsulation.None
 })
 export class RepassadeiraComponent implements OnInit {
           animal: string;
+    repassadeira: number;
            error: any;
       dataSource: any;
+     repSelected: false;
         repassOp: RepassOp[]
 displayedColumns: string[] = ['produzir',
                               'prioridade',
@@ -68,7 +74,22 @@ displayedColumns: string[] = ['produzir',
                   this.monitorOP + ' ' + this.expedicao);
     this.guardData();
     this.getDataOp(this.setor);
+  }
 
+  selectRep() {
+    let repassadeiras = [2, 4, 6 , 8];
+
+    if(!this.repSelected) {
+      const dialogRef = this.dialog.open(RepassadeiraComponent, {
+        width: '250px',
+        data: {repassadeira : this.repassadeira}
+      });
+  
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('The dialog was closed');
+        this.animal = result;
+      });  
+    }
   }
 
   openDialog(opDOM,
