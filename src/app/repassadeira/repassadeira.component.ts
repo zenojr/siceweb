@@ -15,12 +15,10 @@ import { MatSnackBar                  } from '@angular/material';
 import { Inject                       } from '@angular/core';
 import { MatDialogRef, 
          MAT_DIALOG_DATA              } from '@angular/material/dialog';
-
-         
-
-export interface DialogData {
-  animal: string;
-  name: string;
+        
+export interface ProductLineData {
+  repassadeira: string;
+ repassadeiras: any;
 }
 
 @Component({
@@ -85,8 +83,8 @@ displayedColumns: string[] = ['produzir',
   }
 
   openDialog2(): void {
-    const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
-      width: '250px',
+    const dialogRef = this.dialog.open(ProductLine, {
+      width: '300px',
       data: {name: this.name, animal: this.animal}
     });
 
@@ -305,14 +303,14 @@ displayedColumns: string[] = ['produzir',
 
 
 @Component({
-  selector: 'dialog-overview-example-dialog',
-  templateUrl: 'dialog-overview-example-dialog.html', 
+  selector: 'product-line',
+  templateUrl: 'product-line.html', 
 })
-export class DialogOverviewExampleDialog {
+export class ProductLine {
 
   constructor(
-    public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+    public dialogRef: MatDialogRef<ProductLine>,
+    @Inject(MAT_DIALOG_DATA) public data: ProductLineData) {}
 
   onNoClick(): void {
     this.dialogRef.close();
