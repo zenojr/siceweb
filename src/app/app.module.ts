@@ -32,9 +32,11 @@ import { FormsModule,
 import { PrincipalComponent      } from './principal/principal.component';
 import { MonitoropComponent      } from './monitorop/monitorop.component';
 import { PrioridadePipe          } from './monitorop/prioridade.pipe';
-import { RepassadeiraComponent   } from './repassadeira/repassadeira.component';
+import { RepassadeiraComponent, DialogOverviewExampleDialog   } from './repassadeira/repassadeira.component';
 import { FormRepComponent        } from './repassadeira/form-rep/form-rep.component';
 import { InputZeroPipe           } from './repassadeira/form-rep/input-zero.pipe';
+
+// import {DialogOverviewExample, DialogOverviewExampleDialog} from './app/dialog-overview-example';
 
 @NgModule({
   declarations: [
@@ -45,10 +47,11 @@ import { InputZeroPipe           } from './repassadeira/form-rep/input-zero.pipe
     PrioridadePipe,
     RepassadeiraComponent,
     FormRepComponent,
-    InputZeroPipe
+    InputZeroPipe,
+    DialogOverviewExampleDialog
   ],
 
-  entryComponents: [FormRepComponent],
+  entryComponents: [FormRepComponent, DialogOverviewExampleDialog, RepassadeiraComponent],
 
   imports: [
     BrowserModule,
@@ -78,7 +81,7 @@ import { InputZeroPipe           } from './repassadeira/form-rep/input-zero.pipe
     MatRadioModule,
     MatFormFieldModule,
     ReactiveFormsModule,
-    MatTooltipModule
+    MatTooltipModule,    
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -12,9 +12,15 @@ import { Router                       } from '@angular/router';
 import { MatDialog                    } from '@angular/material/dialog';
 import { FormRepComponent             } from './form-rep/form-rep.component';
 import { MatSnackBar                  } from '@angular/material';
+import { Inject                       } from '@angular/core';
+import { MatDialogRef, 
+         MAT_DIALOG_DATA              } from '@angular/material/dialog';
 
-export class SelectRep {
-  repassadeira: any;
+         
+
+export interface DialogData {
+  animal: string;
+  name: string;
 }
 
 @Component({
@@ -24,8 +30,9 @@ export class SelectRep {
 encapsulation: ViewEncapsulation.None
 })
 export class RepassadeiraComponent implements OnInit {
+  
           animal: string;
-    repassadeira: number;
+            name: string;
            error: any;
       dataSource: any;
      repSelected: false;
@@ -74,22 +81,19 @@ displayedColumns: string[] = ['produzir',
                   this.monitorOP + ' ' + this.expedicao);
     this.guardData();
     this.getDataOp(this.setor);
+    
   }
 
-  selectRep() {
-    let repassadeiras = [2, 4, 6 , 8];
+  openDialog2(): void {
+    const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+      width: '250px',
+      data: {name: this.name, animal: this.animal}
+    });
 
-    if(!this.repSelected) {
-      const dialogRef = this.dialog.open(RepassadeiraComponent, {
-        width: '250px',
-        data: {repassadeira : this.repassadeira}
-      });
-  
-      dialogRef.afterClosed().subscribe(result => {
-        console.log('The dialog was closed');
-        this.animal = result;
-      });  
-    }
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.animal = result;
+    });
   }
 
   openDialog(opDOM,
@@ -297,4 +301,26 @@ displayedColumns: string[] = ['produzir',
   }
 
 } 
+
+
+
+@Component({
+  selector: 'dialog-overview-example-dialog',
+  templateUrl: 'dialog-overview-example-dialog.html', 
+})
+export class DialogOverviewExampleDialog {
+
+  constructor(
+    public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+}
+
+
+
+
 
