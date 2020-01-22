@@ -29,8 +29,8 @@ encapsulation: ViewEncapsulation.None
 })
 export class RepassadeiraComponent implements OnInit {
   
-          animal: string;
-            name: string;
+    repassadeira=  'string';
+   repassadeiras: string;
            error: any;
       dataSource: any;
      repSelected: false;
@@ -82,15 +82,21 @@ displayedColumns: string[] = ['produzir',
     
   }
 
+  saveSelectedRepass(selected){
+    console.log(selected);
+  }
+
   openDialog2(): void {
     const dialogRef = this.dialog.open(ProductLine, {
       width: '300px',
-      data: {name: this.name, animal: this.animal}
+      data: {repassadeira: this.repassadeira, repassadeiras: this.repassadeiras}
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-      this.animal = result;
+      // this.repassadeiras = result;
+      // console.log(result);
+      // console.log(this.repassadeira);
     });
   }
 
