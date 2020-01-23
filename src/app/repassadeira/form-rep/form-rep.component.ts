@@ -145,7 +145,6 @@ export class FormRepComponent implements OnInit {
     this.blockBob = true;    
   } else {
     this.blockBob = false;
-
   }
 
   if(this.data['corteRol'].length > 1 ) {

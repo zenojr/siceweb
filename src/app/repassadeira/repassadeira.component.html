@@ -1,14 +1,12 @@
 
-<button (click)="openDialog2()">
-	test
-</button>
 
 <div class="container"> 
+	<button mat-raised-button (click)="saveSelectedRepass()">Seleciona repass</button>
 	<div class="table-container">        
 	<mat-divider></mat-divider>
 	<span></span>
 	<div class="subMenu">
-		<mat-accordion *ngIf="repSelected">
+		<mat-accordion>
 			<mat-expansion-panel>
 				<mat-expansion-panel-header>
 				<mat-panel-title>

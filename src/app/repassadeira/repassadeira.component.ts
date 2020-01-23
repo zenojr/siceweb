@@ -15,12 +15,8 @@ import { MatSnackBar                  } from '@angular/material';
 import { Inject                       } from '@angular/core';
 import { MatDialogRef, 
          MAT_DIALOG_DATA              } from '@angular/material/dialog';
+import { SelectRepComponent           } from './select-rep/select-rep.component';
         
-export interface ProductLineData {
-  repassadeira: string;
- repassadeiras: any;
-}
-
 @Component({
      selector: 'app-repassadeira',
   templateUrl: './repassadeira.component.html',
@@ -29,8 +25,7 @@ encapsulation: ViewEncapsulation.None
 })
 export class RepassadeiraComponent implements OnInit {
   
-    repassadeira=  'string';
-   repassadeiras: string;
+  selectedRepass= 'ok passed data success';
            error: any;
       dataSource: any;
      repSelected: false;
@@ -82,21 +77,15 @@ displayedColumns: string[] = ['produzir',
     
   }
 
-  saveSelectedRepass(selected){
-    console.log(selected);
-  }
-
-  openDialog2(): void {
-    const dialogRef = this.dialog.open(ProductLine, {
-      width: '300px',
-      data: {repassadeira: this.repassadeira, repassadeiras: this.repassadeiras}
+  saveSelectedRepass(): void {
+    const dialogSelect = this.dialog.open(SelectRepComponent, {
+      width: '250px',
+      data: { selectedRepass: this.selectedRepass }
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      // this.repassadeiras = result;
-      // console.log(result);
-      // console.log(this.repassadeira);
+    dialogSelect.afterClosed().subscribe( result => {
+      console.log('Close select');
+      this.selectedRepass = result;
     });
   }
 
@@ -308,21 +297,6 @@ displayedColumns: string[] = ['produzir',
 
 
 
-@Component({
-  selector: 'product-line',
-  templateUrl: 'product-line.html', 
-})
-export class ProductLine {
-
-  constructor(
-    public dialogRef: MatDialogRef<ProductLine>,
-    @Inject(MAT_DIALOG_DATA) public data: ProductLineData) {}
-
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
-
-}
 
 
 
