@@ -20,12 +20,10 @@ export class SelectRepComponent implements OnInit {
 
   constructor(
     public   dialogSelect: MatDialogRef<SelectRepComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogSelect,
-        
+    @Inject(MAT_DIALOG_DATA) public data: DialogSelect,        
   ) { }
 
-  ngOnInit() {
-    
+  ngOnInit() {    
   }
 
   onNoClick(): void {
