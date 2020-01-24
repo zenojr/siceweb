@@ -17,7 +17,6 @@ import { DialogSelect                  } from './selectModel';
 export class SelectRepComponent implements OnInit {
 
   repassadeira = 'nulo';
-   repassadeiras: string;
 
   constructor(
     public   dialogSelect: MatDialogRef<SelectRepComponent>,
@@ -26,7 +25,7 @@ export class SelectRepComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.data.selectedRepass = 'its working!!!'
+    
   }
 
   onNoClick(): void {
@@ -35,7 +34,7 @@ export class SelectRepComponent implements OnInit {
   }
 
   closeSelectForm(): void {    
-
+    this.data.selectedRepass = this.repassadeira;
     this.dialogSelect.close(this.data.selectedRepass);
   }
 

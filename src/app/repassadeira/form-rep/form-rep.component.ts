@@ -194,36 +194,35 @@ export class FormRepComponent implements OnInit {
         
           this.snackBar.open('O.P Salva com sucesso.', '[X]Fechar', {           
             duration: 3000
-          });                        
+          });    
           this.data.saved = true;
-          this.closeRepForm();        
+          this.closeRepForm();
         
       }, error =>  this.error = console.log(error));
     } else {
-      this.snackBar.open('ERRO: ' + this.errorSaving , '[X]Fechar', {           
+      this.snackBar.open('ERRO: ' + this.errorSaving , '[X]Fechar', {
         duration: 8000
-      });      
+      });
     }
-                   
   }
  }
 
-  closeRepForm(): void {    
-    this.repassForm.close(this.data.saved);    
+  closeRepForm(): void {
+    this.repassForm.close(this.data.saved);
   }
 
   nextBtn(){
     console.log( this.data['corteRol'] );
-    let controlStop = this.data['corteRol'];    
+    let controlStop = this.data['corteRol'];
     if( this.indexCorteRol < controlStop.length -1 ){
       this.indexCorteRol++;
       this.blockRol = true
     } else {
       this.blockRol = false;
-      this.snackBar.open('Corte rolo finalizado.', '[X]Fechar', {           
+      this.snackBar.open('Corte rolo finalizado.', '[X]Fechar', {
         duration: 3000
-      });      
+      });
       return this.indexCorteRol;
-    }    
+    }
   }
 }
