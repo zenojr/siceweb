@@ -26,15 +26,19 @@ export class SelectRepComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.data.selectedRepass = 'its working!!!'
   }
 
   onNoClick(): void {
-    this.dialogSelect.close();
+    this.data.selectedRepass = 'hello friend!!'
+    this.dialogSelect.close(this.data.selectedRepass);
   }
 
-  saveSelected(){
-    
+  closeSelectForm(): void {    
 
+    this.dialogSelect.close(this.data.selectedRepass);
   }
+
+
 
 }

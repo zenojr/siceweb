@@ -85,7 +85,9 @@ displayedColumns: string[] = ['produzir',
 
     dialogSelect.afterClosed().subscribe( result => {
       console.log('Close select');
+      console.log( 'result: ' + result ); 
       this.selectedRepass = result;
+      console.log(this.selectedRepass)
     });
   }
 
