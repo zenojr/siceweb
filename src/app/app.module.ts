@@ -32,9 +32,10 @@ import { FormsModule,
 import { PrincipalComponent      } from './principal/principal.component';
 import { MonitoropComponent      } from './monitorop/monitorop.component';
 import { PrioridadePipe          } from './monitorop/prioridade.pipe';
-import { RepassadeiraComponent, ProductLine   } from './repassadeira/repassadeira.component';
+import { RepassadeiraComponent   } from './repassadeira/repassadeira.component';
 import { FormRepComponent        } from './repassadeira/form-rep/form-rep.component';
 import { InputZeroPipe           } from './repassadeira/form-rep/input-zero.pipe';
+import { SelectRepComponent } from './repassadeira/select-rep/select-rep.component';
 
 
 
@@ -48,10 +49,10 @@ import { InputZeroPipe           } from './repassadeira/form-rep/input-zero.pipe
     RepassadeiraComponent,
     FormRepComponent,
     InputZeroPipe,
-    ProductLine
+    SelectRepComponent
   ],
 
-  entryComponents: [FormRepComponent, ProductLine, RepassadeiraComponent],
+  entryComponents: [SelectRepComponent, FormRepComponent, RepassadeiraComponent],
 
   imports: [
     BrowserModule,
