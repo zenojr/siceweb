@@ -16,7 +16,7 @@ import { DialogSelect                  } from './selectModel';
 })
 export class SelectRepComponent implements OnInit {
 
-  repassadeira = 'nulo';
+  repassadeira = 0;
 
   constructor(
     public   dialogSelect: MatDialogRef<SelectRepComponent>,
@@ -27,7 +27,7 @@ export class SelectRepComponent implements OnInit {
   }
 
   onNoClick(): void {
-    this.data.selectedRepass = 'hello friend!!'
+    //this.data.selectedRepass = 'hello friend!!'
     this.dialogSelect.close(this.data.selectedRepass);
   }
 

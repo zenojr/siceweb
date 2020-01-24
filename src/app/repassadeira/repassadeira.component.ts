@@ -25,7 +25,7 @@ encapsulation: ViewEncapsulation.None
 })
 export class RepassadeiraComponent implements OnInit {
   
-  selectedRepass= 'ok passed data success';
+  selectedRepass: number;  
            error: any;
       dataSource: any;
      repSelected: false;
@@ -40,15 +40,17 @@ displayedColumns: string[] = ['produzir',
                               'endereco',
                               'codLote',
                               'lance'];
-  producao  = true;
-  impressao = false;
-  loading   = true;
-  user      = '';
-  setor     = null;
-  repassa   = null;
-  monitorOP = null;
-  expedicao = null;
-  saved     = false;
+
+  blockRepassa = true;                              
+  producao     = true;
+  impressao    = false;
+  loading      = true;
+  user         = '';
+  setor        = null;
+  repassa      = null;
+  monitorOP    = null;
+  expedicao    = null;
+  saved        = false;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
@@ -62,7 +64,21 @@ displayedColumns: string[] = ['produzir',
     this.dataSource = new MatTableDataSource(this.repassOp);
   }
   ngOnInit() {
-    this.dataSource.paginator = this.paginator;
+
+    
+
+    
+    
+  }
+
+  startAll(){
+
+    if( this.selectedRepass == null ){
+      this.saveSelectedRepass();
+      this.blockRepassa = false;
+      // this.loading = false;
+
+      this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
     this.loginService.currentUser.subscribe(user           => this.user      = user);
     this.loginService.currentSetor.subscribe(setor         => this.setor     = setor);    
@@ -74,6 +90,11 @@ displayedColumns: string[] = ['produzir',
                   this.monitorOP + ' ' + this.expedicao);
     this.guardData();
     this.getDataOp(this.setor);
+
+    } else {
+      this.blockRepassa = true;
+      this.loading = true;
+    }
     
   }
 

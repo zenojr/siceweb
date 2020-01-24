@@ -1,4 +1,4 @@
 export class DialogSelect {
-    selectedRepass: string; 
+    selectedRepass: number; 
     
 }
