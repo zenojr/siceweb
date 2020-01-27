@@ -75,21 +75,9 @@ displayedColumns: string[] = ['produzir',
 
     if( this.selectedRepass == null ){
       this.saveSelectedRepass();
-      this.blockRepassa = false;
-      // this.loading = false;
+      this.blockRepassa = false;          
 
-      this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
-    this.loginService.currentUser.subscribe(user           => this.user      = user);
-    this.loginService.currentSetor.subscribe(setor         => this.setor     = setor);    
-    this.loginService.currentMonitor.subscribe(monitor     => this.monitorOP = monitor);
-    this.loginService.currentExpedicao.subscribe(expedicao => this.expedicao = expedicao);
-    this.repassa = this.setor
-    console.log( 'inside repassadeiras' + this.user + ' ' + 
-                  this.setor + ' ' + this.repassa + ' ' + 
-                  this.monitorOP + ' ' + this.expedicao);
-    this.guardData();
-    this.getDataOp(this.setor);
+      
 
     } else {
       this.blockRepassa = true;
@@ -109,7 +97,23 @@ displayedColumns: string[] = ['produzir',
       console.log( 'result: ' + result ); 
       this.selectedRepass = result;
       console.log(this.selectedRepass)
+
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+      this.loginService.currentUser.subscribe(user           => this.user      = user);
+      this.loginService.currentSetor.subscribe(setor         => this.setor     = setor);    
+      this.loginService.currentMonitor.subscribe(monitor     => this.monitorOP = monitor);
+      this.loginService.currentExpedicao.subscribe(expedicao => this.expedicao = expedicao);
+      this.repassa = this.setor
+      console.log( 'inside repassadeiras' + this.user + ' ' + 
+                  this.setor + ' ' + this.repassa + ' ' + 
+                  this.monitorOP + ' ' + this.expedicao);
+      this.guardData();
+      this.getDataOp(this.setor);
+
     });
+
+
   }
 
   openDialog(opDOM,
