@@ -63,37 +63,26 @@ displayedColumns: string[] = ['produzir',
     public          dialog: MatDialog) {
     this.dataSource = new MatTableDataSource(this.repassOp);
   }
-  ngOnInit() {
-
-    
-
-    
-    
+  ngOnInit() {    
   }
 
   startAll(){
-
     if( this.selectedRepass == null ){
       this.saveSelectedRepass();
       this.blockRepassa = false;          
-
-      
-
     } else {
-      this.blockRepassa = true;
-      
-    }
-    
+      this.blockRepassa = true;      
+    }    
   }
 
   saveSelectedRepass(): void {
     const dialogSelect = this.dialog.open(SelectRepComponent, {
-      width: '250px',
+      width: '350px',
+      height: '250px',
       data: { selectedRepass: this.selectedRepass }
     });
 
-    dialogSelect.afterClosed().subscribe( result => {
-      
+    dialogSelect.afterClosed().subscribe( result => { 
       console.log( 'result: ' + result ); 
       this.selectedRepass = result;
       console.log(this.selectedRepass)
@@ -106,15 +95,14 @@ displayedColumns: string[] = ['produzir',
         this.loginService.currentExpedicao.subscribe(expedicao => this.expedicao = expedicao);
         this.repassa = this.setor
         console.log( 'inside repassadeiras' + this.user + ' ' + 
-                    this.setor + ' ' + this.repassa + ' ' + 
-                    this.monitorOP + ' ' + this.expedicao);
+                                 this.setor + ' ' + this.repassa + ' ' + 
+                                 this.monitorOP + ' ' + this.expedicao);
         this.guardData();
         this.getDataOp(this.setor);
+      } else {
+        this.saveSelectedRepass();
       }
-
     });
-
-
   }
 
   openDialog(opDOM,
@@ -147,9 +135,7 @@ displayedColumns: string[] = ['produzir',
              codImpDOM,
              codProblemaDOM,
              codProbSucDOM,
-             numOpPendDOM): void {
-
-    
+             numOpPendDOM): void {    
     console.log( 'Final Bob: ' + bobFinalDOM + ' numOp: ' + numOpPendDOM )
     if( bobFinalDOM == "Sim" && numOpPendDOM != ' ' ) {
       alert( '🚨 EXISTEM LANCES DAS OP`s:' + numOpPendDOM + ' PARA SEREM PRODUZIDOS DESSE LOTE. VERIFIQUE ❗' )

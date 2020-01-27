@@ -1,15 +1,23 @@
+<div class="select-principal"> 
 
-<h4>Informe a repassadeira atual de trabalho:</h4>
-<p> Here {{ data.selectedRepass }} </p>
+  <div class="elements">
+    <h4>Informe a repassadeira atual de trabalho:</h4>
+  </div>
+    
+  <div class="elements">
+    <mat-form-field>
+      <mat-label>Selecione uma repassadeira para produção</mat-label>
+      <mat-select [(value)]="repassadeira">
+        <mat-option value="1">Repassadeira 1</mat-option>
+        <mat-option value="2">Repassadeira 2</mat-option>
+        <mat-option value="3">Repassadeira 3</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+    <div class="elements">
 
-<mat-form-field>
-  <mat-label>Selecione uma repassadeira para produção</mat-label>
-  <mat-select [(value)]="repassadeira">
-    <mat-option>nenhuma</mat-option>
-    <mat-option value="1">Repassadeira 1</mat-option>
-    <mat-option value="2">Repassadeira 2</mat-option>
-    <mat-option value="3">Repassadeira 3</mat-option>
-  </mat-select>
-</mat-form-field>
+      <button (click)="closeSelectForm()" mat-raised-button color="primary">Selecionar</button>
+    </div>
 
-<button (click)="closeSelectForm()" >Save</button>
+
+</div>

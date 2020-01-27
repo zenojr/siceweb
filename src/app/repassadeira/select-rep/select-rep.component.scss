@@ -1,0 +1,17 @@
+%column {
+    display: flex;    
+    flex-direction: column;
+}
+
+%justify-center {
+    display: flex;
+    justify-content: center;
+}
+
+.select-principal{
+    @extend %column;
+}
+
+.elements {
+    @extend %justify-center;
+}
