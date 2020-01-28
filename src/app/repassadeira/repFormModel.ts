@@ -32,4 +32,5 @@ export interface DialogData {
    codProbSuc: number;
        saved?: boolean;
     numOpPend: string;
+     quantPed: string;
 }

@@ -178,9 +178,7 @@ displayedColumns: string[] = ['produzir',
         saved: this.saved,
     numOpPend: numOpPendDOM}
       });
-
-      
-      
+    
       dialogRef.afterClosed().subscribe(result => {
         console.log('The dialog was closed' + this.saved);
         console.log(result);
