@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { LoginService } from '../login/login.service';
 import { Router } from '@angular/router';
+import { SelectRepService } from '../repassadeira/select-rep/select-rep.service';
 
 @Component({
   selector: 'app-principal',
@@ -17,19 +18,20 @@ export class PrincipalComponent implements OnInit {
   repassa   = null;
   monitorOP = null;
   expedicao = null;
-  constructor( public loginService: LoginService,
-               private route: Router ) { }
+  constructor( public  loginService: LoginService,
+               private route: Router,
+               private selectedRep: SelectRepService ) { }
 
   ngOnInit() {
-    this.loginService.currentUser.subscribe     ( user    => this.user          = user );
-    this.loginService.currentSetor.subscribe    ( setor   => this.setor         = setor );
-    this.loginService.currentRepassa.subscribe  ( repassa => this.repassa       = repassa );
-    this.loginService.currentMonitor.subscribe  ( monitor => this.monitorOP     = monitor );
+    this.loginService.currentUser.subscribe     ( user    => this.user        = user );
+    this.loginService.currentSetor.subscribe    ( setor   => this.setor       = setor );
+    this.loginService.currentRepassa.subscribe  ( repassa => this.repassa     = repassa );
+    this.loginService.currentMonitor.subscribe  ( monitor => this.monitorOP   = monitor );
     this.loginService.currentExpedicao.subscribe( expedicao => this.expedicao = expedicao );
-    console.log( ' User: '      + this.user     + 
-                 ' Setor: '     + this.setor    + 
-                 ' Repassa: '   + this.repassa  + 
-                 ' MonitorOp: ' + this.monitorOP+ 
+    console.log( ' User: '      + this.user      + 
+                 ' Setor: '     + this.setor     + 
+                 ' Repassa: '   + this.repassa   + 
+                 ' MonitorOp: ' + this.monitorOP + 
                  ' Expedição: ' + this.expedicao);
     this.guardData();
   }

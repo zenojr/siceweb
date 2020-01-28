@@ -48,5 +48,4 @@ export class LoginService {
   this.expedicao.next(expedicao);
   }
   
-  
 }

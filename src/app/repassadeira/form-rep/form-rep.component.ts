@@ -115,7 +115,7 @@ export class FormRepComponent implements OnInit {
       this.blockDevolver = false;
   }
 
-  if( this.data['qtdSucata'] > 0){
+  if( this.data['qtdSucata'] > 0 && sucataProd == 0 || retalhoProd == null ){
       // this.errorSaving.pop();
       this.errorSaving.push('Informe a produção de sucata');
       this.blockRetalho = true;
@@ -123,7 +123,7 @@ export class FormRepComponent implements OnInit {
       this.blockRetalho = false;
   }
 
-  if( this.data['qtdRetalho'] > 0 ) {
+  if( this.data['qtdRetalho'] > 0 && retalhoProd == 0 || retalhoProd == null ) {
       // this.errorSaving.pop();
       this.errorSaving.push('Informe a produção de Retalho');
       this.blockRetalho = true;
@@ -131,15 +131,15 @@ export class FormRepComponent implements OnInit {
       this.blockRetalho = false
   }
 
-  if( this.data['qtdRolo'] > 0 ){
+  if( this.data['qtdRolo'] > 0 && roloProd == 0 || roloProd == null ){
     // this.errorSaving.pop();
-    this.errorSaving.push( 'Informe a produção de Rolo' );
+    this.errorSaving.push( 'Informe a produção de Rolo: ' + this.blockRolo + ' ' + roloProd );
     this.blockRolo = true;
   } else {
     this.blockRolo = false;
   }
   
-  if( this.data['qtdBob'] > 0 && this.quantMetro == 0){
+  if( this.data['qtdBob'] > 0 && bobinaProd == 0 || bobinaProd == null ){
     // this.errorSaving.pop();
     this.errorSaving.push( 'Informe a produção de bobina' );
     this.blockBob = true;    
@@ -147,12 +147,13 @@ export class FormRepComponent implements OnInit {
     this.blockBob = false;
   }
 
-  if(this.data['corteRol'].length > 1 ) {
+  if(this.data['corteRol'].length > 1 && this.blockRol ) {
+    console.log(this.data['corteRol']);
     this.blockRol = true;
     this.errorSaving.push( '🚨 Você deve deve confirmar todos os cortes de rolo para salvar a produção.' )
   }
 
-  if( this.quantRolo > 5){
+  if( this.quantRolo > this.data['qtdRolo'] + 2){
     this.errorSaving.push( '🚨 A quantidade de rolos produzido ultrapassa o limite permitido ' );
   }
 
@@ -211,9 +212,9 @@ export class FormRepComponent implements OnInit {
     this.repassForm.close(this.data.saved);
   }
 
-  nextBtn(){
-    console.log( this.data['corteRol'] );
+  nextBtn(){    
     let controlStop = this.data['corteRol'];
+    console.log( 'The index:' + this.indexCorteRol + 'The controler: ' + controlStop.length );
     if( this.indexCorteRol < controlStop.length -1 ){
       this.indexCorteRol++;
       this.blockRol = true
