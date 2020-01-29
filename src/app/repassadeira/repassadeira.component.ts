@@ -12,9 +12,6 @@ import { Router                       } from '@angular/router';
 import { MatDialog                    } from '@angular/material/dialog';
 import { FormRepComponent             } from './form-rep/form-rep.component';
 import { MatSnackBar                  } from '@angular/material';
-import { Inject                       } from '@angular/core';
-import { MatDialogRef, 
-         MAT_DIALOG_DATA              } from '@angular/material/dialog';
 import { SelectRepComponent           } from './select-rep/select-rep.component';
         
 @Component({
@@ -24,8 +21,8 @@ import { SelectRepComponent           } from './select-rep/select-rep.component'
 encapsulation: ViewEncapsulation.None
 })
 export class RepassadeiraComponent implements OnInit {
-  
-  selectedRepass: number;  
+
+  selectedRepass: number;
            error: any;
       dataSource: any;
      repSelected: false;
@@ -41,7 +38,7 @@ displayedColumns: string[] = ['produzir',
                               'codLote',
                               'lance'];
 
-  blockRepassa = true;                              
+  blockRepassa = true;
   producao     = true;
   impressao    = false;
   loading      = true;
@@ -63,16 +60,17 @@ displayedColumns: string[] = ['produzir',
     public          dialog: MatDialog) {
     this.dataSource = new MatTableDataSource(this.repassOp);
   }
-  ngOnInit() {    
+
+  ngOnInit() {
   }
 
   startAll(){
     if( this.selectedRepass == null ){
       this.saveSelectedRepass();
-      this.blockRepassa = false;          
+      this.blockRepassa = false;
     } else {
-      this.blockRepassa = true;      
-    }    
+      this.blockRepassa = true;
+    }
   }
 
   saveSelectedRepass(): void {
@@ -82,20 +80,20 @@ displayedColumns: string[] = ['produzir',
       data: { selectedRepass: this.selectedRepass }
     });
 
-    dialogSelect.afterClosed().subscribe( result => { 
-      console.log( 'result: ' + result ); 
+    dialogSelect.afterClosed().subscribe( result => {
+      console.log( 'result: ' + result );
       this.selectedRepass = result;
       console.log(this.selectedRepass)
       if( result != null || result != undefined ){
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
         this.loginService.currentUser.subscribe(user           => this.user      = user);
-        this.loginService.currentSetor.subscribe(setor         => this.setor     = setor);    
+        this.loginService.currentSetor.subscribe(setor         => this.setor     = setor);
         this.loginService.currentMonitor.subscribe(monitor     => this.monitorOP = monitor);
         this.loginService.currentExpedicao.subscribe(expedicao => this.expedicao = expedicao);
         this.repassa = this.setor
-        console.log( 'inside repassadeiras' + this.user + ' ' + 
-                                 this.setor + ' ' + this.repassa + ' ' + 
+        console.log( 'inside repassadeiras' + this.user + ' ' +
+                                 this.setor + ' ' + this.repassa + ' ' +
                                  this.monitorOP + ' ' + this.expedicao);
         this.guardData();
         this.getDataOp(this.setor);
@@ -136,7 +134,7 @@ displayedColumns: string[] = ['produzir',
              codProblemaDOM,
              codProbSucDOM,
              numOpPendDOM,
-             taraDOM): void {    
+             taraDOM): void {
 
     if( bobFinalDOM == "Sim" && numOpPendDOM != ' ' ) {
       alert( '🚨 EXISTEM LANCES DAS OP`s:' + numOpPendDOM + ' PARA SEREM PRODUZIDOS DESSE LOTE. VERIFIQUE ❗' )
@@ -144,7 +142,7 @@ displayedColumns: string[] = ['produzir',
               
     if( mmValidaDOM == 0 ) {
       const dialogRef = this.dialog.open(FormRepComponent, {
-        width: '1050px',        
+        width: '1050px',
          data: {
            op: opDOM,
       cliente: clienteDOM,
@@ -190,17 +188,17 @@ displayedColumns: string[] = ['produzir',
 
       });
 
-    } else if( mmValidaDOM == 1 ) {      
+    } else if( mmValidaDOM == 1 ) {
       this.snackBar.open('Esta bobina não pode ser repassada pois o metro a metro não foi validado.' +
                          'Solicite ao recebimento para validar o metro a metro da bobina.' + ',' + 
-                         'ERRO METRO A METRO', '[X]Fechar', {           
+                         'ERRO METRO A METRO', '[X]Fechar', {
           duration: 10000
       });
     } else if( mmValidaDOM == 5 ) {
       let insertDOM = prompt( 'Informe a ponta de fora:');
       let corteRolLocal = corteRolDOM;
-      corteRolLocal = corteRolLocal.split(",");                  
-      if( insertDOM == mPontaForaDOM  ) {        
+      corteRolLocal = corteRolLocal.split(",");
+      if( insertDOM == mPontaForaDOM  ) {
         const dialogRef = this.dialog.open(FormRepComponent, {
           width: '1050px',
            data: {
@@ -246,7 +244,7 @@ displayedColumns: string[] = ['produzir',
         }
         });
       } else {
-        this.snackBar.open('Ponta de fora não confere.', '[X]Fechar', {           
+        this.snackBar.open('Ponta de fora não confere.', '[X]Fechar', {
           duration: 3000
         });
       }
@@ -291,7 +289,7 @@ displayedColumns: string[] = ['produzir',
           this.snackBar.open('Base de dados Off-line ❗', '[x] Fechar', { duration: 5000});
         } else {
           repOp = repOp['ttOp'];
-          repOp = repOp['Registro'];          
+          repOp = repOp['Registro'];
           console.log(repOp);
           this.dataSource.data = repOp;
           this.loading = false;
@@ -307,7 +305,7 @@ displayedColumns: string[] = ['produzir',
     }
   }
 
-} 
+}
 
 
 

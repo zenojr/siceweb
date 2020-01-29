@@ -51,18 +51,18 @@ export class FormRepComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.loginService.currentUser.subscribe( user => this.user = user );    
+    this.loginService.currentUser.subscribe( user => this.user = user );
     this.loginService.currentSetor.subscribe( repassa => this.repassadeira = repassa.slice(13));
-    console.log( 'inside form' +  this.data.saved);      
+    console.log( 'inside form' +  this.data.saved);
   }
 
   getMotDevolucao() {
     const url = 'http://192.168.0.7:8080/cgi-bin/wspd_cgi.sh/WService=emswebelttst/scb013ws.p?tipo=devolucao';
-    this.http.get( url, {responseType: 'text'} ).subscribe( response => {      
+    this.http.get( url, {responseType: 'text'} ).subscribe( response => {
       this.motDevolucao = this.monOpServ.convertXMLtoJSON(response);
       this.motDevolucao = this.motDevolucao['Root'];
       this.motDevolucao = this.motDevolucao['ttProblema'];
-      this.motDevolucao = this.motDevolucao['Registro'];      
+      this.motDevolucao = this.motDevolucao['Registro'];
       console.log(this.motDevolucao);
     });
   }
@@ -113,7 +113,7 @@ export class FormRepComponent implements OnInit {
       this.blockSucata = false;
   }
 
-  if( this.data['qtdRetalho'] > 0 && retalhoProd == 0 || retalhoProd == null ) {
+  if( this.data['qtdRetalho'] > 0 && retalhoProd == 0 || retalhoProd == null ){
       this.errorSaving.push('Informe a produção de Retalho 🚨');
       this.blockRetalho = true;
   } else {
@@ -128,7 +128,7 @@ export class FormRepComponent implements OnInit {
   }
   
   if( this.data['dimBob'] != 'ROLO' ){
-    if( this.taraOut == 0 || this.taraOut == null  ) {
+    if( this.taraOut == 0 || this.taraOut == null  ){
       this.errorSaving.push( 'Informe a tara! 🚨' );
       this.blockTara = true;
     } else {
@@ -143,10 +143,10 @@ export class FormRepComponent implements OnInit {
     this.blockBob = false;
   }
 
-  if(this.data['corteRol'].length > 1 && this.blockRol ) {
+  if(this.data['corteRol'].length > 1 && this.blockRol ){
     console.log(this.data['corteRol']);
     this.blockRol = true;
-    this.errorSaving.push( 'Você deve deve confirmar todos os cortes de rolo para salvar a produção 🚨' )
+    this.errorSaving.push( 'Você deve deve confirmar todos os cortes de rolo para salvar a produção 🚨')
   }
 
   if( this.quantRolo > this.data['qtdRolo'] + 2){
@@ -157,50 +157,48 @@ export class FormRepComponent implements OnInit {
     this.errorSaving.push( 'Não foi solicitado produção de rolos e o valor informado é maior que o permitido 🚨' );
   }
 
-  if( this.testeSpark != 'sim' ){
-      this.snackBar.open('Teste Spark não realizado ❕', '[x]Fechar', {           
-        duration: 3000
-      });      
-  } else {
-    const url = 'http://192.168.0.7:8080/cgi-bin/wspd_cgi.sh/WService=emswebelttst/scb005ws.p';
-    let bigStringOut = '';  
-        bigStringOut = url + '?' + 
-                   'numOp='      + numOp           + '&' +
-                   'itCodigo='   + itCodigo        + '&' +
-                   'codLote='    + codLote         + '&' + 
-                   'lance='      + lance           + '&' +
-                   'tara='       + tara            + '&' +
-                   'ajSpark='    + ajSpark         + '&' +
-                   'destino='    + destino         + '&' +
-                   'usuario='    + usuario         + '&' +
-                   'numRepassa=' + numRepassa      + '&' +
-                   'quantMetro=' + this.quantMetro + '&' +
-                   'quantRolo='  + this.quantRolo  + '&' +
-                   'quantRet='   + this.quantRet   + '&' +
-                   'quantSuc='   + this.quantSuc   + '&' +
-                   'DevProd='    + DevProd         + '&' +
-                   'Observ='     + Observ          + '&' +
-                   'codImp='     + codImp          + '&' +
-                   'codProblema='+ codProblema     + '&' +
-                   'codProbSuc=' + codProbSuc;
+  if( this.testeSpark != 'sim'){
+    this.errorSaving.push('Teste Spark não realizado ❕');
+  }
 
-    if(this.errorSaving.length < 1) {
-      this.http.get( bigStringOut, {responseType: 'text'} )
+  if( this.errorSaving.length < 1 ){
+      const url = 'http://192.168.0.7:8080/cgi-bin/wspd_cgi.sh/WService=emswebelttst/scb005ws.p';
+      let bigStringOut = '';  
+          bigStringOut = url + '?' + 
+                     'numOp='      + numOp           + '&' +
+                     'itCodigo='   + itCodigo        + '&' +
+                     'codLote='    + codLote         + '&' + 
+                     'lance='      + lance           + '&' +
+                     'tara='       + tara            + '&' +
+                     'ajSpark='    + ajSpark         + '&' +
+                     'destino='    + destino         + '&' +
+                     'usuario='    + usuario         + '&' +
+                     'numRepassa=' + numRepassa      + '&' +
+                     'quantMetro=' + this.quantMetro + '&' +
+                     'quantRolo='  + this.quantRolo  + '&' +
+                     'quantRet='   + this.quantRet   + '&' +
+                     'quantSuc='   + this.quantSuc   + '&' +
+                     'DevProd='    + DevProd         + '&' +
+                     'Observ='     + Observ          + '&' +
+                     'codImp='     + codImp          + '&' +
+                     'codProblema='+ codProblema     + '&' +
+                     'codProbSuc=' + codProbSuc;
+      this.http.get( bigStringOut, {responseType: 'text'})
       .subscribe( response => {      
         console.log( 'Data_Recieved: ' + response );
         
-          this.snackBar.open('O.P Salva com sucesso.', '[X]Fechar', {           
+          this.snackBar.open('O.P Salva com sucesso.', '[X]Fechar',{
             duration: 3000
           });    
           this.data.saved = true;
           this.closeRepForm();
         
       }, error =>  this.error = console.log(error));
-    } else {
-      this.snackBar.open('ERRO: ' + this.errorSaving , '[X]Fechar', {
-        duration: 8000
-      });
-    }
+    
+  } else if( this.errorSaving.length > 0 ) {
+    this.snackBar.open('ERRO: ' + this.errorSaving , '[X]Fechar',{
+      duration: 8000
+    });
   }
  }
 
@@ -210,13 +208,13 @@ export class FormRepComponent implements OnInit {
 
   nextBtn(){    
     let controlStop = this.data['corteRol'];
-    console.log( 'The index:' + this.indexCorteRol + 'The controler: ' + controlStop.length );
+    console.log( 'The index:' + this.indexCorteRol + 'The controler: ' + controlStop.length);
     if( this.indexCorteRol < controlStop.length -1 ){
       this.indexCorteRol++;
       this.blockRol = true
     } else {
       this.blockRol = false;
-      this.snackBar.open('Corte rolo finalizado.', '[X]Fechar', {
+      this.snackBar.open('Corte rolo finalizado.', '[X]Fechar',{
         duration: 3000
       });
       return this.indexCorteRol;

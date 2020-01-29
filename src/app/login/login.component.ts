@@ -30,6 +30,7 @@ export class LoginComponent implements OnInit {
         this.snackBar.open('Usuário ou senha inválido', 'Fechar', {
           duration: 2000,
         });
+        this.senha = '';
       } else {
         console.log('login OK');
         this.route.navigateByUrl('/principal');

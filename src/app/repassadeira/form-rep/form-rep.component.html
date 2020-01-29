@@ -59,7 +59,6 @@
     <mat-form-field id="quantSuc">
       <input matInput class="green" placeholder="Qtd.Sucata" value="{{ data.qtdSucata }}" #qtdSucata disabled>
     </mat-form-field>
-    <!-- here -->
   </div>
   <mat-divider></mat-divider>
   <div class="cortes" *ngIf="data.mmValida == 5">
@@ -87,19 +86,19 @@
   <div class="secondBlock">
     <mat-form-field id="bobina">
       <input type="number" class="white" matInput placeholder="Bobina" #bobinaProd
-             autocomplete="off" [required]="blockBob" [ngClass]="{prodError: blockBob}">            
+             autocomplete="off" [required]="blockBob" [ngClass]="{prodError: blockBob}">
     </mat-form-field>
     <mat-form-field id="rolo">
       <input type="number" class="white" matInput placeholder="Rolo" #roloProd 
-             autocomplete="off" [required]="blockRolo" [ngClass]="{prodError: blockRolo}">      
+             autocomplete="off" [required]="blockRolo" [ngClass]="{prodError: blockRolo}">
     </mat-form-field>
     <mat-form-field id="retalho">
       <input type="number" class="white" matInput placeholder="Retalho" #retalhoProd 
-             autocomplete="off" [required]="blockRetalho" [ngClass]="{prodError: blockRetalho}" >
+             autocomplete="off" [required]="blockRetalho" [ngClass]="{prodError: blockRetalho}">
     </mat-form-field>
     <mat-form-field id="sucata">
       <input type="number" class="white" matInput placeholder="Sucata" #sucataProd 
-             autocomplete="off" [required]="blockSucata" [ngClass]="{prodError: blockSucata}" >
+             autocomplete="off" [required]="blockSucata" [ngClass]="{prodError: blockSucata}">
     </mat-form-field>
   </div>
 
@@ -113,8 +112,8 @@
         <mat-radio-button value="sim">Sim</mat-radio-button>
         <mat-radio-button value="nao">Não</mat-radio-button>
       </mat-radio-group>
-    </div>    
-    
+    </div>
+
     <mat-form-field id="tara" *ngIf="dimBob.value != 'ROLO' ">
       <input class="white" matInput placeholder="Tara" [(ngModel)]="taraOut" [ngClass]="{prodError: blockTara}" autocomplete="off">
     </mat-form-field>
@@ -129,9 +128,9 @@
       </mat-radio-group>
 
       <mat-form-field *ngIf="devProd === 'devolver'">        
-        <mat-select [(ngModel)]="motDevSelect" placeholder="Selecione uma opção">          
+        <mat-select [(ngModel)]="motDevSelect" placeholder="Selecione uma opção">
           <mat-option value="{{ motivo.codProblema }}" 
-                      *ngFor="let motivo of motDevolucao">{{ motivo.descricao }}</mat-option>          
+                      *ngFor="let motivo of motDevolucao">{{ motivo.descricao }}</mat-option>
         </mat-select>
       </mat-form-field>
       
@@ -146,7 +145,7 @@
                                   roloProd.value,
                                   retalhoProd.value,
                                   sucataProd.value,
-                                  obsRepassadeira.value)" 
+                                  obsRepassadeira.value)"
       color="primary" mat-raised-button>Salvar
     </button>
   </div>
