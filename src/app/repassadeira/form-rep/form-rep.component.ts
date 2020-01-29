@@ -95,6 +95,10 @@ export class FormRepComponent implements OnInit {
 
   this.errorSaving = [];
 
+  if( this.data['dimBob'].slice(0,4) == 'ERRO' ){
+    this.errorSaving.push('Erro na Dimensão da Bobina, peça para o supervisor verificar cadastro de limite no SCB: ' + this.data['dimBob']);
+  }
+
   if( this.devProd === null ){
     this.errorSaving.push('Selecione uma opção: Devolver ou Produzir 🚨');
   }
