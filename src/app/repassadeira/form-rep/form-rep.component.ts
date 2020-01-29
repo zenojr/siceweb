@@ -106,11 +106,11 @@ export class FormRepComponent implements OnInit {
       this.blockDevolver = false;
   }
 
-  if( this.data['qtdSucata'] > 0 && sucataProd == 0 || retalhoProd == null ){
+  if( this.data['qtdSucata'] > 0 && sucataProd == 0 || sucataProd == null ){
       this.errorSaving.push('Informe a produção de sucata 🚨');
-      this.blockRetalho = true;
+      this.blockSucata = true;
   } else {
-      this.blockRetalho = false;
+      this.blockSucata = false;
   }
 
   if( this.data['qtdRetalho'] > 0 && retalhoProd == 0 || retalhoProd == null ) {
