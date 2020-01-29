@@ -6,7 +6,6 @@ import { DataRepOut                    } from './saveDataModel';
 import { LoginService                  } from '../../login/login.service';
 import { HttpClient                    } from '@angular/common/http';
 import { RepassadeiraService           } from '../repassadeira.service';
-import { FormControl, Validators       } from '@angular/forms';
 import { MonitoropService              } from '../../monitorop/monitorop.service'
 
 @Component({
@@ -15,12 +14,10 @@ import { MonitoropService              } from '../../monitorop/monitorop.service
     styleUrls: ['./form-rep.component.scss']
 })
 export class FormRepComponent implements OnInit {
-  
-  // inputBob = new FormControl('', [Validators.required]);
  
   errorSaving   = []
   testeSpark    = '';
-  devProd       = '';
+  devProd       = null;
   user          = '';
   obsRepass     = '';
   quantMetro    = 0;
@@ -41,6 +38,7 @@ export class FormRepComponent implements OnInit {
   motDevolucao: any;
          error: any;
   repassadeira: any;
+
   constructor(
     public   repassForm: MatDialogRef<FormRepComponent>,
     public     snackBar: MatSnackBar,
@@ -55,8 +53,7 @@ export class FormRepComponent implements OnInit {
   ngOnInit() {
     this.loginService.currentUser.subscribe( user => this.user = user );    
     this.loginService.currentSetor.subscribe( repassa => this.repassadeira = repassa.slice(13));
-    console.log( 'inside form' +  this.data.saved);  
-    
+    console.log( 'inside form' +  this.data.saved);      
   }
 
   getMotDevolucao() {
@@ -65,18 +62,10 @@ export class FormRepComponent implements OnInit {
       this.motDevolucao = this.monOpServ.convertXMLtoJSON(response);
       this.motDevolucao = this.motDevolucao['Root'];
       this.motDevolucao = this.motDevolucao['ttProblema'];
-      this.motDevolucao = this.motDevolucao['Registro'];
-      
+      this.motDevolucao = this.motDevolucao['Registro'];      
       console.log(this.motDevolucao);
-
     });
   }
-
-  // getErrorMessage(){
-  //   if( this.data['qtdBob'] != 0 ){      
-  //     // this.inputBob.hasError('required') ? 'Você deve informar um valor' : '';      
-  //   }     
-  // }
 
   saveFormData(bobinaProd,
                roloProd,
@@ -106,35 +95,33 @@ export class FormRepComponent implements OnInit {
 
   this.errorSaving = [];
 
-  
+  if( this.devProd === null ){
+    this.errorSaving.push('Selecione uma opção: Devolver ou Produzir 🚨');
+  }
 
   if( this.devProd === 'devolver' && this.motDevSelect == null || this.motDevSelect == 0){
-      // this.errorSaving.pop();
-      this.errorSaving.push('Selecione um motivo de devolução');
+      this.errorSaving.push('Selecione um motivo de devolução 🚨');
       this.blockDevolver = true;
-      alert('block here')
   } else {
       this.blockDevolver = false;
   }
 
   if( this.data['qtdSucata'] > 0 && sucataProd == 0 || retalhoProd == null ){
-      // this.errorSaving.pop();
-      this.errorSaving.push('Informe a produção de sucata');
+      this.errorSaving.push('Informe a produção de sucata 🚨');
       this.blockRetalho = true;
   } else {
       this.blockRetalho = false;
   }
 
   if( this.data['qtdRetalho'] > 0 && retalhoProd == 0 || retalhoProd == null ) {
-      // this.errorSaving.pop();
-      this.errorSaving.push('Informe a produção de Retalho');
+      this.errorSaving.push('Informe a produção de Retalho 🚨');
       this.blockRetalho = true;
   } else {
       this.blockRetalho = false
   }
 
   if( this.data['qtdRolo'] > 0 && roloProd == 0 || roloProd == null ){
-    this.errorSaving.push( 'Informe a produção de Rolo: ' + this.blockRolo + ' ' + roloProd );
+    this.errorSaving.push( 'Informe a produção de Rolo 🚨');
     this.blockRolo = true;
   } else {
     this.blockRolo = false;
@@ -150,7 +137,7 @@ export class FormRepComponent implements OnInit {
   }
 
   if( this.data['qtdBob'] > 0 && bobinaProd == 0 || bobinaProd == null ){
-    this.errorSaving.push( 'Informe a produção de bobina' );
+    this.errorSaving.push( 'Informe a produção de bobina 🚨');
     this.blockBob = true;    
   } else {
     this.blockBob = false;
@@ -159,19 +146,19 @@ export class FormRepComponent implements OnInit {
   if(this.data['corteRol'].length > 1 && this.blockRol ) {
     console.log(this.data['corteRol']);
     this.blockRol = true;
-    this.errorSaving.push( '🚨 Você deve deve confirmar todos os cortes de rolo para salvar a produção.' )
+    this.errorSaving.push( 'Você deve deve confirmar todos os cortes de rolo para salvar a produção 🚨' )
   }
 
   if( this.quantRolo > this.data['qtdRolo'] + 2){
-    this.errorSaving.push( '🚨 A quantidade de rolos produzido ultrapassa o limite permitido ' );
+    this.errorSaving.push( 'A quantidade de rolos produzido ultrapassa o limite permitido 🚨' );
   }
 
   if( this.data['qtdRolo'] == 0 && this.quantRolo > 2 ){
-    this.errorSaving.push( '🚨 Não foi solicitado produção de rolos e o valor informado é maior que o permitido.' );
+    this.errorSaving.push( 'Não foi solicitado produção de rolos e o valor informado é maior que o permitido 🚨' );
   }
 
   if( this.testeSpark != 'sim' ){
-      this.snackBar.open('🚨 Teste Spark não realizado ❕', '[x]Fechar', {           
+      this.snackBar.open('Teste Spark não realizado ❕', '[x]Fechar', {           
         duration: 3000
       });      
   } else {
