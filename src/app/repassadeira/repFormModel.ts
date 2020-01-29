@@ -23,7 +23,6 @@ export interface DialogData {
         spark: number;
       amostra: string;
      mmValida: number;
-        tara?: number;
    mPontaFora: number;
      corteRol: string;
      quantEtq: number;
@@ -32,5 +31,5 @@ export interface DialogData {
    codProbSuc: number;
        saved?: boolean;
     numOpPend: string;
-     quantPed: string;
+
 }

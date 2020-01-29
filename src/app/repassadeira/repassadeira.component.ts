@@ -133,8 +133,7 @@ displayedColumns: string[] = ['produzir',
              codImpDOM,
              codProblemaDOM,
              codProbSucDOM,
-             numOpPendDOM,
-             taraDOM): void {
+             numOpPendDOM): void {
 
     if( bobFinalDOM == "Sim" && numOpPendDOM != ' ' ) {
       alert( '🚨 EXISTEM LANCES DAS OP`s:' + numOpPendDOM + ' PARA SEREM PRODUZIDOS DESSE LOTE. VERIFIQUE ❗' )
@@ -175,8 +174,7 @@ displayedColumns: string[] = ['produzir',
   codProblema: codProblemaDOM,
    codProbSuc: codProbSucDOM,
         saved: this.saved,
-    numOpPend: numOpPendDOM,
-         tara: taraDOM }
+    numOpPend: numOpPendDOM }
       });
     
       dialogRef.afterClosed().subscribe(result => {
@@ -233,8 +231,7 @@ displayedColumns: string[] = ['produzir',
     codProblema: codProblemaDOM,
      codProbSuc: codProbSucDOM,
           saved: this.saved,
-      numOpPend: numOpPendDOM,
-           tara: taraDOM }
+      numOpPend: numOpPendDOM}
         });  
         dialogRef.afterClosed().subscribe(result => {
           console.log('The dialog was closed' + this.saved);
