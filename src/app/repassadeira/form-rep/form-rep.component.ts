@@ -37,6 +37,7 @@ export class FormRepComponent implements OnInit {
   blockRetalho  = false;
   blockSucata   = false;
   blockDevolver = false;
+  blockTara     = false;
   motDevolucao: any;
          error: any;
   repassadeira: any;
@@ -55,7 +56,7 @@ export class FormRepComponent implements OnInit {
     this.loginService.currentUser.subscribe( user => this.user = user );    
     this.loginService.currentSetor.subscribe( repassa => this.repassadeira = repassa.slice(13));
     console.log( 'inside form' +  this.data.saved);  
-    this.getErrorMessage();
+    
   }
 
   getMotDevolucao() {
@@ -71,11 +72,11 @@ export class FormRepComponent implements OnInit {
     });
   }
 
-  getErrorMessage(){
-    if( this.data['qtdBob'] != 0 ){      
-      // this.inputBob.hasError('required') ? 'Você deve informar um valor' : '';      
-    }     
-  }
+  // getErrorMessage(){
+  //   if( this.data['qtdBob'] != 0 ){      
+  //     // this.inputBob.hasError('required') ? 'Você deve informar um valor' : '';      
+  //   }     
+  // }
 
   saveFormData(bobinaProd,
                roloProd,
@@ -103,8 +104,9 @@ export class FormRepComponent implements OnInit {
   let codProblema = this.data['codProblema'];
   let codProbSuc  = this.data['codProbSuc'];
 
-  
   this.errorSaving = [];
+
+  
 
   if( this.devProd === 'devolver' && this.motDevSelect == null || this.motDevSelect == 0){
       // this.errorSaving.pop();
@@ -132,15 +134,22 @@ export class FormRepComponent implements OnInit {
   }
 
   if( this.data['qtdRolo'] > 0 && roloProd == 0 || roloProd == null ){
-    // this.errorSaving.pop();
     this.errorSaving.push( 'Informe a produção de Rolo: ' + this.blockRolo + ' ' + roloProd );
     this.blockRolo = true;
   } else {
     this.blockRolo = false;
   }
   
+  if( this.data['dimBob'] != 'ROLO' ){
+    if( this.taraOut == 0 || this.taraOut == null  ) {
+      this.errorSaving.push( 'Informe a tara! 🚨' );
+      this.blockTara = true;
+    } else {
+      this.blockTara = false;
+    }
+  }
+
   if( this.data['qtdBob'] > 0 && bobinaProd == 0 || bobinaProd == null ){
-    // this.errorSaving.pop();
     this.errorSaving.push( 'Informe a produção de bobina' );
     this.blockBob = true;    
   } else {

@@ -116,7 +116,7 @@
     </div>    
     
     <mat-form-field id="tara" *ngIf="dimBob.value != 'ROLO' ">
-      <input class="white" matInput placeholder="Tara" [(ngModel)]="taraOut" autocomplete="off">
+      <input class="white" matInput placeholder="Tara" [(ngModel)]="taraOut" [ngClass]="{prodError: blockTara}" autocomplete="off">
     </mat-form-field>
 
     <mat-form-field id="ajusteSpark">
