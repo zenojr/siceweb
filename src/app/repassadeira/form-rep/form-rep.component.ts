@@ -1,12 +1,18 @@
 import { Component, OnInit, Inject     } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialogRef, MAT_DIALOG_DATA,
+         MatDialog                     } from '@angular/material';
 import { DialogData                    } from '../repFormModel';
 import { MatSnackBar                   } from '@angular/material/snack-bar';
 import { DataRepOut                    } from './saveDataModel';
 import { LoginService                  } from '../../login/login.service';
 import { HttpClient                    } from '@angular/common/http';
 import { RepassadeiraService           } from '../repassadeira.service';
-import { MonitoropService              } from '../../monitorop/monitorop.service'
+import { MonitoropService              } from '../../monitorop/monitorop.service';
+
+export interface DialogLoginSup {
+  usuario: string;
+    senha: string;
+}
 
 @Component({
      selector: 'app-form-rep',
@@ -14,7 +20,10 @@ import { MonitoropService              } from '../../monitorop/monitorop.service
     styleUrls: ['./form-rep.component.scss']
 })
 export class FormRepComponent implements OnInit {
- 
+
+  usuario: string;
+    senha: string;
+
   errorSaving   = []
   testeSpark    = '';
   devProd       = null;
@@ -41,6 +50,7 @@ export class FormRepComponent implements OnInit {
   repassadeira: any;
 
   constructor(
+    public  dialogLogin: MatDialog,
     public   repassForm: MatDialogRef<FormRepComponent>,
     public     snackBar: MatSnackBar,
     public loginService: LoginService,
@@ -49,12 +59,25 @@ export class FormRepComponent implements OnInit {
     public    monOpServ: MonitoropService,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
     @Inject(MAT_DIALOG_DATA) public dataRepOut: DataRepOut
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.loginService.currentUser.subscribe( user => this.user = user );
     this.loginService.currentSetor.subscribe( repassa => this.repassadeira = repassa.slice(13));
     console.log( 'inside form' +  this.data.saved);
+  }
+
+  openLoginSup(): void {
+    const dialogLogin = this.dialogLogin.open( DialogLoginSup, {
+      width: '250px',
+       data: { usuario: this.usuario, senha: this.senha }
+    });
+
+    dialogLogin.afterClosed().subscribe( res => {
+      console.log('closed');
+      let dataRecieved = res;
+      console.log( dataRecieved );
+    })
   }
 
   getMotDevolucao() {
@@ -98,7 +121,7 @@ export class FormRepComponent implements OnInit {
 
   if( sucataProd > this.data['qtdSucata'] ) {
     this.callSupervi = true;
-    // continue here 
+    this.openLoginSup();
   }
 
   if( this.data['dimBob'].slice(0,4) == 'ERRO' ){
@@ -229,4 +252,21 @@ export class FormRepComponent implements OnInit {
       return this.indexCorteRol;
     }
   }
+}
+
+
+@Component({
+     selector: 'dialogLoginSup',
+  templateUrl: './dialogLoginSup.html',
+})
+export class DialogLoginSup {
+
+  constructor(
+    public dialogRef: MatDialogRef<DialogLoginSup>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
 }
