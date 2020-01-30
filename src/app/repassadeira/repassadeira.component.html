@@ -1,9 +1,5 @@
-
-
 <div class="container"> 
-	<!-- <button mat-raised-button (click)="saveSelectedRepass()">Seleciona repass</button>
-	<p>{{ selectedRepass }}</p> -->
-	<div class="table-container">        
+	<div class="table-container">
 	<mat-divider></mat-divider>
 	<span></span>
 	<div class="subMenu">
@@ -11,21 +7,21 @@
 			<mat-expansion-panel>
 				<mat-expansion-panel-header (click)="startAll()">
 				<mat-panel-title>
-				Produção
+					Produção
 				</mat-panel-title>
 				<mat-panel-description>
-				Entrada de O.Ps para produção
+					Entrada de O.Ps para produção - Repassadeira produção: {{ selectedRepass }}
 				</mat-panel-description>
 				</mat-expansion-panel-header>
-				<div class="sending" *ngIf="loading">        
-					<div>        
+				<div class="sending" *ngIf="loading">
+					<div>
 						<div>
 							<mat-spinner>
 							</mat-spinner>
-						</div>        
+						</div>
 							<div style="position:relative; top: 15px; left: 30px;">
 							<h2>carregando O.Ps...</h2>
-						</div>                
+						</div>
 					</div>
 				</div>
 				<div class="tabela mat-elevation-z8">
@@ -160,7 +156,7 @@
 				</mat-expansion-panel-header>
 					<p>I'm visible because I am open</p>
 			</mat-expansion-panel>
-		</mat-accordion>                                      
-	</div>																		
+		</mat-accordion>
+	</div>
 	</div>
 </div>

@@ -75,7 +75,7 @@ displayedColumns: string[] = ['produzir',
 
   saveSelectedRepass(): void {
     const dialogSelect = this.dialog.open(SelectRepComponent, {
-      width: '350px',
+       width: '350px',
       height: '250px',
       data: { selectedRepass: this.selectedRepass }
     });

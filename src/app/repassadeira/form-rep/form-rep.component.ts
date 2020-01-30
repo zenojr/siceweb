@@ -35,6 +35,7 @@ export class FormRepComponent implements OnInit {
   blockSucata   = false;
   blockDevolver = false;
   blockTara     = false;
+  callSupervi   = false;
   motDevolucao: any;
          error: any;
   repassadeira: any;
@@ -96,7 +97,8 @@ export class FormRepComponent implements OnInit {
   this.errorSaving = [];
 
   if( sucataProd > this.data['qtdSucata'] ) {
-    console.log('prod sucata');
+    this.callSupervi = true;
+    // continue here 
   }
 
   if( this.data['dimBob'].slice(0,4) == 'ERRO' ){
@@ -194,7 +196,6 @@ export class FormRepComponent implements OnInit {
       this.http.get( bigStringOut, {responseType: 'text'})
       .subscribe( response => {      
         console.log( 'Data_Recieved: ' + response );
-        
           this.snackBar.open('O.P Salva com sucesso.', '[X]Fechar',{
             duration: 3000
           });    

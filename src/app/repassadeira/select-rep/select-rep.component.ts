@@ -27,7 +27,6 @@ export class SelectRepComponent implements OnInit {
   }
 
   onNoClick(): void {
-    //this.data.selectedRepass = 'hello friend!!'
     this.dialogSelect.close(this.data.selectedRepass);
   }
 
