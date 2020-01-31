@@ -1,12 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Login Supervisor</title>
-</head>
-<body>
-    <p>Login Supervisor</p>
-</body>
-</html>
+
+<style>
+
+.principal{
+           /* display: flex;
+    flex-direction: column; */
+}
+
+.elements {
+            /* display: flex;
+    justify-content: center; */
+}
+
+</style>
+
+<div class="principal">
+    <div class="element">
+        <span>É obrigatório informar o nome e senha do supervisor</span>
+    </div>
+    <div class="element">
+        <mat-form-field>
+            <input matInput placeholder="Usuário" value="">
+        </mat-form-field>
+    </div>
+    <div class="element">
+        <mat-form-field>
+            <input type="password" matInput placeholder="Senha" value="">
+        </mat-form-field>
+        <button mat-button>OK</button>
+    </div>
+</div>

@@ -51,7 +51,10 @@ import { SelectRepComponent } from './repassadeira/select-rep/select-rep.compone
     DialogLoginSup
   ],
 
-  entryComponents: [SelectRepComponent, FormRepComponent, RepassadeiraComponent, DialogLoginSup],
+  entryComponents: [SelectRepComponent,
+                    FormRepComponent,
+                    RepassadeiraComponent,
+                    DialogLoginSup],
 
   imports: [
     BrowserModule,
