@@ -263,10 +263,15 @@ export class DialogLoginSup {
 
   constructor(
     public dialogRef: MatDialogRef<DialogLoginSup>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+    @Inject(MAT_DIALOG_DATA) public dataLoginSup: DialogLoginSup) {}
 
   onNoClick(): void {
     this.dialogRef.close();
+  }
+
+  saveDataLogin(){
+    this.dataLoginSup.usuario = 'here modafoca!!';
+    this.dialogRef.close(this.dataLoginSup.usuario);
   }
 
 }
