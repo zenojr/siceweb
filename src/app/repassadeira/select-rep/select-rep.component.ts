@@ -22,7 +22,7 @@ export class SelectRepComponent implements OnInit {
     public   dialogSelect: MatDialogRef<SelectRepComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogSelect,
   ) { }
-
+ 
   ngOnInit() {    
   }
 

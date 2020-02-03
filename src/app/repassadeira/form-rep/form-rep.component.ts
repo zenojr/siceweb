@@ -258,9 +258,10 @@ export class FormRepComponent implements OnInit {
 @Component({
      selector: 'dialogLoginSup',
   templateUrl: './dialogLoginSup.html',
+    styleUrls: ['./form-rep.component.scss']
 })
 export class DialogLoginSup {
-
+  
   constructor(
     public dialogRef: MatDialogRef<DialogLoginSup>,
     @Inject(MAT_DIALOG_DATA) public dataLoginSup: DialogLoginSup) {}
@@ -269,8 +270,10 @@ export class DialogLoginSup {
     this.dialogRef.close();
   }
 
-  saveDataLogin(){
-    this.dataLoginSup.usuario = 'here modafoca!!';
+  saveDataLogin(user, pass){
+    // console.log( 'inside local:'  + user);
+    // console.log( 'inside local2:' + pass);
+    this.dataLoginSup.usuario = user;
     this.dialogRef.close(this.dataLoginSup.usuario);
   }
 
