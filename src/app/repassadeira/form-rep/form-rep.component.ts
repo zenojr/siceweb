@@ -74,7 +74,8 @@ export class FormRepComponent implements OnInit {
     });
 
     dialogLogin.afterClosed().subscribe( res => {
-      console.log('closed');
+      console.log('Login Sup');
+      console.log(res);
       let dataRecieved = res;
       console.log( dataRecieved );
     })
@@ -271,10 +272,14 @@ export class DialogLoginSup {
   }
 
   saveDataLogin(user, pass){
+    let arrDataSup = [];
     // console.log( 'inside local:'  + user);
     // console.log( 'inside local2:' + pass);
     this.dataLoginSup.usuario = user;
-    this.dialogRef.close(this.dataLoginSup.usuario);
+    this.dataLoginSup.senha = pass;
+    arrDataSup.push(user);
+    arrDataSup.push(pass);
+    this.dialogRef.close( arrDataSup );
   }
 
 }
