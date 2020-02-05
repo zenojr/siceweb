@@ -75,9 +75,10 @@ export class FormRepComponent implements OnInit {
 
     dialogLogin.afterClosed().subscribe( res => {
       console.log('Login Sup');
-      console.log(res);
-      let dataRecieved = res;
-      console.log( dataRecieved );
+      let user = res[0];
+      let senha = res[1];
+      
+      console.log( 'user' + user + ' ' + 'senha' + senha);
     })
   }
 
@@ -273,8 +274,7 @@ export class DialogLoginSup {
 
   saveDataLogin(user, pass){
     let arrDataSup = [];
-    // console.log( 'inside local:'  + user);
-    // console.log( 'inside local2:' + pass);
+    
     this.dataLoginSup.usuario = user;
     this.dataLoginSup.senha = pass;
     arrDataSup.push(user);
