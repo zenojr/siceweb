@@ -8,7 +8,7 @@ import { LoginService                  } from '../../login/login.service';
 import { HttpClient                    } from '@angular/common/http';
 import { RepassadeiraService           } from '../repassadeira.service';
 import { MonitoropService              } from '../../monitorop/monitorop.service';
-import { ɵAnimationGroupPlayer } from '@angular/animations';
+
 
 export interface DialogLoginSup {
   usuario: string;
@@ -22,9 +22,8 @@ export interface DialogLoginSup {
 })
 export class FormRepComponent implements OnInit {
 
-  usuario = null;
-    senha = null;
-
+  usuario       = null;
+  senha         = null;
   errorSaving   = []
   testeSpark    = '';
   devProd       = null;
@@ -69,21 +68,17 @@ export class FormRepComponent implements OnInit {
   }
 
   @ViewChild('sucataProd', {static:true}) fieldInputSucata: ElementRef;
-  @ViewChild('sucataProd', {static:true}) fielTeste: HTMLElement;
   
-
   openLoginSup(): void {
-    console.log(this.fielTeste);
     if( this.usuario === null && this.senha === null || this.usuario === '' && this.senha === '' ){
       const dialogLogin = this.dialogLogin.open( DialogLoginSup, {
         width: '250px',
         data: { usuario: this.usuario, senha: this.senha }
       });
       dialogLogin.afterClosed().subscribe( res => {
-        if(res === undefined || res === null){
+        if(res === undefined || res === null || res === '' ){
           // this.openLoginSup();
-          // this.fieldInputSucata.nativeElement.value = null;
-          this.fieldInputSucata.nativeElement.readOnly = true;
+          this.fieldInputSucata.nativeElement.value = null;
         }
         console.log('Login Sup');
         console.log(res);
@@ -96,6 +91,7 @@ export class FormRepComponent implements OnInit {
       });
       
     } 
+    this.callSupervi = true;
   }
 
 
@@ -111,14 +107,17 @@ export class FormRepComponent implements OnInit {
   }
 
   validateSucata( sucataProd ) {
-    
     if(sucataProd > this.data['qtdSucata'] && this.usuario === null && this.senha === null){
       this.openLoginSup();
     } else {
       console.log('do nothing!!!!!');
       this.callSupervi = true;
     }
-    
+  }
+
+  clearLoginSup(){
+    this.usuario = null;
+    this.senha = null;
   }
 
   saveFormData(bobinaProd,
@@ -149,13 +148,9 @@ export class FormRepComponent implements OnInit {
 
   this.errorSaving = [];
 
-  // if( sucataProd > this.data['qtdSucata'] ) {
-  //       this.callSupervi = true;
-  //       this.openLoginSup();
-  //   if( this.usuario && this.senha != null ){
-  //       this.callSupervi = false;
-  //   }
-  // }
+  if( sucataProd > this.data['qtdSucata'] ) {
+        this.openLoginSup();
+  }
 
   if( this.data['dimBob'].slice(0,4) == 'ERRO' ){
       this.errorSaving.push('Erro na Dimensão da Bobina, peça para o supervisor verificar cadastro de limite no SCB: ' + this.data['dimBob']);
