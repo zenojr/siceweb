@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject     } from '@angular/core';
+import { Component, OnInit, Inject, ViewChild, ElementRef     } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA,
          MatDialog                     } from '@angular/material';
 import { DialogData                    } from '../repFormModel';
@@ -8,6 +8,7 @@ import { LoginService                  } from '../../login/login.service';
 import { HttpClient                    } from '@angular/common/http';
 import { RepassadeiraService           } from '../repassadeira.service';
 import { MonitoropService              } from '../../monitorop/monitorop.service';
+import { ɵAnimationGroupPlayer } from '@angular/animations';
 
 export interface DialogLoginSup {
   usuario: string;
@@ -21,8 +22,8 @@ export interface DialogLoginSup {
 })
 export class FormRepComponent implements OnInit {
 
-  usuario: string;
-    senha: string;
+  usuario = null;
+    senha = null;
 
   errorSaving   = []
   testeSpark    = '';
@@ -67,20 +68,36 @@ export class FormRepComponent implements OnInit {
     console.log( 'inside form' +  this.data.saved);
   }
 
-  openLoginSup(): void {
-    const dialogLogin = this.dialogLogin.open( DialogLoginSup, {
-      width: '250px',
-       data: { usuario: this.usuario, senha: this.senha }
-    });
+  @ViewChild('sucataProd', {static:true}) fieldInputSucata: ElementRef;
+  @ViewChild('sucataProd', {static:true}) fielTeste: HTMLElement;
+  
 
-    dialogLogin.afterClosed().subscribe( res => {
-      console.log('Login Sup');
-      let user = res[0];
-      let senha = res[1];
+  openLoginSup(): void {
+    console.log(this.fielTeste);
+    if( this.usuario === null && this.senha === null || this.usuario === '' && this.senha === '' ){
+      const dialogLogin = this.dialogLogin.open( DialogLoginSup, {
+        width: '250px',
+        data: { usuario: this.usuario, senha: this.senha }
+      });
+      dialogLogin.afterClosed().subscribe( res => {
+        if(res === undefined || res === null){
+          // this.openLoginSup();
+          // this.fieldInputSucata.nativeElement.value = null;
+          this.fieldInputSucata.nativeElement.readOnly = true;
+        }
+        console.log('Login Sup');
+        console.log(res);
+        this.usuario = res[0];
+        this.senha   = res[1];
+        console.log( 'user: ' + this.usuario + ' ' + 'senha: ' + this.senha);
+        if( this.usuario === null && this.senha === null || this.usuario === '' && this.senha === '' ){
       
-      console.log( 'user' + user + ' ' + 'senha' + senha);
-    })
+        }
+      });
+      
+    } 
   }
+
 
   getMotDevolucao() {
     const url = 'http://192.168.0.7:8080/cgi-bin/wspd_cgi.sh/WService=emswebelttst/scb013ws.p?tipo=devolucao';
@@ -91,6 +108,17 @@ export class FormRepComponent implements OnInit {
       this.motDevolucao = this.motDevolucao['Registro'];
       console.log(this.motDevolucao);
     });
+  }
+
+  validateSucata( sucataProd ) {
+    
+    if(sucataProd > this.data['qtdSucata'] && this.usuario === null && this.senha === null){
+      this.openLoginSup();
+    } else {
+      console.log('do nothing!!!!!');
+      this.callSupervi = true;
+    }
+    
   }
 
   saveFormData(bobinaProd,
@@ -121,17 +149,20 @@ export class FormRepComponent implements OnInit {
 
   this.errorSaving = [];
 
-  if( sucataProd > this.data['qtdSucata'] ) {
-    this.callSupervi = true;
-    this.openLoginSup();
-  }
+  // if( sucataProd > this.data['qtdSucata'] ) {
+  //       this.callSupervi = true;
+  //       this.openLoginSup();
+  //   if( this.usuario && this.senha != null ){
+  //       this.callSupervi = false;
+  //   }
+  // }
 
   if( this.data['dimBob'].slice(0,4) == 'ERRO' ){
-    this.errorSaving.push('Erro na Dimensão da Bobina, peça para o supervisor verificar cadastro de limite no SCB: ' + this.data['dimBob']);
+      this.errorSaving.push('Erro na Dimensão da Bobina, peça para o supervisor verificar cadastro de limite no SCB: ' + this.data['dimBob']);
   }
 
   if( this.devProd === null ){
-    this.errorSaving.push('Selecione uma opção: Devolver ou Produzir 🚨');
+      this.errorSaving.push('Selecione uma opção: Devolver ou Produzir 🚨');
   }
 
   if( this.devProd === 'devolver' && this.motDevSelect == null || this.motDevSelect == 0){
@@ -156,10 +187,10 @@ export class FormRepComponent implements OnInit {
   }
 
   if( this.data['qtdRolo'] > 0 && roloProd == 0 || roloProd == null ){
-    this.errorSaving.push( 'Informe a produção de Rolo 🚨');
-    this.blockRolo = true;
+      this.errorSaving.push( 'Informe a produção de Rolo 🚨');
+      this.blockRolo = true;
   } else {
-    this.blockRolo = false;
+      this.blockRolo = false;
   }
   
   if( this.data['dimBob'] != 'ROLO' ){
@@ -270,6 +301,7 @@ export class DialogLoginSup {
 
   onNoClick(): void {
     this.dialogRef.close();
+    
   }
 
   saveDataLogin(user, pass){

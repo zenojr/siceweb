@@ -97,8 +97,9 @@
              autocomplete="off" [required]="blockRetalho" [ngClass]="{prodError: blockRetalho}">
     </mat-form-field>
     <mat-form-field id="sucata">
-      <input type="number" class="white" matInput placeholder="Sucata" #sucataProd 
-             autocomplete="off" [required]="blockSucata" [ngClass]="{prodError: blockSucata}">
+      <input type="number" id="sucInput" class="white" matInput placeholder="Sucata" #sucataProd 
+             autocomplete="off" [required]="blockSucata" [ngClass]="{prodError: blockSucata}" 
+             (focusout)="validateSucata(sucataProd.value)">
     </mat-form-field>
   </div>
 
