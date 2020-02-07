@@ -81,13 +81,17 @@ export class FormRepComponent implements OnInit {
           this.fieldInputSucata.nativeElement.value = null;
         }
         console.log('Login Sup');
-        console.log(res);
-        this.usuario = res[0];
-        this.senha   = res[1];
-        console.log( 'user: ' + this.usuario + ' ' + 'senha: ' + this.senha);
-        if( this.usuario === null && this.senha === null || this.usuario === '' && this.senha === '' ){
-      
+        if( res[0].length >= 3 && res[1].length >= 3 ) {
+          this.usuario = res[0];
+          this.senha   = res[1];
+          console.log( 'user: ' + this.usuario + ' ' + 'senha: ' + this.senha);
+        }else{
+          this.fieldInputSucata.nativeElement.value = null;
+          this.usuario = null;
+          this.senha  = null;
+          alert('Insira um usuário e senha inválidos');
         }
+        
       });
       
     } 
