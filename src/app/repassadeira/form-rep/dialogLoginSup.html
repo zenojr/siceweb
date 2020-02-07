@@ -1,19 +1,21 @@
 
-
-
 <div class="principal">
-    <div class="element">
+    <div>
         <span>É obrigatório informar o nome e senha do supervisor</span>
     </div>
-    <div class="element">
+    <div>
         <mat-form-field>
             <input matInput placeholder="Usuário" value="" #user>
         </mat-form-field>
     </div>
-    <div class="element">
+    <div>
         <mat-form-field>
             <input type="password" matInput placeholder="Senha" value="" #pass >
         </mat-form-field>
-        <button (click)="saveDataLogin( user.value, pass.value )"  mat-button>OK</button>
+        <button (click)="saveDataLogin( user.value, pass.value )"  mat-button>Liberar</button>
+        <button (click)="closeSupForm()" mat-button>Cancelar</button>
     </div>
 </div>
+
+
+  

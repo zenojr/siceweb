@@ -27,6 +27,13 @@
     width: 310px;
 }
 
+// elements reference for login sup
+
+.principal {
+            display: flex;
+        align-items: center;
+}
+
 .firstBlock {
     @extend %spacementDefault;
     margin-top: 25px;    
@@ -49,16 +56,16 @@ mat-form-field {
 }
 
 .contRadio{
-    margin: 20px 0px 0px 0px;
+       margin: 20px 0px 0px 0px;
     font-size: 14px;
 }
 
 mat-radio-button{
-    margin: 0px 10px 0px 0px;
+       margin: 0px 10px 0px 0px;
 }
 
 .containerRep{
-    padding: 0px;    
+      padding: 0px;    
 }
 
 .quantidades {
@@ -71,29 +78,28 @@ mat-radio-button{
 
 .green {
     background-color: #b8e0d2;
-    border-radius: 2px;
+       border-radius: 2px;
 }
 
 .yellow {
     background-color: #F58A07;
-    border-radius: 2px;
+       border-radius: 2px;
 }
 
 .white {
     background-color: white;
-    border-radius: 2px;
+       border-radius: 2px;
 }
 
 .contRadio{
     // background-color: #C46A71;
-    border-radius: 2px;
+       border-radius: 2px;
 }
 
 #closeBtn{
      width: 16px;
     height: 16px;
-    
-    float: right;
+     float: right;
 }
 
 #titleProd {
@@ -110,8 +116,8 @@ mat-radio-button{
 }
 
 #reloadBtn {
-    margin-top: 10px;
-    margin-left: -20px;
+      margin-top: 10px;
+     margin-left: -20px;
     margin-right: -20px;
 }
 

@@ -95,6 +95,7 @@ export class FormRepComponent implements OnInit {
   }
 
 
+
   getMotDevolucao() {
     const url = 'http://192.168.0.7:8080/cgi-bin/wspd_cgi.sh/WService=emswebelttst/scb013ws.p?tipo=devolucao';
     this.http.get( url, {responseType: 'text'} ).subscribe( response => {
@@ -114,6 +115,8 @@ export class FormRepComponent implements OnInit {
       this.callSupervi = true;
     }
   }
+
+  
 
   clearLoginSup(){
     this.usuario = null;
@@ -307,6 +310,10 @@ export class DialogLoginSup {
     arrDataSup.push(user);
     arrDataSup.push(pass);
     this.dialogRef.close( arrDataSup );
+  }
+
+  closeSupForm():void {
+    this.dialogRef.close();
   }
 
 }
