@@ -128,7 +128,7 @@
         <mat-radio-button value="produzir">Produzir</mat-radio-button>
       </mat-radio-group>
 
-      <mat-form-field *ngIf="devProd === 'devolucao'">        
+      <mat-form-field *ngIf="devProd === 'devolucao'">
         <mat-select [(ngModel)]="motDevSelect" placeholder="Selecione uma opção">
           <mat-option value="{{ motivo.codProblema }}" 
                       *ngFor="let motivo of motDevolucao">{{ motivo.descricao }}</mat-option>

@@ -14,7 +14,7 @@ import { MonitoropService              } from '../../monitorop/monitorop.service
 export interface LoginSup {
   usuario: string;
     senha: string;
-motSucata: string;
+motSucata: any;
 }
 
 @Component({
@@ -70,19 +70,22 @@ export class FormRepComponent implements OnInit {
     this.loginService.currentUser.subscribe( user => this.user = user );
     this.loginService.currentSetor.subscribe( repassa => this.repassadeira = repassa.slice(13));
     console.log( 'inside form' +  this.data.saved);
+    this.getMotDevolucao('sucata');
   }
 
   @ViewChild('sucataProd', {static:true}) fieldInputSucata: ElementRef;
   
   openLoginSup(): void {
-    let nononono = 'oioiiooiio'
+    
+    let motivos = this.motSucata;
+    console.log(motivos);
     if( this.usuario === null && this.senha === null || this.usuario === '' && this.senha === '' ){
       const dialogLogin = this.dialogLogin.open( DialogLoginSup, {
         width: '250px',
         data: { 
           usuario: this.testeSpark,
           senha: this.senha,
-      motSucata: nononono
+      motSucata: motivos
         }
       });
       dialogLogin.afterClosed().subscribe( res => {
@@ -114,24 +117,23 @@ export class FormRepComponent implements OnInit {
         this.motDevolucao = this.motDevolucao['Root'];
         this.motDevolucao = this.motDevolucao['ttProblema'];
         this.motDevolucao = this.motDevolucao['Registro'];
-        console.log(this.motDevolucao);
+        // console.log(this.motDevolucao);
       });
     } else if( tipo === 'sucata' ){
-      this.testeSucata =  'newwwwwwwwww';
       const url = 'http://192.168.0.7:8080/cgi-bin/wspd_cgi.sh/WService=emswebelttst/scb013ws.p?tipo=' + tipo;
       this.http.get( url, {responseType: 'text'} ).subscribe( response => {
         this.motSucata = this.monOpServ.convertXMLtoJSON(response);
         this.motSucata = this.motSucata['Root'];
         this.motSucata = this.motSucata['ttProblema'];
         this.motSucata = this.motSucata['Registro'];
-        console.log(this.motSucata);
+        // console.log(this.motSucata);
+        return this.motSucata;
     });
     }
   }
 
   validateSucata( sucataProd ) {
     if(sucataProd > this.data['qtdSucata'] && this.usuario === null && this.senha === null){
-      this.getMotDevolucao('sucata');
       this.openLoginSup();
     } else {
       console.log('do nothing!!!!!');
@@ -324,7 +326,7 @@ export class DialogLoginSup {
     this.dialogRef.close();
   }
 
-  saveDataLogin(user, pass){
+  saveDataLogin(user, pass, ){
     let arrDataSup = [];
     this.data.usuario = user;
     this.data.senha = pass;
