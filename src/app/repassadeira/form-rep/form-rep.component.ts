@@ -24,9 +24,12 @@ export class FormRepComponent implements OnInit {
 
   usuario       = null;
   senha         = null;
-  errorSaving   = []
-  testeSpark    = '';
   devProd       = null;
+  motDevSelect  = null;
+  errorSaving   = [];
+  arrSave       = [];
+  arrayMotivoSuc= [];
+  testeSpark    = '';
   user          = '';
   obsRepass     = '';
   quantMetro    = 0;
@@ -35,8 +38,6 @@ export class FormRepComponent implements OnInit {
   quantSuc      = 0;
   indexCorteRol = 0;
   taraOut       = 0;
-  motDevSelect  = null;
-  arrSave       = [];
   blockRol      = false;
   blockBob      = false;
   blockRolo     = false;
@@ -46,6 +47,7 @@ export class FormRepComponent implements OnInit {
   blockTara     = false;
   callSupervi   = false;
   motDevolucao: any;
+     motSucata: any;
          error: any;
   repassadeira: any;
 
@@ -73,7 +75,11 @@ export class FormRepComponent implements OnInit {
     if( this.usuario === null && this.senha === null || this.usuario === '' && this.senha === '' ){
       const dialogLogin = this.dialogLogin.open( DialogLoginSup, {
         width: '250px',
-        data: { usuario: this.usuario, senha: this.senha }
+        data: { 
+          usuario: this.usuario,
+          senha: this.senha,
+          arrMot: this.arrayMotivoSuc
+        }
       });
       dialogLogin.afterClosed().subscribe( res => {
         if(res === undefined || res === null || res === '' ){
@@ -91,28 +97,36 @@ export class FormRepComponent implements OnInit {
           this.senha  = null;
           alert('Insira um usuário e senha inválidos');
         }
-        
       });
-      
     } 
     this.callSupervi = true;
   }
 
-
-
-  getMotDevolucao() {
-    const url = 'http://192.168.0.7:8080/cgi-bin/wspd_cgi.sh/WService=emswebelttst/scb013ws.p?tipo=devolucao';
-    this.http.get( url, {responseType: 'text'} ).subscribe( response => {
-      this.motDevolucao = this.monOpServ.convertXMLtoJSON(response);
-      this.motDevolucao = this.motDevolucao['Root'];
-      this.motDevolucao = this.motDevolucao['ttProblema'];
-      this.motDevolucao = this.motDevolucao['Registro'];
-      console.log(this.motDevolucao);
+  getMotDevolucao(tipo) {
+    if( tipo === 'devolucao' ){
+      const url = 'http://192.168.0.7:8080/cgi-bin/wspd_cgi.sh/WService=emswebelttst/scb013ws.p?tipo=' + tipo;
+      this.http.get( url, {responseType: 'text'} ).subscribe( response => {
+        this.motDevolucao = this.monOpServ.convertXMLtoJSON(response);
+        this.motDevolucao = this.motDevolucao['Root'];
+        this.motDevolucao = this.motDevolucao['ttProblema'];
+        this.motDevolucao = this.motDevolucao['Registro'];
+        console.log(this.motDevolucao);
+      });
+    } else if( tipo === 'sucata' ){
+      const url = 'http://192.168.0.7:8080/cgi-bin/wspd_cgi.sh/WService=emswebelttst/scb013ws.p?tipo=' + tipo;
+      this.http.get( url, {responseType: 'text'} ).subscribe( response => {
+        this.motSucata = this.monOpServ.convertXMLtoJSON(response);
+        this.motSucata = this.motSucata['Root'];
+        this.motSucata = this.motSucata['ttProblema'];
+        this.motSucata = this.motSucata['Registro'];
+        console.log(this.motSucata);
     });
+    }
   }
 
   validateSucata( sucataProd ) {
     if(sucataProd > this.data['qtdSucata'] && this.usuario === null && this.senha === null){
+      this.getMotDevolucao('sucata');
       this.openLoginSup();
     } else {
       console.log('do nothing!!!!!');
@@ -167,7 +181,7 @@ export class FormRepComponent implements OnInit {
       this.errorSaving.push('Selecione uma opção: Devolver ou Produzir 🚨');
   }
 
-  if( this.devProd === 'devolver' && this.motDevSelect == null || this.motDevSelect == 0){
+  if( this.devProd === 'devolucao' && this.motDevSelect == null || this.motDevSelect == 0){
       this.errorSaving.push('Selecione um motivo de devolução 🚨');
       this.blockDevolver = true;
   } else {
