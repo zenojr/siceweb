@@ -1,4 +1,5 @@
-import { Component, OnInit, Inject, ViewChild, ElementRef     } from '@angular/core';
+import { Component, OnInit, Inject, 
+         ViewChild, ElementRef         } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA,
          MatDialog                     } from '@angular/material';
 import { DialogData                    } from '../repFormModel';
@@ -10,9 +11,10 @@ import { RepassadeiraService           } from '../repassadeira.service';
 import { MonitoropService              } from '../../monitorop/monitorop.service';
 
 
-export interface DialogLoginSup {
+export interface LoginSup {
   usuario: string;
     senha: string;
+motSucata: string;
 }
 
 @Component({
@@ -46,6 +48,7 @@ export class FormRepComponent implements OnInit {
   blockDevolver = false;
   blockTara     = false;
   callSupervi   = false;
+  testeSucata = 'oiwfjeoijerfijeworifjoi';
   motDevolucao: any;
      motSucata: any;
          error: any;
@@ -72,13 +75,14 @@ export class FormRepComponent implements OnInit {
   @ViewChild('sucataProd', {static:true}) fieldInputSucata: ElementRef;
   
   openLoginSup(): void {
+    let nononono = 'oioiiooiio'
     if( this.usuario === null && this.senha === null || this.usuario === '' && this.senha === '' ){
       const dialogLogin = this.dialogLogin.open( DialogLoginSup, {
         width: '250px',
         data: { 
-          usuario: this.usuario,
+          usuario: this.testeSpark,
           senha: this.senha,
-          arrMot: this.arrayMotivoSuc
+      motSucata: nononono
         }
       });
       dialogLogin.afterClosed().subscribe( res => {
@@ -113,6 +117,7 @@ export class FormRepComponent implements OnInit {
         console.log(this.motDevolucao);
       });
     } else if( tipo === 'sucata' ){
+      this.testeSucata =  'newwwwwwwwww';
       const url = 'http://192.168.0.7:8080/cgi-bin/wspd_cgi.sh/WService=emswebelttst/scb013ws.p?tipo=' + tipo;
       this.http.get( url, {responseType: 'text'} ).subscribe( response => {
         this.motSucata = this.monOpServ.convertXMLtoJSON(response);
@@ -313,18 +318,16 @@ export class DialogLoginSup {
   
   constructor(
     public dialogRef: MatDialogRef<DialogLoginSup>,
-    @Inject(MAT_DIALOG_DATA) public dataLoginSup: DialogLoginSup) {}
+    @Inject(MAT_DIALOG_DATA) public data: LoginSup) {}
 
   onNoClick(): void {
     this.dialogRef.close();
-    
   }
 
   saveDataLogin(user, pass){
     let arrDataSup = [];
-    
-    this.dataLoginSup.usuario = user;
-    this.dataLoginSup.senha = pass;
+    this.data.usuario = user;
+    this.data.senha = pass;
     arrDataSup.push(user);
     arrDataSup.push(pass);
     this.dialogRef.close( arrDataSup );

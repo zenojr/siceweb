@@ -32,15 +32,11 @@
         </mat-form-field>
     </div>
     <div>
-        <mat-form-field>
-            <mat-label>Motivo sucata: </mat-label>
-            <mat-select [(ngModel)]="motSucata" *ngFor="let motivo of motSucata">
-              <mat-option value="motivo.codProblema">
-                {{ motivo.descricao }}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-
+        <p>data test: </p>  
+        {{data.motSucata}}
+    </div>
+    <div>
+        
           <!-- <mat-form-field *ngIf="devProd === 'devolucao'">        
             <mat-select [(ngModel)]="motDevSelect" placeholder="Selecione uma opção">
               <mat-option value="{{ motivo.codProblema }}" 
