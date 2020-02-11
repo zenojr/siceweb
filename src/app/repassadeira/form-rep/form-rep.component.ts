@@ -98,7 +98,7 @@ export class FormRepComponent implements OnInit {
           this.usuario   = res[0];
           this.senha     = res[1];
           this.motSucata = res[2];
-          console.log( 'user: ' + this.usuario + ' ' + 'senha: ' + this.senha + ' ' + 'motivo:' + this.motivoOut);
+          console.log( 'user: ' + this.usuario + ' ' + 'senha: ' + this.senha + ' ' + 'motivo:' + this.motSucata);
         }else{
           this.fieldInputSucata.nativeElement.value = null;
           this.usuario = null;
