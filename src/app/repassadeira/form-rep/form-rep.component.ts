@@ -10,7 +10,6 @@ import { HttpClient                    } from '@angular/common/http';
 import { RepassadeiraService           } from '../repassadeira.service';
 import { MonitoropService              } from '../../monitorop/monitorop.service';
 
-
 export interface LoginSup {
   usuario: string;
     senha: string;
@@ -48,11 +47,11 @@ export class FormRepComponent implements OnInit {
   blockDevolver = false;
   blockTara     = false;
   callSupervi   = false;
-  testeSucata = 'oiwfjeoijerfijeworifjoi';
   motDevolucao: any;
      motSucata: any;
          error: any;
   repassadeira: any;
+       motivos: any;
 
   constructor(
     public  dialogLogin: MatDialog,
@@ -77,15 +76,15 @@ export class FormRepComponent implements OnInit {
   
   openLoginSup(): void {
     
-    let motivos = this.motSucata;
-    console.log(motivos);
+    this.motivos = this.motSucata;
+    console.log(this.motivos);
     if( this.usuario === null && this.senha === null || this.usuario === '' && this.senha === '' ){
       const dialogLogin = this.dialogLogin.open( DialogLoginSup, {
         width: '250px',
         data: { 
-          usuario: this.testeSpark,
+        usuario: this.usuario,
           senha: this.senha,
-      motSucata: motivos
+      motSucata: this.motivos
         }
       });
       dialogLogin.afterClosed().subscribe( res => {
@@ -95,9 +94,10 @@ export class FormRepComponent implements OnInit {
         }
         console.log('Login Sup');
         if( res[0].length >= 3 && res[1].length >= 3 ) {
-          this.usuario = res[0];
-          this.senha   = res[1];
-          console.log( 'user: ' + this.usuario + ' ' + 'senha: ' + this.senha);
+          this.usuario   = res[0];
+          this.senha     = res[1];
+          this.motSucata = res[2];
+          console.log( 'user: ' + this.usuario + ' ' + 'senha: ' + this.senha + ' ' + 'motivo:' + this.motSucata);
         }else{
           this.fieldInputSucata.nativeElement.value = null;
           this.usuario = null;
@@ -326,12 +326,15 @@ export class DialogLoginSup {
     this.dialogRef.close();
   }
 
-  saveDataLogin(user, pass, ){
+  saveDataLogin(user, pass, motivo){
+    console.log(motivo);
     let arrDataSup = [];
     this.data.usuario = user;
     this.data.senha = pass;
+    this.data.motSucata = motivo;
     arrDataSup.push(user);
     arrDataSup.push(pass);
+    arrDataSup.push(motivo);
     this.dialogRef.close( arrDataSup );
   }
 

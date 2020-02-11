@@ -33,14 +33,16 @@
     </div>
 
     <div>
-        <mat-form-field>
-            <mat-select>
-                <mat-option #motivo value="{{ item.codProblema }}" *ngFor="let item of data.motSucata">{{ item.descricao }}</mat-option>
+        <mat-form-field >
+            <mat-select #motivo>
+                <mat-option 
+                    *ngFor="let item of data.motSucata" [value]="item.codProblema" >{{ item.descricao }}
+                </mat-option>
             </mat-select>
         </mat-form-field>
     </div>
     <div class="buttons">
-        <button (click)="saveDataLogin( user.value, pass.value )"  
+        <button (click)="saveDataLogin( user.value, pass.value, motivo.value )"  
                 mat-raised-button color="primary">Liberar</button>
 
         <button (click)="closeSupForm()" 
