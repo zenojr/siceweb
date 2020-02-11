@@ -1,21 +1,4 @@
 
-<!-- <div class="principal">
-    <div>
-        <span>É obrigatório informar o nome e senha do supervisor</span>
-    </div>
-    <div>
-        <mat-form-field>
-            <input matInput placeholder="Usuário" value="" #user>
-        </mat-form-field>
-    </div>
-    <div>
-        <mat-form-field>
-            <input type="password" matInput placeholder="Senha" value="" #pass >
-        </mat-form-field>
-        <button (click)="saveDataLogin( user.value, pass.value )"  mat-button>Liberar</button>
-        <button (click)="closeSupForm()" mat-button>Cancelar</button>
-    </div>
-</div> -->
 
 <div class="principal">
     <div>
@@ -36,13 +19,13 @@
         <mat-form-field >
             <mat-select #motivo>
                 <mat-option 
-                    *ngFor="let item of data.motSucata" [value]="item.codProblema" >{{ item.descricao }}
+                    *ngFor="let item of data.motSucata" [value]="item.codProblema" > {{ item.descricao }}
                 </mat-option>
             </mat-select>
         </mat-form-field>
     </div>
     <div class="buttons">
-        <button (click)="saveDataLogin( user.value, pass.value, motivo.value )"  
+        <button (click)="saveDataLogin( user.value, pass.value, motivo.value )"
                 mat-raised-button color="primary">Liberar</button>
 
         <button (click)="closeSupForm()" 
@@ -50,6 +33,3 @@
     </div>
 
 </div>
-
-
-  
