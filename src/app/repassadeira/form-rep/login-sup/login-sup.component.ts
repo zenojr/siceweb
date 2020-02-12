@@ -31,4 +31,22 @@ export class LoginSupComponent implements OnInit {
     this.dialogLoginSup.close();
   }
 
+    saveDataLogin(user, pass, motivo){
+    console.log(motivo);
+    let arrDataSup = [];
+    this.data.usuario = user;
+    this.data.senha = pass;
+    this.data.motSucata = motivo;
+    arrDataSup.push(user);
+    arrDataSup.push(pass);
+    arrDataSup.push(motivo);
+    this.dialogLoginSup.close( arrDataSup );
+  }
+
+  closeSupForm():void {
+    this.dialogLoginSup.close();
+  }
+
+
+
 }

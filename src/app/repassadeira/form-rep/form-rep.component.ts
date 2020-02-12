@@ -24,8 +24,8 @@ import { LoginSupComponent             } from './login-sup/login-sup.component';
 })
 export class FormRepComponent implements OnInit {
 
-  // usuario       = null;
-  // senha         = null;
+  usuario       = null;
+  senha         = null;
 
   animal: string;
   name: string;
@@ -78,25 +78,59 @@ export class FormRepComponent implements OnInit {
     this.getMotDevolucao('sucata');
   }
   
-  openLoginSup(): void{
-    const dialogLogin = this.dialogLogin.open( LoginSupComponent, {
-      width: '250px',
-       data: {
-          name: this.name,
-          animal: this.animal
-       }
-    });
+  // openLoginSup(): void{
+  //   const dialogLogin = this.dialogLogin.open( LoginSupComponent, {
+  //     width: '250px',
+  //      data: {
+  //         name: this.name,
+  //         animal: this.animal
+  //      }
+  //   });
 
-    dialogLogin.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      this.animal = result;
-    });
+  //   dialogLogin.afterClosed().subscribe(result => {
+  //     console.log('The dialog was closed');
+  //     this.animal = result;
+  //   });
+  // }
+
+  @ViewChild('sucataProd', {static:true}) fieldInputSucata: ElementRef;
+  
+  openLoginSup(): void {
+    this.motivos = this.motSucata;
+    console.log(this.motivos);
+    if( this.usuario === null && this.senha === null || this.usuario === '' && this.senha === '' ){
+      const dialogLogin = this.dialogLogin.open( LoginSupComponent, {
+        width: '250px',
+        data: { 
+        usuario: this.usuario,
+          senha: this.senha,
+      motSucata: this.motivos
+        }
+      });
+      dialogLogin.afterClosed().subscribe( res => {
+        if(res === undefined || res === null || res === '' ){
+          // this.openLoginSup();
+          this.fieldInputSucata.nativeElement.value = null;
+        }
+        console.log('Login Sup');
+        if( res[0].length >= 3 && res[1].length >= 3 ) {
+          this.usuario   = res[0];
+          this.senha     = res[1];
+          this.motSucata = res[2];
+          console.log( 'user: ' + this.usuario + ' ' + 'senha: ' + this.senha + ' ' + 'motivo:' + this.motSucata);
+        }else{
+          this.fieldInputSucata.nativeElement.value = null;
+          this.usuario = null;
+          this.senha  = null;
+          alert('Insira um usuário e senha inválidos');
+        }
+      });
+    } 
+    this.callSupervi = true;
   }
 
-  // @ViewChild('sucataProd', {static:true}) fieldInputSucata: ElementRef;
-  
+
   // openLoginSup(): void {
-    
   //   this.motivos = this.motSucata;
   //   console.log(this.motivos);
   //   if( this.usuario === null && this.senha === null || this.usuario === '' && this.senha === '' ){
@@ -153,21 +187,19 @@ export class FormRepComponent implements OnInit {
     }
   }
 
-  // validateSucata( sucataProd ) {
-  //   if(sucataProd > this.data['qtdSucata'] && this.usuario === null && this.senha === null){
-  //     this.openLoginSup();
-  //   } else {
-  //     console.log('do nothing!!!!!');
-  //     this.callSupervi = true;
-  //   }
-  // }
+  validateSucata( sucataProd ) {
+    if(sucataProd > this.data['qtdSucata'] && this.usuario === null && this.senha === null){
+      this.openLoginSup();
+    } else {
+      console.log('do nothing!!!!!');
+      this.callSupervi = true;
+    }
+  }
 
-  
-
-  // clearLoginSup(){
-  //   this.usuario = null;
-  //   this.senha = null;
-  // }
+  clearLoginSup(){
+    this.usuario = null;
+    this.senha = null;
+  }
 
   saveFormData(bobinaProd,
                roloProd,
