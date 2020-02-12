@@ -24,15 +24,6 @@
         </mat-form-field>
     </div>
 
-    <!-- <div>
-      <mat-form-field *ngIf="devProd === 'devolucao'">
-        <mat-select [(ngModel)]="motDevSelect" placeholder="Selecione uma opção">
-          <mat-option value="{{ motivo.codProblema }}" 
-                      *ngFor="let motivo of motDevolucao">{{ motivo.descricao }}</mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div> -->
-
     <div class="buttons">
         <button (click)="saveDataLogin( user.value, pass.value )"
                 mat-raised-button color="primary">Liberar</button>

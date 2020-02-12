@@ -33,17 +33,21 @@ export class LoginSupComponent implements OnInit {
   }
 
     saveDataLogin(user, pass){
-    console.log( 'here!!:' + this.motivoSelected);
+    if(user.length < 2){
+      alert('Insira um usuário valido!');
+    } else if( pass.length < 2 ) {
+      alert('Informe uma senha');
+    } else {
+      let arrDataSup = [];
+      this.data.usuario = user;
+      this.data.senha = pass;
+      arrDataSup.push(user);
+      arrDataSup.push(pass);
+      arrDataSup.push(this.motivoSelected);
+      console.log(arrDataSup);
+      this.dialogLoginSup.close( arrDataSup );
+    }
 
-    let arrDataSup = [];
-    this.data.usuario = user;
-    this.data.senha = pass;
-    // this.data.motSucata = this.motivoSelected;
-    arrDataSup.push(user);
-    arrDataSup.push(pass);
-    arrDataSup.push(this.motivoSelected);
-    console.log(arrDataSup);
-    this.dialogLoginSup.close( arrDataSup );
   }
 
   closeSupForm():void {
