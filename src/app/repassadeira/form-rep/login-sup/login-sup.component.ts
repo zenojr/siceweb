@@ -18,7 +18,7 @@ export class LoginSupComponent implements OnInit {
        motSucata: any;
          motivos: any;
        motivoOut: any;
-
+          motivoSelected = 'option';
   constructor(
     public dialogLoginSup: MatDialogRef<LoginSupComponent>,
     @Inject(MAT_DIALOG_DATA) public data: LoginSupOut
@@ -32,15 +32,17 @@ export class LoginSupComponent implements OnInit {
     this.dialogLoginSup.close();
   }
 
-    saveDataLogin(user, pass, motivo){
-    console.log(motivo);
+    saveDataLogin(user, pass){
+    console.log( 'here!!:' + this.motivoSelected);
+
     let arrDataSup = [];
     this.data.usuario = user;
     this.data.senha = pass;
-    this.data.motSucata = motivo;
+    // this.data.motSucata = this.motivoSelected;
     arrDataSup.push(user);
     arrDataSup.push(pass);
-    arrDataSup.push(motivo);
+    arrDataSup.push(this.motivoSelected);
+    console.log(arrDataSup);
     this.dialogLoginSup.close( arrDataSup );
   }
 

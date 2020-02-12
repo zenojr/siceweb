@@ -19,7 +19,10 @@
 
 <div class="principal">
     <div>
-        <span>É obrigatório informar o nome e senha do supervisor</span>
+        <span>
+
+            <p>{{ motivoSelected }}</p>
+        </span>
     </div>
     <div>
         <mat-form-field>
@@ -34,13 +37,13 @@
 
     <div>
         <mat-form-field>
-            <mat-select #motivo>
+            <mat-select #motivo [(value)]="motivoSelected">
                 <mat-option
                  *ngFor="let item of data.motSucata" value="{{item.codProblema}}">{{ item.descricao }}</mat-option>
             </mat-select>
         </mat-form-field>
     </div>
-
+    
     <!-- <div>
       <mat-form-field *ngIf="devProd === 'devolucao'">
         <mat-select [(ngModel)]="motDevSelect" placeholder="Selecione uma opção">

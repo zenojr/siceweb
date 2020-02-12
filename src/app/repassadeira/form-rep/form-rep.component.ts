@@ -96,15 +96,15 @@ export class FormRepComponent implements OnInit {
   @ViewChild('sucataProd', {static:true}) fieldInputSucata: ElementRef;
   
   openLoginSup(): void {
-    this.motivos = this.motSucata;
-    console.log(this.motivos);
+    let mot = this.motSucata;
+    console.log(mot);
     if( this.usuario === null && this.senha === null || this.usuario === '' && this.senha === '' ){
       const dialogLogin = this.dialogLogin.open( LoginSupComponent, {
         width: '250px',
         data: { 
         usuario: this.usuario,
           senha: this.senha,
-      motSucata: this.motivos
+      motSucata: mot
         }
       });
       dialogLogin.afterClosed().subscribe( res => {
@@ -182,7 +182,7 @@ export class FormRepComponent implements OnInit {
         this.motSucata = this.motSucata['ttProblema'];
         this.motSucata = this.motSucata['Registro'];
         // console.log(this.motSucata);
-        return this.motSucata;
+        
     });
     }
   }
