@@ -33,9 +33,10 @@ import { PrincipalComponent      } from './principal/principal.component';
 import { MonitoropComponent      } from './monitorop/monitorop.component';
 import { PrioridadePipe          } from './monitorop/prioridade.pipe';
 import { RepassadeiraComponent   } from './repassadeira/repassadeira.component';
-import { FormRepComponent, DialogLoginSup        } from './repassadeira/form-rep/form-rep.component';
+import { FormRepComponent        } from './repassadeira/form-rep/form-rep.component';
 import { InputZeroPipe           } from './repassadeira/form-rep/input-zero.pipe';
 import { SelectRepComponent } from './repassadeira/select-rep/select-rep.component';
+import { LoginSupComponent } from './repassadeira/form-rep/login-sup/login-sup.component';
 
 @NgModule({
   declarations: [
@@ -48,13 +49,13 @@ import { SelectRepComponent } from './repassadeira/select-rep/select-rep.compone
     FormRepComponent,
     InputZeroPipe,
     SelectRepComponent,
-    DialogLoginSup
+    LoginSupComponent
   ],
 
   entryComponents: [SelectRepComponent,
                     FormRepComponent,
                     RepassadeiraComponent,
-                    DialogLoginSup],
+                    LoginSupComponent],
 
   imports: [
     BrowserModule,
