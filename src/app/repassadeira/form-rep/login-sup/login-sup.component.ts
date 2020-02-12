@@ -25,6 +25,7 @@ export class LoginSupComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
   }
 
   onNoClick(): void {
