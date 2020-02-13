@@ -11,12 +11,6 @@ import { RepassadeiraService           } from '../repassadeira.service';
 import { MonitoropService              } from '../../monitorop/monitorop.service';
 import { LoginSupComponent             } from './login-sup/login-sup.component';
 
-// export interface LoginSup {
-//   usuario: string;
-//     senha: string;
-// motSucata: any;
-// }
-
 @Component({
      selector: 'app-form-rep',
   templateUrl: './form-rep.component.html',
@@ -74,34 +68,18 @@ export class FormRepComponent implements OnInit {
   ngOnInit() {
     this.loginService.currentUser.subscribe( user => this.user = user );
     this.loginService.currentSetor.subscribe( repassa => this.repassadeira = repassa.slice(13));
-    //  
     this.getMotDevolucao('sucata');
   }
-  
-  // openLoginSup(): void{
-  //   const dialogLogin = this.dialogLogin.open( LoginSupComponent, {
-  //     width: '250px',
-  //      data: {
-  //         name: this.name,
-  //         animal: this.animal
-  //      }
-  //   });
-
-  //   dialogLogin.afterClosed().subscribe(result => {
-  //     console.log('The dialog was closed');
-  //     this.animal = result;
-  //   });
-  // }
 
   @ViewChild('sucataProd', {static:true}) fieldInputSucata: ElementRef;
-  
+
   openLoginSup(): void {
     let mot = this.motSucata;
     console.log(mot);
     if( this.usuario === null && this.senha === null || this.usuario === '' && this.senha === '' ){
       const dialogLogin = this.dialogLogin.open( LoginSupComponent, {
         width: '250px',
-        data: { 
+        data: {
         usuario: this.usuario,
           senha: this.senha,
       motSucata: mot
@@ -109,7 +87,7 @@ export class FormRepComponent implements OnInit {
       });
       dialogLogin.afterClosed().subscribe( res => {
         if(res === undefined || res === null || res === '' ){
-          // this.openLoginSup();
+          //this.openLoginSup();
           this.fieldInputSucata.nativeElement.value = null;
         }
         console.log('Login Sup');
@@ -117,11 +95,12 @@ export class FormRepComponent implements OnInit {
           this.usuario   = res[0];
           this.senha     = res[1];
           this.motSucata = res[2];
-          console.log( 'user: ' + this.usuario + ' ' + 'senha: ' + this.senha + ' ' + 'motivo:' + this.motSucata);
+          console.log( 'user: ' + this.usuario + ' ' + 'senha: '
+                       + this.senha + ' ' + 'motivo:' + this.motSucata);
         }else{
           this.fieldInputSucata.nativeElement.value = null;
           this.usuario = null;
-          this.senha  = null;
+          this.senha   = null;
           alert('Insira um usuário e senha inválidos');
         }
       });
@@ -129,40 +108,6 @@ export class FormRepComponent implements OnInit {
     this.callSupervi = true;
   }
 
-
-  // openLoginSup(): void {
-  //   this.motivos = this.motSucata;
-  //   console.log(this.motivos);
-  //   if( this.usuario === null && this.senha === null || this.usuario === '' && this.senha === '' ){
-  //     const dialogLogin = this.dialogLogin.open( DialogLoginSup, {
-  //       width: '250px',
-  //       data: { 
-  //       usuario: this.usuario,
-  //         senha: this.senha,
-  //     motSucata: this.motivos
-  //       }
-  //     });
-  //     dialogLogin.afterClosed().subscribe( res => {
-  //       if(res === undefined || res === null || res === '' ){
-  //         // this.openLoginSup();
-  //         this.fieldInputSucata.nativeElement.value = null;
-  //       }
-  //       console.log('Login Sup');
-  //       if( res[0].length >= 3 && res[1].length >= 3 ) {
-  //         this.usuario   = res[0];
-  //         this.senha     = res[1];
-  //         this.motSucata = res[2];
-  //         console.log( 'user: ' + this.usuario + ' ' + 'senha: ' + this.senha + ' ' + 'motivo:' + this.motSucata);
-  //       }else{
-  //         this.fieldInputSucata.nativeElement.value = null;
-  //         this.usuario = null;
-  //         this.senha  = null;
-  //         alert('Insira um usuário e senha inválidos');
-  //       }
-  //     });
-  //   } 
-  //   this.callSupervi = true;
-  // }
 
   getMotDevolucao(tipo) {
     if( tipo === 'devolucao' ){
