@@ -22,7 +22,7 @@ export class FormRepComponent implements OnInit {
   senha         = null;
 
   animal: string;
-  name: string;
+    name: string;
 
   devProd       = null;
   motDevSelect  = null;
@@ -52,6 +52,7 @@ export class FormRepComponent implements OnInit {
   repassadeira: any;
        motivos: any;
      motivoOut: any;
+     sucata: number;
 
   constructor(
     public  dialogLogin: MatDialog,
@@ -144,6 +145,8 @@ export class FormRepComponent implements OnInit {
   clearLoginSup(){
     this.usuario = null;
     this.senha = null;
+    this.getMotDevolucao('sucata');
+    // this.validateSucata(this.sucata)
   }
 
   saveFormData(bobinaProd,
