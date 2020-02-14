@@ -52,7 +52,10 @@ export class FormRepComponent implements OnInit {
   repassadeira: any;
        motivos: any;
      motivoOut: any;
-     sucata: number;
+        sucata: number;
+        sucataLock = false;
+
+
 
   constructor(
     public  dialogLogin: MatDialog,
@@ -96,6 +99,7 @@ export class FormRepComponent implements OnInit {
           this.usuario   = res[0];
           this.senha     = res[1];
           this.motSucata = res[2];
+          this.sucataLock= true;
           console.log( 'user: ' + this.usuario + ' ' + 'senha: '
                        + this.senha + ' ' + 'motivo:' + this.motSucata);
         }else{
@@ -133,7 +137,7 @@ export class FormRepComponent implements OnInit {
   }
 
   validateSucata( sucataProd ) {
-    if(sucataProd > this.data['qtdSucata'] && this.usuario === null && this.senha === null){
+    if(this.sucata > this.data['qtdSucata'] && this.usuario === null && this.senha === null){
       this.openLoginSup();
     } else {
       console.log('do nothing!!!!!');
@@ -142,10 +146,20 @@ export class FormRepComponent implements OnInit {
   }
 
   clearLoginSup(){
-    this.usuario = null;
-    this.senha = null;
-    this.getMotDevolucao('sucata');
-    // this.validateSucata(this.sucata)
+    if(this.sucata > this.data['qtdSucata'] && this.usuario === null && this.senha === null){
+      if(this.sucataLock === true) {
+        this.sucataLock =false
+        this.usuario = null;
+        this.senha   = null;
+        this.motSucata = null;
+        this.getMotDevolucao('sucata');
+        console.log(this.arrayMotivoSuc);
+        // this.validateSucata(this.sucata) 
+      }
+    } else {
+      console.log('do nothing');
+    }
+    
   }
 
   saveFormData(bobinaProd,

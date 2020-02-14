@@ -97,9 +97,10 @@
              autocomplete="off" [required]="blockRetalho" [ngClass]="{prodError: blockRetalho}">
     </mat-form-field>
     <mat-form-field id="sucata">
-      <input type="number" id="sucInput" class="white" matInput placeholder="Sucata" [(ngModel)]="sucata" #sucataProd 
-             autocomplete="off" [required]="blockSucata" [ngClass]="{prodError: blockSucata}" 
-             (focusout)="validateSucata(sucata)" (change)="clearLoginSup()">
+      <input type="number" id="sucInput" class="white" matInput placeholder="Sucata"
+             [(ngModel)]="sucata" #sucataProd autocomplete="off" [required]="blockSucata"
+             [ngClass]="{prodError: blockSucata}" (focusout)="validateSucata(sucata)"
+             >
     </mat-form-field>
   </div>
 
