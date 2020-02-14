@@ -146,7 +146,7 @@ export class FormRepComponent implements OnInit {
   }
 
   clearLoginSup(){
-    if(this.sucata > this.data['qtdSucata'] && this.usuario === null && this.senha === null){
+    if(this.sucata > this.data['qtdSucata'] ){
       if(this.sucataLock === true) {
         this.sucataLock =false
         this.usuario = null;

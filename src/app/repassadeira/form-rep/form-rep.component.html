@@ -100,7 +100,7 @@
       <input type="number" id="sucInput" class="white" matInput placeholder="Sucata"
              [(ngModel)]="sucata" #sucataProd autocomplete="off" [required]="blockSucata"
              [ngClass]="{prodError: blockSucata}" (focusout)="validateSucata(sucata)"
-             >
+             (keyup)="clearLoginSup()">
     </mat-form-field>
   </div>
 
