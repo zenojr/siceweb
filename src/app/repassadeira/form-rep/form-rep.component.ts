@@ -128,7 +128,6 @@ export class FormRepComponent implements OnInit {
         this.motSucata = this.motSucata['ttProblema'];
         this.motSucata = this.motSucata['Registro'];
         // console.log(this.motSucata);
-        
     });
     }
   }
@@ -312,35 +311,3 @@ export class FormRepComponent implements OnInit {
 }
 
 
-// @Component({
-//      selector: 'dialogLoginSup',
-//   templateUrl: './dialogLoginSup.html',
-//     styleUrls: ['./form-rep.component.scss']
-// })
-// export class DialogLoginSup {
-  
-//   constructor(
-//     public dialogRef: MatDialogRef<DialogLoginSup>,
-//     @Inject(MAT_DIALOG_DATA) public data: LoginSup) {}
-
-//   onNoClick(): void {
-//     this.dialogRef.close();
-//   }
-
-//   saveDataLogin(user, pass, motivo){
-//     console.log(motivo);
-//     let arrDataSup = [];
-//     this.data.usuario = user;
-//     this.data.senha = pass;
-//     this.data.motSucata = motivo;
-//     arrDataSup.push(user);
-//     arrDataSup.push(pass);
-//     arrDataSup.push(motivo);
-//     this.dialogRef.close( arrDataSup );
-//   }
-
-//   closeSupForm():void {
-//     this.dialogRef.close();
-//   }
-
-// }

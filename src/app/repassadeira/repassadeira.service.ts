@@ -21,7 +21,7 @@ getOpRepassadeiras(numRepassa) {
 
 getMotDev(tipo){
   let motDevolucao: any;
-  let motSucata: any;
+  let    motSucata: any;
   if( tipo === 'devolucao' ){
     const url = 'http://192.168.0.7:8080/cgi-bin/wspd_cgi.sh/WService=emswebelttst/scb013ws.p?tipo=' + tipo;
     this.http.get( url, {responseType: 'text'} ).subscribe( response => {
