@@ -18,8 +18,8 @@ import { LoginSupComponent             } from './login-sup/login-sup.component';
 })
 export class FormRepComponent implements OnInit {
 
-  usuario       = null;
-  senha         = null;
+  usuarioSup    = '';
+  senhaSup      = '';
   devProd       = null;
   motDevSelect  = null;
   errorSaving   = [];
@@ -75,12 +75,12 @@ export class FormRepComponent implements OnInit {
   openLoginSup(): void {
     let mot = this.motSucata;
     console.log(mot);
-    if( this.usuario === null && this.senha === null || this.usuario === '' && this.senha === '' ){
+    if( this.usuarioSup === null && this.senhaSup === null || this.usuarioSup === '' && this.senhaSup === '' ){
         const dialogLogin = this.dialogLogin.open( LoginSupComponent, {
         width: '250px',
          data: {
-          usuario: this.usuario,
-          senha: this.senha,
+          usuario: this.usuarioSup,
+          senha: this.senhaSup,
           motSucata: mot
         }
       });
@@ -91,16 +91,16 @@ export class FormRepComponent implements OnInit {
         }
         console.log('Login Sup');
         if( res[0].length >= 3 && res[1].length >= 3 ) {
-          this.usuario    = res[0];
-          this.senha      = res[1];
+          this.usuarioSup = res[0];
+          this.senhaSup   = res[1];
           this.motSucata  = res[2];
           this.sucataLock = true;
-          console.log( 'user: ' + this.usuario + ' ' + 'senha: '
-                       + this.senha + ' ' + 'motivo:' + this.motSucata);
+          console.log( 'user: ' + this.usuarioSup + ' ' + 'senha: '
+                       + this.senhaSup + ' ' + 'motivo:' + this.motSucata);
         }else{
           this.fieldInputSucata.nativeElement.value = null;
-          this.usuario = '';
-          this.senha   = '';
+          this.usuarioSup = '';
+          this.senhaSup   = '';
           alert('Insira um usuário e senha inválidos');
         }
       });
@@ -132,7 +132,7 @@ export class FormRepComponent implements OnInit {
   }
 
   validateSucata( sucataProd ) {
-    if(this.sucata > this.data['qtdSucata'] && this.usuario === null && this.senha === null){
+    if(this.sucata > this.data['qtdSucata'] && this.usuarioSup === null && this.senhaSup === null){
       this.openLoginSup();
     } else {
       console.log('do nothing!!!!!');
@@ -144,9 +144,9 @@ export class FormRepComponent implements OnInit {
     if(this.sucata > this.data['qtdSucata'] ){
       if(this.sucataLock === true) {
         this.sucataLock =false
-        this.usuario = null;
-        this.senha   = null;
-        this.motSucata = null;
+        this.usuarioSup = null;
+        this.senhaSup   = null;
+        this.motSucata  = null;
         this.getMotDevolucao('sucata');
         console.log(this.arrayMotivoSuc);
         // this.validateSucata(this.sucata) 
@@ -171,7 +171,8 @@ export class FormRepComponent implements OnInit {
   let tara        = this.taraOut;
   let ajSpark     = this.data['spark'];
   let destino     = this.data['cliente'];
-  let usuario     = this.user;
+  let usuarioOp   = this.user;
+  let selectRepass= this.data['selectRepass'];
   let numRepassa  = this.repassadeira;
   this.quantMetro = bobinaProd;
   this.quantRolo  = roloProd;
@@ -265,13 +266,13 @@ export class FormRepComponent implements OnInit {
           bigStringOut = url + '?' + 
                      'numOp='      + numOp           + '&' +
                      'itCodigo='   + itCodigo        + '&' +
-                     'codLote='    + codLote         + '&' + 
+                     'codLote='    + codLote         + '&' +
                      'lance='      + lance           + '&' +
                      'tara='       + tara            + '&' +
                      'ajSpark='    + ajSpark         + '&' +
                      'destino='    + destino         + '&' +
-                     'usuario='    + usuario         + '&' +
-                     'numRepassa=' + numRepassa      + '&' +
+                     'usuario='    + usuarioOp       + '&' +
+                     'numRepassa=' + selectRepass    + '&' +
                      'quantMetro=' + this.quantMetro + '&' +
                      'quantRolo='  + this.quantRolo  + '&' +
                      'quantRet='   + this.quantRet   + '&' +
@@ -280,15 +281,25 @@ export class FormRepComponent implements OnInit {
                      'Observ='     + Observ          + '&' +
                      'codImp='     + codImp          + '&' +
                      'codProblema='+ codProblema     + '&' +
-                     'codProbSuc=' + codProbSuc;
+                     'codProbSuc=' + codProbSuc      + '&' +
+                     'superv='     + this.usuarioSup + '&' +
+                     'senha='      + this.senhaSup;
+
       this.http.get( bigStringOut, {responseType: 'text'})
-      .subscribe( response => {      
+      .subscribe( response => {
         console.log( 'Data_Recieved: ' + response );
+        if( response.includes('ERRO') ){
+          this.snackBar.open(response + ' ao salvar', '[X]Fechar',{
+            duration: 3000
+          });
+        } else {
           this.snackBar.open('O.P Salva com sucesso.', '[X]Fechar',{
             duration: 3000
           });    
           this.data.saved = true;
           this.closeRepForm();
+        }
+          
         
       }, error =>  this.error = console.log(error));
     
