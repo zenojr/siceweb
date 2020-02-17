@@ -31,5 +31,6 @@ export interface DialogData {
    codProbSuc: number;
        saved?: boolean;
     numOpPend: string;
+ selectRepass: string;
 
 }

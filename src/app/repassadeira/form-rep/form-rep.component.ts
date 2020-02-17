@@ -20,10 +20,6 @@ export class FormRepComponent implements OnInit {
 
   usuario       = null;
   senha         = null;
-
-  animal: string;
-    name: string;
-
   devProd       = null;
   motDevSelect  = null;
   errorSaving   = [];
@@ -46,6 +42,7 @@ export class FormRepComponent implements OnInit {
   blockDevolver = false;
   blockTara     = false;
   callSupervi   = false;
+  sucataLock    = false;
   motDevolucao: any;
      motSucata: any;
          error: any;
@@ -53,9 +50,6 @@ export class FormRepComponent implements OnInit {
        motivos: any;
      motivoOut: any;
         sucata: number;
-        sucataLock = false;
-
-
 
   constructor(
     public  dialogLogin: MatDialog,
@@ -72,6 +66,7 @@ export class FormRepComponent implements OnInit {
   ngOnInit() {
     this.loginService.currentUser.subscribe( user => this.user = user );
     this.loginService.currentSetor.subscribe( repassa => this.repassadeira = repassa.slice(13));
+    console.log(this.data['selectRepass']);
     this.getMotDevolucao('sucata');
   }
 

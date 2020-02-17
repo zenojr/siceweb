@@ -4,7 +4,6 @@ import { MatDialogRef,
          MatDialog         } from '@angular/material';
 import { LoginSupOut       } from './loginSupModel';
 
-
 @Component({
   selector: 'app-login-sup',
   templateUrl: './login-sup.component.html',
@@ -32,7 +31,7 @@ export class LoginSupComponent implements OnInit {
     this.dialogLoginSup.close();
   }
 
-    saveDataLogin(user, pass){
+  saveDataLogin(user, pass){
     if(user.length <= 3){
       alert('Insira um usuário valido!');
     } else if( pass.length <= 3 ) {

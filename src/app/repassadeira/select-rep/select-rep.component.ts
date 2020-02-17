@@ -6,7 +6,7 @@ import { MatSnackBar                   } from '@angular/material/snack-bar';
 import { LoginService                  } from '../../login/login.service';
 // import { HttpClient                    } from '@angular/common/http';
 import { RepassadeiraService           } from '../repassadeira.service';
-import { MonitoropService              } from '../../monitorop/monitorop.service'
+import { MonitoropService              } from '../../monitorop/monitorop.service';
 import { DialogSelect                  } from './selectModel';
 
 @Component({

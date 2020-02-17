@@ -38,6 +38,8 @@ displayedColumns: string[] = ['produzir',
                               'codLote',
                               'lance'];
 
+                              // 94908989
+
   blockRepassa = true;
   producao     = true;
   impressao    = false;
@@ -49,7 +51,7 @@ displayedColumns: string[] = ['produzir',
   expedicao    = null;
   saved        = false;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
-  @ViewChild(MatSort, { static: true }) sort: MatSort;
+  @ViewChild(MatSort,      { static: true }) sort: MatSort;
 
   constructor(
     public        snackBar: MatSnackBar,
@@ -81,9 +83,8 @@ displayedColumns: string[] = ['produzir',
     });
 
     dialogSelect.afterClosed().subscribe( result => {
-      console.log( 'result: ' + result );
       this.selectedRepass = result;
-      console.log(this.selectedRepass)
+      console.log(  this.selectedRepass);
       if( result != null || result != undefined ){
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
@@ -174,7 +175,8 @@ displayedColumns: string[] = ['produzir',
   codProblema: codProblemaDOM,
    codProbSuc: codProbSucDOM,
         saved: this.saved,
-    numOpPend: numOpPendDOM }
+    numOpPend: numOpPendDOM,
+ selectRepass: this.selectedRepass }
       });
     
       dialogRef.afterClosed().subscribe(result => {
@@ -231,7 +233,8 @@ displayedColumns: string[] = ['produzir',
     codProblema: codProblemaDOM,
      codProbSuc: codProbSucDOM,
           saved: this.saved,
-      numOpPend: numOpPendDOM}
+      numOpPend: numOpPendDOM,
+   selectRepass: this.selectedRepass}
         });  
         dialogRef.afterClosed().subscribe(result => {
           console.log('The dialog was closed' + this.saved);
