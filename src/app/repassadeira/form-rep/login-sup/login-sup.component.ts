@@ -33,9 +33,9 @@ export class LoginSupComponent implements OnInit {
   }
 
     saveDataLogin(user, pass){
-    if(user.length < 2){
+    if(user.length <= 3){
       alert('Insira um usuário valido!');
-    } else if( pass.length < 2 ) {
+    } else if( pass.length <= 3 ) {
       alert('Informe uma senha');
     } else {
       let arrDataSup = [];

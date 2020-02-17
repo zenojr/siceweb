@@ -81,12 +81,12 @@ export class FormRepComponent implements OnInit {
     let mot = this.motSucata;
     console.log(mot);
     if( this.usuario === null && this.senha === null || this.usuario === '' && this.senha === '' ){
-      const dialogLogin = this.dialogLogin.open( LoginSupComponent, {
+        const dialogLogin = this.dialogLogin.open( LoginSupComponent, {
         width: '250px',
-        data: {
-        usuario: this.usuario,
+         data: {
+          usuario: this.usuario,
           senha: this.senha,
-      motSucata: mot
+          motSucata: mot
         }
       });
       dialogLogin.afterClosed().subscribe( res => {
@@ -96,16 +96,16 @@ export class FormRepComponent implements OnInit {
         }
         console.log('Login Sup');
         if( res[0].length >= 3 && res[1].length >= 3 ) {
-          this.usuario   = res[0];
-          this.senha     = res[1];
-          this.motSucata = res[2];
-          this.sucataLock= true;
+          this.usuario    = res[0];
+          this.senha      = res[1];
+          this.motSucata  = res[2];
+          this.sucataLock = true;
           console.log( 'user: ' + this.usuario + ' ' + 'senha: '
                        + this.senha + ' ' + 'motivo:' + this.motSucata);
         }else{
           this.fieldInputSucata.nativeElement.value = null;
-          this.usuario = null;
-          this.senha   = null;
+          this.usuario = '';
+          this.senha   = '';
           alert('Insira um usuário e senha inválidos');
         }
       });
