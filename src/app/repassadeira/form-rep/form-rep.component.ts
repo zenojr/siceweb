@@ -132,18 +132,26 @@ export class FormRepComponent implements OnInit {
   }
 
   validateSucata( sucataProd ) {
+    console.log(this.sucata);
     if(this.sucata > this.data['qtdSucata'] && this.usuarioSup === null && this.senhaSup === null){
       this.openLoginSup();
     } else {
       console.log('do nothing!!!!!');
       this.callSupervi = true;
     }
+
+    if(this.sucata === null || this.sucata === 0 ){
+      this.usuarioSup = null;
+      this.senhaSup   = null;
+      this.motSucata  = null;
+      console.log(this.usuarioSup + ' e ' + this.senhaSup)
+    }
   }
 
   clearLoginSup(){
     if(this.sucata > this.data['qtdSucata'] ){
       if(this.sucataLock === true) {
-        this.sucataLock =false
+        this.sucataLock = false
         this.usuarioSup = null;
         this.senhaSup   = null;
         this.motSucata  = null;
