@@ -18,8 +18,8 @@ import { LoginSupComponent             } from './login-sup/login-sup.component';
 })
 export class FormRepComponent implements OnInit {
 
-  usuarioSup    = '';
-  senhaSup      = '';
+  usuarioSup    = null;
+  senhaSup      = null;
   devProd       = null;
   motDevSelect  = null;
   errorSaving   = [];
@@ -258,6 +258,12 @@ export class FormRepComponent implements OnInit {
 
   if( this.testeSpark != 'sim'){
     this.errorSaving.push('Teste Spark não realizado ❕');
+  }
+
+  if (this.usuarioSup === null || this.senhaSup === null) {
+    this.usuarioSup = '';
+    this.senhaSup = '';
+    console.log('user and pass superv changed!!!!')
   }
 
   if( this.errorSaving.length < 1 ){
